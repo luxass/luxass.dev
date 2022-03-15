@@ -1,4 +1,4 @@
-# Windows 10 inspired portfolio
+# Windows 11 inspired portfolio
 
 
 Made with NextJS and TailwindCSS
