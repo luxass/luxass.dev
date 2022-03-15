@@ -1,22 +1,9 @@
-import { ScreenLock } from "@components/ScreenLock";
-import { Taskbar } from "@components/Taskbar";
-import { useState } from "react";
+import { Portfolio } from "@components/Portfolio";
+import { Windows } from "@components/Windows";
+import { useMediaQuery } from "@hooks/use-mediaquery";
 
 export default function Home() {
-  const [locked, setLocked] = useState<boolean>(true);
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
-  if (locked) {
-    return <ScreenLock />;
-  }
-
-  return (
-    <div
-      className="h-screen"
-      style={{
-        background: "linear-gradient(to right, #00c6fb 0%, #005bea 100%)",
-      }}
-    >
-      <Taskbar />
-    </div>
-  );
+  return <>{isMobile ? <Portfolio /> : <Windows />}</>;
 }
