@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        start: "min(100% - 24px, 720px)",
+      },
       gridTemplateColumns: {
         apps: "repeat(auto-fit, 6rem)",
       },

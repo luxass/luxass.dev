@@ -18,12 +18,6 @@ export function getApps(): WindowsApp[] {
       taskbar: true,
     },
     {
-      appId: "edge-beta",
-      name: "Microsoft Edge Beta",
-      icon: "/apps/edge-beta.png",
-      taskbar: true,
-    },
-    {
       appId: "notion",
       name: "Notion",
       icon: "/apps/notion.png",

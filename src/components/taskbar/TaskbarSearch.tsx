@@ -1,28 +1,27 @@
-import { StartWidget } from "@components/widgets";
+import { SearchWidget, StartWidget } from "@components/widgets";
 import { Widgets } from "@lib/widgets";
 import { widgetState } from "@recoil";
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
-export function TaskbarWindows() {
+export function TaskbarSearch() {
   const [widget, setWidget] = useRecoilState(widgetState);
 
   return (
     <>
-      {widget === Widgets.START && <StartWidget />}
+      {widget === Widgets.SEARCH && <SearchWidget />}
 
       <section
         className={clsx(
-          "flex justify-center items-center p-2 h-[40px] rounded-[4px] hover:bg-[#88888833] select-none focus outline-none",
+          "flex justify-center items-center p-2 h-[40px] rounded-[4px] hover:bg-green-700 select-none",
           {
-            "bg-[#88888833]": widget === Widgets.START,
+            "bg-green-700": widget === Widgets.SEARCH,
           }
         )}
         onClick={() => {
           if (widget === Widgets.NONE) {
-            setWidget(Widgets.START);
+            setWidget(Widgets.SEARCH);
           }
         }}
       >
