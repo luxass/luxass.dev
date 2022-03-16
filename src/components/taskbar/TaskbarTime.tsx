@@ -1,3 +1,4 @@
+import { CalendarWidget } from "@components/widgets";
 import { useWindows } from "@hooks/use-windows";
 import { Widgets } from "@lib/widgets";
 import { useRouter } from "next/router";
@@ -17,6 +18,8 @@ export function TaskbarTime() {
 
   return (
     <>
+      {widget === Widgets.CALENDAR && <CalendarWidget />}
+
       <section
         className="flex justify-center items-center p-2 h-[40px] rounded-[4px] hover:bg-green-700 ml-0.5 select-none"
         onClick={() => {

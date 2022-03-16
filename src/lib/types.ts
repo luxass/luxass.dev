@@ -18,6 +18,8 @@ export interface WindowsApp {
 }
 
 
-export interface IWidget {
-  
-}
+export type WindowsTheme = "dark" | "light";
+export type Wallpaper = string;
+
+
+export interface IWidget {}

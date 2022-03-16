@@ -10,10 +10,7 @@ export function App({ app }: AppProps) {
   return (
     <section
       className={clsx(
-        "flex flex-col justify-center items-center transition-app",
-        {
-          "hover:bg-[#83c3ff3d] rounded-[4px]": !app.taskbar,
-        }
+        "flex flex-col justify-center items-center transition-app hover:bg-[#83c3ff3d] rounded-[4px]"
       )}
     >
       <section>
