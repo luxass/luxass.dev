@@ -2,7 +2,6 @@ import { Taskbar } from "./taskbar";
 import { useMediaQuery } from "@hooks/use-mediaquery";
 import { Apps } from "./apps";
 import { Desktop } from "./Desktop";
-import { WindowsProvider } from "@contexts/windows-provider";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { windowsState } from "src/recoil";
