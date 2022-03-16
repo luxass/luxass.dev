@@ -1,5 +1,8 @@
 export enum Widgets {
   LANGUAGE = "language",
   CALENDAR = "calendar",
-  START = "start"
+  QUICK = "quick",
+  TRAY = "tray",
+  SEARCH = "search",
+  START = "start",
 }

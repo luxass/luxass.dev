@@ -18,7 +18,7 @@ export function TaskbarTime() {
   return (
     <>
       <section
-        className="flex justify-center items-center p-2 h-[40px] rounded-[4px] hover:bg-green-700 ml-0.5"
+        className="flex justify-center items-center p-2 h-[40px] rounded-[4px] hover:bg-green-700 ml-0.5 select-none"
         onClick={() => {
           if (widget === null) {
             setWidget(Widgets.CALENDAR);
