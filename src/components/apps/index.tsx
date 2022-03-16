@@ -1,8 +1,9 @@
-import { useWindows } from "@hooks/use-windows";
 import { App } from "./App";
+import { windowsState } from "@recoil";
+import { useRecoilValue } from "recoil";
 
 export function Apps() {
-  const { apps } = useWindows();
+  const { apps } = useRecoilValue(windowsState);
 
   return (
     <section className="flex-1 grid grid-flow-col grid-cols-apps grid-rows-apps">
