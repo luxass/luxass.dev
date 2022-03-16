@@ -1,16 +1,15 @@
 import { useEventListener } from "@hooks/use-eventlistener";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import Image from "next/image";
 import { windowsState } from "@recoil";
 import { useRecoilState } from "recoil";
+import { LockTime } from "./LockTime";
 
 export interface LockScreenProps {}
 
 export function LockScreen({}: LockScreenProps) {
   const [login, setLogin] = useState<boolean>(false);
   const [windows, setWindows] = useRecoilState(windowsState);
-  const { locale } = useRouter();
 
   useEventListener("click", () => {
     if (login) return;
@@ -24,7 +23,7 @@ export function LockScreen({}: LockScreenProps) {
 
   return (
     <section
-      className="h-screen w-full flex flex-col"
+      className="h-screen w-full flex flex-col select-none"
       style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
     url(/wallpaper-${windows.theme}.jpg) center/cover no-repeat
@@ -33,19 +32,7 @@ export function LockScreen({}: LockScreenProps) {
     >
       {!login ? (
         <section className="flex flex-col items-center mt-40">
-          <div className="text-6xl font-semibold text-gray-100">
-            {new Date().toLocaleTimeString(locale, {
-              hour: "numeric",
-              minute: "numeric",
-            })}
-          </div>
-          <div className="text-lg font-medium text-gray-200">
-            {new Date().toLocaleDateString(locale, {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-            })}
-          </div>
+          <LockTime />
         </section>
       ) : (
         <section className="flex flex-col items-center mt-40">

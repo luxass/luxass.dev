@@ -1,8 +1,32 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 export function LockTime() {
+  const { locale } = useRouter();
+
+  const [date, setDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  });
+
   return (
-    <section className="px-4 pt-4 pb-16 select-none">
-      <section className="text-7xl font-extralight">12:38</section>
-      <section className="text-6xl font-extralight">Tuesday, January 19</section>
-    </section>
-  )
+    <>
+      <section className="text-6xl font-semibold text-gray-100">
+        {date.toLocaleTimeString(locale, {
+          timeStyle: "short",
+        })}
+      </section>
+      <section className="text-lg font-medium text-gray-200">
+        {new Date().toLocaleDateString(locale, {
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+        })}
+      </section>
+    </>
+  );
 }
