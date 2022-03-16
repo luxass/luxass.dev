@@ -17,9 +17,18 @@ export interface WindowsApp {
   taskbar: boolean;
 }
 
+export interface WindowsQuickSettings {
+  /**
+   * The current theme
+   */
+  theme: WindowsTheme;
+  /**
+   * Wifi
+   */
+  wifi: boolean;
+}
+
 
 export type WindowsTheme = "dark" | "light";
-export type Wallpaper = string;
-
 
 export interface IWidget {}

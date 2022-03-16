@@ -16,8 +16,6 @@ export function useMediaQuery(query: string): boolean {
   }
 
   useEffect(() => {
-    console.log("yeyey");
-    
     const matchMedia = window.matchMedia(query);
 
     handleChange();

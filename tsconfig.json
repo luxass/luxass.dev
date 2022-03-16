@@ -19,7 +19,8 @@
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@lib/*": ["src/lib/*"],
-      "@contexts/*": ["src/contexts/*"]
+      "@contexts/*": ["src/contexts/*"],
+      "@recoil": ["src/recoil"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
