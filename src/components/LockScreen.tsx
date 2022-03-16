@@ -27,7 +27,7 @@ export function LockScreen({}: LockScreenProps) {
       className="h-screen w-full flex flex-col"
       style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url(/wallpaper-dark.jpg) center/cover no-repeat
+    url(/wallpaper-${windows.theme}.jpg) center/cover no-repeat
       fixed`,
       }}
     >
