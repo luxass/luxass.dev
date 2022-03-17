@@ -6,6 +6,7 @@ import { FloatingApp } from "./FloatingApp";
 export function Apps() {
   const { apps } = useRecoilValue(desktopState);
   const windows = useRecoilValue(windowsState);
+
   return (
     <section className="flex-1 grid grid-flow-col grid-cols-apps grid-rows-apps desktop-bounds">
       {windows.map((window, idx) => (

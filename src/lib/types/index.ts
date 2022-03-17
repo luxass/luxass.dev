@@ -1,4 +1,8 @@
+export * from "./windows";
+export * from "./desktop";
+
 import { ComponentType } from "react";
+import { ReactNode } from "react";
 
 export interface WindowsApp {
   /**
@@ -52,3 +56,8 @@ export interface WindowsQuickSettings {
 export type WindowsTheme = "dark" | "light";
 
 export interface IWidget {}
+
+export interface ContextMenuCoords {
+  x: number;
+  y: number;
+}
