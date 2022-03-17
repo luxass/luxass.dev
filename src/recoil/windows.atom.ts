@@ -1,16 +1,7 @@
-import { WindowsApp, WindowsTheme } from "@lib/types";
-import { getApps } from "@lib/windows-apps";
+import { ActiveWindow } from "@lib/types";
 import { atom } from "recoil";
 
-interface WindowsState {
-  theme: WindowsTheme;
-  apps: WindowsApp[];
-}
-
-export const windowsState = atom<WindowsState>({
+export const windowsState = atom<ActiveWindow[]>({
   key: "windowsState",
-  default: {
-    theme: "light",
-    apps: getApps(),
-  },
+  default: [],
 });

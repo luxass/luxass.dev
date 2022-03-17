@@ -4,11 +4,11 @@ import { Apps } from "./apps";
 import { Desktop } from "./Desktop";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { windowsState } from "src/recoil";
+import { desktopState } from "src/recoil";
 
 export function Windows() {
   const dark = useMediaQuery("(prefers-color-scheme: dark)");
-  const [windows, setWindows] = useRecoilState(windowsState);
+  const [windows, setWindows] = useRecoilState(desktopState);
 
   useEffect(() => {
     setWindows({

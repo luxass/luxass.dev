@@ -17,7 +17,7 @@ export function StartWidget() {
   return (
     <section
       ref={widgetRef}
-      className="absolute bottom-[60px] left-[14px] w-[640px] h-[720px] bg-[#f2f2f2e6] dark:bg-[#242424cc] rounded-lg backdrop-blur-[20px] px-4 pt-4"
+      className="absolute bottom-[60px] left-[14px] w-[640px] h-start bg-[#f2f2f2e6] dark:bg-[#242424cc] rounded-lg backdrop-blur-[20px] px-4 pt-4"
     >
       <section></section>
     </section>

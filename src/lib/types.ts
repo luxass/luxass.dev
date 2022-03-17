@@ -1,3 +1,5 @@
+import { ComponentType } from "react";
+
 export interface WindowsApp {
   /**
    * Id of the app
@@ -15,6 +17,25 @@ export interface WindowsApp {
    * Pinned to taskbar
    */
   taskbar: boolean;
+  /**
+   * The sizes of the app
+   */
+  sizes: AppSize;
+}
+
+export interface AppSize {
+  minWidth?: number;
+  minHeight?: number;
+  height: number;
+  width: number;
+  resizable: boolean;
+}
+
+export interface ActiveWindow {
+  app: WindowsApp;
+  component: ComponentType<any>;
+  zIndex: number;
+  focused: boolean;
 }
 
 export interface WindowsQuickSettings {
@@ -27,7 +48,6 @@ export interface WindowsQuickSettings {
    */
   wifi: boolean;
 }
-
 
 export type WindowsTheme = "dark" | "light";
 
