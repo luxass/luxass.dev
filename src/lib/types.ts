@@ -4,6 +4,7 @@ export interface GitHubUser {
   avatarUrl: string;
   email: string;
   followers: number;
+  stars: number;
 }
 
 export interface GraphQLGitHubUser {
@@ -11,13 +12,10 @@ export interface GraphQLGitHubUser {
   login: string;
   avatarUrl: string;
   email: string;
-  followers: Followers;
-  repositoriesContributedTo: Followers;
+  followers: {
+    totalCount: number;
+  };
   repositories: Repositories;
-}
-
-export interface Followers {
-  totalCount: number;
 }
 
 export interface Repositories {
@@ -27,5 +25,7 @@ export interface Repositories {
 
 export interface Node {
   nameWithOwner: string;
-  stargazers: Followers;
+  stargazers: {
+    totalCount: number;
+  };
 }

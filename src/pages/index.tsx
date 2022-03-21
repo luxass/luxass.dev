@@ -25,12 +25,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         followers {
           totalCount
         }
-        repositoriesContributedTo(
-          first: 1
-          contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]
-        ) {
-          totalCount
-        }
         repositories(
           first: 100
           ownerAffiliations: OWNER
