@@ -28,7 +28,7 @@ export function Sidebar({ user }: SidebarProps) {
             <span className="block text-[26px] leading-[1.25] text-white">
               {user.name}
             </span>
-            <span className="block text-[20px] leading-[24px] font-light text-[#768390]">
+            <span className="block text-[20px] leading-[24px] font-light text-[#a5b2c0]">
               {user.login}
             </span>
           </h1>

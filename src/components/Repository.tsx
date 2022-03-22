@@ -13,7 +13,7 @@ export function Repository({ repo }: RepositoryProps) {
           <a className="text-[#539bf5] hover:underline">{repo.nameWithOwner}</a>
         </Link>
       </h2>
-      <p className="pr-6 text-[14px] mb-2 text-[#768390]">{repo.description}</p>
+      <p className="pr-6 text-[14px] mb-2 text-[#a5b2c0]">{repo.description}</p>
 
     </div>
   );
