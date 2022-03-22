@@ -1,3 +1,7 @@
 {
-  "description": "Kort beskrivelse af mig"
+  "description": "Kort beskrivelse af mig",
+  "nav": {
+    "projects": "Projekter",
+    "resume": "CV"
+  }
 }

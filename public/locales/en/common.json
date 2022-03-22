@@ -1,3 +1,7 @@
 {
-  "description": "Short description of me"
+  "description": "Short description of me",
+  "nav": {
+    "projects": "Projects",
+    "resume": "Resume"
+  }
 }
