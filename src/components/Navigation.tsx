@@ -8,11 +8,11 @@ export function Navigaiton() {
   const { t } = useTranslation("common");
 
   return (
-    <nav className="sticky top-0 w-full border-b  border-b-[#373e47] bg-[#22272e] z-50">
+    <nav className="sticky top-0 w-full border-b  border-b-[#373e47] bg-[#22272e] z-50 mb-4">
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-[256px] lg:w-[296px]" />
-          <div className="w-full pl-[16px] lg:pl-[24px]">
+          <div className="w-full pl-0 md:pl-[16px] lg:pl-[24px]">
             <nav className="flex">
               <Link passHref href="/">
                 <a

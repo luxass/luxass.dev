@@ -19,7 +19,7 @@ export function Layout({ children, user }: LayoutProps) {
         <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row">
             <Sidebar user={user} />
-            <div className="w-full pl-[16px] lg:pl-[24px]">{children}</div>
+            <div className="w-full pl-0 md:pl-[16px] lg:pl-[24px]">{children}</div>
           </div>
         </div>
       </div>
