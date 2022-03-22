@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
@@ -5,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        test: "220px",
+      },
       height: {
         start: "min(100% - 24px, 720px)",
       },
@@ -19,5 +24,13 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".content-auto": {
+          "content-visibility": "auto",
+        },
+      });
+    }),
+  ],
 };

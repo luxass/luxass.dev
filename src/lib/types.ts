@@ -1,54 +1,49 @@
-import { ComponentType } from "react";
+import { ReactElement } from "react";
 
-export interface WindowsApp {
-  /**
-   * Id of the app
-   */
-  appId: string;
-  /**
-   * Name of the app
-   */
+export interface GitHubUser {
+  login: string;
   name: string;
-  /**
-   * The icon of the app
-   */
-  icon: string;
-  /**
-   * Pinned to taskbar
-   */
-  taskbar: boolean;
-  /**
-   * The sizes of the app
-   */
-  sizes: AppSize;
+  avatarUrl: string;
+  email: string;
+  repositories: Repositories
 }
 
-export interface AppSize {
-  minWidth?: number;
-  minHeight?: number;
-  height: number;
-  width: number;
-  resizable: boolean;
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: ReactElement;
 }
 
-export interface ActiveWindow {
-  app: WindowsApp;
-  component: ComponentType<any>;
-  zIndex: number;
-  focused: boolean;
+export interface GraphQLGitHubUser {
+  name: string;
+  login: string;
+  avatarUrl: string;
+  email: string;
+  repositories: Repositories;
 }
 
-export interface WindowsQuickSettings {
-  /**
-   * The current theme
-   */
-  theme: WindowsTheme;
-  /**
-   * Wifi
-   */
-  wifi: boolean;
+
+export interface Repositories {
+  totalCount: number;
+  nodes: RepositoryNode[];
 }
 
-export type WindowsTheme = "dark" | "light";
+export interface RepositoryNode {
+  nameWithOwner: string;
+  description: null | string;
+  pushedAt: Date;
+  stargazerCount: number;
+  forkCount: number;
+  languages: Languages;
+}
 
-export interface IWidget {}
+export interface Languages {
+  totalCount: number;
+  nodes: LanguagesNode[];
+}
+
+export interface LanguagesNode {
+  color: string;
+  name: string;
+  id: string;
+}
