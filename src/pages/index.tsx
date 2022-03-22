@@ -1,6 +1,5 @@
 import { Layout } from "@components/Layout";
 import { useMediaQuery } from "@hooks/use-mediaquery";
-import { GitHubUser } from "@lib/types";
 import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { request, gql } from "graphql-request";
@@ -9,8 +8,6 @@ import { parseGitHubUser } from "@lib/github";
 export default function Home({
   user,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-
   return <Layout user={user}>test</Layout>;
 }
 

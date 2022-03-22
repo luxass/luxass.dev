@@ -1,3 +1,5 @@
+import { ReactElement } from "react-markdown/lib/react-markdown";
+
 export interface GitHubUser {
   login: string;
   name: string;
@@ -5,6 +7,12 @@ export interface GitHubUser {
   email: string;
   followers: number;
   stars: number;
+}
+
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: ReactElement;
 }
 
 export interface GraphQLGitHubUser {

@@ -29,7 +29,7 @@ module.exports = {
       addUtilities({
         ".content-auto": {
           "content-visibility": "auto",
-        }
+        },
       });
     }),
   ],
