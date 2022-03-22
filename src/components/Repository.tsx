@@ -14,7 +14,7 @@ export function Repository({ repo }: RepositoryProps) {
         </Link>
       </h2>
       <p className="pr-6 text-[14px] mb-2 text-[#a5b2c0]">{repo.description}</p>
-
+      
     </div>
   );
 }
