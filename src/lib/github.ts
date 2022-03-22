@@ -1,3 +1,4 @@
+import { gql } from "graphql-request";
 import { GitHubUser, GraphQLGitHubUser } from "./types";
 
 export function parseGitHubUser(user: GraphQLGitHubUser): GitHubUser {
@@ -14,3 +15,31 @@ export function parseGitHubUser(user: GraphQLGitHubUser): GitHubUser {
     stars: stars,
   };
 }
+
+export const userQuery = gql`
+  query userInfo($login: String!) {
+    user(login: $login) {
+      name
+      login
+      avatarUrl
+      email
+      followers {
+        totalCount
+      }
+      repositories(
+        first: 100
+        ownerAffiliations: OWNER
+        orderBy: { direction: DESC, field: PUSHED_AT }
+        privacy: PUBLIC
+      ) {
+        totalCount
+        nodes {
+          nameWithOwner
+          stargazers {
+            totalCount
+          }
+        }
+      }
+    }
+  }
+`;

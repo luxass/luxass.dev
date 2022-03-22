@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function SocialLinks() {
   return (
-    <ul className="border-t border-t-[#373e47] pt-4 mt-4">
+    <ul className="border-t border-t-[#373e47] border-b border-b-[#373e47] md:border-b-0 py-4 my-4">
       {social.map(({ url, name, icon }, idx) => (
         <li key={`social-${idx}`} className="flex items-center first:pt-0 pt-2">
           {icon}
