@@ -2,17 +2,12 @@ import { gql } from "graphql-request";
 import { GitHubUser, GraphQLGitHubUser } from "./types";
 
 export function parseGitHubUser(user: GraphQLGitHubUser): GitHubUser {
-  const stars = user.repositories.nodes.reduce((prev, curr) => {
-    return prev + curr.stargazers!.totalCount;
-  }, 0);
-
   return {
     name: user.name,
     login: user.login,
     avatarUrl: user.avatarUrl,
     email: user.email,
-    followers: user.followers.totalCount,
-    stars: stars,
+    repositories: user.repositories,
   };
 }
 
@@ -23,9 +18,6 @@ export const userQuery = gql`
       login
       avatarUrl
       email
-      followers {
-        totalCount
-      }
       repositories(
         first: 100
         ownerAffiliations: OWNER
@@ -35,8 +27,17 @@ export const userQuery = gql`
         totalCount
         nodes {
           nameWithOwner
-          stargazers {
+          description
+          pushedAt
+          stargazerCount
+          forkCount
+          languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
             totalCount
+            nodes {
+              color
+              name
+              id
+            }
           }
         }
       }

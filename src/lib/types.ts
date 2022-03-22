@@ -5,8 +5,7 @@ export interface GitHubUser {
   name: string;
   avatarUrl: string;
   email: string;
-  followers: number;
-  stars: number;
+  repositories: Repositories
 }
 
 export interface SocialLink {
@@ -20,20 +19,31 @@ export interface GraphQLGitHubUser {
   login: string;
   avatarUrl: string;
   email: string;
-  followers: {
-    totalCount: number;
-  };
   repositories: Repositories;
 }
 
+
 export interface Repositories {
   totalCount: number;
-  nodes: Node[];
+  nodes: RepositoryNode[];
 }
 
-export interface Node {
+export interface RepositoryNode {
   nameWithOwner: string;
-  stargazers: {
-    totalCount: number;
-  };
+  description: null | string;
+  pushedAt: Date;
+  stargazerCount: number;
+  forkCount: number;
+  languages: Languages;
+}
+
+export interface Languages {
+  totalCount: number;
+  nodes: LanguagesNode[];
+}
+
+export interface LanguagesNode {
+  color: string;
+  name: string;
+  id: string;
 }
