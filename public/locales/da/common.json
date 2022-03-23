@@ -3,5 +3,12 @@
   "nav": {
     "projects": "Projekter",
     "resume": "CV"
+  },
+  "resume": {
+    "titles": {
+      "about": "Om mig",
+      "education": "Uddannelse",
+      "skills": "Færdigheder"
+    }
   }
 }

@@ -3,5 +3,12 @@
   "nav": {
     "projects": "Projects",
     "resume": "Resume"
+  },
+  "resume": {
+    "titles": {
+      "about": "About Me",
+      "education": "Education",
+      "skills": "Skills"
+    }
   }
 }
