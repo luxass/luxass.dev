@@ -2,9 +2,9 @@
   "description": "Kort beskrivelse af mig",
   "nav": {
     "projects": "Projekter",
-    "resume": "CV"
+    "overview": "Oversigt"
   },
-  "resume": {
+  "overview": {
     "titles": {
       "about": "Om mig",
       "education": "Uddannelse",

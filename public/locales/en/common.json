@@ -2,9 +2,9 @@
   "description": "Short description of me",
   "nav": {
     "projects": "Projects",
-    "resume": "Resume"
+    "overview": "Overview"
   },
-  "resume": {
+  "overview": {
     "titles": {
       "about": "About Me",
       "education": "Education",
