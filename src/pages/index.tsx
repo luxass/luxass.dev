@@ -76,28 +76,17 @@ export default function Home({
                 </h1>
                 <div className="border-t-2 border-t-[#373e47] my-2 py-2">
                   <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
-                    <div className="mb-4">
-                      <p className="text-lg text-white">
-                        Webudvikler - Viden Djurs
+                    <div className="mb-2">
+                      <p className="text-white">
+                        HTML, CSS, SASS, JavaScript, TypeScript
                       </p>
-                      <p className="text-base font-light text-[#a5b2c0]">
-                        2020 - 2022
-                      </p>
+                    </div>
+                    <div className="mb-2">
+                      <p className="text-white">React, Next.js, Svelte, Vue</p>
                     </div>
                     <div className="mb-4">
                       <p className="text-lg text-white">
-                        Webudvikler - Viden Djurs
-                      </p>
-                      <p className="text-base font-light text-[#a5b2c0]">
-                        2020 - 2022
-                      </p>
-                    </div>
-                    <div className="mb-4">
-                      <p className="text-lg text-white">
-                        Webudvikler - Viden Djurs
-                      </p>
-                      <p className="text-base font-light text-[#a5b2c0]">
-                        2020 - 2022
+                        Python, Java, Rust, C#
                       </p>
                     </div>
                   </div>
