@@ -32,26 +32,27 @@ export default function Home({
               ></path>
             </svg>
           </a>
-          <div className="flex justify-between">
-            <div className="w-1/2 mr-6">
+          <div className="flex justify-between flex-col md:flex-row">
+            <div className="w-full md:w-1/2 md:mr-6">
               <div>
                 <h1 className="text-[26px] leading-[1.25] text-white">
                   {t("overview.titles.about")}
                 </h1>
                 <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <p></p>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.skills")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <p></p>
+                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
+                    <div>
+                      <p className="text-lg text-white">
+                        Webudvikler - Viden Djurs
+                      </p>
+                      <p className="text-base font-light text-[#a5b2c0]">
+                        2020 - 2022
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="w-1/2 ml-6">
+            <div className="w-full md:w-1/2 md:ml-6">
               <div>
                 <h1 className="text-[26px] leading-[1.25] text-white">
                   {t("overview.titles.education")}
@@ -62,6 +63,39 @@ export default function Home({
                       <h2 className="text-lg text-white">
                         Webudvikler - Viden Djurs
                       </h2>
+                      <p className="text-base font-light text-[#a5b2c0]">
+                        2020 - 2022
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h1 className="text-[26px] leading-[1.25] text-white">
+                  {t("overview.titles.skills")}
+                </h1>
+                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
+                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
+                    <div className="mb-4">
+                      <p className="text-lg text-white">
+                        Webudvikler - Viden Djurs
+                      </p>
+                      <p className="text-base font-light text-[#a5b2c0]">
+                        2020 - 2022
+                      </p>
+                    </div>
+                    <div className="mb-4">
+                      <p className="text-lg text-white">
+                        Webudvikler - Viden Djurs
+                      </p>
+                      <p className="text-base font-light text-[#a5b2c0]">
+                        2020 - 2022
+                      </p>
+                    </div>
+                    <div className="mb-4">
+                      <p className="text-lg text-white">
+                        Webudvikler - Viden Djurs
+                      </p>
                       <p className="text-base font-light text-[#a5b2c0]">
                         2020 - 2022
                       </p>
