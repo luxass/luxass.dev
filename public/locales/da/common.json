@@ -1,5 +1,4 @@
 {
-  "description": "Kort beskrivelse af mig",
   "nav": {
     "projects": "Projekter",
     "overview": "Oversigt"
@@ -9,6 +8,19 @@
       "about": "Om mig",
       "education": "Uddannelse",
       "skills": "Færdigheder"
+    },
+    "sections": {
+      "about": {
+        "top": "Mit navn er Lucas Nørgård, jeg er 18 år gammel og bor i Grenå hvor jeg er opvokset.",
+        "mid": "Jeg har haft en stor interesse for IT i flere år hvilket gør, at jeg er meget seriøs og grundig med det arbejde jeg laver.",
+        "bot": "Jeg har grundet min unge alder ingen job erfaring med IT, men er yderst lærenem og pligtopfyldende"
+      },
+      "education": {
+        "vid": {
+          "name": "Webudvikler",
+          "date": "Aug 20 - Igang"
+        }
+      }
     }
   }
 }

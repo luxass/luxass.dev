@@ -15,7 +15,7 @@ export default function Home({
       <div className="mt-6 bg-[#22272e] border border-[#444c56] rounded-[6px] relative">
         <div className="p-6 -mb-[1px] rounded-b-[6px] border-b border-b-[#444c56]">
           <a
-            href="/lucas-cv.pdf"
+            href="/lucas-resume.pdf"
             download
             className="absolute w-8 h-8 bg-[#2d333b] right-3 top-3 rounded-[6px] flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#768390]"
           >
@@ -29,7 +29,7 @@ export default function Home({
               <path
                 fillRule="evenodd"
                 d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z"
-              ></path>
+              />
             </svg>
           </a>
           <div className="flex justify-between flex-col md:flex-row">
@@ -39,16 +39,16 @@ export default function Home({
                   {t("overview.titles.about")}
                 </h1>
                 <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
-                    <div>
-                      <p className="text-lg text-white">
-                        Webudvikler - Viden Djurs
-                      </p>
-                      <p className="text-base font-light text-[#a5b2c0]">
-                        2020 - 2022
-                      </p>
-                    </div>
-                  </div>
+                  <p className="text-white">
+                    {t("overview.sections.about.top")}
+                    <br />
+                    <br />
+                    {t("overview.sections.about.mid")}
+
+                    <br />
+                    <br />
+                    {t("overview.sections.about.bot")}
+                  </p>
                 </div>
               </div>
             </div>
@@ -61,10 +61,11 @@ export default function Home({
                   <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
                     <div>
                       <h2 className="text-lg text-white">
-                        Webudvikler - Viden Djurs
+                        {t("overview.sections.education.vid.name")} - Viden
+                        Djurs
                       </h2>
                       <p className="text-base font-light text-[#a5b2c0]">
-                        2020 - 2022
+                        {t("overview.sections.education.vid.date")}
                       </p>
                     </div>
                   </div>
@@ -75,19 +76,15 @@ export default function Home({
                   {t("overview.titles.skills")}
                 </h1>
                 <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
+                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47] text-white">
                     <div className="mb-2">
-                      <p className="text-white">
-                        HTML, CSS, SASS, JavaScript, TypeScript
-                      </p>
+                      <p>HTML, CSS, SASS, JavaScript, TypeScript</p>
                     </div>
                     <div className="mb-2">
-                      <p className="text-white">React, Next.js, Svelte, Vue</p>
+                      <p>React, Next.js, Svelte, Vue</p>
                     </div>
                     <div className="mb-4">
-                      <p className="text-lg text-white">
-                        Python, Java, Rust, C#
-                      </p>
+                      <p>Python, Java, Rust, C#, .NET</p>
                     </div>
                   </div>
                 </div>

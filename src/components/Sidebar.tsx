@@ -32,9 +32,6 @@ export function Sidebar({ user }: SidebarProps) {
               {user.login}
             </span>
           </h1>
-          <div className="mt-4">
-            <p className="text-white">{t("description")}</p>
-          </div>
         </div>
       </div>
       <div>
