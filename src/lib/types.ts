@@ -1,3 +1,10 @@
+declare global {
+  interface Window {
+    __theme: string;
+    __setTheme: (theme: string) => void;
+  }
+}
+
 import { ReactElement } from "react";
 
 export interface GitHubUser {
@@ -5,7 +12,7 @@ export interface GitHubUser {
   name: string;
   avatarUrl: string;
   email: string;
-  repositories: Repositories
+  repositories: Repositories;
 }
 
 export interface SocialLink {
@@ -21,7 +28,6 @@ export interface GraphQLGitHubUser {
   email: string;
   repositories: Repositories;
 }
-
 
 export interface Repositories {
   totalCount: number;

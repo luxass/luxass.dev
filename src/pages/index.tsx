@@ -1,121 +1,101 @@
-import { Layout } from "@components/Layout";
-import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { request } from "graphql-request";
-import { parseGitHubUser, userQuery } from "@lib/github";
-import { useTranslation } from "next-i18next";
+import Image from "next/future/image";
+import { DefaultLayout } from "@layouts/default";
+import { ToolsBanner } from "@components/ToolsBanner";
+import { MetricCard } from "@components/MetricCard";
 
-export default function Home({
-  user,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation("common");
-
+function Home() {
   return (
-    <Layout user={user}>
-      <div className="mt-6 bg-[#22272e] border border-[#444c56] rounded-[6px] relative">
-        <div className="p-6 -mb-[1px] rounded-b-[6px] border-b border-b-[#444c56]">
-          <a
-            href="/lucas-resume.pdf"
-            download
-            className="absolute w-8 h-8 bg-[#2d333b] right-3 top-3 rounded-[6px] flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#768390]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              width="16"
-              height="16"
-              className="fill-[#768390]"
+    <div className="p-3">
+      <section className="flex flex-col-reverse sm:flex-row items-start">
+        <div className="flex-1 flex flex-col pr-8 h-[200px]">
+          <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-black dark:text-white">
+            Lucas Nørgård
+          </h1>
+          <p className="text-gray-700 dark:text-gray-200 mb-4 flex-1">
+            I&apos;m a software developer based in Grenaa, Denmark.
+          </p>
+          <div className="flex justify-start items-center">
+            <a
+              href="https://github.com/luxass"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="w-8 h-8 bg-gray-200 rounded-md dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer ml-0 m-1"
             >
-              <path
-                fillRule="evenodd"
-                d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z"
-              />
-            </svg>
-          </a>
-          <div className="flex justify-between flex-col md:flex-row">
-            <div className="w-full md:w-1/2 md:mr-6">
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.about")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <p className="text-white">
-                    {t("overview.sections.about.top")}
-                    <br />
-                    <br />
-                    {t("overview.sections.about.mid")}
-
-                    <br />
-                    <br />
-                    {t("overview.sections.about.bot")}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 md:ml-6">
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.education")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
-                    <div>
-                      <h2 className="text-lg text-white">
-                        {t("overview.sections.education.vid.name")} - Viden
-                        Djurs
-                      </h2>
-                      <p className="text-base font-light text-[#a5b2c0]">
-                        {t("overview.sections.education.vid.date")}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.skills")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47] text-white">
-                    <div className="mb-2">
-                      <p>HTML, CSS, SASS, JavaScript, TypeScript</p>
-                    </div>
-                    <div className="mb-2">
-                      <p>React, Next.js, Svelte, Vue</p>
-                    </div>
-                    <div className="mb-4">
-                      <p>Python, Java, Rust, C#, .NET</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <svg
+                viewBox="0 0 24 24"
+                height="24"
+                width="24"
+                focusable="false"
+                role="img"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                className="inline-block align-middle overflow-hidden"
+              >
+                <path d="M16.24 22a1 1 0 01-1-1v-2.6a2.15 2.15 0 00-.54-1.66 1 1 0 01.61-1.67C17.75 14.78 20 14 20 9.77a4 4 0 00-.67-2.22 2.75 2.75 0 01-.41-2.06 3.71 3.71 0 000-1.41 7.65 7.65 0 00-2.09 1.09 1 1 0 01-.84.15 10.15 10.15 0 00-5.52 0 1 1 0 01-.84-.15 7.4 7.4 0 00-2.11-1.09 3.52 3.52 0 000 1.41 2.84 2.84 0 01-.43 2.08 4.07 4.07 0 00-.67 2.23c0 3.89 1.88 4.93 4.7 5.29a1 1 0 01.82.66 1 1 0 01-.21 1 2.06 2.06 0 00-.55 1.56V21a1 1 0 01-2 0v-.57a6 6 0 01-5.27-2.09 3.9 3.9 0 00-1.16-.88 1 1 0 11.5-1.94 4.93 4.93 0 012 1.36c1 1 2 1.88 3.9 1.52a3.89 3.89 0 01.23-1.58c-2.06-.52-5-2-5-7a6 6 0 011-3.33.85.85 0 00.13-.62 5.69 5.69 0 01.33-3.21 1 1 0 01.63-.57c.34-.1 1.56-.3 3.87 1.2a12.16 12.16 0 015.69 0c2.31-1.5 3.53-1.31 3.86-1.2a1 1 0 01.63.57 5.71 5.71 0 01.33 3.22.75.75 0 00.11.57 6 6 0 011 3.34c0 5.07-2.92 6.54-5 7a4.28 4.28 0 01.22 1.67V21a1 1 0 01-.94 1z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/luxass"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="w-8 h-8 bg-gray-200 rounded-md dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer m-1"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                height="24"
+                width="24"
+                focusable="false"
+                role="img"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                className="inline-block align-middle overflow-hidden"
+              >
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M12 9.55C12.917 8.613 14.111 8 15.5 8a5.5 5.5 0 015.5 5.5V21h-2v-7.5a3.5 3.5 0 00-7 0V21h-2V8.5h2v1.05zM5 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm-1 2h2V21H4V8.5z" />
+              </svg>
+            </a>
           </div>
         </div>
-      </div>
-    </Layout>
+        <div className="w-[80px] sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
+          <Image
+            alt="Lucas Nørgård"
+            height={150}
+            width={150}
+            src="/avatar.jpg"
+            sizes="30vw"
+            priority
+            className="rounded-lg filter grayscale"
+          />
+        </div>
+      </section>
+      <ToolsBanner />
+
+      <section>
+        <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
+          Metrics
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <MetricCard
+            title="Coming Soon"
+            gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
+            description={""}
+            value={""}
+            icon={""}
+          />
+          <MetricCard
+            title="Coming Soon"
+            gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
+            description={""}
+            value={""}
+            icon={""}
+          />
+        </div>
+      </section>
+    </div>
   );
 }
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const { user: dataUser } = await request(
-    "https://api.github.com/graphql",
-    userQuery,
-    {
-      login: "DeprecatedLuxas",
-    },
-    {
-      authorization: `token ${process.env.GITHUB_TOKEN}`,
-    }
-  );
+// eslint-disable-next-line react/display-name
+Home.Layout = DefaultLayout;
 
-  const user = parseGitHubUser(dataUser);
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "en", ["common"])),
-      user,
-    },
-    revalidate: 3600,
-  };
-}
+export default Home;
