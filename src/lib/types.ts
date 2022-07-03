@@ -10,21 +10,14 @@ export interface Projects {
 }
 
 export interface Project {
+  id: number;
   nameWithOwner: string;
   description: null | string;
   pushedAt: Date;
   stargazerCount: number;
   forkCount: number;
-  collaborators: Collaborators;
+  url: string;
   languages: Languages;
-}
-
-export interface Collaborators {
-  nodes: CollaboratorNode[];
-}
-
-export interface CollaboratorNode {
-  avatarUrl: string;
 }
 
 export interface Languages {

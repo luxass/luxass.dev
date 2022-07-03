@@ -1,10 +1,9 @@
 import { DefaultLayout } from "@layouts/default";
 
-function Tools() {
-  return <div></div>;
+export default function Tools() {
+  return (
+    <DefaultLayout>
+      <div></div>
+    </DefaultLayout>
+  );
 }
-
-// eslint-disable-next-line react/display-name
-Tools.Layout = DefaultLayout;
-
-export default Tools;

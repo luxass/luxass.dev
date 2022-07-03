@@ -12,9 +12,7 @@ export default function ProjectsPage({
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           Projects
         </h1>
-        <p className="mb-4 text-gray-600 dark:text-gray-400">
-         Coming Soon
-        </p>
+        <p className="mb-4 text-gray-600 dark:text-gray-400">Coming Soon</p>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -43,17 +41,13 @@ export async function getStaticProps() {
           ) {
             totalCount
             nodes {
+              id
               nameWithOwner
               description
               pushedAt
               stargazerCount
               forkCount
-              
-              collaborators {
-                nodes {
-                  avatarUrl
-                }
-              }
+              url
               languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
                 totalCount
                 nodes {
