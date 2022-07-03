@@ -4,43 +4,27 @@ declare global {
     __setTheme: (theme: string) => void;
   }
 }
-
-import { ReactElement } from "react";
-
-export interface GitHubUser {
-  login: string;
-  name: string;
-  avatarUrl: string;
-  email: string;
-  repositories: Repositories;
-}
-
-export interface SocialLink {
-  name: string;
-  url: string;
-  icon: ReactElement;
-}
-
-export interface GraphQLGitHubUser {
-  name: string;
-  login: string;
-  avatarUrl: string;
-  email: string;
-  repositories: Repositories;
-}
-
-export interface Repositories {
+export interface Projects {
   totalCount: number;
-  nodes: RepositoryNode[];
+  nodes: Project[];
 }
 
-export interface RepositoryNode {
+export interface Project {
   nameWithOwner: string;
   description: null | string;
   pushedAt: Date;
   stargazerCount: number;
   forkCount: number;
+  collaborators: Collaborators;
   languages: Languages;
+}
+
+export interface Collaborators {
+  nodes: CollaboratorNode[];
+}
+
+export interface CollaboratorNode {
+  avatarUrl: string;
 }
 
 export interface Languages {
