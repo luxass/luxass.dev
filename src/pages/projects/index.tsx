@@ -37,7 +37,7 @@ export async function getStaticProps() {
       query: `query {
         user(login: "luxass") {
           repositories(
-            first: 100
+            first: 20
             orderBy: { direction: DESC, field: STARGAZERS }
             privacy: PUBLIC
           ) {
