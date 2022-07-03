@@ -2,9 +2,6 @@
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
-  images: {
-    domains: ["avatars.githubusercontent.com"],
-  },
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,

@@ -1,6 +1,5 @@
 import Image from "next/future/image";
 import { DefaultLayout } from "@layouts/default";
-import { ToolsBanner } from "@components/ToolsBanner";
 import { MetricCard } from "@components/MetricCard";
 
 function Home() {
@@ -68,29 +67,11 @@ function Home() {
           />
         </div>
       </section>
-      <ToolsBanner />
 
-      <section>
-        <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
-          Metrics
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <MetricCard
-            title="Coming Soon"
-            gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
-            description={""}
-            value={""}
-            icon={""}
-          />
-          <MetricCard
-            title="Coming Soon"
-            gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
-            description={""}
-            value={""}
-            icon={""}
-          />
-        </div>
-      </section>
+      <footer>
+        <div></div>
+        <p>Built with Next.js, Prisma, Tailwind and Vercel</p>
+      </footer>
     </div>
   );
 }
