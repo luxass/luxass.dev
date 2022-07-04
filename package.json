@@ -1,5 +1,5 @@
 {
-  "name": "lucas-portfolio",
+  "name": "luxass-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@luxass/luxals": "^3.0.1",
-    "@sentry/nextjs": "^7.4.1",
     "next": "^12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"

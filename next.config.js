@@ -1,5 +1,3 @@
-const { withSentryConfig } = require("@sentry/nextjs");
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
@@ -12,6 +10,4 @@ const nextConfig = {
   },
 };
 
-const sentryWebpackPluginOptions = {};
-
-module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+module.exports = nextConfig;
