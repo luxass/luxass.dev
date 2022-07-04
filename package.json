@@ -12,7 +12,8 @@
     "@luxass/luxals": "^3.0.1",
     "next": "^12.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "use-delayed-render": "^0.0.7"
   },
   "devDependencies": {
     "@types/node": "17.0.21",

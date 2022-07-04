@@ -1,13 +1,118 @@
-import { concat } from "@luxass/luxals";
+import { concat, cx } from "@luxass/luxals";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import useDelayedRender from "use-delayed-render";
 
 export function Header() {
   const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
+    isMenuOpen,
+    {
+      enterDelay: 20,
+      exitDelay: 300,
+    }
+  );
+
+  function toggleMenu() {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      document.body.style.overflow = "";
+    } else {
+      setIsMenuOpen(true);
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  useEffect(() => {
+    return function cleanup() {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
     <header>
       <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto py-8 px-4 sm:pb-16 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
         <div>
+          <button
+            className={cx("burger visible md:hidden")}
+            aria-label="Toggle menu"
+            type="button"
+            onClick={toggleMenu}
+          >
+            <svg
+              className={"h-5 w-5 absolute text-gray-900 dark:text-gray-100"}
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              data-hide={isMenuOpen}
+            >
+              <path
+                d="M2.5 7.5H17.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2.5 12.5H17.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2.5 17.5H17.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <svg
+              className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+              shapeRendering="geometricPrecision"
+              data-hide={!isMenuOpen}
+            >
+              <path d="M18 6L6 18" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
+          {isMenuMounted && (
+            <ul
+              className={cx(
+                "menu flex flex-col absolute bg-gray-100 dark:bg-gray-900",
+                isMenuRendered && "menuRendered"
+              )}
+            >
+              <li
+                className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+                style={{ transitionDelay: "150ms" }}
+              >
+                <Link href="/" className="flex w-auto pb-4" passHref>
+                  Home
+                </Link>
+              </li>
+              <li
+                className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+                style={{ transitionDelay: "150ms" }}
+              >
+                <Link href="/projects" className="flex w-auto pb-4" passHref>
+                  Projects
+                </Link>
+              </li>
+            </ul>
+          )}
           <Link
             href="/"
             className={concat(
@@ -33,14 +138,16 @@ export function Header() {
             <span className="capsize">Projects</span>
           </Link>
           <Link
+            aria-disabled="true"
             href="/tools"
             className={concat(
               router.asPath === "/tools"
                 ? "font-semibold text-gray-800 dark:text-gray-200"
                 : "font-normal text-gray-600 dark:text-gray-400",
-              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all cursor-not-allowed"
             )}
             passHref
+            onClick={(e) => e.preventDefault()}
           >
             <span className="capsize">Tools</span>
           </Link>
