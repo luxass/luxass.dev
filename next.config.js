@@ -1,3 +1,5 @@
+const { withSentryConfig } = require("@sentry/nextjs");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
@@ -6,7 +8,12 @@ const nextConfig = {
     legacyBrowsers: false,
     browsersListForSwc: true,
     images: { allowFutureImage: true },
+    newNextLinkBehavior: true,
   },
 };
 
-module.exports = nextConfig;
+const sentryWebpackPluginOptions = {
+  silent: true,
+};
+
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

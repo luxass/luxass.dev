@@ -14,7 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {name}
         </h3>
         <div className="ml-4 min-w-[48px]">
-          <Link href={`/projects/${project.id}`} passHref>
+          <Link href={`/projects/${project.id}`} passHref className="cursor-pointer">
             <svg
               className="h-4 w-4 ml-1 inline-block align-middle overflow-hidden"
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </a>
         </div>
       </div>
-      <article>
+      <article className="mt-2">
         <p>{project.description}</p>
       </article>
     </div>
