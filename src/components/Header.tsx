@@ -33,7 +33,7 @@ export function Header() {
 
   return (
     <header>
-      <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto py-8 px-4 sm:pb-16 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
+      <nav className="flex items-center justify-between w-full relative mx-auto py-8 px-4 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
         <div>
           <button
             className={cx("burger visible md:hidden")}
@@ -203,6 +203,7 @@ export function Header() {
           </button>
         </div>
       </nav>
+      <hr className="border-1 border-gray-200 dark:border-gray-800 sm:pb-16"/>
     </header>
   );
 }
