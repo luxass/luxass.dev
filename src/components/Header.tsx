@@ -8,41 +8,41 @@ export function Header() {
     <header>
       <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto py-8 px-4 sm:pb-16 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
         <div>
-          <Link href="/">
-            <a
-              className={concat(
-                router.asPath === "/"
-                  ? "font-semibold text-gray-800 dark:text-gray-200"
-                  : "font-normal text-gray-600 dark:text-gray-400",
-                "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
-              )}
-            >
-              <span className="capsize">Home</span>
-            </a>
+          <Link
+            href="/"
+            className={concat(
+              router.asPath === "/"
+                ? "font-semibold text-gray-800 dark:text-gray-200"
+                : "font-normal text-gray-600 dark:text-gray-400",
+              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            )}
+            passHref
+          >
+            <span className="capsize">Home</span>
           </Link>
-          <Link href="/projects">
-            <a
-              className={concat(
-                router.asPath === "/projects"
-                  ? "font-semibold text-gray-800 dark:text-gray-200"
-                  : "font-normal text-gray-600 dark:text-gray-400",
-                "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
-              )}
-            >
-              <span className="capsize">Projects</span>
-            </a>
+          <Link
+            href="/projects"
+            className={concat(
+              router.asPath === "/projects"
+                ? "font-semibold text-gray-800 dark:text-gray-200"
+                : "font-normal text-gray-600 dark:text-gray-400",
+              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            )}
+            passHref
+          >
+            <span className="capsize">Projects</span>
           </Link>
-          <Link href="/tools">
-            <a
-              className={concat(
-                router.asPath === "/tools"
-                  ? "font-semibold text-gray-800 dark:text-gray-200"
-                  : "font-normal text-gray-600 dark:text-gray-400",
-                "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
-              )}
-            >
-              <span className="capsize">Tools</span>
-            </a>
+          <Link
+            href="/tools"
+            className={concat(
+              router.asPath === "/tools"
+                ? "font-semibold text-gray-800 dark:text-gray-200"
+                : "font-normal text-gray-600 dark:text-gray-400",
+              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            )}
+            passHref
+          >
+            <span className="capsize">Tools</span>
           </Link>
         </div>
         <div className="block dark:hidden">

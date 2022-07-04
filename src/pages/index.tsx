@@ -67,18 +67,6 @@ export default function Home() {
             />
           </div>
         </section>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          onClick={() => {
-            throw new Error("client side error");
-          }}
-        >
-          Test Button
-        </button>
-        <footer>
-          <div></div>
-          <p>Built with Next.js, Prisma, Tailwind and Vercel</p>
-        </footer>
       </div>
     </DefaultLayout>
   );
