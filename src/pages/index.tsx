@@ -34,6 +34,27 @@ export default function Home() {
                 </svg>
               </a>
               <a
+                href="mailto:lucasnrgaard@gmail.com"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="w-8 h-8 bg-gray-200 rounded-md dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer ml-0 m-1"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="inline-block align-middle overflow-hidden"
+                >
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+              <a
                 href="https://github.com/luxass"
                 rel="noopener noreferrer"
                 target="_blank"

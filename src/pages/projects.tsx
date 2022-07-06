@@ -18,7 +18,7 @@ export default function ProjectsPage({
         </p>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         {projects.nodes &&
           projects.nodes.map((project: Project, idx: number) => (
             <ProjectCard key={`project-${idx}`} project={project} />
