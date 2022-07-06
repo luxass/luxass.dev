@@ -11,7 +11,7 @@ export default function Home() {
               Lucas Nørgård
             </h1>
             <p className="text-gray-700 dark:text-gray-200 mb-4 flex-1">
-              I&apos;m a software developer based in Grenaa, Denmark.
+              Hey, I&apos;m Lucas Nørgård, a self-taught developer based in Aarhus, Denmark.
             </p>
             <div className="flex justify-start items-center">
               <a
@@ -37,7 +37,7 @@ export default function Home() {
                 href="mailto:lucasnrgaard@gmail.com"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="w-8 h-8 bg-gray-200 rounded-md dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer ml-0 m-1"
+                className="w-8 h-8 bg-gray-200 rounded-md dark:bg-gray-600 flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer m-1"
               >
                 <svg
                   width="24"
