@@ -6,15 +6,7 @@ const nextConfig = {
     legacyBrowsers: false,
     browsersListForSwc: true,
     images: { allowFutureImage: true },
-    newNextLinkBehavior: true,
-    swcPlugins: [
-      [
-        "luxass-projects",
-        {
-          
-        },
-      ],
-    ],
+    newNextLinkBehavior: true
   },
 };
 

@@ -1,13 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@luxass/luxals': ^3.0.1
+  '@luxass/luxals': ^3.0.6
   '@types/node': 17.0.21
   '@types/react': 18.0.14
   autoprefixer: ^10.4.7
   eslint: 8.11.0
   eslint-config-next: 12.1.0
-  luxass-projects: link:luxass-projects
   next: ^12.2.1
   postcss: ^8.4.14
   react: 18.2.0
@@ -17,8 +16,7 @@ specifiers:
   use-delayed-render: ^0.0.7
 
 dependencies:
-  '@luxass/luxals': 3.0.1
-  luxass-projects: link:luxass-projects
+  '@luxass/luxals': 3.0.6
   next: 12.2.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -83,8 +81,11 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@luxass/luxals/3.0.1:
-    resolution: {integrity: sha512-tboGZhCybIzvxXkvehvGdwTI/y323GwyZY1Vv4s7DExVmJwU4GuCN0jj+gyChAzVuKStbpNgaCyK68UUVFWbBg==}
+  /@luxass/luxals/3.0.6:
+    resolution: {integrity: sha512-gWuNnymL0WEJjuk089lpnq9P9u31KgXw1SbpLzFpDN9c/KDoOAQhcqDOeHVlLYXML8iyQcZRJ0Ju4Eeo4BPyBA==}
+    dependencies:
+      fast-memoize: 2.5.2
+      lodash-es: 4.17.21
     dev: false
 
   /@next/env/12.2.1:
@@ -1024,6 +1025,10 @@ packages:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
     dev: true
 
+  /fast-memoize/2.5.2:
+    resolution: {integrity: sha512-Ue0LwpDYErFbmNnZSF0UH6eImUwDmogUO1jyE+JbN2gsQz/jICm1Ve7t9QT0rNSsfJt+Hs4/S3GnsDVjL4HVrw==}
+    dev: false
+
   /fastq/1.13.0:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
     dependencies:
@@ -1413,6 +1418,10 @@ packages:
       p-locate: 2.0.0
       path-exists: 3.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
