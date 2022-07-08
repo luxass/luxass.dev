@@ -1,6 +1,5 @@
 {
   "name": "luxass-portfolio",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +9,8 @@
   },
   "dependencies": {
     "@luxass/luxals": "^3.0.1",
-    "next": "^12.2.0",
+    "luxass-projects": "link:luxass-projects",
+    "next": "^12.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "use-delayed-render": "^0.0.7"
