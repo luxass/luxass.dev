@@ -12,7 +12,7 @@ export function DefaultLayout({
       <Head>
         <title>Lucas Norgaard - Fullstack Developer</title>
       </Head>
-      <div className="max-w-4xl mx-auto w-full h-screen flex flex-col">
+      <div className="max-w-2xl mx-auto w-full h-screen flex flex-col">
         <Header />
 
         <main className="flex-1">{children}</main>

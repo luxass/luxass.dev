@@ -1,4 +1,4 @@
-import { concat, cx } from "@luxass/luxals";
+import { cx } from "@luxass/luxals";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -115,7 +115,7 @@ export function Header() {
           )}
           <Link
             href="/"
-            className={concat(
+            className={cx(
               router.asPath === "/"
                 ? "font-semibold text-gray-800 dark:text-gray-200"
                 : "font-normal text-gray-600 dark:text-gray-400",
@@ -127,7 +127,7 @@ export function Header() {
           </Link>
           <Link
             href="/projects"
-            className={concat(
+            className={cx(
               router.asPath === "/projects"
                 ? "font-semibold text-gray-800 dark:text-gray-200"
                 : "font-normal text-gray-600 dark:text-gray-400",
@@ -138,9 +138,21 @@ export function Header() {
             <span className="capsize">Projects</span>
           </Link>
           <Link
+            href="/about"
+            className={cx(
+              router.asPath === "/about"
+                ? "font-semibold text-gray-800 dark:text-gray-200"
+                : "font-normal text-gray-600 dark:text-gray-400",
+              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+            )}
+            passHref
+          >
+            <span className="capsize">About</span>
+          </Link>
+          <Link
             aria-disabled="true"
             href="/tools"
-            className={concat(
+            className={cx(
               router.asPath === "/tools"
                 ? "font-semibold text-gray-800 dark:text-gray-200"
                 : "font-normal text-gray-600 dark:text-gray-400",

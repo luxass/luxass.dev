@@ -30,3 +30,24 @@ export interface LanguagesNode {
   name: string;
   id: string;
 }
+
+export interface Repository {
+  node: {
+    name: string;
+    url: string;
+    ref: {
+      target: {
+        history: {
+          edges: Array<{ node: CommitNode }>;
+        };
+      };
+    };
+  };
+}
+
+export interface CommitNode {
+  authoredDate: Date;
+  message: string;
+  name: string;
+  url: string;
+}
