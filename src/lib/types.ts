@@ -41,12 +41,12 @@ export interface Repository {
           edges: Array<{ node: CommitNode }>;
         };
       };
-    };
+    }
   };
 }
 
 export interface CommitNode {
-  authoredDate: Date;
+  authoredDate: string;
   message: string;
   name: string;
   url: string;
