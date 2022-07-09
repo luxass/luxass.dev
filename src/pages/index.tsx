@@ -1,121 +1,59 @@
-import { Layout } from "@components/Layout";
-import type { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { request } from "graphql-request";
-import { parseGitHubUser, userQuery } from "@lib/github";
-import { useTranslation } from "next-i18next";
+import Image from "next/future/image";
+import { DefaultLayout } from "@layouts/default";
+import Link from "next/link";
+import { cx } from "@luxass/luxals";
+import useSWR from "swr";
+import { CommitNode } from "@lib/types";
+import { CommitCard } from "@components/CommitCard";
 
-export default function Home({
-  user,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation("common");
-
-  return (
-    <Layout user={user}>
-      <div className="mt-6 bg-[#22272e] border border-[#444c56] rounded-[6px] relative">
-        <div className="p-6 -mb-[1px] rounded-b-[6px] border-b border-b-[#444c56]">
-          <a
-            href="/lucas-resume.pdf"
-            download
-            className="absolute w-8 h-8 bg-[#2d333b] right-3 top-3 rounded-[6px] flex items-center justify-center hover:cursor-pointer hover:border hover:border-[#768390]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              width="16"
-              height="16"
-              className="fill-[#768390]"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z"
-              />
-            </svg>
-          </a>
-          <div className="flex justify-between flex-col md:flex-row">
-            <div className="w-full md:w-1/2 md:mr-6">
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.about")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <p className="text-white">
-                    {t("overview.sections.about.top")}
-                    <br />
-                    <br />
-                    {t("overview.sections.about.mid")}
-
-                    <br />
-                    <br />
-                    {t("overview.sections.about.bot")}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 md:ml-6">
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.education")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47]">
-                    <div>
-                      <h2 className="text-lg text-white">
-                        {t("overview.sections.education.vid.name")} - Viden
-                        Djurs
-                      </h2>
-                      <p className="text-base font-light text-[#a5b2c0]">
-                        {t("overview.sections.education.vid.date")}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-[26px] leading-[1.25] text-white">
-                  {t("overview.titles.skills")}
-                </h1>
-                <div className="border-t-2 border-t-[#373e47] my-2 py-2">
-                  <div className="ml-4 mt-2 pl-4 border-l-2 border-l-[#373e47] text-white">
-                    <div className="mb-2">
-                      <p>HTML, CSS, SASS, JavaScript, TypeScript</p>
-                    </div>
-                    <div className="mb-2">
-                      <p>React, Next.js, Svelte, Vue</p>
-                    </div>
-                    <div className="mb-4">
-                      <p>Python, Java, Rust, C#, .NET</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Layout>
-  );
+async function fetcher<JSON = any>(
+  input: RequestInfo,
+  init?: RequestInit
+): Promise<JSON> {
+  const res = await fetch(input, init);
+  return res.json();
 }
 
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const { user: dataUser } = await request(
-    "https://api.github.com/graphql",
-    userQuery,
-    {
-      login: "DeprecatedLuxas",
-    },
-    {
-      authorization: `token ${process.env.GITHUB_TOKEN}`,
-    }
+export default function Home() {
+  const { data } = useSWR<{ nodes: CommitNode[] }>(`/api/commits`, fetcher);
+  const nodes = data?.nodes || [];
+  return (
+    <DefaultLayout>
+      <div className="p-3">
+        <section className="flex flex-col-reverse sm:flex-row items-start">
+          <div className="flex-1 flex flex-col pr-8 h-[200px]">
+            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-black dark:text-white">
+              Hey I&apos;m Luxass <span>✌️</span>
+            </h1>
+            <p className="text-gray-700 dark:text-gray-200 flex-1">
+              I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
+              Currently in ❤️ with Rust, TypeScript & OOS.
+            </p>
+            <Link
+              href="/about"
+              passHref
+              className={cx(
+                "mt-12 w-48 font-normal text-gray-600 dark:text-gray-400 group",
+                "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg bg-gray-200 dark:bg-gray-800"
+              )}
+            >
+              Want to learn more{" "}
+              <div className="inline-block group-hover:translate-x-1 transition-transform">
+                →
+              </div>
+            </Link>
+          </div>
+        </section>
+        <section className="mt-8">
+          <h2 className="text-4xl text-black dark:text-white">Some recent changes i made.</h2>
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {nodes &&
+              nodes.map((node, idx) => (
+                <CommitCard key={`commit-${idx}`} commit={node} />
+              ))}
+          </div>
+        </section>
+      </div>
+    </DefaultLayout>
   );
-
-  const user = parseGitHubUser(dataUser);
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "en", ["common"])),
-      user,
-    },
-    revalidate: 3600,
-  };
 }

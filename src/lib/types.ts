@@ -1,39 +1,22 @@
-import { ReactElement } from "react";
-
-export interface GitHubUser {
-  login: string;
-  name: string;
-  avatarUrl: string;
-  email: string;
-  repositories: Repositories
+declare global {
+  interface Window {
+    __theme: string;
+    __setTheme: (theme: string) => void;
+  }
 }
-
-export interface SocialLink {
-  name: string;
-  url: string;
-  icon: ReactElement;
-}
-
-export interface GraphQLGitHubUser {
-  name: string;
-  login: string;
-  avatarUrl: string;
-  email: string;
-  repositories: Repositories;
-}
-
-
-export interface Repositories {
+export interface Projects {
   totalCount: number;
-  nodes: RepositoryNode[];
+  nodes: Project[];
 }
 
-export interface RepositoryNode {
+export interface Project {
+  id: number;
   nameWithOwner: string;
   description: null | string;
   pushedAt: Date;
   stargazerCount: number;
   forkCount: number;
+  url: string;
   languages: Languages;
 }
 
@@ -46,4 +29,25 @@ export interface LanguagesNode {
   color: string;
   name: string;
   id: string;
+}
+
+export interface Repository {
+  node: {
+    name: string;
+    url: string;
+    ref: {
+      target: {
+        history: {
+          edges: Array<{ node: CommitNode }>;
+        };
+      };
+    };
+  };
+}
+
+export interface CommitNode {
+  authoredDate: Date;
+  message: string;
+  name: string;
+  url: string;
 }

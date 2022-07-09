@@ -1,10 +1,12 @@
-const { i18n } = require("./next-i18next.config");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: true,
   reactStrictMode: true,
-  i18n,
-  images: {
-    domains: ["avatars.githubusercontent.com"],
+  experimental: {
+    legacyBrowsers: false,
+    browsersListForSwc: true,
+    images: { allowFutureImage: true },
+    newNextLinkBehavior: true
   },
 };
 
