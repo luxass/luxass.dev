@@ -11,8 +11,13 @@ export default function Home() {
               Lucas Nørgård
             </h1>
             <p className="text-gray-700 dark:text-gray-200 mb-4 flex-1">
-              Hey, I&apos;m Lucas Nørgård, a self-taught developer based in
-              Aarhus, Denmark.
+              I&apos;m a self-taught developer from Aarhus, Denmark. <br />
+              In my spare time i enjoy learning new technologies and solving
+              problems. My preferred tools right now are TypeScript, Rust and
+              React.
+              <br/>
+              <br/>
+              Got any questions? <a href="mailto:lucasnrgaard@gmail">Contact me.</a>
             </p>
           </div>
           <div className="w-[80px] sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
