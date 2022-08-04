@@ -26,7 +26,7 @@ export default function Home() {
               Hey I&apos;m Luxass <span>✌️</span>
             </h1>
             <p className="text-gray-700 dark:text-gray-200 flex-1">
-              I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
+              I&apos;m a self-taught developer based in Grenaa, Denmark. <br />
               Currently in ❤️ with Rust, TypeScript & OOS.
             </p>
             <Link

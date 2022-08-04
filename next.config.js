@@ -7,7 +7,7 @@ const nextConfig = {
     browsersListForSwc: true,
     images: { allowFutureImage: true },
     newNextLinkBehavior: true
-  },
+  }
 };
 
 module.exports = nextConfig;
