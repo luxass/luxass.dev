@@ -8,30 +8,20 @@ const nextConfig = {
     images: { allowFutureImage: true },
     newNextLinkBehavior: true
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/:path*",
-  //       has: [
-  //         {
-  //           type: "host",
-  //           value: "webext.luxass.dev"
-  //         }
-  //       ],
-  //       destination: "/about"
-  //     },
-  //     {
-  //       source: "/:path*",
-  //       has: [
-  //         {
-  //           type: "host",
-  //           value: "luxass.dev"
-  //         }
-  //       ],
-  //       destination: "/404"
-  //     }
-  //   ];
-  // }
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "webext.luxass.dev"
+          }
+        ],
+        destination: "/about"
+      },
+    ];
+  }
 };
 
 module.exports = nextConfig;
