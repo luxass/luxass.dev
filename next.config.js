@@ -19,6 +19,16 @@ const nextConfig = {
           }
         ],
         destination: "/about"
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "luxass.dev"
+          }
+        ],
+        destination: "/404"
       }
     ];
   }
