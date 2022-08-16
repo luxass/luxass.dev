@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
