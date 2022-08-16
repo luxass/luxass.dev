@@ -27,7 +27,7 @@ export default function Home() {
             </h1>
             <p className="text-gray-700 dark:text-gray-200 flex-1">
               I&apos;m a self-taught developer based in Grenaa, Denmark. <br />
-              Currently in ❤️ with Rust, TypeScript & OOS.
+              Currently in ❤️ with Rust & TypeScript
             </p>
             <Link
               href="/about"
