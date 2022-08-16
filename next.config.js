@@ -7,22 +7,6 @@ const nextConfig = {
     browsersListForSwc: true,
     images: { allowFutureImage: true },
     newNextLinkBehavior: true
-  },
-  rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: "/",
-          has: [
-            {
-              type: "host",
-              value: "webext.luxass.dev"
-            }
-          ],
-          destination: "/about"
-        }
-      ]
-    };
   }
 };
 
