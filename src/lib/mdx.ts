@@ -9,16 +9,16 @@ export async function mdxToHtml(source: string) {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
-        // rehypeCodeTitles,
-        // rehypePrism,
-        // [
-        //   rehypeAutolinkHeadings,
-        //   {
-        //     properties: {
-        //       className: ["anchor"]
-        //     }
-        //   }
-        // ]
+        rehypeCodeTitles,
+        rehypePrism,
+        [
+          rehypeAutolinkHeadings,
+          {
+            properties: {
+              className: ["anchor"]
+            }
+          }
+        ]
       ],
       format: "mdx"
     }

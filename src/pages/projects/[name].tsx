@@ -6,7 +6,7 @@ import path from "path";
 import Link from "next/link";
 import { PROJECTS_PATH } from "@lib/constants";
 import { ProjectLayout } from "@layouts/project";
-import CustomLink from "@components/CustomLink";
+import { COMPONENTS } from "@components/MDX";
 
 export default function ProjectPage({
   content
@@ -17,9 +17,7 @@ export default function ProjectPage({
     <ProjectLayout>
       <MDXRemote
         {...content}
-        components={{
-          a: CustomLink
-        }}
+        components={COMPONENTS}
       />
     </ProjectLayout>
   );

@@ -13,8 +13,7 @@ export default function ProjectsPage({
           Projects
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          These are some of my Open Source projects, that i am somewhat proud
-          of.
+          These are some of my projects, I&apos;ve been working on.
         </p>
       </section>
 
