@@ -19,7 +19,7 @@ const nextConfig = {
               value: "webext.luxass.dev"
             }
           ],
-          destination: "/test"
+          destination: "/about"
         }
       ]
     };
