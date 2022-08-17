@@ -42,7 +42,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      projects: projects.slice(0, 3)
+      projects: projects
     },
     revalidate: 3600
   };
