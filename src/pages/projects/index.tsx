@@ -1,10 +1,10 @@
 import { ProjectCard } from "@components/ProjectCard";
 import { DefaultLayout } from "@layouts/default";
-import { Project, Projects } from "@lib/types";
+import { Projects } from "@lib/types";
 import { InferGetStaticPropsType } from "next/types";
 
 export default function ProjectsPage({
-  projects,
+  projects
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <DefaultLayout>
@@ -18,9 +18,9 @@ export default function ProjectsPage({
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        {projects.nodes &&
-          projects.nodes.map((project: Project, idx: number) => (
-            <ProjectCard key={`project-${idx}`} project={project} />
+        {projects &&
+          projects.map((project) => (
+            <ProjectCard key={project.url} project={project} />
           ))}
       </section>
     </DefaultLayout>
@@ -28,54 +28,22 @@ export default function ProjectsPage({
 }
 
 export async function getStaticProps() {
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-    },
-    body: JSON.stringify({
-      query: `query {
-        user(login: "luxass") {
-          repositories(
-            first: 20
-            orderBy: { direction: DESC, field: STARGAZERS }
-            privacy: PUBLIC
-          ) {
-            totalCount
-            nodes {
-              id
-              nameWithOwner
-              description
-              pushedAt
-              stargazerCount
-              forkCount
-              url
-              languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
-                totalCount
-                nodes {
-                  color
-                  name
-                  id
-                }
-              }
-            }
-          }
-        }
-      }`,
-    }),
-  });
-  const {
-    data: { user },
-  } = await res.json();
-  const projects: Projects = user.repositories || {
-    totalCount: 0,
-    nodes: [],
-  };
+  const res = await fetch(
+    "https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json"
+  );
+  const { projects } = (await res.json()) as Projects;
+
+  for (let i = projects.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    // projects[i] -> projects[j]
+    // projects[j] -> projects[i]
+    [projects[i], projects[j]] = [projects[j], projects[i]];
+  }
 
   return {
     props: {
-      projects: projects,
+      projects: projects.slice(0, 3)
     },
-    revalidate: 3600,
+    revalidate: 3600
   };
 }

@@ -5,12 +5,31 @@ declare global {
   }
 }
 export interface Projects {
+  lastUpdated: string;
   totalCount: number;
-  nodes: Project[];
+  totalStars: number;
+  totalForks: number;
+  projects: EdgeNode[];
 }
 
-export interface Project {
-  id: number;
+export interface Profile {
+  user: User;
+}
+
+export interface User {
+  pinnedItems: PinnedItems;
+  repositories: Repositories;
+}
+
+export interface PinnedItems {
+  edges: Edge[];
+}
+
+export interface Edge {
+  node: EdgeNode;
+}
+
+export interface EdgeNode {
   nameWithOwner: string;
   description: null | string;
   pushedAt: Date;
@@ -18,36 +37,30 @@ export interface Project {
   forkCount: number;
   url: string;
   languages: Languages;
+  object: Object | null;
 }
 
 export interface Languages {
-  totalCount: number;
   nodes: LanguagesNode[];
 }
 
 export interface LanguagesNode {
   color: string;
   name: string;
-  id: string;
 }
 
-export interface Repository {
-  node: {
-    name: string;
-    url: string;
-    ref: {
-      target: {
-        history: {
-          edges: Array<{ node: CommitNode }>;
-        };
-      };
-    }
-  };
+export interface Object {
+  entries: Entry[];
 }
 
-export interface CommitNode {
-  authoredDate: string;
-  message: string;
+export interface Entry {
   name: string;
-  url: string;
+  type: EntryType;
+}
+
+export type EntryType = 'blob' | 'tree';
+
+export interface Repositories {
+  totalCount: number;
+  nodes: EdgeNode[];
 }

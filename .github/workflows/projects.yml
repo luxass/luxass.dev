@@ -1,8 +1,0 @@
-# name: Fetch Projects
-
-# on:
-#   schedule:
-#     # Every night at 1:13
-#     - cron: "13 1 * * *"
-
-# jobs:

@@ -19,7 +19,7 @@ export function DefaultLayout({
 
         <footer className="pb-8">
           <hr className="border-1 border-gray-200 dark:border-gray-800 mb-8" />
-          <p className="text-center text-white">
+          <p className="text-center text-gray-700 dark:text-gray-200">
             &copy; {new Date().getFullYear()} Lucas Norgaard, All rights
             reserved.
           </p>

@@ -1,7 +1,7 @@
-import { Project } from "@lib/types";
+import { EdgeNode } from "@lib/types";
 
 interface ProjectCardProps {
-  project: Project;
+  project: EdgeNode;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {

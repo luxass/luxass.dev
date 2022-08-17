@@ -1,22 +1,13 @@
-import Image from "next/future/image";
 import { DefaultLayout } from "@layouts/default";
 import Link from "next/link";
 import { cx } from "@luxass/luxals";
-import useSWR from "swr";
-import { CommitNode } from "@lib/types";
-import { CommitCard } from "@components/CommitCard";
+import { Projects } from "@lib/types";
+import { InferGetStaticPropsType } from "next";
+import { ProjectCard } from "@components/ProjectCard";
 
-async function fetcher<JSON = any>(
-  input: RequestInfo,
-  init?: RequestInit
-): Promise<JSON> {
-  const res = await fetch(input, init);
-  return res.json();
-}
-
-export default function Home() {
-  const { data } = useSWR<{ nodes: CommitNode[] }>(`/api/commits`, fetcher);
-  const nodes = data?.nodes || [];
+export default function Home({
+  projects
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <DefaultLayout>
       <div className="p-3">
@@ -45,15 +36,42 @@ export default function Home() {
           </div>
         </section>
         <section className="mt-8">
-          <h2 className="text-4xl text-black dark:text-white">Some recent changes i made.</h2>
+          <h2 className="text-3xl text-black dark:text-white">
+            Selected projects, you need to see.
+          </h2>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {nodes &&
+            {projects &&
+              projects.map((project) => (
+                <ProjectCard key={project.url} project={project} />
+              ))}
+            {/* {nodes &&
               nodes.map((node, idx) => (
                 <CommitCard key={`commit-${idx}`} commit={node} />
-              ))}
+              ))} */}
           </div>
         </section>
       </div>
     </DefaultLayout>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(
+    "https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json"
+  );
+  const { projects } = (await res.json()) as Projects;
+
+  for (let i = projects.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    // projects[i] -> projects[j]
+    // projects[j] -> projects[i]
+    [projects[i], projects[j]] = [projects[j], projects[i]];
+  }
+
+  return {
+    props: {
+      projects: projects.slice(0, 3)
+    },
+    revalidate: 3600
+  };
 }

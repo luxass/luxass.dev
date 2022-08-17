@@ -19,17 +19,7 @@ const nextConfig = {
           }
         ],
         destination: "/projects/webext"
-      },
-      {
-        source: "/",
-        has: [
-          {
-            type: "host",
-            value: "zotera.luxass.dev"
-          }
-        ],
-        destination: "/projects/zotera"
-      },
+      }
     ];
   }
 };
