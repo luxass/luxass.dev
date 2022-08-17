@@ -11,7 +11,7 @@ export function Header() {
     isMenuOpen,
     {
       enterDelay: 20,
-      exitDelay: 300,
+      exitDelay: 300
     }
   );
 
@@ -149,20 +149,6 @@ export function Header() {
           >
             <span className="capsize">About</span>
           </Link>
-          <Link
-            aria-disabled="true"
-            href="/tools"
-            className={cx(
-              router.asPath === "/tools"
-                ? "font-semibold text-gray-800 dark:text-gray-200"
-                : "font-normal text-gray-600 dark:text-gray-400",
-              "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all cursor-not-allowed"
-            )}
-            passHref
-            onClick={(e) => e.preventDefault()}
-          >
-            <span className="capsize">Tools</span>
-          </Link>
         </div>
         <div className="block dark:hidden">
           <button
@@ -215,7 +201,7 @@ export function Header() {
           </button>
         </div>
       </nav>
-      <hr className="border-1 border-gray-200 dark:border-gray-800 sm:pb-16"/>
+      <hr className="border-1 border-gray-200 dark:border-gray-800 sm:pb-16" />
     </header>
   );
 }
