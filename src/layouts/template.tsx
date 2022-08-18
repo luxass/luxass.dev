@@ -1,11 +1,10 @@
-import Head from "next/head";
 import { PropsWithChildren, Suspense } from "react";
 
-interface ProjectLayoutProps {}
+interface Props {}
 
-export function ProjectLayout({
+export function TemplateLayout({
   children
-}: PropsWithChildren<ProjectLayoutProps>) {
+}: PropsWithChildren<Props>) {
   return (
     <Suspense fallback={null}>
       <div className="max-w-2xl mx-auto w-full h-screen flex flex-col justify-center items-center">

@@ -2,11 +2,11 @@ import { Header } from "@components/Header";
 import Head from "next/head";
 import { PropsWithChildren, Suspense } from "react";
 
-interface DefaultLayoutProps {}
+interface Props {}
 
 export function DefaultLayout({
   children,
-}: PropsWithChildren<DefaultLayoutProps>) {
+}: PropsWithChildren<Props>) {
   return (
     <Suspense fallback={null}>
       <Head>

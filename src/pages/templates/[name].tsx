@@ -3,9 +3,8 @@ import { mdxToHtml } from "@lib/mdx";
 import { GetStaticPropsContext } from "next";
 import fs from "fs";
 import path from "path";
-import Link from "next/link";
-import { PROJECTS_PATH } from "@lib/constants";
-import { ProjectLayout } from "@layouts/project";
+import { TEMPLATES_PATH } from "@lib/constants";
+import { TemplateLayout } from "@layouts/template";
 import { COMPONENTS } from "@components/MDX";
 
 export default function ProjectPage({
@@ -14,17 +13,17 @@ export default function ProjectPage({
   content: MDXRemoteSerializeResult;
 }) {
   return (
-    <ProjectLayout>
+    <TemplateLayout>
       <MDXRemote
         {...content}
         components={COMPONENTS}
       />
-    </ProjectLayout>
+    </TemplateLayout>
   );
 }
 
 export const getStaticPaths = async () => {
-  const paths = fs.readdirSync(PROJECTS_PATH)
+  const paths = fs.readdirSync(TEMPLATES_PATH)
     .filter((path) => /\.mdx$/.test(path))
     .map((path) => path.replace(/\.mdx?$/, ""))
     .map((name) => ({ params: { name } }));
@@ -45,8 +44,8 @@ export async function getStaticProps({
     };
   }
 
-  const projectsMdxLocation = path.join(PROJECTS_PATH, `${params.name}.mdx`);
-  const content = fs.readFileSync(projectsMdxLocation, "utf-8");
+  const templatesMdxLocation = path.join(TEMPLATES_PATH, `${params.name}.mdx`);
+  const content = fs.readFileSync(templatesMdxLocation, "utf-8");
 
   const html = await mdxToHtml(content);
 

@@ -11,14 +11,14 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/",
+        source: "/:path*",
         has: [
           {
             type: "host",
             value: "webext.luxass.dev"
           }
         ],
-        destination: "/projects/webext"
+        destination: "/templates/webext"
       }
     ];
   }

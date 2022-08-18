@@ -1,10 +1,10 @@
 import { EdgeNode } from "@lib/types";
 
-interface ProjectCardProps {
+interface Props {
   project: EdgeNode;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project }: Props) {
   const name = project.nameWithOwner.split("/")[1];
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full text-gray-900 dark:text-gray-100">
