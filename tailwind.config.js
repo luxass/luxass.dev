@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./{src/pages,templates}/**/*.{js,ts,jsx,tsx,mdx}"
+    "./{src,templates}/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   darkMode: "class",
   theme: {
