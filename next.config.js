@@ -19,6 +19,16 @@ const nextConfig = {
           }
         ],
         destination: "/templates/webext"
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "snippets.luxass.dev"
+          }
+        ],
+        destination: "/snippets/:path*"
       }
     ];
   }

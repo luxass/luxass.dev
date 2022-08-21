@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./{src,templates}/**/*.{js,ts,jsx,tsx,mdx}"
+    "./{src,data}/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   darkMode: "class",
   theme: {

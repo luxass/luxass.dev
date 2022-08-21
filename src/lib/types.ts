@@ -1,8 +1,16 @@
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+
 declare global {
   interface Window {
     __theme: string;
     __setTheme: (theme: string) => void;
   }
+}
+
+export interface Snippet {
+  content: MDXRemoteSerializeResult;
+  title: string;
+  description: string;
 }
 export interface Projects {
   lastUpdated: string;

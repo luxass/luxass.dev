@@ -7,7 +7,7 @@ import { TEMPLATES_PATH } from "@lib/constants";
 import { TemplateLayout } from "@layouts/template";
 import { COMPONENTS } from "@components/MDX";
 
-export default function ProjectPage({
+export default function TemplatePage({
   content
 }: {
   content: MDXRemoteSerializeResult;

@@ -21,7 +21,8 @@ export async function mdxToHtml(source: string) {
         ]
       ],
       format: "mdx"
-    }
+    },
+    parseFrontmatter: true
   });
 
   return mdxSource;
