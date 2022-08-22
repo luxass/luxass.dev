@@ -1,11 +1,10 @@
 {
-  "name": "luxass-portfolio",
+  "name": "luxass.dev",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@luxass/luxals": "^3.0.6",

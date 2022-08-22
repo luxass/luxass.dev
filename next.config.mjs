@@ -22,10 +22,10 @@ export default defineConfig({
         has: [
           {
             type: 'host',
-            value: 'webext.luxass.dev'
+            value: 'templates.luxass.dev'
           }
         ],
-        destination: '/templates/webext'
+        destination: '/templates/:path*'
       },
       {
         source: '/:path*',

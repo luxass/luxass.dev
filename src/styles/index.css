@@ -14,6 +14,18 @@ html {
   min-height: 100vh;
 }
 
+.capsize::before {
+  content: '';
+  margin-bottom: -0.098em;
+  display: table;
+}
+
+.capsize::after {
+  content: '';
+  margin-top: -0.219em;
+  display: table;
+}
+
 .burger {
   transition: opacity 300ms ease;
   border: 0;
