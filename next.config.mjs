@@ -48,7 +48,7 @@ export default defineConfig({
               value: 'git.luxass.dev'
             }
           ],
-          destination: `https:://github.com/luxass`,
+          destination: `https://github.com/luxass`,
         },
         {
           source: '/:path*',
