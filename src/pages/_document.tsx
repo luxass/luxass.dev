@@ -24,6 +24,11 @@ export default function Document() {
           type="image/png"
         />
         <meta content="#ffffff" name="theme-color" />
+        <meta property="og:image" content="/avatar.jpg" />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:title" content="Lucas Norgaard - Fullstack Developer" />
       </Head>
       <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900">
         <script
