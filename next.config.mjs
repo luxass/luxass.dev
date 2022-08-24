@@ -37,11 +37,9 @@ export default defineConfig({
             }
           ],
           destination: '/snippets/:path*'
-        }
-      ],
-      fallback: [
+        },
         {
-          source: '/:path*',
+          source: '/',
           has: [
             {
               type: 'host',
@@ -51,7 +49,7 @@ export default defineConfig({
           destination: `https://github.com/luxass`,
         },
         {
-          source: '/:path*',
+          source: '/',
           has: [
             {
               type: 'host',
