@@ -15,6 +15,32 @@ export default defineConfig({
     images: { allowFutureImage: true },
     newNextLinkBehavior: true
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'git.luxass.dev',
+          },
+        ],
+        permanent: true,
+        destination: 'https://github.com/luxass',
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'linkedin.luxass.dev',
+          },
+        ],
+        permanent: true,
+        destination: 'https://www.linkedin.com/in/lucasnrgaard/',
+      }
+    ]
+  },
   async rewrites() {
     return [
       {
