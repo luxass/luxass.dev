@@ -15,54 +15,52 @@ export default defineConfig({
     images: { allowFutureImage: true },
     newNextLinkBehavior: true
   },
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'git.luxass.dev',
-          },
-        ],
-        permanent: true,
-        destination: 'https://github.com/luxass',
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'linkedin.luxass.dev',
-          },
-        ],
-        permanent: true,
-        destination: 'https://www.linkedin.com/in/lucasnrgaard/',
-      }
-    ]
-  },
   async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'templates.luxass.dev'
-          }
-        ],
-        destination: '/templates/:path*'
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'snippets.luxass.dev'
-          }
-        ],
-        destination: '/snippets/:path*'
-      }
-    ];
+    return {
+      beforeFiles: [
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'templates.luxass.dev'
+            }
+          ],
+          destination: '/templates/:path*'
+        },
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'snippets.luxass.dev'
+            }
+          ],
+          destination: '/snippets/:path*'
+        }
+      ],
+      fallback: [
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'git.luxass.dev'
+            }
+          ],
+          destination: `https:://github.com/luxass`,
+        },
+        {
+          source: '/:path*',
+          has: [
+            {
+              type: 'host',
+              value: 'linkedin.luxass.dev'
+            }
+          ],
+          destination: `https://www.linkedin.com/in/lucasnrgaard/`,
+        },
+      ],
+    }
   }
 })
