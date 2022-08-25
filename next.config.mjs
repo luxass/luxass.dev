@@ -15,6 +15,30 @@ export default defineConfig({
     images: { allowFutureImage: true },
     newNextLinkBehavior: true
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'git.luxass.dev'
+          }
+        ],
+        destination: `https://github.com/luxass`
+      },
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'linkedin.luxass.dev'
+          }
+        ],
+        destination: `https://www.linkedin.com/in/lucasnrgaard/`
+      }
+    ];
+  },
   async rewrites() {
     return {
       beforeFiles: [
@@ -37,28 +61,8 @@ export default defineConfig({
             }
           ],
           destination: '/snippets/:path*'
-        },
-        {
-          source: '/',
-          has: [
-            {
-              type: 'host',
-              value: 'git.luxass.dev'
-            }
-          ],
-          destination: `https://github.com/luxass`,
-        },
-        {
-          source: '/',
-          has: [
-            {
-              type: 'host',
-              value: 'linkedin.luxass.dev'
-            }
-          ],
-          destination: `https://www.linkedin.com/in/lucasnrgaard/`,
-        },
-      ],
-    }
+        }
+      ]
+    };
   }
-})
+});
