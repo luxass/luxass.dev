@@ -25,7 +25,8 @@ export default defineConfig({
             value: 'git.luxass.dev'
           }
         ],
-        destination: `https://github.com/luxass`
+        destination: `https://github.com/luxass`,
+        permanent: true
       },
       {
         source: '/',
@@ -35,7 +36,8 @@ export default defineConfig({
             value: 'linkedin.luxass.dev'
           }
         ],
-        destination: `https://www.linkedin.com/in/lucasnrgaard/`
+        destination: `https://www.linkedin.com/in/lucasnrgaard/`,
+        permanent: true
       }
     ];
   },
