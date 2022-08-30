@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { graphql } from '@octokit/graphql';
+import { FileEntry } from '@lib/types';
 
 type ResponseError = {
   message: string;
@@ -25,7 +26,9 @@ export default async function personHandler(
 
   const [owner, name] = github.split('/');
 
-  const response = await graphql(
+  const response = await graphql<{
+    repository: { object: { entries: FileEntry[] } };
+  }>(
     `
       query RepoFiles($owner: String!, $name: String!) {
         repository(owner: $owner, name: $name) {
@@ -81,7 +84,7 @@ export default async function personHandler(
     }
   );
 
-  const files = response.repository.object.entries;
+  const files = response.repository.object.entries
 
   return res.status(200).json(files);
   // User with id exists

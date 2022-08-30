@@ -1,4 +1,4 @@
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 declare global {
   interface Window {
@@ -18,23 +18,6 @@ export interface Projects {
   totalStars: number;
   totalForks: number;
   projects: EdgeNode[];
-}
-
-export interface Profile {
-  user: User;
-}
-
-export interface User {
-  pinnedItems: PinnedItems;
-  repositories: Repositories;
-}
-
-export interface PinnedItems {
-  edges: Edge[];
-}
-
-export interface Edge {
-  node: EdgeNode;
 }
 
 export interface EdgeNode {
@@ -58,17 +41,13 @@ export interface LanguagesNode {
 }
 
 export interface Object {
-  entries: Entry[];
+  entries: FileEntry[];
 }
 
-export interface Entry {
+export interface FileEntry {
   name: string;
   type: EntryType;
+  object: Object;
 }
 
 export type EntryType = 'blob' | 'tree';
-
-export interface Repositories {
-  totalCount: number;
-  nodes: EdgeNode[];
-}
