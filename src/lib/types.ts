@@ -47,7 +47,6 @@ export interface Object {
 export interface FileEntry {
   name: string;
   type: EntryType;
-  object: Object;
 }
 
 export type EntryType = 'blob' | 'tree';

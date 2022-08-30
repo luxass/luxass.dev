@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@luxass/luxals": "^3.0.6",
-    "@octokit/graphql": "^5.0.1",
     "next": "^12.2.1",
     "next-mdx-remote": "^4.1.0",
     "react": "18.2.0",
