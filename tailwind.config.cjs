@@ -7,7 +7,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "blue-opaque": "rgb(13 42 148 / 18%)",
         gray: {
           0: "#fff",
           100: "#fafafa",

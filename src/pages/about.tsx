@@ -74,7 +74,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com/luxass"
+                  href="https://www.linkedin.com/in/lucasnrgaard/"
                   rel="noopener noreferrer"
                   target="_blank"
                   className="w-8 h-8 rounded-md flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer m-1"
