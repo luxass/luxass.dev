@@ -1,9 +1,13 @@
+import NextBundleAnalyzer from '@next/bundle-analyzer';
+
 /**
  * @template {import('next').NextConfig} T
  * @param {T} config - A generic parameter that flows through to the return type
  */
 function defineConfig(config) {
-  return config;
+  return NextBundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true'
+  })(config);
 }
 
 export default defineConfig({
@@ -49,20 +53,20 @@ export default defineConfig({
           has: [
             {
               type: 'host',
-              value: 'templates.luxass.dev'
+              value: 'posts.luxass.dev'
             }
           ],
-          destination: '/templates/:path*'
+          destination: '/posts/:path*'
         },
         {
           source: '/:path*',
           has: [
             {
               type: 'host',
-              value: 'snippets.luxass.dev'
+              value: 'blog.luxass.dev'
             }
           ],
-          destination: '/snippets/:path*'
+          destination: '/posts/:path*'
         }
       ]
     };
