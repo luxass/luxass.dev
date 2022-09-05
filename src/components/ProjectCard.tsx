@@ -1,13 +1,13 @@
-import { EdgeNode } from "@lib/types";
+import { EdgeNode } from '@lib/types';
 
 interface Props {
   project: EdgeNode;
 }
 
 export function ProjectCard({ project }: Props) {
-  const name = project.nameWithOwner.split("/")[1];
+  const name = project.nameWithOwner.split('/')[1];
   return (
-    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full text-gray-900 dark:text-gray-100">
+    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full text-gray-900 dark:text-gray-100">
       <div className="flex flex-items justify-between">
         <h3 className="text-lg text-ellipsis whitespace-nowrap overflow-hidden">
           {name}
@@ -25,9 +25,7 @@ export function ProjectCard({ project }: Props) {
           </a>
         </div>
       </div>
-      <article className="mt-2">
-        <p>{project.description || "No description was set"}</p>
-      </article>
+      <p className="mt-2">{project.description || 'No description was set'}</p>
     </div>
   );
 }

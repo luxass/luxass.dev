@@ -1,9 +1,10 @@
-import Image from "next/future/image";
-import { DefaultLayout } from "@layouts/default";
+import Image from 'next/future/image';
+import { DefaultLayout } from '@layouts/default';
+import { NextPage } from "next/types";
 
-export default function Home() {
+const About: NextPage<{}> = ({}) => {
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Lucas Norgaard - About">
       <div className="p-3">
         <section className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex-1 flex flex-col pr-8 h-[200px]">
@@ -15,9 +16,10 @@ export default function Home() {
               In my spare time i enjoy learning new technologies and solving
               problems. My preferred tools right now are TypeScript, Rust and
               React.
-              <br/>
-              <br/>
-              Got any questions? <a href="mailto:lucasnrgaard@gmail">Contact me.</a>
+              <br />
+              <br />
+              Got any questions?{' '}
+              <a href="mailto:lucasnrgaard@gmail">Contact me.</a>
             </p>
           </div>
           <div className="w-[80px] sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
@@ -100,4 +102,5 @@ export default function Home() {
       </div>
     </DefaultLayout>
   );
-}
+};
+export default About;

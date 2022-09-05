@@ -1,15 +1,34 @@
-import { DefaultLayout } from "@layouts/default";
-import Link from "next/link";
-import { cx } from "@luxass/luxals";
-import { Projects } from "@lib/types";
-import { InferGetStaticPropsType } from "next";
-import { ProjectCard } from "@components/ProjectCard";
+import { DefaultLayout } from '@layouts/default';
+import Link from 'next/link';
+import { cx } from '@luxass/luxals';
+import { EdgeNode, Projects } from '@lib/types';
+import { GetStaticProps, NextPage } from 'next';
+import { ProjectCard } from '@components/ProjectCard';
 
-export default function Home({
-  projects
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(
+    'https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json'
+  );
+  const { projects } = (await res.json()) as Projects;
+
+  for (let i = projects.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    // projects[i] -> projects[j]
+    // projects[j] -> projects[i]
+    [projects[i], projects[j]] = [projects[j], projects[i]];
+  }
+
+  return {
+    props: {
+      projects: projects.slice(0, 4)
+    },
+    revalidate: 3600
+  };
+};
+
+const Home: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Lucas Norgaard - Home">
       <div className="p-3">
         <section className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex-1 flex flex-col pr-8 h-[200px]">
@@ -24,11 +43,11 @@ export default function Home({
               href="/about"
               passHref
               className={cx(
-                "mt-12 w-48 font-normal text-gray-600 dark:text-gray-400 group",
-                "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg bg-gray-200 dark:bg-gray-800"
+                'mt-12 w-48 font-normal text-gray-600 dark:text-gray-400 group',
+                'inline-block px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-800'
               )}
             >
-              Want to learn more{" "}
+              Want to learn more{' '}
               <div className="inline-block group-hover:translate-x-1 transition-transform">
                 →
               </div>
@@ -39,39 +58,16 @@ export default function Home({
           <h2 className="text-3xl text-black dark:text-white">
             Selected projects, you need to see.
           </h2>
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-4 grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
             {projects &&
               projects.map((project) => (
                 <ProjectCard key={project.url} project={project} />
               ))}
-            {/* {nodes &&
-              nodes.map((node, idx) => (
-                <CommitCard key={`commit-${idx}`} commit={node} />
-              ))} */}
           </div>
         </section>
       </div>
     </DefaultLayout>
   );
-}
+};
 
-export async function getStaticProps() {
-  const res = await fetch(
-    "https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json"
-  );
-  const { projects } = (await res.json()) as Projects;
-
-  for (let i = projects.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    // projects[i] -> projects[j]
-    // projects[j] -> projects[i]
-    [projects[i], projects[j]] = [projects[j], projects[i]];
-  }
-
-  return {
-    props: {
-      projects: projects.slice(0, 3)
-    },
-    revalidate: 3600
-  };
-}
+export default Home;
