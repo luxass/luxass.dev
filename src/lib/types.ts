@@ -1,5 +1,3 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-
 declare global {
   interface Window {
     __theme: string;
@@ -7,11 +5,6 @@ declare global {
   }
 }
 
-export interface Snippet {
-  content: MDXRemoteSerializeResult;
-  title: string;
-  description: string;
-}
 export interface Projects {
   lastUpdated: string;
   totalCount: number;
