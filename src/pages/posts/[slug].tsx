@@ -1,43 +1,83 @@
-import Head from 'next/head';
-import { format, parseISO } from 'date-fns';
 import { allPosts, Post } from 'contentlayer/generated';
+import { format, parseISO } from 'date-fns';
+import { GetStaticProps } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import Head from 'next/head';
+
+import { Components } from '@components/MDX';
+import readingTime from 'reading-time';
+import { DefaultLayout } from '@layouts/default';
 
 export async function getStaticPaths() {
-  const paths: string[] = allPosts.map((post) => post.url);
+  const paths = allPosts.map((post) => post.url);
   return {
     paths,
     fallback: false
   };
 }
 
-export async function getStaticProps({ params }: any) {
-  // @ts-ignore
-  const post: Post = allPosts.find(
-    (post) => post._raw.flattenedPath === params.slug
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const post = allPosts.find(
+    (post) => post._raw.flattenedPath === params!.slug
   );
+
+  if (post?.published) {
+    return {
+      props: {
+        post,
+        published: true
+      }
+    };
+  }
   return {
     props: {
-      post
+      post,
+      published: false
     }
   };
-}
+};
 
-const PostLayout = ({ post }: { post: Post }) => {
+const PostLayout = ({
+  post,
+  published
+}: {
+  post: Post;
+  published: boolean;
+}) => {
+  const MDXContent = useMDXComponent(post.body.code);
   return (
-    <>
+    <DefaultLayout title={post.title}>
       <Head>
         <title>{post.title}</title>
       </Head>
-      <article className="max-w-xl mx-auto py-8">
-        <div className="text-center mb-8">
-          <time dateTime={post.date} className="text-xs text-gray-600 mb-1">
-            {format(parseISO(post.date), 'LLLL d, yyyy')}
-          </time>
-          <h1>{post.title}</h1>
+      <article className="px-2 pt-16">
+        {published && (
+          <div className="p-4 mb-6 rounded-md bg-t-orange text-neutral-900">
+            <p>hey! this post is hidden 👀</p>
+            <p>please don&apos;t share this link thank you</p>
+          </div>
+        )}
+        <h1 className="text-4xl font-bold bold-text">{post.title}</h1>
+        <div className="pt-4">
+          <div className="flex items-center gap-2">
+
+            {/* <FiEdit2 /> */}
+            <time dateTime={post.date} className="text-slate-200">
+              {format(parseISO(post.date), 'LLLL d, yyyy')}
+            </time>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* <BiTimeFive /> {readingTime(post.body.code).text} */}
+          </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.body.raw }} />
+
+        <div className="pt-12" />
+        <main className="prose prose-lg prose-indigo prose-a:text-indigo-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
+          <MDXContent components={Components} />
+        </main>
       </article>
-    </>
+    </DefaultLayout>
   );
 };
 

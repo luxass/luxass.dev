@@ -3,7 +3,7 @@ import { HTMLProps } from "react";
 
 export default function CustomLink(props: HTMLProps<HTMLAnchorElement>) {
   const href = props.href;
-  const isInternalLink = href && href.startsWith("/");
+  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
 
   if (isInternalLink) {
     return (

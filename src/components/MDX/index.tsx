@@ -1,9 +1,7 @@
-import CustomLink from "./CustomLink";
-import Description from "./Description";
-import Install from "./Install";
+import Link from "./Link";
+import Image from "./Image";
 
-export const COMPONENTS = {
-  a: CustomLink,
-  Description: Description,
-  Install: Install
+export const Components = {
+  a: Link,
+  Image,
 }

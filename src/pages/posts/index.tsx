@@ -5,7 +5,7 @@ import { GetStaticProps, NextPage } from 'next';
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts
-    .filter((post) => post.public)
+    .filter((post) => post.published)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     });
