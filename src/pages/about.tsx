@@ -2,7 +2,7 @@ import Image from 'next/future/image';
 import { DefaultLayout } from '@layouts/default';
 import { NextPage } from "next/types";
 
-const About: NextPage<{}> = ({}) => {
+const AboutPage: NextPage<{}> = ({}) => {
   return (
     <DefaultLayout title="Lucas Norgaard - About">
       <div className="p-3">
@@ -22,7 +22,7 @@ const About: NextPage<{}> = ({}) => {
               <a href="mailto:lucasnrgaard@gmail">Contact me.</a>
             </p>
           </div>
-          <div className="w-[80px] sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Lucas Nørgård"
               height={150}
@@ -103,4 +103,4 @@ const About: NextPage<{}> = ({}) => {
     </DefaultLayout>
   );
 };
-export default About;
+export default AboutPage;

@@ -1,11 +1,30 @@
-import { ProjectCard } from "@components/ProjectCard";
-import { DefaultLayout } from "@layouts/default";
-import { Projects } from "@lib/types";
-import { InferGetStaticPropsType } from "next/types";
+import { ProjectCard } from '@components/ProjectCard';
+import { DefaultLayout } from '@layouts/default';
+import { EdgeNode, Projects } from '@lib/types';
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next/types';
 
-export default function ProjectsPage({
-  projects
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(
+    'https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json'
+  );
+  const { projects } = (await res.json()) as Projects;
+
+  for (let i = projects.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    // projects[i] -> projects[j]
+    // projects[j] -> projects[i]
+    [projects[i], projects[j]] = [projects[j], projects[i]];
+  }
+
+  return {
+    props: {
+      projects: projects
+    },
+    revalidate: 3600
+  };
+};
+
+const ProjectsPage: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
@@ -25,25 +44,6 @@ export default function ProjectsPage({
       </section>
     </DefaultLayout>
   );
-}
+};
 
-export async function getStaticProps() {
-  const res = await fetch(
-    "https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json"
-  );
-  const { projects } = (await res.json()) as Projects;
-
-  for (let i = projects.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    // projects[i] -> projects[j]
-    // projects[j] -> projects[i]
-    [projects[i], projects[j]] = [projects[j], projects[i]];
-  }
-
-  return {
-    props: {
-      projects: projects
-    },
-    revalidate: 3600
-  };
-}
+export default ProjectsPage;

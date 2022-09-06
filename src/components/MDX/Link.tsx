@@ -1,14 +1,17 @@
-import Link from "next/link";
-import { HTMLProps } from "react";
+import Link from 'next/link';
+import { HTMLProps } from 'react';
 
-export default function CustomLink(props: HTMLProps<HTMLAnchorElement>) {
-  const href = props.href;
-  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+export default function CustomLink({
+  href,
+  children,
+  ...props
+}: HTMLProps<HTMLAnchorElement>) {
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a {...props}>{props.children}</a>
+        <a {...props}>{children}</a>
       </Link>
     );
   }

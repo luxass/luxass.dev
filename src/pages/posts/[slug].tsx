@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { Components } from '@components/MDX';
 import readingTime from 'reading-time';
 import { DefaultLayout } from '@layouts/default';
+import { useEffect } from "react";
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -45,6 +46,7 @@ const PostLayout = ({
   published: boolean;
 }) => {
   const MDXContent = useMDXComponent(post.body.code);
+
   return (
     <DefaultLayout title={post.title}>
       <Head>

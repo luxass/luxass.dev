@@ -26,9 +26,9 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Home: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
+const HomePage: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
   return (
-    <DefaultLayout title="Lucas Norgaard - Home">
+    <DefaultLayout title="Home - Lucas Norgaard">
       <div className="p-3">
         <section className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex-1 flex flex-col pr-8 h-[200px]">
@@ -70,4 +70,4 @@ const Home: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
   );
 };
 
-export default Home;
+export default HomePage;
