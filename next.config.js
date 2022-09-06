@@ -5,13 +5,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer(
   withContentlayer({
-    //swcMinify: true,
+    swcMinify: true,
     reactStrictMode: true,
     experimental: {
-      //legacyBrowsers: false,
-      //browsersListForSwc: true,
-      images: { allowFutureImage: true }
-      //newNextLinkBehavior: true
+      legacyBrowsers: false,
+      browsersListForSwc: true,
+      images: { allowFutureImage: true },
+      newNextLinkBehavior: true
     },
     async redirects() {
       return [
