@@ -63,7 +63,7 @@ module.exports = withBundleAnalyzer(
             destination: '/posts/:path*'
           }
         ]
-      }
+      };
     }
   })
 );
