@@ -1,23 +1,26 @@
 import NextBundleAnalyzer from '@next/bundle-analyzer';
+import { withContentlayer } from 'next-contentlayer';
 
 /**
  * @template {import('next').NextConfig} T
  * @param {T} config - A generic parameter that flows through to the return type
  */
 function defineConfig(config) {
-  return NextBundleAnalyzer({
-    enabled: process.env.ANALYZE === 'true'
-  })(config);
+  return withContentlayer(
+    NextBundleAnalyzer({
+      enabled: process.env.ANALYZE === 'true'
+    })(config)
+  );
 }
 
 export default defineConfig({
-  swcMinify: true,
+  //swcMinify: true,
   reactStrictMode: true,
   experimental: {
-    legacyBrowsers: false,
-    browsersListForSwc: true,
-    images: { allowFutureImage: true },
-    newNextLinkBehavior: true
+    //legacyBrowsers: false,
+    //browsersListForSwc: true,
+    images: { allowFutureImage: true }
+    //newNextLinkBehavior: true
   },
   async redirects() {
     return [
