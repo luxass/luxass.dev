@@ -5,7 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer(
   withContentlayer({
-    swcMinify: true,
     reactStrictMode: true,
     experimental: {
       legacyBrowsers: false,
