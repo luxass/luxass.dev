@@ -10,36 +10,20 @@ export interface Projects {
   totalCount: number;
   totalStars: number;
   totalForks: number;
-  projects: EdgeNode[];
+  projects: Project[];
 }
 
-export interface EdgeNode {
-  nameWithOwner: string;
-  description: null | string;
-  pushedAt: Date;
-  stargazerCount: number;
-  forkCount: number;
+export interface Project {
+  name: string;
+  description: string;
   url: string;
-  languages: Languages;
-  object: Object | null;
+  pushedAt: string;
+  stars: number;
+  forks: number;
+  primaryLanguage: LanguageNode;
 }
 
-export interface Languages {
-  nodes: LanguagesNode[];
-}
-
-export interface LanguagesNode {
+export interface LanguageNode {
   color: string;
   name: string;
 }
-
-export interface Object {
-  entries: FileEntry[];
-}
-
-export interface FileEntry {
-  name: string;
-  type: EntryType;
-}
-
-export type EntryType = 'blob' | 'tree';

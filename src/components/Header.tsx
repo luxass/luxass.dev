@@ -36,7 +36,7 @@ export function Header() {
           <Link
             href="/posts"
             className={cx(
-              router.asPath === '/posts'
+              router.asPath.includes('/posts')
                 ? 'font-semibold text-gray-800 dark:text-gray-200'
                 : 'font-normal text-gray-600 dark:text-gray-400',
               'inline-block px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'

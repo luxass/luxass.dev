@@ -1,13 +1,21 @@
-import { EdgeNode } from '~/lib/types';
-
+import { FiStar } from 'react-icons/fi';
+import { BiGitRepoForked } from 'react-icons/bi';
+import { Project } from '~/lib/types';
+const toEmoji = require('emoji-name-map');
 interface Props {
-  project: EdgeNode;
+  project: Project;
+}
+
+function parseEmojis(desc: string): string {
+  return desc.replace(/:\w+:/gm, (match) => {
+    return toEmoji.get(match) || match;
+  });
 }
 
 export function ProjectCard({ project }: Props) {
-  const name = project.nameWithOwner.split('/')[1];
+  const name = project.name.split('/')[1];
   return (
-    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full text-gray-900 dark:text-gray-100">
+    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full text-gray-900 dark:text-gray-100 flex flex-col">
       <div className="flex flex-items justify-between">
         <h3 className="text-lg text-ellipsis whitespace-nowrap overflow-hidden">
           {name}
@@ -25,7 +33,21 @@ export function ProjectCard({ project }: Props) {
           </a>
         </div>
       </div>
-      <p className="mt-2">{project.description || 'No description was set'}</p>
+      <p className="mt-2 flex-1">
+        {parseEmojis(project.description || 'No description was set')}
+      </p>
+      <div className="pt-4 text-sm flex items-center gap-2">
+        <span className="flex items-center gap-1.5">
+          <span style={{ color: project.primaryLanguage.color }}>⬤</span>
+          {project.primaryLanguage.name}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <FiStar /> {project.stars}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <BiGitRepoForked /> {project.forks}
+        </span>
+      </div>
     </div>
   );
 }
