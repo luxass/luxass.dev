@@ -1,6 +1,6 @@
 import { ProjectCard } from '~/components/ProjectCard';
 import { DefaultLayout } from '~/layouts/default';
-import { EdgeNode, Projects } from '~/lib/types';
+import { Project, Projects } from '~/lib/types';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next/types';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const ProjectsPage: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
+const ProjectsPage: NextPage<{ projects: Project[] }> = ({ projects }) => {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">

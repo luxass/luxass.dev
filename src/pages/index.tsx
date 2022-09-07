@@ -1,7 +1,7 @@
 import { DefaultLayout } from '~/layouts/default';
 import Link from 'next/link';
 import { cx } from '@luxass/luxals';
-import { EdgeNode, Projects } from '~/lib/types';
+import { Project, Projects } from '~/lib/types';
 import { GetStaticProps, NextPage } from 'next';
 import { ProjectCard } from '~/components/ProjectCard';
 
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const HomePage: NextPage<{ projects: EdgeNode[] }> = ({ projects }) => {
+const HomePage: NextPage<{ projects: Project[] }> = ({ projects }) => {
   return (
     <DefaultLayout title="Home - Lucas Norgaard">
       <div className="p-3">
