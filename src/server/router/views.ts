@@ -2,22 +2,30 @@ import { createRouter } from './context';
 import { z } from 'zod';
 
 export const viewsRouter = createRouter()
-  .query('get', {
+  .query('add', {
     input: z.string(),
     async resolve({ ctx, input }) {
-      return await ctx.prisma.views.findFirst({
+      return await ctx.prisma.views.upsert({
         where: {
           slug: input
+        },
+        create: {
+          slug: input
+        },
+        update: {
+          count: {
+            increment: 1
+          }
         }
       });
     }
   })
-  .query('getViewsBySlugs', {
-    input: z.array(z.string()),
+  .query('get', {
+    input: z.string(),
     async resolve({ ctx, input }) {
-      return await ctx.prisma.views.findMany({
+      return await ctx.prisma.views.findUnique({
         where: {
-          // somehow get all views by slugs.
+          slug: input
         }
       });
     }

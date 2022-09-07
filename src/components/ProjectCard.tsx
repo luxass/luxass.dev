@@ -1,4 +1,4 @@
-import { EdgeNode } from '@lib/types';
+import { EdgeNode } from '~/lib/types';
 
 interface Props {
   project: EdgeNode;

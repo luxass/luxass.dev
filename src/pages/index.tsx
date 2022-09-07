@@ -1,9 +1,9 @@
-import { DefaultLayout } from '@layouts/default';
+import { DefaultLayout } from '~/layouts/default';
 import Link from 'next/link';
 import { cx } from '@luxass/luxals';
-import { EdgeNode, Projects } from '@lib/types';
+import { EdgeNode, Projects } from '~/lib/types';
 import { GetStaticProps, NextPage } from 'next';
-import { ProjectCard } from '@components/ProjectCard';
+import { ProjectCard } from '~/components/ProjectCard';
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(

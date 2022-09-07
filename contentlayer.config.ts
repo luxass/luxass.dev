@@ -48,7 +48,6 @@ export default makeSource({
       meta,
       rehypeSlug,
       rehypeCodeTitles,
-      // highlight,
       [
         rehypeAutolinkHeadings,
         [

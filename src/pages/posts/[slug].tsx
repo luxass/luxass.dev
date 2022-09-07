@@ -2,12 +2,11 @@ import { allPosts, Post } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import Head from 'next/head';
 
-import { Components } from '@components/MDX';
+import { Components } from '~/components/MDX';
 import readingTime from 'reading-time';
-import { DefaultLayout } from '@layouts/default';
-import { useEffect } from "react";
+import { DefaultLayout } from '~/layouts/default';
+import { trpc } from '~/lib/trpc';
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -21,61 +20,49 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = allPosts.find(
     (post) => post._raw.flattenedPath === params!.slug
   );
-
   if (post?.published) {
     return {
       props: {
-        post,
-        published: true
+        post
       }
     };
   }
   return {
     props: {
-      post,
-      published: false
+      post
     }
   };
 };
 
-const PostLayout = ({
-  post,
-  published
-}: {
-  post: Post;
-  published: boolean;
-}) => {
+const PostLayout = ({ post }: { post: Post }) => {
   const MDXContent = useMDXComponent(post.body.code);
-
+  const views = trpc.useQuery(['views.add', post.url], {
+    refetchOnWindowFocus: false
+  });
   return (
     <DefaultLayout title={post.title}>
-      <Head>
-        <title>{post.title}</title>
-      </Head>
-      <article className="px-2 pt-16">
-        {published && (
-          <div className="p-4 mb-6 rounded-md bg-t-orange text-neutral-900">
-            <p>hey! this post is hidden 👀</p>
-            <p>please don&apos;t share this link thank you</p>
-          </div>
-        )}
+      <article className="px-2 text-gray-800 dark:text-gray-200">
         <h1 className="text-4xl font-bold bold-text">{post.title}</h1>
-        <div className="pt-4">
-          <div className="flex items-center gap-2">
-
-            {/* <FiEdit2 /> */}
+        <div className="pt-4 flex items-center justify-between">
+          <div>
             <time dateTime={post.date} className="text-slate-200">
               {format(parseISO(post.date), 'LLLL d, yyyy')}
             </time>
           </div>
 
-          <div className="flex items-center gap-2">
-            {/* <BiTimeFive /> {readingTime(post.body.code).text} */}
+          <div>
+            {readingTime(post.body.code).text}
+            {' • '}
+            {`${
+              views.data?.count
+                ? new Number(views.data.count).toLocaleString()
+                : '–––'
+            } views`}
           </div>
         </div>
 
         <div className="pt-12" />
-        <main className="prose prose-lg prose-indigo prose-a:text-indigo-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
+        <main className="prose prose-indigo prose-a:text-blue-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
           <MDXContent components={Components} />
         </main>
       </article>

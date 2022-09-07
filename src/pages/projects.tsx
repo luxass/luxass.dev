@@ -1,6 +1,6 @@
-import { ProjectCard } from '@components/ProjectCard';
-import { DefaultLayout } from '@layouts/default';
-import { EdgeNode, Projects } from '@lib/types';
+import { ProjectCard } from '~/components/ProjectCard';
+import { DefaultLayout } from '~/layouts/default';
+import { EdgeNode, Projects } from '~/lib/types';
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next/types';
 
 export const getStaticProps: GetStaticProps = async () => {
