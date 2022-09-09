@@ -6,7 +6,7 @@ export function Header() {
   const router = useRouter();
 
   return (
-    <header className="border-b border-gray-200 dark:border-gray-800 sm:mb-16">
+    <header className="border-b border-gray-200 dark:border-gray-800 sm:mb-12">
       <nav className="flex items-center justify-between w-full relative mx-auto py-8 px-4 text-gray-900 bg-gray-50 dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
         <div>
           <Link

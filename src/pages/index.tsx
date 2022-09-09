@@ -29,10 +29,10 @@ export const getStaticProps: GetStaticProps = async () => {
 const HomePage: NextPage<{ projects: Project[] }> = ({ projects }) => {
   return (
     <DefaultLayout title="Home - Lucas Norgaard">
-      <div className="p-3">
+      <div className="p-3 text-black dark:text-white">
         <section className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex-1 flex flex-col pr-8 h-[200px]">
-            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-black dark:text-white">
+            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2">
               Hey I&apos;m Luxass <span>✌️</span>
             </h1>
             <p className="text-gray-700 dark:text-gray-200 flex-1">
@@ -55,7 +55,7 @@ const HomePage: NextPage<{ projects: Project[] }> = ({ projects }) => {
           </div>
         </section>
         <section className="mt-8">
-          <h2 className="text-3xl text-black dark:text-white">
+          <h2 className="text-3xl">
             Selected projects, you need to see.
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">

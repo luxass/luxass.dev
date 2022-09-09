@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const ProjectsPage: NextPage<{ projects: Project[] }> = ({ projects }) => {
   return (
-    <DefaultLayout>
+    <DefaultLayout title="Lucas Norgaard - Projects">
       <section className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           Projects
