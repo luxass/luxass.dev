@@ -24,12 +24,22 @@ export const getStaticProps: GetStaticProps = async () => {
 const PostsPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
     <DefaultLayout title="Posts - Lucas Norgaard">
-      <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-black dark:text-white">
-        Posts
-      </h1>
-      {posts.map((post, idx) => (
-        <PostCard post={post} key={post._id} />
-      ))}
+      <div className="p-3">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-black dark:text-white">
+          Posts
+        </h1>
+        {!posts.length ? (
+          <p className="text-gray-700 dark:text-gray-200 text-center mt-12">
+            No posts found.
+          </p>
+        ) : (
+          <>
+            {posts.map((post) => (
+              <PostCard post={post} key={post._id} />
+            ))}
+          </>
+        )}
+      </div>
     </DefaultLayout>
   );
 };
