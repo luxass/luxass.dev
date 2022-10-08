@@ -17,8 +17,8 @@ export default async function handler(
     return;
   }
 
-  if (delayMs > 10000) {
-    res.status(400).json({ error: 'Bad Request' });
+  if (delayMs > 8000) {
+    res.status(400).json({ error: 'Maxiumum timeout is 8000' });
     return;
   }
 
@@ -28,5 +28,5 @@ export default async function handler(
     res.setHeader('Location', redirectUrl);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(302).end();
-  }, clamp(delayMs, 0, 10000));
+  }, clamp(delayMs, 0, 8000));
 }
