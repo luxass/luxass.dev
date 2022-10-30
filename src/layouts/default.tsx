@@ -1,15 +1,12 @@
-import { Header } from "~/components/Header";
-import Head from "next/head";
-import { PropsWithChildren, Suspense } from "react";
+import { Header } from '~/components/Header';
+import Head from 'next/head';
+import { PropsWithChildren, Suspense } from 'react';
 
 interface Props {
   title?: string;
 }
 
-export function DefaultLayout({
-  children,
-  title,
-}: PropsWithChildren<Props>) {
+export function DefaultLayout({ children, title }: PropsWithChildren<Props>) {
   return (
     <Suspense fallback={null}>
       <Head>

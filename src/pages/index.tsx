@@ -47,17 +47,17 @@ const HomePage: NextPage<{ projects: Project[] }> = ({ projects }) => {
                 'inline-block px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-800'
               )}
             >
-              Want to learn more{' '}
-              <div className="inline-block group-hover:translate-x-1 transition-transform">
-                →
-              </div>
+              <>
+                Want to learn more{' '}
+                <div className="inline-block group-hover:translate-x-1 transition-transform">
+                  →
+                </div>
+              </>
             </Link>
           </div>
         </section>
         <section className="mt-8">
-          <h2 className="text-3xl">
-            Selected projects, you need to see.
-          </h2>
+          <h2 className="text-3xl">Selected projects, you need to see.</h2>
           <div className="mt-4 grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
             {projects &&
               projects.map((project) => (
