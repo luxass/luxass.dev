@@ -18,9 +18,6 @@ export default defineNextConfig({
   reactStrictMode: true,
   experimental: {
     legacyBrowsers: false,
-    browsersListForSwc: true,
-    images: { allowFutureImage: true },
-    newNextLinkBehavior: true
   },
   async redirects() {
     return [

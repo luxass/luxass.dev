@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { DefaultLayout } from '~/layouts/default';
 import { NextPage } from "next/types";
 

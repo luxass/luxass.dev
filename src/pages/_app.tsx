@@ -1,11 +1,17 @@
-import '~/styles/index.css';
+import '~/styles/globals.css';
 import { withTRPC } from '@trpc/next';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import superjson from 'superjson';
 import type { AppRouter } from '~/server/router';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  );
 };
 
 const getBaseUrl = () => {

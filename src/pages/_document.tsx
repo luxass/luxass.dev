@@ -1,5 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
-
+import { Html, Head, Main, NextScript } from 'next/document';
 export default function Document() {
   return (
     <Html lang="en">
@@ -28,9 +27,12 @@ export default function Document() {
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
-        <meta property="og:title" content="Lucas Norgaard - Fullstack Developer" />
+        <meta
+          property="og:title"
+          content="Lucas Norgaard - Fullstack Developer"
+        />
       </Head>
-      <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900">
+      <body className="antialiased bg-gray-50 dark:bg-gray-900">
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -70,10 +72,9 @@ export default function Document() {
                 }
               });
              })();
-            `,
+            `
           }}
         />
-
         <Main />
         <NextScript />
       </body>
