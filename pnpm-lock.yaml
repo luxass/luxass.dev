@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@luxass/luxals': ^3.0.6
   '@next/bundle-analyzer': ^12.3.2
-  '@next/font': ^13.0.0
   '@prisma/client': ^4.5.0
   '@tailwindcss/typography': ^0.5.7
   '@trpc/client': ^9.27.4
@@ -40,7 +39,6 @@ specifiers:
 
 dependencies:
   '@luxass/luxals': 3.0.6
-  '@next/font': 13.0.0
   '@prisma/client': 4.5.0_prisma@4.5.0
   '@trpc/client': 9.27.4_@trpc+server@9.27.4
   '@trpc/next': 9.27.4_2mphqpuq3adosujc6bswxhvfmm
@@ -424,10 +422,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font/13.0.0:
-    resolution: {integrity: sha512-r5dYkgMD1Qmoip1OhJSrqCSQdZ4eshkQPfe1hhQiKbZoXIbViJksPRLC6GVOgEQE6W4+CXuAXR6IYBy5M6Rixg==}
-    dev: false
 
   /@next/swc-android-arm-eabi/13.0.0:
     resolution: {integrity: sha512-+DUQkYF93gxFjWY+CYWE1QDX6gTgnUiWf+W4UqZjM1Jcef8U97fS6xYh+i+8rH4MM0AXHm7OSakvfOMzmjU6VA==}

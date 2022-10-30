@@ -32,7 +32,7 @@ export default function Document() {
           content="Lucas Norgaard - Fullstack Developer"
         />
       </Head>
-      <body className="antialiased bg-gray-50 dark:bg-gray-900">
+      <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900">
         <script
           dangerouslySetInnerHTML={{
             __html: `
