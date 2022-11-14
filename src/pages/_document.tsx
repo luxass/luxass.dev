@@ -33,11 +33,11 @@ export default function Document() {
           content="Lucas Norgaard - Fullstack Developer"
         />
         <meta
-          property="description"
+          name="description"
           content="With a background as a fullstack developer. Lucas Norgaard builds both modern and scalable applications"
         />
         <meta
-          property="keywords"
+          name="keywords"
           content="lucas nørgård, web developer, website, lucas, nørgård"
         />
       </Head>
