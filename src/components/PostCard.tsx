@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function PostCard({ post }: Props) {
-  const views = trpc.useQuery(['views.get', post.url]);
+  const views = trpc.views.get.useQuery(post.url);
   return (
     <Link href={post.url} key={post._id} passHref>
       <div className="p-4 mb-6 transition-all duration-300 rounded-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200">
