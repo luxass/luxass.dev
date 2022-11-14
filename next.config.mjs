@@ -1,6 +1,6 @@
 import { withContentlayer } from 'next-contentlayer';
 import NextBundleAnalyzer from '@next/bundle-analyzer';
-!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
+!process.env.SKIP_ENV_VALIDATION && (await import('./src/env/server.mjs'));
 
 /**
  * @template {import('next').NextConfig} T
@@ -17,8 +17,11 @@ export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    legacyBrowsers: false,
+    legacyBrowsers: false
   },
+  fontLoaders: [
+    { loader: '@next/font/google', options: { subsets: ['latin'] } }
+  ],
   async redirects() {
     return [
       {
