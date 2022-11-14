@@ -3,8 +3,6 @@ import { DefaultLayout } from '~/layouts/default';
 import { allPosts, Post } from 'contentlayer/generated';
 import { compareDesc, format, parseISO } from 'date-fns';
 import { GetStaticProps, NextPage } from 'next';
-import Link from 'next/link';
-import readingTime from 'reading-time';
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts

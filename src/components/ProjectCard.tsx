@@ -21,7 +21,7 @@ export function ProjectCard({ project }: Props) {
           {name}
         </h3>
         <div className="ml-4 min-w-[24px]">
-          <a target="_blank" rel="noopener noreferrer" href={project.url}>
+          <a target="_blank" rel="noopener noreferrer" href={project.url} title={`${project.name} GitHub`}>
             <svg
               className="h-4 w-4 ml-1 inline-block align-middle overflow-hidden"
               viewBox="0 0 24 24"

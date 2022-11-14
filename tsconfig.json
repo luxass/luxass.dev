@@ -16,11 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "~/components/*": ["src/components/*"],
-      "~/lib/*": ["src/lib/*"],
-      "~/styles/*": ["src/styles/*"],
-      "~/layouts/*": ["src/layouts/*"],
-      "~/server/*": ["src/server/*"],
+      "~/*": ["src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [

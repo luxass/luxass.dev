@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+
 export default function Document() {
   return (
     <Html lang="en">
@@ -30,6 +31,14 @@ export default function Document() {
         <meta
           property="og:title"
           content="Lucas Norgaard - Fullstack Developer"
+        />
+        <meta
+          property="description"
+          content="With a background as a fullstack developer. Lucas Norgaard builds both modern and scalable applications"
+        />
+        <meta
+          property="keywords"
+          content="lucas nørgård, web developer, website, lucas, nørgård"
         />
       </Head>
       <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900">

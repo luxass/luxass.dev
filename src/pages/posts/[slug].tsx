@@ -6,9 +6,9 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { Components } from '~/components/MDX';
 import readingTime from 'reading-time';
 import { DefaultLayout } from '~/layouts/default';
-import { trpc } from '~/lib/trpc';
 import { BiTime } from 'react-icons/bi';
 import { TbNotes, TbEye } from 'react-icons/tb';
+import { trpc } from '~/lib/trpc';
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const PostLayout = ({ post }: { post: Post }) => {
   const MDXContent = useMDXComponent(post.body.code);
-  const views = trpc.useQuery(['views.add', post.url], {
+  const views = trpc.views.add.useQuery(post.url, {
     refetchOnWindowFocus: false
   });
   return (
@@ -58,11 +58,12 @@ const PostLayout = ({ post }: { post: Post }) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <TbEye />  {`${
-                views.data?.count
-                  ? new Number(views.data.count).toLocaleString()
-                  : '–––'
-              } views`}
+            <TbEye />{' '}
+            {`${
+              views.data?.count
+                ? new Number(views.data.count).toLocaleString()
+                : '–––'
+            } views`}
           </div>
         </div>
 

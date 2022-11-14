@@ -1,6 +1,6 @@
 import { withContentlayer } from 'next-contentlayer';
 import NextBundleAnalyzer from '@next/bundle-analyzer';
-import { env } from './src/env/server.mjs';
+!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
 
 /**
  * @template {import('next').NextConfig} T
@@ -14,8 +14,8 @@ function defineNextConfig(config) {
 }
 
 export default defineNextConfig({
-  swcMinify: true,
   reactStrictMode: true,
+  swcMinify: true,
   experimental: {
     legacyBrowsers: false,
   },

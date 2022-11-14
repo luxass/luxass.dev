@@ -25,10 +25,9 @@ const AboutPage: NextPage<{}> = ({}) => {
           <div className="sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Lucas Nørgård"
-              height={150}
+              height={200}
               width={150}
               src="/avatar.jpg"
-              sizes="30vw"
               priority
               className="rounded-lg filter grayscale"
             />
@@ -39,6 +38,7 @@ const AboutPage: NextPage<{}> = ({}) => {
                   href="https://github.com/luxass"
                   rel="noopener noreferrer"
                   target="_blank"
+                  title="GitHub"
                   className="w-8 h-8  rounded-md flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer ml-0 m-1"
                 >
                   <svg
@@ -58,6 +58,7 @@ const AboutPage: NextPage<{}> = ({}) => {
                   href="mailto:lucasnrgaard@gmail.com"
                   rel="noopener noreferrer"
                   target="_blank"
+                  title="E-mail"
                   className="w-8 h-8 rounded-md flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer m-1"
                 >
                   <svg
@@ -79,6 +80,7 @@ const AboutPage: NextPage<{}> = ({}) => {
                   href="https://www.linkedin.com/in/lucasnrgaard/"
                   rel="noopener noreferrer"
                   target="_blank"
+                  title="LinkedIn"
                   className="w-8 h-8 rounded-md flex items-center justify-center hover:ring-2 ring-gray-700 transition-all cursor-pointer m-1"
                 >
                   <svg
