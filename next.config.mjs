@@ -17,11 +17,11 @@ export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    legacyBrowsers: false
+    legacyBrowsers: false,
+    fontLoaders: [
+      { loader: '@next/font/google', options: { subsets: ['latin'] } }
+    ],
   },
-  fontLoaders: [
-    { loader: '@next/font/google', options: { subsets: ['latin'] } }
-  ],
   async redirects() {
     return [
       {
