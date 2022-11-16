@@ -41,7 +41,7 @@ export default function Document() {
           content="lucas nørgård, web developer, website, lucas, nørgård"
         />
       </Head>
-      <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900">
+      <body className="bg-gray-50 dark:bg-gray-900">
         <script
           dangerouslySetInnerHTML={{
             __html: `
