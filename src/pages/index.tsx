@@ -5,10 +5,6 @@ import { Project, Projects } from '~/lib/types';
 import { GetStaticProps, NextPage } from 'next';
 import { ProjectCard } from '~/components/ProjectCard';
 
-export const config = {
-  unstable_runtimeJS: false
-};
-
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(
     'https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json'
