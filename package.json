@@ -17,7 +17,7 @@
     "@trpc/next": "10.0.0-rc.7",
     "@trpc/react": "^9.27.4",
     "@trpc/react-query": "10.0.0-rc.7",
-    "@trpc/server": "10.0.0-rc.7",
+    "@trpc/server": "10.1.0",
     "@vercel/analytics": "^0.1.4",
     "contentlayer": "^0.2.9",
     "date-fns": "^2.29.3",
