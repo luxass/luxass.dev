@@ -1,5 +1,4 @@
-import { GetServerSideProps } from 'next';
-import { allPosts } from '.contentlayer/generated';
+import type { GetServerSideProps } from "next";
 
 const createSitemap = (
   urls: string[]
@@ -13,23 +12,21 @@ const createSitemap = (
                 </url>
             `;
           })
-          .join('')}
+          .join("")}
     </urlset>
 `;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const allPages = [
-    ...allPosts.map((post) => post.url.slice(1)),
-    '',
-    'about',
-    'posts',
-    'projects',
-  ]
+    "",
+    "about",
+    "projects"
+  ];
 
-  res.setHeader('Content-Type', 'text/xml');
+  res.setHeader("Content-Type", "text/xml");
   res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
+    "Cache-Control",
+    "public, s-maxage=1200, stale-while-revalidate=600"
   );
   res.write(createSitemap(allPages));
   res.end();

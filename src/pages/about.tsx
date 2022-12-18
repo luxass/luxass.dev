@@ -1,23 +1,23 @@
-import Image from 'next/image';
-import { DefaultLayout } from '~/layouts/default';
-import { NextPage } from 'next/types';
+import Image from "next/image";
+import type { NextPage } from "next/types";
+import { DefaultLayout } from "~/layouts/default";
 
-const AboutPage: NextPage<{}> = ({}) => {
+const AboutPage: NextPage<{}> = () => {
   return (
     <DefaultLayout title="Lucas Norgaard - About">
       <section className="p-3 flex items-start">
         <div className="flex-1 flex flex-col pr-8 h-[200px]">
-          <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-black dark:text-white">
+          <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-white">
             Lucas Nørgård
           </h1>
-          <p className="text-gray-700 dark:text-gray-200 mb-4 flex-1">
-            I&apos;m a self-taught developer from Aarhus, Denmark. <br />
+          <p className="text-gray-200 mb-4 flex-1">
+            I&apos;m a self-taught developer from Grenaa, Denmark. <br />
             In my spare time i enjoy learning new technologies and solving
             problems. My preferred tools right now are TypeScript, Rust and
             React.
             <br />
             <br />
-            Got any questions?{' '}
+            Got any questions?{" "}
             <a href="mailto:lucasnrgaard@gmail">Contact me.</a>
           </p>
         </div>
@@ -31,7 +31,7 @@ const AboutPage: NextPage<{}> = ({}) => {
             className="rounded-lg filter grayscale"
           />
 
-          <div className="mt-4 bg-gray-200 dark:bg-gray-600 rounded-lg">
+          <div className="mt-4 bg-gray-600 rounded-lg">
             <div className="flex justify-center items-center">
               <a
                 href="https://github.com/luxass"

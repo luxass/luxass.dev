@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -23,8 +23,8 @@ export default function Document() {
           sizes="16x16"
           type="image/png"
         />
-        <meta content="#ffffff" name="theme-color" />
-        <meta property="og:image" content="/avatar.jpg" />
+        <meta content="#171717" name="theme-color" />
+        <meta property="og:image" content="https://luxass.dev/api/og" />
         <meta property="og:image:type" content="image/jpg" />
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
@@ -41,49 +41,7 @@ export default function Document() {
           content="lucas nørgård, web developer, website, lucas, nørgård"
         />
       </Head>
-      <body className="bg-gray-50 dark:bg-gray-900">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            (function() {
-              function setTheme(theme) {
-                window.__theme = theme;
-                if (theme === "dark") {
-                  document.documentElement.classList.add("dark");
-                } else if (theme === "light") {
-                  document.documentElement.classList.remove("dark");
-                }
-              }
-              let prefer;
-              try {
-                prefer = localStorage.getItem("luxass-theme");
-              } catch (e) {}
-              
-              window.__setTheme = function(theme) {
-                prefer = theme;
-                setTheme(theme);
-                try {
-                  localStorage.setItem("luxass-theme", theme);
-                } catch (e) {}
-              };
-              
-              let initialTheme = prefer;
-              let darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-              
-              if (!initialTheme) {
-                initialTheme = darkQuery.matches ? "dark" : "light";
-              }
-              
-              setTheme(initialTheme);
-              darkQuery.addEventListener("change", (e) => {
-                if (!prefer) {
-                  setTheme(e.matches ? "dark" : "light");
-                }
-              });
-             })();
-            `
-          }}
-        />
+      <body>
         <Main />
         <NextScript />
       </body>

@@ -1,53 +1,79 @@
-import { FiStar } from 'react-icons/fi';
-import { BiGitRepoForked } from 'react-icons/bi';
-import { Project } from '~/lib/types';
-const toEmoji = require('emoji-name-map');
-interface Props {
-  project: Project;
-}
+import type { Project } from "~/lib/types";
 
-function parseEmojis(desc: string): string {
-  return desc.replace(/:\w+:/gm, (match) => {
-    return toEmoji.get(match) || match;
-  });
+interface Props {
+  project: Project
 }
 
 export function ProjectCard({ project }: Props) {
-  const name = project.name.split('/')[1];
+  const language = project.language;
+  
   return (
-    <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full text-gray-900 dark:text-gray-100 flex flex-col">
-      <div className="flex flex-items justify-between">
-        <h3 className="text-lg text-ellipsis whitespace-nowrap overflow-hidden">
-          {name}
-        </h3>
-        <div className="ml-4 min-w-[24px]">
-          <a target="_blank" rel="noopener noreferrer" href={project.url} title={`${project.name} GitHub`}>
+    <a
+      href={`https://github.com/${project.name}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div
+        className="h-36 flex flex-col justify-between gap-y-2 border border-gray-700 p-4 rounded-xl text-gray-200 hover:bg-gray-800"
+      >
+        <div className="flex flex-col gap-y-2">
+          <span className="text-xl font-medium text-ellipsis whitespace-nowrap overflow-hidden">
+              {project.name.split("/")[1]}
+            </span>
+          <p className="text-sm">{project.description}</p>
+        </div>
+        <div className="flex items-center gap-x-2 text-sm">
+          <span
+            className="underline decoration-wavy underline-offset-4"
+            style={{
+              textDecorationColor: language.color
+            }}
+          >
+            {language.name}
+          </span>
+          <span>•</span>
+
+          <div>
             <svg
-              className="h-4 w-4 ml-1 inline-block align-middle overflow-hidden"
+              stroke="currentColor"
+              fill="none"
+              strokeWidth="2"
               viewBox="0 0 24 24"
-              fill="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="inline-block w-4 h-4"
+              height="16px"
+              width="16px"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M16.24 22a1 1 0 01-1-1v-2.6a2.15 2.15 0 00-.54-1.66 1 1 0 01.61-1.67C17.75 14.78 20 14 20 9.77a4 4 0 00-.67-2.22 2.75 2.75 0 01-.41-2.06 3.71 3.71 0 000-1.41 7.65 7.65 0 00-2.09 1.09 1 1 0 01-.84.15 10.15 10.15 0 00-5.52 0 1 1 0 01-.84-.15 7.4 7.4 0 00-2.11-1.09 3.52 3.52 0 000 1.41 2.84 2.84 0 01-.43 2.08 4.07 4.07 0 00-.67 2.23c0 3.89 1.88 4.93 4.7 5.29a1 1 0 01.82.66 1 1 0 01-.21 1 2.06 2.06 0 00-.55 1.56V21a1 1 0 01-2 0v-.57a6 6 0 01-5.27-2.09 3.9 3.9 0 00-1.16-.88 1 1 0 11.5-1.94 4.93 4.93 0 012 1.36c1 1 2 1.88 3.9 1.52a3.89 3.89 0 01.23-1.58c-2.06-.52-5-2-5-7a6 6 0 011-3.33.85.85 0 00.13-.62 5.69 5.69 0 01.33-3.21 1 1 0 01.63-.57c.34-.1 1.56-.3 3.87 1.2a12.16 12.16 0 015.69 0c2.31-1.5 3.53-1.31 3.86-1.2a1 1 0 01.63.57 5.71 5.71 0 01.33 3.22.75.75 0 00.11.57 6 6 0 011 3.34c0 5.07-2.92 6.54-5 7a4.28 4.28 0 01.22 1.67V21a1 1 0 01-.94 1z" />
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                />
             </svg>
-          </a>
+            <span className="pl-1">
+              {project.stars}
+            </span>
+          </div>
+          <span>•</span>
+          <div>
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 24 24"
+              className="inline-block w-4 h-4"
+              height="16px"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.559 8.855c.166 1.183.789 3.207 3.087 4.079C11 13.829 11 14.534 11 15v.163c-1.44.434-2.5 1.757-2.5 3.337 0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5c0-1.58-1.06-2.903-2.5-3.337V15c0-.466 0-1.171 2.354-2.065 2.298-.872 2.921-2.896 3.087-4.079C19.912 8.441 21 7.102 21 5.5 21 3.57 19.43 2 17.5 2S14 3.57 14 5.5c0 1.552 1.022 2.855 2.424 3.313-.146.735-.565 1.791-1.778 2.252-1.192.452-2.053.953-2.646 1.536-.593-.583-1.453-1.084-2.646-1.536-1.213-.461-1.633-1.517-1.778-2.252C8.978 8.355 10 7.052 10 5.5 10 3.57 8.43 2 6.5 2S3 3.57 3 5.5c0 1.602 1.088 2.941 2.559 3.355zM17.5 4c.827 0 1.5.673 1.5 1.5S18.327 7 17.5 7 16 6.327 16 5.5 16.673 4 17.5 4zm-4 14.5c0 .827-.673 1.5-1.5 1.5s-1.5-.673-1.5-1.5.673-1.5 1.5-1.5 1.5.673 1.5 1.5zM6.5 4C7.327 4 8 4.673 8 5.5S7.327 7 6.5 7 5 6.327 5 5.5 5.673 4 6.5 4z"
+                />
+            </svg>
+            <span className="pl-1">{project.forks}</span>
+          </div>
         </div>
       </div>
-      <p className="mt-2 flex-1">
-        {parseEmojis(project.description || 'No description was set')}
-      </p>
-      <div className="pt-4 text-sm flex items-center gap-2">
-        <span className="flex items-center gap-1.5">
-          <span style={{ color: project.primaryLanguage.color }}>⬤</span>
-          {project.primaryLanguage.name}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <FiStar /> {project.stars}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <BiGitRepoForked /> {project.forks}
-        </span>
-      </div>
-    </div>
+    </a>
   );
 }

@@ -1,6 +1,4 @@
-import { withContentlayer } from 'next-contentlayer';
-import NextBundleAnalyzer from '@next/bundle-analyzer';
-!process.env.SKIP_ENV_VALIDATION && (await import('./src/env/server.mjs'));
+import NextBundleAnalyzer from "@next/bundle-analyzer";
 
 /**
  * @template {import('next').NextConfig} T
@@ -9,8 +7,8 @@ import NextBundleAnalyzer from '@next/bundle-analyzer';
  */
 function defineNextConfig(config) {
   return NextBundleAnalyzer({
-    enabled: process.env.ANALYZE === 'true'
-  })(withContentlayer(config));
+    enabled: process.env.ANALYZE === "true"
+  })(config);
 }
 
 export default defineNextConfig({
@@ -19,59 +17,33 @@ export default defineNextConfig({
   experimental: {
     legacyBrowsers: false,
     fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['latin'] } }
-    ],
+      { loader: "@next/font/google", options: { subsets: ["latin"] } }
+    ]
   },
   async redirects() {
     return [
       {
-        source: '/',
+        source: "/",
         has: [
           {
-            type: 'host',
-            value: 'git.luxass.dev'
+            type: "host",
+            value: "git.luxass.dev"
           }
         ],
-        destination: `https://github.com/luxass`,
+        destination: "https://github.com/luxass",
         permanent: true
       },
       {
-        source: '/',
+        source: "/",
         has: [
           {
-            type: 'host',
-            value: 'linkedin.luxass.dev'
+            type: "host",
+            value: "linkedin.luxass.dev"
           }
         ],
-        destination: `https://www.linkedin.com/in/lucasnrgaard/`,
+        destination: "https://www.linkedin.com/in/lucasnrgaard/",
         permanent: true
       }
     ];
-  },
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'posts.luxass.dev'
-            }
-          ],
-          destination: '/posts/:path*'
-        },
-        {
-          source: '/:path*',
-          has: [
-            {
-              type: 'host',
-              value: 'blog.luxass.dev'
-            }
-          ],
-          destination: '/posts/:path*'
-        }
-      ]
-    };
   }
 });
