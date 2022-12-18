@@ -1,6 +1,6 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "@luxass/eslint-config/react"
+    "@luxass/eslint-config/react",
+    "next/core-web-vitals"
   ]
 }
