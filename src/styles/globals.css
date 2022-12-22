@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
   html {
     min-width: 360px;
     scroll-behavior: smooth;
@@ -32,3 +32,4 @@
   display: table;
 }
 
+ */
