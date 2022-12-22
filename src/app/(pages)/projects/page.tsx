@@ -1,6 +1,3 @@
-import clsx from "clsx";
-
-import Link from "next/link";
 import { ProjectCard } from "~/components/ProjectCard";
 import type { Projects } from "~/lib/types";
 
@@ -18,7 +15,6 @@ export default async function ProjectPage() {
     // projects[j] -> projects[i]
     [projects[i], projects[j]] = [projects[j], projects[i]];
   }
-
 
   return (
     <div className="p-3 text-white">
