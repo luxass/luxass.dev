@@ -11,6 +11,7 @@ export default async function Page({ params }: {
   return (
       <div>
         {JSON.stringify(params)}
+        {new Date().getTime()}
       </div>
   );
 }

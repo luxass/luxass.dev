@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Page() {
   return (
     <section className="p-3 flex items-start">
@@ -17,14 +19,14 @@ export default function Page() {
           </p>
         </div>
         <div className="sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
-{/*           <Image
+        <Image
             alt="Lucas Nørgård"
             height={200}
             width={150}
             src="/avatar.jpg"
             priority
             className="rounded-lg filter grayscale"
-          /> */}
+          />
 
           <div className="mt-4 bg-gray-600 rounded-lg">
             <div className="flex justify-center items-center">
