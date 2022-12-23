@@ -1,11 +1,8 @@
 import Image from "next/image";
-import type { NextPage } from "next/types";
-import { DefaultLayout } from "~/layouts/default";
 
-const AboutPage: NextPage<{}> = () => {
+export default function Page() {
   return (
-    <DefaultLayout title="Lucas Norgaard - About">
-      <section className="p-3 flex items-start">
+    <section className="p-3 flex items-start">
         <div className="flex-1 flex flex-col pr-8 h-[200px]">
           <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-2 text-white">
             Lucas Nørgård
@@ -22,7 +19,7 @@ const AboutPage: NextPage<{}> = () => {
           </p>
         </div>
         <div className="sm:w-[150px] relative mb-8 sm:mb-0 mr-auto">
-          <Image
+        <Image
             alt="Lucas Nørgård"
             height={200}
             width={150}
@@ -100,7 +97,5 @@ const AboutPage: NextPage<{}> = () => {
           </div>
         </div>
       </section>
-    </DefaultLayout>
   );
-};
-export default AboutPage;
+}

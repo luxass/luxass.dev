@@ -1,7 +1,18 @@
-import type { NextPage } from "next/types";
-import Link from "next/link";
+"use client";
 
-const NotFound: NextPage<{}> = () => {
+import Link from "next/link";
+import { useEffect } from "react";
+
+export default function Error({
+  error
+}: {
+  error: Error
+  reset: () => void
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <div className="w-full h-screen flex items-center justify-center flex-col text-gray-400 text-center">
       <h1 className="text-6xl">
@@ -16,5 +27,4 @@ const NotFound: NextPage<{}> = () => {
       </Link>
     </div>
   );
-};
-export default NotFound;
+}
