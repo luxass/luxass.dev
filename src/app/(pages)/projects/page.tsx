@@ -28,14 +28,11 @@ export default async function ProjectPage() {
           </p>
       </div>
     </section>
-    <section className="mt-8">
-      <h2 className="text-3xl">Selected projects, you need to see.</h2>
-      <div className="mt-4 grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
         {projects
           && projects.map(project => (
             <ProjectCard key={project.url} project={project} />
           ))}
-      </div>
     </section>
   </div>
   );
