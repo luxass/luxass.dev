@@ -18,6 +18,7 @@
     min-height: 100vh;
   }
 }
+*/
 
 
 .capsize::before {
@@ -32,4 +33,6 @@
   display: table;
 }
 
- */
+body {
+  --font-inter: "__Inter_9c9965"
+}

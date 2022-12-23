@@ -5,9 +5,6 @@
  */
 function defineNextConfig(config) {
   return config;
-/*   return NextBundleAnalyzer({
-    enabled: process.env.ANALYZE === "true"
-  })(config); */
 }
 
 export default defineNextConfig({
