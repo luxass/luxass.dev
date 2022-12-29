@@ -9,13 +9,6 @@ export default async function ProjectPage() {
   );
   const { projects } = (await res.json()) as Projects;
 
-  for (let i = projects.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    // projects[i] -> projects[j]
-    // projects[j] -> projects[i]
-    [projects[i], projects[j]] = [projects[j], projects[i]];
-  }
-
   return (
     <div className="p-3">
       <section className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
