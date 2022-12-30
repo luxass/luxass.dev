@@ -1,6 +1,7 @@
 export function Metatags() {
   return (
     <>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
       <link href="/favicons/favicon.ico" rel="shortcut icon" />
       <link href="/favicons/site.webmanifest" rel="manifest" />
       <link href="/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
