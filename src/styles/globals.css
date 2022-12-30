@@ -2,25 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
-  html {
-    min-width: 360px;
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-gray-900;
-  }
-  
-   #__next {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-}
-*/
-
-
 .capsize::before {
   content: '';
   margin-bottom: -0.098em;
@@ -31,8 +12,4 @@
   content: '';
   margin-top: -0.219em;
   display: table;
-}
-
-body {
-  --font-inter: "__Inter_9c9965"
 }
