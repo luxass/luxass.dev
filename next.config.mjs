@@ -13,30 +13,4 @@ export default defineNextConfig({
   experimental: {
     appDir: true
   }
-  /* async redirects() {
-    return [
-      {
-        source: "/",
-        has: [
-          {
-            type: "host",
-            value: "git.luxass.dev"
-          }
-        ],
-        destination: "https://github.com/luxass",
-        permanent: true
-      },
-      {
-        source: "/",
-        has: [
-          {
-            type: "host",
-            value: "linkedin.luxass.dev"
-          }
-        ],
-        destination: "https://www.linkedin.com/in/lucasnrgaard/",
-        permanent: true
-      }
-    ];
-  } */
 });
