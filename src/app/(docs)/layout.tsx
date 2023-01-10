@@ -1,13 +1,13 @@
-// import { Inter } from "@next/font/google";
+import { Inter } from "@next/font/google";
 import { Header } from "~/components/Header";
 
 import "~/styles/globals.css";
 
-// const inter = Inter({
-//   subsets: ["latin"],
-//   variable: "--font-inter",
-//   display: "swap"
-// });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap"
+});
 
 export default function DocsLayout({
   children
@@ -15,8 +15,7 @@ export default function DocsLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <html lang="en" className={inter.variable}>
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head />
       <body className="flex flex-col min-height-screen max-w-2xl mx-auto bg-gray-900 font-inter antialiased">
         <Header />
