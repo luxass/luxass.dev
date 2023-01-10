@@ -12,12 +12,15 @@
             },
             "tasks": {
               "type": "array",
-              "enum": [
-                "commit",
-                "push",
-                "tag",
-                "execute"
-              ],
+              "items": {
+                "type": "string",
+                "enum": [
+                  "commit",
+                  "push",
+                  "tag",
+                  "execute"
+                ]
+              },
               "description": "Tasks to execute"
             },
             "commit_message": {
