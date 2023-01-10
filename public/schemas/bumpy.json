@@ -39,5 +39,112 @@
         }
       }
     }
-  }
+  },
+  "required": [
+    "projects"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "projects": {
+            "patternProperties": {
+              ".*": {
+                "properties": {
+                  "tasks": {
+                    "contains": {
+                      "enum": [
+                        "commit"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "projects": {
+            "patternProperties": {
+              ".*": {
+                "required": [
+                  "commit_message"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "projects": {
+            "patternProperties": {
+              ".*": {
+                "properties": {
+                  "tasks": {
+                    "contains": {
+                      "enum": [
+                        "execute"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "projects": {
+            "patternProperties": {
+              ".*": {
+                "required": [
+                  "execute"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+     {
+      "if": {
+        "properties": {
+          "projects": {
+            "patternProperties": {
+              ".*": {
+                "properties": {
+                  "tasks": {
+                    "contains": {
+                      "enum": [
+                        "tag"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "projects": {
+            "patternProperties": {
+              ".*": {
+                "required": [
+                  "tag_prefix"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
