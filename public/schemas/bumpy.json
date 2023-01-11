@@ -8,7 +8,8 @@
           "properties": {
             "path": {
               "type": "string",
-              "description": "Path to the project"
+              "description": "Path to the project",
+              "default": "./package.json"
             },
             "tasks": {
               "type": "array",
@@ -19,23 +20,30 @@
                   "push",
                   "tag",
                   "execute"
-                ]
+                ],
+                "uniqueItems": true
               },
               "description": "Tasks to execute"
             },
             "commit_message": {
               "type": "string",
-              "description": "Commit message to use when `commit` is set"
+              "description": "Commit message to use when `commit` is set",
+              "default": "chore: release v"
             },
             "tag_prefix": {
               "type": "string",
-              "description": "Tag prefix to use when `tasks.tag` is set"
+              "description": "Tag prefix to use when `tasks.tag` is set",
+              "default": "v"
             },
             "execute": {
               "type": "string",
               "description": "Execute a command before commiting"
             }
-          }
+          },
+          "required": [
+            "path",
+            "tasks"
+          ]
         }
       }
     }
