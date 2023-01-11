@@ -20,9 +20,9 @@
                   "push",
                   "tag",
                   "execute"
-                ],
-                "uniqueItems": true
+                ]
               },
+              "uniqueItems": true,
               "description": "Tasks to execute"
             },
             "commit_message": {
