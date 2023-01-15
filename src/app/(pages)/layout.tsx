@@ -5,7 +5,8 @@ import "~/styles/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  // @ts-expect-error https://github.com/vercel/turbo/issues/3139
+  variable: ["--font-inter"],
   display: "swap"
 });
 
@@ -15,6 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    // @ts-expect-error https://github.com/vercel/turbo/issues/3139
     <html lang="en" className={inter.variable}>
       <head />
       <body className="flex flex-col min-height-screen max-w-2xl mx-auto bg-gray-900 font-inter antialiased">
