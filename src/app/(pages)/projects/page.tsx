@@ -20,10 +20,10 @@ export default async function ProjectPage() {
         </p>
       </section>
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
-          {projects
-            && projects.map(project => (
-              <ProjectCard key={project.url} project={project} />
-            ))}
+        {projects &&
+          projects.map((project) => (
+            <ProjectCard key={project.url} project={project} />
+          ))}
       </section>
     </div>
   );
