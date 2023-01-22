@@ -1,9 +1,11 @@
 "use client";
+
 import clsx from "clsx";
 import Link from "next/link";
-
 import { usePathname } from "next/navigation";
 
+const activeClasses = "font-semibold text-gray-200";
+const inactiveClasses = "font-normal text-gray-400";
 export function Header() {
   const pathname = usePathname();
   return (
@@ -13,37 +15,28 @@ export function Header() {
           <Link
             href="/"
             className={clsx(
-              pathname === "/" || pathname === ""
-                ? "font-semibold text-gray-200"
-                : "font-normal text-gray-400",
+              ["", "/"].includes(pathname!) ? activeClasses : inactiveClasses,
               "inline-block px-3 py-2 rounded-lg hover:bg-gray-800 transition-all"
             )}
-            passHref
-          >
+            passHref>
             <span className="capsize">Home</span>
           </Link>
           <Link
             href="/projects"
             className={clsx(
-              pathname === "/projects"
-                ? "font-semibold text-gray-200"
-                : "font-normal text-gray-400",
+              pathname === "/projects" ? activeClasses : inactiveClasses,
               "inline-block px-3 py-2 rounded-lg hover:bg-gray-800 transition-all"
             )}
-            passHref
-          >
+            passHref>
             <span className="capsize">Projects</span>
           </Link>
           <Link
             href="/about"
             className={clsx(
-              pathname === "/about"
-                ? "font-semibold text-gray-200"
-                : "font-normal text-gray-400",
+              pathname === "/about" ? activeClasses : inactiveClasses,
               "inline-block px-3 py-2 rounded-lg hover:bg-gray-800 transition-all"
             )}
-            passHref
-          >
+            passHref>
             <span className="capsize">About</span>
           </Link>
         </div>

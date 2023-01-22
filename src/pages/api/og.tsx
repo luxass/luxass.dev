@@ -8,22 +8,8 @@ export const config = {
 export default function () {
   return new ImageResponse(
     (
-      <div
-        style={{
-          fontSize: 128,
-          background: "white",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          textAlign: "center",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-        
-      >
-        <p tw="text-blue-600">
-          LN
-        </p>
+      <div tw="text-center items-center justify-center flex w-full h-full bg-white text-[128px]">
+        <p tw="text-blue-600">LN</p>
       </div>
     ),
     {
