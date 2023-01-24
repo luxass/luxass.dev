@@ -1,4 +1,4 @@
-name: Fetch Projects
+name: Build Time
 
 on:
   workflow_dispatch:
