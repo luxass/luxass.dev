@@ -1,0 +1,28 @@
+name: Fetch Projects
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every night at 1:13
+    - cron: "23 1 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Write file
+        run: |
+          # Get current time
+          CURRENT_TIME=$(date +%s)
+          echo $CURRENT_TIME > .github/.luxass
+
+      - name: Add files
+        run: |
+          git config user.name luxass
+          git config user.email lucasnrgaard@gmail.com
+          git add .github/.luxass
+          git commit -m "ci: update time"
+          git push
