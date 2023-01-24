@@ -1,5 +1,16 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/:all*(ttf|otf|woff|woff2)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/",
@@ -9,7 +20,8 @@
           "value": "git.luxass.dev"
         }
       ],
-      "destination": "https://github.com/luxass"
+      "destination": "https://github.com/luxass",
+      "permanent": true
     },
     {
       "source": "/",
@@ -19,7 +31,12 @@
           "value": "linkedin.luxass.dev"
         }
       ],
-      "destination": "https://www.linkedin.com/in/lucasnrgaard/"
+      "destination": "https://www.linkedin.com/in/lucasnrgaard/",
+      "permanent": true
+    },
+    {
+      "source": "/view-source",
+      "destination": "https://github.com/luxass/luxass.dev"
     }
   ]
 }

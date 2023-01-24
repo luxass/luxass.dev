@@ -1,15 +1,18 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const defaultTheme = require("tailwindcss/defaultTheme");
+import {
+  defineConfig,
+  presetUno,
+  transformerDirectives,
+  transformerVariantGroup
+} from "unocss";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{ts,tsx}"],
-  future: {
-    hoverOnlyWhenSupported: true
-  },
+export default defineConfig({
+  presets: [presetUno()],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
+    fontFamily: {
+      inter: "Inter, sans-serif"
+    },
     colors: {
-      white: "#fff",
       gray: {
         50: "#fafafa",
         100: "#f5f5f5",
@@ -34,10 +37,6 @@ module.exports = {
         800: "#1e40af",
         900: "#1e3a8a"
       }
-    },
-    fontFamily: {
-      inter: ["var(--font-inter)", ...defaultTheme.fontFamily.sans]
     }
-  },
-  plugins: [require("@tailwindcss/typography")]
-};
+  }
+});

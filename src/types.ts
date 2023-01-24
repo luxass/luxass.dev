@@ -7,14 +7,15 @@ export interface Projects {
 }
 
 export interface Project {
-  name: string
-  description: string
-  url: string
-  pushedAt: string
-  stars: number
-  forks: number
+  name: string;
+  owner: string;
+  description: string;
+  url: string;
+  pushedAt: string;
+  stars: number;
+  forks: number;
   language: {
-    color: string
-    name: string
-  }
+    color: string;
+    name: string;
+  };
 }
