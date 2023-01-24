@@ -1,9 +1,12 @@
 // @ts-check
 
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import prefetch from "@astrojs/prefetch";
+import unocss from "unocss/astro";
+import sitemap from "@astrojs/sitemap";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()]
+  site: "https://luxass.dev",
+  integrations: [unocss(), mdx(), sitemap(), prefetch()],
 });
