@@ -1,5 +1,8 @@
 ---
+import NavLink from "./NavLink.astro";
+
 const { pathname } = Astro.url;
+console.log(pathname);
 ---
 
 <header class="border-b border-gray-800 sm:mb-12">
@@ -7,36 +10,9 @@ const { pathname } = Astro.url;
     class="flex items-center justify-between w-full relative mx-auto py-8 px-4 text-gray-100 bg-gray-900 bg-opacity-60"
   >
     <div>
-      <a
-        href="/"
-        class={`inline-block px-3 py-2 rounded-lg hover:bg-gray-800 ${
-          pathname === "/"
-            ? "font-semibold text-gray-200"
-            : "font-normal text-gray-400"
-        }`}
-      >
-        Home
-      </a>
-      <a
-        href="/projects"
-        class={`inline-block px-3 py-2 rounded-lg hover:bg-gray-800 ${
-          pathname === "/projects"
-            ? "font-semibold text-gray-200"
-            : "font-normal text-gray-400"
-        }`}
-      >
-        Projects
-      </a>
-      <a
-        href="/about"
-        class={`inline-block px-3 py-2 rounded-lg hover:bg-gray-800 ${
-          pathname === "/about"
-            ? "font-semibold text-gray-200"
-            : "font-normal text-gray-400"
-        }`}
-      >
-        About
-      </a>
+      <NavLink href="/">Home</NavLink>
+      <NavLink href="/projects">Projects</NavLink>
+      <NavLink href="/about">About</NavLink>
     </div>
   </nav>
 </header>

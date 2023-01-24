@@ -2,7 +2,7 @@ import {
   defineConfig,
   presetUno,
   transformerDirectives,
-  transformerVariantGroup,
+  transformerVariantGroup
 } from "unocss";
 
 export default defineConfig({
@@ -10,7 +10,7 @@ export default defineConfig({
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     fontFamily: {
-      inter: "Inter, sans-serif",
+      inter: "Inter, sans-serif"
     },
     colors: {
       gray: {
@@ -23,7 +23,7 @@ export default defineConfig({
         600: "#525252",
         700: "#404040",
         800: "#262626",
-        900: "#171717",
+        900: "#171717"
       },
       blue: {
         50: "#eff6ff",
@@ -35,8 +35,8 @@ export default defineConfig({
         600: "#2563eb",
         700: "#1d4ed8",
         800: "#1e40af",
-        900: "#1e3a8a",
-      },
-    },
-  },
+        900: "#1e3a8a"
+      }
+    }
+  }
 });
