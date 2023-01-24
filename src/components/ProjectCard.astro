@@ -1,8 +1,11 @@
 ---
 import type { Project } from "~/types";
 
-export type Props = Omit<Project, "pushedAt">;
-const { name, owner, description, stars, forks, language, url } = Astro.props;
+export type Props = {
+  project: Project;
+};
+const { name, description, stars, forks, language, url } =
+  Astro.props.project;
 ---
 
 <a href={url} target="_blank" rel="noopener noreferrer">

@@ -33,6 +33,10 @@
       ],
       "destination": "https://www.linkedin.com/in/lucasnrgaard/",
       "permanent": true
+    },
+    {
+      "source": "/view-source",
+      "destination": "https://github.com/luxass/luxass.dev"
     }
   ]
 }

@@ -1,24 +1,32 @@
 ---
-import '../styles/globals.css';
+import "../styles/globals.css";
 
 export interface Props {
   title: string;
+  image?: string
 }
 
-const description = 'With a background as a fullstack developer. Lucas Norgaard builds both modern and scalable applications';
-
-const { title } = Astro.props;
+const description =
+  "With a background as a fullstack developer. Lucas Norgaard builds both modern and scalable applications";
+const keywords =
+  "lucas nørgård, web developer, fullstack, backend, website, lucas, luxass, nørgård";
+const { title, image = new URL("https://image.luxass.dev/api/og") } = Astro.props;
 ---
 
-<meta charset="UTF-8" />
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="luxass.dev" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />

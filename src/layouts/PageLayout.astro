@@ -15,9 +15,9 @@ const { title } = Astro.props;
   <head>
     <Metatags title={title} />
   </head>
-  <body class="max-w-2xl mx-auto">
+  <body class="flex flex-col min-h-screen max-w-2xl mx-auto bg-gray-900 font-inter antialiased">
     <Header />
-    <main class="text-black dark:text-white">
+    <main class="flex-1 p-3 text-white">
       <slot />
     </main>
     <Footer />
