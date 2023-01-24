@@ -3,7 +3,7 @@ name: Build Time
 on:
   workflow_dispatch:
   schedule:
-    # Every night at 1:13
+    # Every night at 1:23
     - cron: "23 1 * * *"
 
 jobs:
