@@ -37,7 +37,9 @@
     {
       "source": "/view-source",
       "destination": "https://github.com/luxass/luxass.dev"
-    },
+    }
+  ],
+  "rewrites": [
     {
       "source": "/",
       "has": [
@@ -46,9 +48,7 @@
           "value": "import-cost.luxass.dev"
         }
       ],
-      "destination": "https://luxass.dev/p/import-cost",
-      "permanent": true
-
+      "destination": "https://luxass.dev/p/import-cost"
     }
   ]
 }
