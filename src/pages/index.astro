@@ -1,7 +1,7 @@
 ---
 import ProjectCard from "~/components/ProjectCard.astro";
 import Layout from "~/layouts/PageLayout.astro";
-import type { Project, Projects } from "~/types";
+import type { Projects } from "~/types";
 
 const res = await fetch(
   "https://raw.githubusercontent.com/luxass/luxass/main/assets/projects.json"
@@ -10,8 +10,6 @@ let { projects } = (await res.json()) as Projects;
 
 for (let i = projects.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1));
-  // projects[i] -> projects[j]
-  // projects[j] -> projects[i]
   [projects[i], projects[j]] = [projects[j], projects[i]];
 }
 

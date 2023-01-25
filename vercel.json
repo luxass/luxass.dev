@@ -41,13 +41,7 @@
   ],
   "rewrites": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "import-cost.luxass.dev"
-        }
-      ],
+      "source": "/import-cost",
       "destination": "https://luxass.dev/p/import-cost"
     }
   ]
