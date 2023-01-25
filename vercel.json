@@ -48,7 +48,7 @@
           "value": "import-cost.luxass.dev"
         }
       ],
-      "destination": "https://luxass.dev/p/import-cost"
+      "destination": "https://luxass.dev/p/import-cost/:path*"
     }
   ]
 }
