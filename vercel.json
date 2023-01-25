@@ -35,6 +35,17 @@
       "permanent": true
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "import-cost.luxass.dev"
+        }
+      ],
+      "destination": "https://luxass.dev/p/import-cost",
+      "permanent": true
+    },
+    {
       "source": "/view-source",
       "destination": "https://github.com/luxass/luxass.dev"
     }
