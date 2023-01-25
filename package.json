@@ -11,19 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.15.0",
     "@astrojs/prefetch": "^0.1.1",
     "@astrojs/sitemap": "^1.0.0",
-    "astro": "^2.0.0"
+    "astro": "^2.0.1"
   },
   "devDependencies": {
     "@luxass/eslint-config": "^2.2.6",
     "@luxass/prettier-config": "^1.1.4",
-    "@unocss/reset": "^0.48.5",
+    "@unocss/reset": "^0.49.0",
     "eslint": "^8.32.0",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.7.2",
     "typescript": "^4.9.4",
-    "unocss": "^0.48.5"
+    "unocss": "^0.49.0"
   }
 }
