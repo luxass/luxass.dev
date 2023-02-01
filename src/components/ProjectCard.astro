@@ -4,8 +4,7 @@ import type { Project } from "~/types";
 export type Props = {
   project: Project;
 };
-const { name, description, stars, forks, language, url } =
-  Astro.props.project;
+const { name, description, stars, forks, language, url } = Astro.props.project;
 ---
 
 <a href={url} target="_blank" rel="noopener noreferrer">
@@ -20,15 +19,21 @@ const { name, description, stars, forks, language, url } =
       <p class="text-sm">{description}</p>
     </div>
     <div class="flex items-center gap-x-2 text-sm">
-      <span
-        class="underline decoration-wavy underline-offset-4"
-        style={{
-          textDecorationColor: language.color,
-        }}
-      >
-        {language.name}
-      </span>
-      <span>•</span>
+      {
+        language && (
+          <>
+            <span
+              class="underline decoration-wavy underline-offset-4"
+              style={{
+                textDecorationColor: language.color,
+              }}
+            >
+              {language.name}
+            </span>
+            <span>•</span>
+          </>
+        )
+      }
 
       <div>
         <svg
