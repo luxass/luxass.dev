@@ -4,16 +4,17 @@ title: Import Cost
 ---
 
 import { PackageManager } from "~/components/PackageManager.tsx";
+import Link from "~/components/Link.astro";
+export const components = { a: (props) => <Link {...props} color="#3178c6" /> };
 
-<h1 class="text-4xl text-center">Import Cost</h1>
+<h1 class="text-4xl text-center mb-8">Import Cost</h1>
 
 <p>
 Import Cost is using the extremely fast bundler [esbuild](https://esbuild.github.io/) to calculate the size of your imports.
-
+<br/>
 But because ESBuild is a native bundler, we can't ship it with the extension.
+So to fix this issue, you will need to install it yourself.
 
 </p>
 
-So to fix this issue, you will need to install it yourself.
-
-<PackageManager pkg="esbuild" client:load />
+<PackageManager client:load />

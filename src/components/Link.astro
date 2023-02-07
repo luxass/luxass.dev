@@ -1,0 +1,17 @@
+---
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  color: string;
+}
+const { href, color, ...props } = Astro.props;
+---
+
+<a
+  href={href}
+  class="underline decoration-wavy underline-offset-4"
+  style={{
+    textDecorationColor: color,
+  }}
+  {...props}
+>
+  <slot />
+</a>
