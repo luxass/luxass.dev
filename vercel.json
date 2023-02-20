@@ -56,7 +56,7 @@
       "destination": "https://luxass.dev/p/import-cost"
     },
     {
-      "source": "/bump",
+      "source": "/bump.ts",
       "destination": "https://raw.githubusercontent.com/luxass/luxass/main/scripts/bump.ts"
     }
   ]
