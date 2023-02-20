@@ -57,7 +57,7 @@
     },
     {
       "source": "/bump",
-      "destination": "https://github.com/luxass/luxass/blob/main/scripts/bump.ts"
+      "destination": "https://raw.githubusercontent.com/luxass/luxass/main/scripts/bump.ts"
     }
   ]
 }
