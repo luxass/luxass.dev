@@ -3,14 +3,24 @@ import { useClipboard } from "~/hooks/useClipboard";
 
 const pkgManager = signal("npm");
 
-export function PackageManager() {
+export interface Props {
+  packageManagers?: string[];
+}
+
+export function PackageManager({
+  packageManagers = [
+    "npm",
+    "pnpm",
+    "yarn",
+  ]
+}: Props) {
   const args = getArgs(pkgManager.value);
   const cmd = `${pkgManager.value} ${args.join(" ")} esbuild`;
   const { copy, copied } = useClipboard();
   return (
     <div className="b border-gray-700 p-2 rounded mt-8">
       <div className="flex gap-2 mb-4">
-        {["npm", "pnpm", "yarn"].map((manager) => (
+        {packageManagers.map((manager) => (
           <>
             <button
               onClick={() => (pkgManager.value = manager)}
