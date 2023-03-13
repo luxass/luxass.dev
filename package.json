@@ -11,8 +11,5 @@
     "@unocss/nuxt": "^0.50.4",
     "nuxt": "^3.2.3",
     "nuxt-og-image": "^1.5.2"
-  },
-  "dependencies": {
-    "probot": "^12.3.0"
   }
 }
