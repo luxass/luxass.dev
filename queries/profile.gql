@@ -1,0 +1,34 @@
+query GetProfile($name: String!) {
+  user(login: $name) {
+    repositories(
+      first: 100
+      orderBy: { direction: ASC, field: PUSHED_AT }
+      privacy: PUBLIC
+    ) {
+      totalCount
+      nodes {
+        name
+        owner {
+          login
+        }
+        description
+        pushedAt
+        url
+        languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
+          nodes {
+            color
+            name
+          }
+        }
+        object(expression: "HEAD:.github") {
+          ... on Tree {
+            entries {
+              name
+              type
+            }
+          }
+        }
+      }
+    }
+  }
+}

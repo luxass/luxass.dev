@@ -5,11 +5,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "update:schema": "curl -H \"Authorization: bearer $GITHUB_TOKEN\" https://api.github.com/graphql -o github-graphql.schema.json"
   },
   "devDependencies": {
     "@unocss/nuxt": "^0.50.4",
     "nuxt": "^3.2.3",
     "nuxt-og-image": "^1.5.2"
+  },
+  "dependencies": {
+    "nuxt-graphql-client": "^0.2.27"
   }
 }
