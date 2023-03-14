@@ -16,7 +16,7 @@ const { data: projects } = await useFetch<
   <section flex flex-col-reverse sm:flex-row items-start>
     <div flex-1 flex flex-col pr-8 min-h-200px>
       <h1 font-bold text-3xl md:text-5xl tracking-tight mb-2>
-        Hey I&apos;m Luxass <span>✌️</span>
+        Hey I&apos;m luxass <span>✌️</span>
       </h1>
       <p text-gray-200 flex-1>
         I&apos;m a self-taught developer based in Grenaa, Denmark. <br />
@@ -62,7 +62,7 @@ const { data: projects } = await useFetch<
     </div>
   </section>
   <section mt-8>
-    <h2 text-3xl>Some of my projects, I've been working on.</h2>
+    <h2 text-3xl>Some of my projects, I&apos;ve been working on.</h2>
     <div mt-4 grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3>
       <ProjectCard v-for="project in projects" v-bind:project="project" />
     </div>
