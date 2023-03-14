@@ -16,11 +16,10 @@ export default defineConfig({
     }),
     presetAttributify(),
     presetIcons({
-      scale: 1.2,
+      scale: 1.5,
       extraProperties: {
         'color': 'inherit',
-        // Avoid crushing of icons in crowded situations
-        'min-width': '1.2em',
+        'min-width': '1.5em',
       },
     }),
     presetTypography(),
