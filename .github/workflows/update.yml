@@ -15,14 +15,13 @@ jobs:
 
       - name: Write file
         run: |
-          # Get current time
           CURRENT_TIME=$(date +%s)
-          echo $CURRENT_TIME > .github/.luxass
+          echo $CURRENT_TIME > last-update.txt
 
       - name: Add files
         run: |
           git config user.name luxass
           git config user.email lucasnrgaard@gmail.com
-          git add .github/.luxass
+          git add last-update.txt
           git commit -m "ci: update time"
           git push

@@ -7,11 +7,12 @@ const { href, color, ...props } = Astro.props;
 
 <a
   href={href}
-  class="underline decoration-wavy underline-offset-4"
+  underline
+  decoration-wavy
+  underline-offset-4
   style={{
-    textDecorationColor: color,
+    textDecorationColor: color
   }}
-  {...props}
->
+  {...props}>
   <slot />
 </a>

@@ -8,11 +8,7 @@ export interface Props {
 }
 
 export function PackageManager({
-  packageManagers = [
-    "npm",
-    "pnpm",
-    "yarn",
-  ]
+  packageManagers = ["npm", "pnpm", "yarn"]
 }: Props) {
   const args = getArgs(pkgManager.value);
   const cmd = `${pkgManager.value} ${args.join(" ")} esbuild`;
@@ -24,8 +20,7 @@ export function PackageManager({
           <>
             <button
               onClick={() => (pkgManager.value = manager)}
-              className="b border-gray-700 p-2 rounded"
-            >
+              className="b border-gray-700 p-2 rounded">
               {manager}
             </button>
           </>
@@ -36,8 +31,7 @@ export function PackageManager({
         <p>{cmd}</p>
         <button
           class="absolute top-2 right-2 rounded w-6 h-6 hidden group-hover:flex b border-gray-500 items-center justify-center"
-          onClick={() => copy(cmd)}
-        >
+          onClick={() => copy(cmd)}>
           {copied ? <ClipboardIcon color="#3178c6" /> : <ClipboardIcon />}
         </button>
       </div>
@@ -53,8 +47,7 @@ function ClipboardIcon({ color = "currentColor" }: { color?: string }) {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke={color}
-      className="w-4 h-4"
-    >
+      className="w-4 h-4">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

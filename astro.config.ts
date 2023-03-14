@@ -1,10 +1,12 @@
 import { defineConfig } from "astro/config";
-import prefetch from "@astrojs/prefetch";
 import unocss from "unocss/astro";
-import sitemap from "@astrojs/sitemap";
+
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
+import prefetch from "@astrojs/prefetch";
+import sitemap from "@astrojs/sitemap";
 
+// https://astro.build/config
 export default defineConfig({
   site: "https://luxass.dev",
   markdown: {
@@ -14,9 +16,9 @@ export default defineConfig({
     }
   },
   integrations: [
-    unocss(),
+    unocss({}),
     sitemap(),
-    prefetch(),
+    prefetch({}),
     mdx(),
     preact({
       compat: true

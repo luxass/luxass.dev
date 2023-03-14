@@ -1,12 +1,28 @@
 import {
   defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetTypography,
   presetUno,
+  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
-
 export default defineConfig({
-  presets: [presetUno()],
+  presets: [
+    presetUno({
+      attributifyPseudo: true
+    }),
+    presetAttributify(),
+    presetIcons({
+      scale: 1.5,
+      extraProperties: {
+        "color": "inherit",
+        "min-width": "1.5em"
+      }
+    }),
+    presetTypography()
+  ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     fontFamily: {
