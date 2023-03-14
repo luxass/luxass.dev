@@ -11,9 +11,18 @@ import {
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetUno({
+      attributifyPseudo: true
+    }),
     presetAttributify(),
-    presetIcons(),
+    presetIcons({
+      scale: 1.2,
+      extraProperties: {
+        'color': 'inherit',
+        // Avoid crushing of icons in crowded situations
+        'min-width': '1.2em',
+      },
+    }),
     presetTypography(),
     presetWebFonts({
       provider: "none",

@@ -9,7 +9,9 @@
     "update:schema": "curl -H \"Authorization: bearer $GITHUB_TOKEN\" https://api.github.com/graphql -o github-graphql.schema.json"
   },
   "devDependencies": {
+    "@iconify-json/carbon": "^1.1.16",
     "@unocss/nuxt": "^0.50.4",
+    "@unocss/preset-icons": "^0.50.4",
     "nuxt": "^3.2.3",
     "nuxt-og-image": "^1.5.2"
   },

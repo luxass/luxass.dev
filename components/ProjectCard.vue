@@ -13,21 +13,19 @@ defineProps<{
 </script>
 
 <template>
-  <Link :href="project.url" target="_blank" rel="noopener noreferrer">
+  <NuxtLink :href="project.url" target="_blank" rel="noopener noreferrer">
     <div
       h-36
-      flex
-      flex-col
+      flex="~ col"
       justify-between
       gap-y-2
-      border
-      border-gray-700
+      border="~ gray-700"
       p-4
       rounded-xl
       text-gray-200
-      hover:bg-gray-800
+      hover="bg-gray-800"
     >
-      <div flex flex-col gap-y-2>
+      <div flex="~ col" gap-y-2>
         <span
           text-xl
           font-medium
@@ -51,5 +49,5 @@ defineProps<{
         </template>
       </div>
     </div>
-  </Link>
+  </NuxtLink>
 </template>

@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
 
   return repositoryNodes.map((node) => ({
     name: node?.name,
-    description: node?.description,
+    description: (node?.description || "No description was provided.").replaceAll(/:\w+:/gm, ""),
     url: node?.url,
     pushedAt: node?.pushedAt,
     language: node?.languages?.nodes?.at(0),

@@ -10,7 +10,6 @@ const { data: projects, error } = await useFetch<
     };
   }[]
 >("/api/projects");
-console.log(projects.value);
 </script>
 
 <template>
@@ -23,7 +22,7 @@ console.log(projects.value);
         I&apos;m a self-taught developer based in Grenaa, Denmark. <br />
         Currently in ❤️ with Rust & TypeScript
       </p>
-      <Link
+      <NuxtLink
         href="/about"
         mt-12
         w-48
@@ -38,7 +37,7 @@ console.log(projects.value);
       >
         Want to learn more
         <div inline-block group-hover:translate-x-1 transition-transform>→</div>
-      </Link>
+      </NuxtLink>
     </div>
   </section>
   <section mt-8>

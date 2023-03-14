@@ -1,7 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify-json/carbon': ^1.1.16
   '@unocss/nuxt': ^0.50.4
+  '@unocss/preset-icons': ^0.50.4
   nuxt: ^3.2.3
   nuxt-graphql-client: ^0.2.27
   nuxt-og-image: ^1.5.2
@@ -10,7 +12,9 @@ dependencies:
   nuxt-graphql-client: 0.2.27
 
 devDependencies:
+  '@iconify-json/carbon': 1.1.16
   '@unocss/nuxt': 0.50.4
+  '@unocss/preset-icons': 0.50.4
   nuxt: 3.2.3
   nuxt-og-image: 1.5.2
 
@@ -1938,6 +1942,12 @@ packages:
     dependencies:
       graphql: 16.6.0
     dev: false
+
+  /@iconify-json/carbon/1.1.16:
+    resolution: {integrity: sha512-AD8bcnRSGA0WfcGEass2FbA0sagrUzrpFx5WchuDy3uf7yKBWumdypdQK121DH321fQDl5+zZQ26T6gC9knwUQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
