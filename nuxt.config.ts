@@ -66,6 +66,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: "https://luxass.dev",
+      GQL_HOST: "https://api.github.com/graphql",
     },
   },
   "graphql-client": {
