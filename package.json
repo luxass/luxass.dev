@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.16",
-    "@unocss/nuxt": "^0.50.4",
-    "@unocss/preset-icons": "^0.50.4",
-    "nuxt": "^3.3.0"
+    "@unocss/nuxt": "^0.51.8",
+    "@unocss/preset-icons": "^0.51.8",
+    "nuxt": "^3.4.3"
   },
   "dependencies": {
     "nuxt-graphql-client": "^0.2.27"
