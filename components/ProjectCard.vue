@@ -15,7 +15,8 @@ defineProps<{
 <template>
   <NuxtLink :href="project.url" target="_blank" rel="noopener noreferrer">
     <div
-      h-36
+      min-h-36
+      h-full
       flex="~ col"
       justify-between
       gap-y-2

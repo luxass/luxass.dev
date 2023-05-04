@@ -19,7 +19,7 @@ const { data: projects } = await useFetch<
         Hey I&apos;m luxass <span>✌️</span>
       </h1>
       <p text-gray-200 flex-1>
-        I&apos;m a self-taught developer based in Grenaa, Denmark. <br />
+        I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
         In my spare time I enjoy learning new technologies and working on side
         projects.
       </p>

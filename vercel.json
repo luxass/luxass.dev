@@ -35,26 +35,11 @@
       "permanent": true
     },
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "import-cost.luxass.dev"
-        }
-      ],
-      "destination": "https://luxass.dev/p/import-cost",
-      "permanent": true
-    },
-    {
       "source": "/view-source",
       "destination": "https://github.com/luxass/luxass.dev"
     }
   ],
   "rewrites": [
-    {
-      "source": "/import-cost",
-      "destination": "https://luxass.dev/p/import-cost"
-    },
     {
       "source": "/bump.ts",
       "destination": "https://raw.githubusercontent.com/luxass/luxass/main/scripts/bump.ts"
