@@ -1,5 +1,4 @@
 ---
-import Header from '~/components/Header.astro';
 import Metatags from '~/components/Metatags.astro';
 
 export interface Props {
@@ -14,9 +13,8 @@ const { title } = Astro.props;
   <head>
     <Metatags title={title} />
   </head>
-  <body class="flex flex-col min-h-screen max-w-2xl mx-auto bg-gray-900 font-inter antialiased font-inter">
-    <Header />
-    <main class="flex-1 p-3 text-white">
+  <body class="min-h-screen max-w-2xl mx-auto">
+    <main>
       <slot />
     </main>
   </body>
