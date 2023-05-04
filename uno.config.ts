@@ -9,7 +9,7 @@ import {
 
 export default defineConfig({
   presets: [
-    presetUno({}),
+    presetUno(),
     presetIcons({
       scale: 1.5,
       extraProperties: {
