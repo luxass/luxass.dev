@@ -18,6 +18,18 @@
         {
           "type": "host",
           "value": "git.luxass.dev"
+        },
+        {
+          "type": "host",
+          "value": "gh.luxass.dev"
+        },
+        {
+          "type": "host",
+          "value": "git.luxass.com"
+        },
+        {
+          "type": "host",
+          "value": "gh.luxass.com"
         }
       ],
       "destination": "https://github.com/luxass",
@@ -29,6 +41,10 @@
         {
           "type": "host",
           "value": "linkedin.luxass.dev"
+        },
+        {
+          "type": "host",
+          "value": "linkedin.luxass.com"
         }
       ],
       "destination": "https://www.linkedin.com/in/lucasnrgaard/",
@@ -37,6 +53,22 @@
     {
       "source": "/view-source",
       "destination": "https://github.com/luxass/luxass.dev"
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/luxass"
+    },
+    {
+      "source": "/gh",
+      "destination": "https://github.com/luxass"
+    },
+    {
+      "source": "/github/:slug*",
+      "destination": "https://github.com/luxass/:slug*"
+    },
+    {
+      "source": "/gh/:slug*",
+      "destination": "https://github.com/luxass/:slug*"
     }
   ],
   "rewrites": [
