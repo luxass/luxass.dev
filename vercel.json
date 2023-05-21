@@ -18,15 +18,36 @@
         {
           "type": "host",
           "value": "git.luxass.dev"
-        },
+        }
+      ],
+      "destination": "https://github.com/luxass",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
         {
           "type": "host",
           "value": "gh.luxass.dev"
-        },
+        }
+      ],
+      "destination": "https://github.com/luxass",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
         {
           "type": "host",
           "value": "git.luxass.com"
-        },
+        }
+      ],
+      "destination": "https://github.com/luxass",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
         {
           "type": "host",
           "value": "gh.luxass.com"
@@ -41,7 +62,14 @@
         {
           "type": "host",
           "value": "linkedin.luxass.dev"
-        },
+        }
+      ],
+      "destination": "https://www.linkedin.com/in/lucasnrgaard/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
         {
           "type": "host",
           "value": "linkedin.luxass.com"
