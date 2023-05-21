@@ -1,8 +1,8 @@
 import {
   defineConfig,
   presetIcons,
-  presetTypography,
   presetUno,
+  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
@@ -17,13 +17,16 @@ export default defineConfig({
         "min-width": "1.5em"
       }
     }),
-    presetTypography()
+    presetWebFonts({
+      provider: "google",
+      fonts: {
+        sans: "Inter",
+        mono: ["Fira Code", "Fira Mono:400,700"]
+      }
+    })
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
-    fontFamily: {
-      inter: "Inter, sans-serif"
-    },
     colors: {
       gray: {
         50: "#fafafa",
