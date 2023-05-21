@@ -20,8 +20,7 @@ export default defineConfig({
     presetWebFonts({
       provider: "google",
       fonts: {
-        sans: "Inter",
-        mono: ["Fira Code", "Fira Mono:400,700"]
+        sans: "Inter"
       }
     })
   ],
