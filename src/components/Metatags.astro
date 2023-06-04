@@ -1,14 +1,17 @@
 ---
-export interface Props {
-  title: string;
+export type Props = {
+  title: string
   image?: string
-}
+};
 
 const description =
   "With a background as a fullstack developer. Lucas Norgaard builds both modern and scalable applications";
 const keywords =
   "lucas nørgård, web developer, fullstack, backend, website, lucas, luxass, nørgård";
-const { title, image = new URL("https://image.luxass.dev/api/image?width=300&height=300") } = Astro.props;
+const {
+  title,
+  image = new URL("https://image.luxass.dev/api/image?width=300&height=300")
+} = Astro.props;
 ---
 
 <meta charset="utf-8" />

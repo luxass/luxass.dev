@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+
+const posts = await getCollection("blog", ({
+  data
+}) => data.draft !== true);
+
+---
+
+<PageLayout>
+
+
+</PageLayout>
