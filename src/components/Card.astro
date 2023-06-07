@@ -1,0 +1,19 @@
+---
+export type Props = {
+  href?: string
+};
+const { href } = Astro.props;
+
+const Component = href ? "a" : "div";
+const props = href ?
+    { href, target: "_blank", rel: "noopener noreferrer" } :
+    {};
+---
+
+<Component {...props}>
+  <div
+    class="h-full min-h-36 flex flex-col justify-between gap-y-2 border border-gray-700 rounded-xl border-dashed p-4 text-gray-200 hover:border-solid"
+  >
+    <slot />
+  </div>
+</Component>
