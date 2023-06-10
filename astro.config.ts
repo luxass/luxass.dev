@@ -8,7 +8,7 @@ import rehypeSlug from "rehype-slug";
 import remarkSmartypants from "remark-smartypants";
 
 export default defineConfig({
-  site: "https://www.luxass.dev",
+  site: "https://luxass.dev",
   integrations: [
     unocss({
       injectReset: true
