@@ -1,0 +1,24 @@
+---
+export type Props = {
+  href: string
+  class?: string
+};
+
+const { href, class: clazz } = Astro.props;
+
+const isExternal = href.startsWith("http");
+const target = isExternal ? "_blank" : undefined;
+const rel = isExternal ? "noopener noreferrer" : undefined;
+---
+
+<a
+  {href}
+  {target}
+  {rel}
+  class:list={[
+    "underline decoration-neutral-300 underline-offset-4 dark:decoration-neutral-600 hover:(decoration-neutral-400 dark:decoration-neutral-500)",
+    clazz
+  ]}
+>
+  <slot />
+</a>

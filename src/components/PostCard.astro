@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "./Card.astro";
+
+export type Props = {
+  post: CollectionEntry<"blog">
+};
+
+const {
+  post: {
+    data: { title, description, date },
+    slug
+  }
+} = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+});
+---
+
+<Card href={`/blog/${slug}`} class="flex flex-col">
+  <h3 class="!my-0">{title}</h3>
+
+  <p class="flex-1">{description}</p>
+
+  <span class="flex items-center gap-x-1">
+    <div class="i-carbon:white-paper"></div>
+    {formattedDate}
+  </span>
+</Card>

@@ -1,4 +1,4 @@
-import type { Profile, Project } from "~/types";
+import type { Profile, Project } from "../types";
 
 const query = `query GetProfile($name: String!) {
   user(login: $name) {

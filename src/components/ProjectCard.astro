@@ -1,34 +1,30 @@
 ---
-import type { Project } from "~/types";
+import type { Project } from "../types";
+import Card from "./Card.astro";
 
 export type Props = {
-  project: Project;
+  project: Project
 };
 const { name, description, language, url } = Astro.props.project;
 ---
 
-<a href={url} target="_blank" rel="noopener noreferrer">
-  <div
-    class="min-h-36 h-full flex flex-col justify-between gap-y-2 border border-dashed border-gray-700 p-4 rounded-xl text-gray-200 hover:border-solid">
-    <div class="flex flex-col gap-y-2">
-      <span
-        class="text-xl font-medium text-ellipsis whitespace-nowrap overflow-hidden"
-        >{name}</span
-      >
-      <p class="text-sm">{description}</p>
-    </div>
-    {
-      language && (
-        <div class="flex items-center gap-x-2 text-sm">
-          <span
-            class="underline decoration-wavy underline-offset-4"
-            style={{
-              textDecorationColor: language.color
-            }}>
-            {language.name}
-          </span>
-        </div>
-      )
-    }
+<Card href={url} class="flex flex-col justify-between gap-y-2">
+  <div class="flex flex-col gap-y-2">
+    <span class="overflow-hidden text-ellipsis whitespace-nowrap">{name}</span>
+    <p class="text-sm">{description}</p>
   </div>
-</a>
+  {
+    language && (
+      <div class="flex items-center gap-x-2">
+        <span
+          class="underline underline-offset-4 decoration-wavy"
+          style={{
+            textDecorationColor: language.color
+          }}
+        >
+          {language.name}
+        </span>
+      </div>
+    )
+  }
+</Card>
