@@ -8,17 +8,14 @@ export type Props = {
 const { name, description, language, url } = Astro.props.project;
 ---
 
-<Card href={url}>
+<Card href={url} class="flex flex-col justify-between gap-y-2">
   <div class="flex flex-col gap-y-2">
-    <span
-      class="overflow-hidden text-ellipsis whitespace-nowrap text-xl font-medium"
-      >{name}</span
-    >
+    <span class="overflow-hidden text-ellipsis whitespace-nowrap">{name}</span>
     <p class="text-sm">{description}</p>
   </div>
   {
     language && (
-      <div class="flex items-center gap-x-2 text-sm">
+      <div class="flex items-center gap-x-2">
         <span
           class="underline underline-offset-4 decoration-wavy"
           style={{

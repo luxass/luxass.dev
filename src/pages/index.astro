@@ -1,55 +1,57 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import Link from "../components/Link.astro";
 import { getProfile } from "../utils/projects";
 
 const projects = await getProfile("luxass");
-
-for (let i = projects.length - 1; i > 0; i--) {
-  const j = Math.floor(Math.random() * (i + 1));
-  [projects[i], projects[j]] = [projects[j], projects[i]];
-}
 ---
 
-<PageLayout title="home | luxass.dev" description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications">
-  <section class="flex flex-col-reverse items-start sm:flex-row">
-    <div class="min-h-200px flex flex-1 flex-col pr-8">
-      <h1 class="mb-2 text-3xl font-bold tracking-tight md:text-5xl">
-        Hey I&apos;m luxass <span>✌️</span>
-      </h1>
-      <p class="flex-1 text-gray-200">
-        I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
-        In my spare time I enjoy learning new technologies and working on side projects.
-      </p>
-      <div
-        class="mt-8 inline-block w-30 flex justify-between rounded-lg bg-gray-800 px-3 py-2 font-normal text-gray-400"
-      >
-        <a
-          href="https://github.com/luxass"
-          target="_blank"
-          class="hover:text-white"
-        >
-          <div class="i-carbon:logo-github"></div>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/lucasnrgaard/"
-          target="_blank"
-          class="hover:text-white"
-        >
-          <div class="i-carbon:logo-linkedin"></div>
-        </a>
-        <a
-          href="mailto:lucasnrgaard@gmail.com"
-          target="_blank"
-          class="hover:text-white"
-        >
-          <div class="i-carbon:email"></div>
-        </a>
-      </div>
-    </div>
-  </section>
+<PageLayout
+  title="home | luxass.dev"
+  description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications"
+>
+  <div class="min-h-200px">
+    <h1>
+      Hey I&apos;m luxass <span>✌️</span>
+    </h1>
+    <p>
+      I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
+      In my spare time, I enjoy learning new technologies and working on side projects.
+      <br />
+      <br />
+      occasionally I also write some articles on my <Link href="/blog">
+        blog
+      </Link>.
+    </p>
+  </div>
+  <div
+    class="mt-4 inline-block w-30 flex justify-between rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
+  >
+    <a
+      href="https://github.com/luxass"
+      target="_blank"
+      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+    >
+      <div class="i-carbon:logo-github text-2xl"></div>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/lucasnrgaard/"
+      target="_blank"
+      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+    >
+      <div class="i-carbon:logo-linkedin text-2xl"></div>
+    </a>
+    <a
+      href="mailto:lucasnrgaard@gmail.com"
+      target="_blank"
+      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+    >
+      <div class="i-carbon:email text-2xl"></div>
+    </a>
+  </div>
   <section class="mt-8">
-    <h2 class="text-3xl">Some of my projects, I&apos;ve been working on.</h2>
+    <h2 class="text-2xl">Some of my projects, I&apos;ve been working on.</h2>
     <div
       class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3"
     >

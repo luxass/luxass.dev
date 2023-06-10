@@ -1,8 +1,9 @@
 ---
 export type Props = {
   href?: string
+  class?: string
 };
-const { href } = Astro.props;
+const { href, class: clazz } = Astro.props;
 
 const Component = href ? "a" : "div";
 const props = href ?
@@ -10,10 +11,11 @@ const props = href ?
     {};
 ---
 
-<Component {...props}>
-  <div
-    class="h-full min-h-36 flex flex-col justify-between gap-y-2 border border-gray-700 rounded-xl border-dashed p-4 text-gray-200 hover:border-solid"
-  >
+<Component
+  {...props}
+  class:list={[
+    "h-full min-h-36 border border-neutral-700 rounded border-dashed p-4 text-neutral-800 hover:border-solid dark:text-neutral-200", clazz && clazz
+  ]}
+>
     <slot />
-  </div>
 </Component>

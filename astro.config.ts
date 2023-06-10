@@ -6,7 +6,6 @@ import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkSmartypants from "remark-smartypants";
-import { remarkBetterCodeblocks } from "./plugins/remark-better-codeblock";
 
 export default defineConfig({
   site: "https://www.luxass.dev",
@@ -26,8 +25,7 @@ export default defineConfig({
     // Override with our own config
     smartypants: false,
     remarkPlugins: [
-      [remarkSmartypants, { dashes: false }],
-      remarkBetterCodeblocks
+      [remarkSmartypants, { dashes: false }]
     ],
     rehypePlugins: [
       rehypeSlug,

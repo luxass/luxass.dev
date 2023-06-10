@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { handle: post.slug },
+    props: { post }
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<"blog">
+};
+
+const {
+  post: {
+    data: { title, description, date, draft, image },
+    render
+  }
+} = Astro.props;
+const { Content } = await render();
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric"
+});
+
+let imageUrl;
+
+if (image) {
+  imageUrl = new URL(image, "https://luxass.dev/public/");
+}
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  image={`https://image.luxass.dev/og/blog/?title=${title}&date=${formattedDate}&description=${description}&image=${imageUrl}`}
+>
+  <div class="prose tracking-wide">
+    {
+      draft && (
+        <blockquote
+          class="my-8 border border-neutral-800 rounded border-dashed py-4 pl-4"
+          role="alert"
+        >
+          This post is a <strong>draft</strong>. If you're reading this, you're
+          probably a cool and trusted person. Please{" "}
+          <strong>don't share</strong> it thank you.
+        </blockquote>
+      )
+    }
+
+    <h1 class="mt-8">{title}</h1>
+    <Content />
+  </div>
+</PageLayout>
