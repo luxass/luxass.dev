@@ -15,7 +15,6 @@ const {
 
 const { pathname } = Astro.url;
 const isBlog = pathname.startsWith("/blog") && Astro.props.title !== "404";
-console.log(Astro);
 
 const href = pathname === "/blog" ? "/" : "/blog";
 ---
