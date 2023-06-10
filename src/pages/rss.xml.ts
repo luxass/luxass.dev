@@ -12,7 +12,7 @@ export async function get({ site }: APIContext) {
   return rss({
     title: "luxass' blog",
     description: "luxass' blog",
-    site: site?.toString() || "https://www.luxass.dev",
+    site: site?.toString() || "https://luxass.dev",
     items: posts.map(({ body, slug, data: { title, description, date: pubDate } }) => ({
       title,
       description,
