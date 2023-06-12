@@ -54,11 +54,25 @@ const href = pathname === "/blog" ? "/" : "/blog";
     <!-- links -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <link
+      rel="preload"
+      href="/fonts/inter.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
     <!-- vercel analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
-    {isBlog && <Link href={href} class="flex items-center gap-x-2"><div class="i-carbon:arrow-left"></div> back</Link>}
+    {
+      isBlog && (
+        <Link href={href} class="flex items-center gap-x-2">
+          <div class="i-carbon:arrow-left" /> back
+        </Link>
+      )
+    }
     <main class="prose">
       <slot />
     </main>

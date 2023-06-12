@@ -6,6 +6,8 @@ import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkSmartypants from "remark-smartypants";
+import { FontaineTransform } from "fontaine";
+
 
 export default defineConfig({
   site: "https://luxass.dev",
@@ -22,7 +24,6 @@ export default defineConfig({
     shikiConfig: {
       theme: "vitesse-dark"
     },
-    // Override with our own config
     smartypants: false,
     remarkPlugins: [
       [remarkSmartypants, { dashes: false }]
@@ -30,6 +31,14 @@ export default defineConfig({
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings
+    ]
+  },
+  vite: {
+    plugins: [
+      FontaineTransform.vite({
+        fallbacks: ["Inter"],
+        resolvePath: (id) => new URL(`./public${id}`, import.meta.url) // id
+      })
     ]
   }
 });
