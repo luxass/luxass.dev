@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    if: github.repository == 'luxass/luxass.dev' && github.event.issue.user.login == 'luxass' && contains(github.event.issue.labels.*.name, '🐣🥚')
+    if: github.repository == 'luxass/luxass.dev' && github.event.issue.user.login == 'luxass' && contains(github.event.issue.labels.*.name, 'easter-🥚')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
