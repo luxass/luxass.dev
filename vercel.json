@@ -97,6 +97,17 @@
     {
       "source": "/gh/:slug*",
       "destination": "https://github.com/luxass/:slug*"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "latest-vscode-release.luxass.dev"
+        }
+      ],
+      "destination": "https://luxass.dev/latest-vscode-release",
+      "permanent": true
     }
   ],
   "rewrites": [
