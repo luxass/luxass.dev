@@ -1,0 +1,49 @@
+---
+import SecretLayout from "../../layouts/SecretLayout.astro";
+import Link from "../../components/Link.astro";
+---
+
+<SecretLayout
+  title="home | luxass.dev"
+  description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications"
+>
+  <div class="min-h-200px">
+    <h1>
+      Hey I&apos;m luxass <span>✌️</span>
+    </h1>
+    <p>
+      I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
+      In my spare time, I enjoy learning new technologies and working on side projects.
+      <br />
+      <br />
+      occasionally I also write some articles on my <Link href="/blog">
+        blog
+      </Link>.
+    </p>
+  </div>
+  <div
+    class="mt-4 inline-block w-30 flex justify-between rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
+  >
+    <a
+      href="https://github.com/luxass"
+      target="_blank"
+      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+    >
+      <div class="i-carbon:logo-github text-2xl"></div>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/lucasnrgaard/"
+      target="_blank"
+      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+    >
+      <div class="i-carbon:logo-linkedin text-2xl"></div>
+    </a>
+    <a
+      href="mailto:lucasnrgaard@gmail.com"
+      target="_blank"
+      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+    >
+      <div class="i-carbon:email text-2xl"></div>
+    </a>
+  </div>
+</SecretLayout>
