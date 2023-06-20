@@ -17,9 +17,9 @@ const { name, description, language, url } = Astro.props.project;
     language && (
       <div class="flex items-center gap-x-2">
         <span
-          class="underline underline-offset-4 decoration-wavy"
+          class="underline decoration-[--language-color] underline-offset-4 decoration-wavy"
           style={{
-            textDecorationColor: language.color
+            "--language-color": language.color
           }}
         >
           {language.name}
