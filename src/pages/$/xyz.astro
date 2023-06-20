@@ -1,5 +1,5 @@
 ---
-import SecretLayout from "../../layouts/SecretLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
 const floats = await fetch(
   "https://www.random.org/decimal-fractions/?num=2&dec=10&col=1&format=plain&rnd=new"
@@ -11,7 +11,7 @@ const x = ((360 * (floats[0] * 2 * Math.PI - Math.PI)) / (2 * Math.PI)).toFixed(
 const y = ((360 * (Math.PI / 2 - Math.acos(floats[1] * 2 - 1))) / (2 * Math.PI)).toFixed(5);
 ---
 
-<SecretLayout title="xyz | luxass.dev" description="Hmmm, what is this?">
+<PageLayout title="xyz | luxass.dev" description="Hmmm, what is this?">
   <h1 class="text-center">
     You have been x: <span
       class="underline decoration-blue-600 underline-offset-4 decoration-wavy"
@@ -21,4 +21,4 @@ const y = ((360 * (Math.PI / 2 - Math.acos(floats[1] * 2 - 1))) / (2 * Math.PI))
       >{y}</span
     >.
   </h1>
-</SecretLayout>
+</PageLayout>
