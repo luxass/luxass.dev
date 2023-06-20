@@ -114,6 +114,76 @@
     {
       "source": "/bump.ts",
       "destination": "https://raw.githubusercontent.com/luxass/luxass/main/scripts/bump.ts"
+    },
+    {
+      "source": "/art",
+      "destination": "/$/art"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "luxass.art"
+        }
+      ],
+      "destination": "/$/art"
+    },
+    {
+      "source": "/beer",
+      "destination": "/$/beer"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "luxass.beer"
+        }
+      ],
+      "destination": "/$/beer"
+    },
+    {
+      "source": "/horse",
+      "destination": "/$/horse"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "luxass.horse"
+        }
+      ],
+      "destination": "/$/horse"
+    },
+    {
+      "source": "/lol",
+      "destination": "/$/lol"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "luxass.lol"
+        }
+      ],
+      "destination": "/$/lol"
+    },
+    {
+      "source": "/xyz",
+      "destination": "/$/xyz"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "luxass.xyz"
+        }
+      ],
+      "destination": "/$/xyz"
     }
   ]
 }
