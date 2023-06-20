@@ -120,7 +120,7 @@
       "destination": "https://luxass.dev/$/art"
     },
     {
-      "source": "/art",
+      "source": "/",
       "has": [
         {
           "type": "host",
@@ -134,7 +134,7 @@
       "destination": "https://luxass.dev/$/beer"
     },
     {
-      "source": "/beer",
+      "source": "/",
       "has": [
         {
           "type": "host",
@@ -148,7 +148,7 @@
       "destination": "https://luxass.dev/$/horse"
     },
     {
-      "source": "/horse",
+      "source": "/",
       "has": [
         {
           "type": "host",
@@ -162,7 +162,7 @@
       "destination": "https://luxass.dev/$/lol"
     },
     {
-      "source": "/lol",
+      "source": "/",
       "has": [
         {
           "type": "host",
@@ -176,7 +176,7 @@
       "destination": "https://luxass.dev/$/xyz"
     },
     {
-      "source": "/xyz",
+      "source": "/",
       "has": [
         {
           "type": "host",
