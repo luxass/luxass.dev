@@ -1,5 +1,3 @@
-
-
 import {
   writeFile
 } from "node:fs/promises";
@@ -39,16 +37,34 @@ export default defineConfig({
           throw new Error(`Failed to fetch font: ${res.status} ${res.statusText}`);
         }
 
-        const font = await res.text();
-        console.log(font);
-        writeFile("font.css", font);
+        let result = await res.text();
 
-        return font;
+        const fontFaces = result.match(/\/\*([^*]*)\*+(?:[^/*][^*]*\*+)*\/\s*@font-face\s*{([^}]+)}/g);
+        if (!fontFaces) throw new Error("No results");
+
+        console.log("AA", fontFaces);
+
+        for (const fontFace of fontFaces) {
+          const family = fontFace.match(/font-family:\s*['"](.+?)['"]/i);
+          const weight = fontFace.match(/font-weight:\s*(.+?);/i);
+          const url = fontFace.match(/url\(.*?\)/ig);
+          if (!url) throw new Error("No url");
+          if (!family) throw new Error("No family");
+          if (!weight) throw new Error("No weight");
+
+          const res = await fetch(url[0].replace(/url\((.*?)\)/i, "$1"));
+          const blob = await res.blob();
+          writeFile(`./public/fonts/${family[1].replace(/['"]/g, "").toLowerCase()}.woff2`, blob.stream());
+          result = result.replace(url[0], `url(/fonts/${family[1].replace(/['"]/g, "").toLowerCase()}.woff2)`);
+        }
+
+        return result;
       },
       fonts: {
         sans: [
           {
             name: "Inter"
+            // weights: ["400", "500", "600"]
           },
           {
             name: "sans-serif",

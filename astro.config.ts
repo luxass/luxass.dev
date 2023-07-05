@@ -6,7 +6,6 @@ import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkSmartypants from "remark-smartypants";
-import { FontaineTransform } from "fontaine";
 
 
 export default defineConfig({
@@ -31,14 +30,6 @@ export default defineConfig({
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings
-    ]
-  },
-  vite: {
-    plugins: [
-      FontaineTransform.vite({
-        fallbacks: ["Inter"],
-        resolvePath: (id) => new URL(`./public${id}`, import.meta.url) // id
-      })
     ]
   }
 });
