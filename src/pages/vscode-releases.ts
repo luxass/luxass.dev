@@ -12,9 +12,9 @@ export async function get() {
   }).then((releases) => releases.filter((release) => semver.gte(release.tag_name, "1.45.0")));
 
   return {
-    body: releases.map((release) => ({
+    body: JSON.stringify(releases.map((release) => ({
       name: release.tag_name,
       url: release.url
-    }))
+    })))
   };
 }
