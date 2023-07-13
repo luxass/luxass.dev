@@ -1,18 +1,15 @@
-export async function get() {
-  const data = await fetch("https://api.github.com/repos/microsoft/vscode/releases?per_page=1", {
-    headers: {
-      "Authorization": `bearer ${import.meta.env.GITHUB_TOKEN}`,
-      "Content-Type": "application/json"
-    }
-  }).then((res) => res.json());
+import { octokit } from "../utils/octokit";
 
-  if (!data) {
-    throw new Error("No data found");
+export async function get() {
+  if (!import.meta.env.GITHUB_TOKEN) {
+    throw new Error("GITHUB_TOKEN environment variable is not set");
   }
 
-
-
-  const release = data[0];
+  const release = await octokit.request("GET /repos/{owner}/{repo}/releases", {
+    owner: "microsoft",
+    repo: "vscode",
+    per_page: 1
+  });
 
   if (!("tag_name" in release)) {
     throw new Error("No tag_name found");
