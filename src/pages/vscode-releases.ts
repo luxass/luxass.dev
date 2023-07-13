@@ -1,3 +1,4 @@
+import semver from "semver";
 import { octokit } from "../utils/octokit";
 
 export async function get() {
@@ -7,21 +8,13 @@ export async function get() {
   const releases = await octokit.paginate("GET /repos/{owner}/{repo}/releases", {
     owner: "microsoft",
     repo: "vscode",
-    per_page: 1
-  });
-
-  if (!releases) {
-    throw new Error("No releases found");
-  }
-
-
-  const release = releases[0];
-
-  if (!("tag_name" in release)) {
-    throw new Error("No tag_name found");
-  }
+    per_page: 100
+  }).then((releases) => releases.filter((release) => semver.gte(release.tag_name, "1.45.0")));
 
   return {
-    body: release.tag_name
+    body: releases.map((release) => ({
+      name: release.tag_name,
+      url: release.url
+    }))
   };
 }
