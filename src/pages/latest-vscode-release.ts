@@ -1,7 +1,7 @@
 import { octokit } from "../utils/octokit";
 
 export async function get() {
-  if (!process.env.GITHUB_TOKEN) {
+  if (!import.meta.env.GITHUB_TOKEN) {
     throw new Error("GITHUB_TOKEN environment variable is not set");
   }
   const releases = await octokit.paginate("GET /repos/{owner}/{repo}/releases", {

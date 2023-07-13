@@ -8,5 +8,5 @@ import {
 
 const $Octokit = Octokit.plugin(paginateRest);
 export const octokit = new $Octokit({
-  auth: process.env.GITHUB_TOKEN
+  auth: import.meta.env.GITHUB_TOKEN
 });
