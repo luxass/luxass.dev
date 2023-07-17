@@ -5,11 +5,13 @@ export async function get() {
     throw new Error("GITHUB_TOKEN environment variable is not set");
   }
 
-  const release = await octokit.request("GET /repos/{owner}/{repo}/releases", {
+  const { data: releases } = await octokit.request("GET /repos/{owner}/{repo}/releases", {
     owner: "microsoft",
     repo: "vscode",
     per_page: 1
   });
+
+  const release = releases[0];
 
   if (!("tag_name" in release)) {
     throw new Error("No tag_name found");
