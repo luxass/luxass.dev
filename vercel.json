@@ -114,6 +114,23 @@
       "has": [
         {
           "type": "host",
+          "value": "vscode-releases.luxass.dev"
+        }
+      ],
+      "destination": "https://luxass.dev/vscode-releases",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/art",
+      "destination": "/$/art"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
           "value": "luxass.art"
         }
       ],
