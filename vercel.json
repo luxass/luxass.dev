@@ -179,10 +179,6 @@
   ],
   "rewrites": [
     {
-      "source": "/bump.ts",
-      "destination": "https://raw.githubusercontent.com/luxass/luxass/main/scripts/bump.ts"
-    },
-    {
       "source": "/art",
       "destination": "/$/art"
     },
