@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "pnpm@8.6.9",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -23,7 +23,7 @@
     "@octokit/core": "^5.0.0",
     "@octokit/plugin-paginate-rest": "^8.0.0",
     "@vercel/analytics": "^1.0.1",
-    "astro": "^2.8.3",
+    "astro": "^2.9.0",
     "markdown-it": "^13.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
