@@ -175,9 +175,7 @@
         }
       ],
       "destination": "/$/xyz"
-    }
-  ],
-  "rewrites": [
+    },
     {
       "source": "/art",
       "destination": "/$/art"
