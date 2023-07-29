@@ -39,9 +39,6 @@ export default defineConfig({
 
         const fontFaces = result.match(/\/\*([^*]*)\*+(?:[^/*][^*]*\*+)*\/\s*@font-face\s*{([^}]+)}/g);
         if (!fontFaces) throw new Error("No results");
-
-        console.log("AA", fontFaces);
-
         for (const fontFace of fontFaces) {
           const family = fontFace.match(/font-family:\s*['"](.+?)['"]/i);
           const weight = fontFace.match(/font-weight:\s*(.+?);/i);
