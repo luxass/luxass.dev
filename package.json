@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@8.6.9",
+  "packageManager": "pnpm@8.6.10",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -18,12 +18,12 @@
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^2.0.0",
+    "@astrojs/sitemap": "^2.0.1",
     "@astrojs/solid-js": "^2.2.0",
     "@octokit/core": "^5.0.0",
     "@octokit/plugin-paginate-rest": "^8.0.0",
     "@vercel/analytics": "^1.0.1",
-    "astro": "^2.9.0",
+    "astro": "^2.9.6",
     "markdown-it": "^13.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
@@ -40,11 +40,11 @@
     "@types/markdown-it": "^12.2.3",
     "@types/sanitize-html": "^2.9.0",
     "@types/semver": "^7.5.0",
-    "@unocss/eslint-plugin": "^0.53.5",
-    "@unocss/reset": "^0.53.5",
-    "eslint": "^8.45.0",
-    "eslint-plugin-astro": "^0.27.2",
+    "@unocss/eslint-plugin": "^0.54.0",
+    "@unocss/reset": "^0.54.0",
+    "eslint": "^8.46.0",
+    "eslint-plugin-astro": "^0.28.0",
     "typescript": "^5.1.6",
-    "unocss": "^0.53.5"
+    "unocss": "^0.54.0"
   }
 }
