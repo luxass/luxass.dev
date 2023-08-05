@@ -18,7 +18,7 @@ type Props = {
 
 const {
   post: {
-    data: { title, description, date, draft },
+    data: { title, description, date, published },
     render
   }
 } = Astro.props;
@@ -28,7 +28,6 @@ const formattedDate = date.toLocaleDateString("en-US", {
   month: "short",
   day: "numeric"
 });
-
 ---
 
 <PageLayout
@@ -38,12 +37,13 @@ const formattedDate = date.toLocaleDateString("en-US", {
 >
   <div class="prose tracking-wide">
     {
-      draft && (
+      !published && (
         <blockquote
-          class="my-8 border border-neutral-800 rounded border-dashed py-4 pl-4"
+          class="my-8 border border-red-400 rounded border-dashed bg-red-900 py-4 pl-4"
           role="alert"
         >
-          This post is a <strong>draft</strong>. It may be incomplete or contain inaccuracies.
+          This post is a <strong>draft</strong>. It may be incomplete or contain
+          inaccuracies.
         </blockquote>
       )
     }

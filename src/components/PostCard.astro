@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import readingTime from "reading-time";
 import Card from "./Card.astro";
 
 export type Props = {
@@ -9,7 +10,8 @@ export type Props = {
 const {
   post: {
     data: { title, description, date },
-    slug
+    slug,
+    body
   }
 } = Astro.props;
 
@@ -18,6 +20,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
   month: "long",
   day: "numeric"
 });
+const time = readingTime(body);
 ---
 
 <Card href={`/blog/${slug}`} class="flex flex-col">
@@ -26,7 +29,11 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
   <p class="flex-1">{description}</p>
 
   <span class="flex items-center gap-x-1">
-    <div class="i-carbon:white-paper"></div>
+    <div class="i-carbon:calendar"></div>
     {formattedDate}
+  </span>
+  <span class="flex items-center gap-x-1">
+    <div class="i-carbon:alarm"></div>
+    {time.text}
   </span>
 </Card>
