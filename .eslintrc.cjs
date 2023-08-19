@@ -4,7 +4,7 @@ const config = {
   extends: [
     "@luxass",
     "plugin:@unocss/recommended",
-    "plugin:astro/recommended"
+    "plugin:astro/recommended",
   ],
   overrides: [
     {
@@ -12,10 +12,16 @@ const config = {
       parser: "astro-eslint-parser",
       parserOptions: {
         parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".astro"]
-      }
-    }
-  ]
+        extraFileExtensions: [".astro"],
+      },
+    },
+    {
+      files: [".github/workflows/*.yml"],
+      rules: {
+        "yml/no-empty-mapping-value": "off",
+      },
+    },
+  ],
 };
 
 module.exports = config;

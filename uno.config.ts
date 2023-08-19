@@ -1,5 +1,5 @@
 import {
-  writeFile
+  writeFile,
 } from "node:fs/promises";
 import {
   defineConfig,
@@ -7,13 +7,13 @@ import {
   presetUno,
   presetWebFonts,
   transformerDirectives,
-  transformerVariantGroup
+  transformerVariantGroup,
 } from "unocss";
 
 export default defineConfig({
   presets: [
     presetUno({
-      dark: "media"
+      dark: "media",
     }),
     presetIcons({
       // scale: 1.5,
@@ -27,8 +27,8 @@ export default defineConfig({
       async customFetch(url) {
         const res = await fetch(url, {
           headers: {
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
-          }
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+          },
         });
 
         if (!res.ok) {
@@ -58,15 +58,15 @@ export default defineConfig({
       fonts: {
         sans: [
           {
-            name: "Inter"
+            name: "Inter",
           },
           {
             name: "sans-serif",
-            provider: "none"
-          }
-        ]
-      }
-    })
+            provider: "none",
+          },
+        ],
+      },
+    }),
   ],
-  transformers: [transformerDirectives(), transformerVariantGroup()]
+  transformers: [transformerDirectives(), transformerVariantGroup()],
 });

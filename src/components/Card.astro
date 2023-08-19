@@ -1,20 +1,20 @@
 ---
-export type Props = {
+export interface Props {
   href?: string
   class?: string
-};
+}
 const { href, class: clazz } = Astro.props;
 
 const Component = href ? "a" : "div";
-const props = href ?
-    { href, target: "_blank", rel: "noopener noreferrer" } :
-    {};
+const props = href
+  ? { href, target: "_blank", rel: "noopener noreferrer" }
+  : {};
 ---
 
 <Component
   {...props}
   class:list={[
-    "h-full min-h-36 border border-neutral-700 rounded border-dashed p-4 text-neutral-800 hover:border-solid dark:text-neutral-200", clazz && clazz
+    "h-full min-h-36 border border-neutral-700 rounded border-dashed p-4 text-neutral-800 hover:border-solid dark:text-neutral-200", clazz && clazz,
   ]}
 >
     <slot />

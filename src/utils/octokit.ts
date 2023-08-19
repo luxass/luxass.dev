@@ -1,12 +1,12 @@
 import {
-  Octokit
+  Octokit,
 } from "@octokit/core";
 
 import {
-  paginateRest
+  paginateRest,
 } from "@octokit/plugin-paginate-rest";
 
 const $Octokit = Octokit.plugin(paginateRest);
 export const octokit = new $Octokit({
-  auth: import.meta.env.GITHUB_TOKEN
+  auth: import.meta.env.GITHUB_TOKEN,
 });

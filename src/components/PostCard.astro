@@ -3,22 +3,22 @@ import type { CollectionEntry } from "astro:content";
 import readingTime from "reading-time";
 import Card from "./Card.astro";
 
-export type Props = {
+export interface Props {
   post: CollectionEntry<"blog">
-};
+}
 
 const {
   post: {
     data: { title, description, date },
     slug,
-    body
-  }
+    body,
+  },
 } = Astro.props;
 
 const formattedDate = new Date(date).toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
-  day: "numeric"
+  day: "numeric",
 });
 const time = readingTime(body);
 ---

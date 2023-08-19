@@ -1,8 +1,8 @@
 ---
-export type Props = {
+export interface Props {
   href: string
   class?: string
-};
+}
 
 const { href, class: clazz } = Astro.props;
 
@@ -17,7 +17,7 @@ const rel = isExternal ? "noopener noreferrer" : undefined;
   {rel}
   class:list={[
     "underline decoration-neutral-300 underline-offset-4 dark:decoration-neutral-600 hover:(decoration-neutral-400 dark:decoration-neutral-500)",
-    clazz
+    clazz,
   ]}
 >
   <slot />

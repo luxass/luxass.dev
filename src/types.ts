@@ -1,4 +1,4 @@
-export type Project = {
+export interface Project {
   name: string
   owner: string
   description: string
@@ -8,17 +8,17 @@ export type Project = {
     color: string
     name: string
   }
-};
+}
 
-export type Profile = {
+export interface Profile {
   user: User
-};
+}
 
-export type User = {
+export interface User {
   repositories: Repositories
-};
+}
 
-export type EdgeNode = {
+export interface EdgeNode {
   name: string
   owner: {
     login: string
@@ -28,29 +28,29 @@ export type EdgeNode = {
   url: string
   languages: Languages
   object: Object | null
-};
+}
 
-export type Languages = {
+export interface Languages {
   nodes: LanguageNode[]
-};
+}
 
-export type LanguageNode = {
+export interface LanguageNode {
   color: string
   name: string
-};
+}
 
-export type Object = {
+export interface Object {
   entries: Entry[]
-};
+}
 
-export type Entry = {
+export interface Entry {
   name: string
   type: EntryType
-};
+}
 
 export type EntryType = "blob" | "tree";
 
-export type Repositories = {
+export interface Repositories {
   totalCount: number
   nodes: EdgeNode[]
-};
+}

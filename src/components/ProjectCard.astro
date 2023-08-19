@@ -2,9 +2,9 @@
 import type { Project } from "../types";
 import Card from "./Card.astro";
 
-export type Props = {
+export interface Props {
   project: Project
-};
+}
 const { name, description, language, url } = Astro.props.project;
 ---
 
@@ -19,7 +19,7 @@ const { name, description, language, url } = Astro.props.project;
         <span
           class="underline decoration-[--language-color] underline-offset-4 decoration-wavy"
           style={{
-            "--language-color": language.color
+            "--language-color": language.color,
           }}
         >
           {language.name}

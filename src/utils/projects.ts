@@ -40,12 +40,12 @@ export async function getProfile(name: string): Promise<Project[]> {
     method: "POST",
     headers: {
       "Authorization": `bearer ${import.meta.env.GITHUB_TOKEN}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       query,
-      variables: { name }
-    })
+      variables: { name },
+    }),
   }).then((res) => res.json())) as { data: Profile };
 
   if (!profile) {
@@ -61,7 +61,7 @@ export async function getProfile(name: string): Promise<Project[]> {
       return false;
     })
     .sort(
-      (a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime()
+      (a, b) => new Date(b.pushedAt).getTime() - new Date(a.pushedAt).getTime(),
     );
 
   if (!repos) {
@@ -76,6 +76,6 @@ export async function getProfile(name: string): Promise<Project[]> {
     ).replaceAll(/:\w+:/gm, ""),
     url: repo.url,
     pushedAt: repo.pushedAt,
-    language: repo.languages.nodes[0]
+    language: repo.languages.nodes[0],
   }));
 }

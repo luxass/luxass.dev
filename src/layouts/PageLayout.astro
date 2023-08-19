@@ -1,16 +1,16 @@
 ---
 import Link from "../components/Link.astro";
 
-export type Props = {
+export interface Props {
   title: string
   description: string
   image?: string
-};
+}
 
 const {
   title,
   description,
-  image = new URL("https://image.luxass.dev/og/text?width=300&height=300")
+  image = new URL("https://image.luxass.dev/og/text?width=300&height=300"),
 } = Astro.props;
 
 const { pathname } = Astro.url;

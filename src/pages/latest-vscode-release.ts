@@ -8,7 +8,7 @@ export async function get() {
   const { data: releases } = await octokit.request("GET /repos/{owner}/{repo}/releases", {
     owner: "microsoft",
     repo: "vscode",
-    per_page: 1
+    per_page: 1,
   });
 
   const release = releases[0];
@@ -18,6 +18,6 @@ export async function get() {
   }
 
   return {
-    body: release.tag_name
+    body: release.tag_name,
   };
 }

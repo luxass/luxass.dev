@@ -18,7 +18,7 @@ export async function get({ site }: APIContext) {
       description,
       pubDate,
       link: `/blog/${slug}`,
-      content: sanitizeHtml(parser.render(body))
-    }))
+      content: sanitizeHtml(parser.render(body)),
+    })),
   });
 }
