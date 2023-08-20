@@ -81,50 +81,6 @@
       "has": [
         {
           "type": "host",
-          "value": "latest-vscode-release.luxass.dev"
-        }
-      ],
-      "destination": "https://luxass.dev/latest-vscode-release",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "vscode-releases.luxass.dev"
-        }
-      ],
-      "destination": "https://luxass.dev/vscode-releases",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "latest-vscode-release.luxass.com"
-        }
-      ],
-      "destination": "https://luxass.com/latest-vscode-release",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "vscode-releases.luxass.com"
-        }
-      ],
-      "destination": "https://luxass.com/vscode-releases",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "luxass.art"
         }
       ],
