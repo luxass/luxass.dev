@@ -6,7 +6,9 @@ if (!process.env.GITHUB_TOKEN) {
   throw new Error("No GITHUB_TOKEN found");
 }
 
-const query = `query GetProfile($name: String!) {
+const NAME = "luxass";
+
+const QUERY = `query GetProfile($name: String!) {
   user(login: $name) {
     repositories(
       first: 100
@@ -51,8 +53,8 @@ async function run() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      query,
-      variables: { name },
+      query: QUERY,
+      variables: { name: NAME },
     }),
   }).then((res) => res.json())) as { data: Profile };
 
