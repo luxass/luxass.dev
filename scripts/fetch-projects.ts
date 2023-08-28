@@ -87,7 +87,7 @@ async function run() {
     url: repo.url,
     pushedAt: repo.pushedAt,
     language: repo.languages.nodes[0],
-  })))};\n`);
+  })), null, 2)};\n`);
 }
 
 run().catch((err) => {
