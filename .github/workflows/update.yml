@@ -29,9 +29,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run Linting
-        run: npx eslint ./src/projects.ts --fix
-
       - name: Add files
         run: |
           git config user.name luxass
