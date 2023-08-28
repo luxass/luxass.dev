@@ -9,6 +9,9 @@ import remarkSmartypants from "remark-smartypants";
 
 export default defineConfig({
   site: "https://luxass.dev",
+  experimental: {
+    viewTransitions: true,
+  },
   integrations: [
     unocss({
       injectReset: true,

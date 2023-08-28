@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Every night at 1:23
-    - cron: "23 1 */2 * *"
+    - cron: "23 1 * * *"
 
 jobs:
   build:
@@ -12,15 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Write file
-        run: |
-          CURRENT_TIME=$(date +%s)
-          echo $CURRENT_TIME > .github/last-update.txt
+      - name: Setup Bun Runtime
+        uses: oven-sh/setup-bun@v0.1.8
+        with:
+          bun-version: latest
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit & Push changes
+      - name: Run Script
+        run: bun run ./generate-projects.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add files
         run: |
           git config user.name luxass
           git config user.email lucasnrgaard@gmail.com
-          git add .github/last-update.txt
-          git commit -m "ci: update time"
+          git add src/projects.ts
+          git commit -m "chore: updated projects"
           git push
