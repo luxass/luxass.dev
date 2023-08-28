@@ -20,7 +20,7 @@ jobs:
         with:
           bun-version: latest
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Install Dependencies
         run: bun install
         
@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Linting
-        run: bun run lint
+        run: bunx eslint ./src/projects.ts --fix
 
       - name: Add files
         run: |
