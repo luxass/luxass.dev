@@ -5,6 +5,9 @@ on:
   schedule:
     # Every night at 1:23
     - cron: "23 1 * * *"
+  push:
+    branches:
+      - main
 
 jobs:
   build:
