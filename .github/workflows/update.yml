@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Linting
-        run: bunx eslint ./src/projects.ts --fix
+        run: npx eslint ./src/projects.ts --fix
 
       - name: Add files
         run: |
