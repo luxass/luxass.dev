@@ -26,6 +26,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Run Linting
+        run: bun run lint
+
       - name: Add files
         run: |
           git config user.name luxass
