@@ -20,7 +20,10 @@ jobs:
         with:
           bun-version: latest
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
+          
+      - name: Install Dependencies
+        run: bun install
+        
       - name: Run Script
         run: bun run scripts/fetch-projects.ts
         env:

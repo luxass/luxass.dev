@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ViewTransitions, fade } from "astro:transitions";
 import Link from "../components/Link.astro";
 
 export interface Props {
@@ -24,25 +24,6 @@ const href
       ? "/blog"
       : "/";
 
-const anim = {
-  old: {
-    name: "fadeIn",
-    duration: "0.2s",
-    easing: "linear",
-    fillMode: "forwards",
-  },
-  new: {
-    name: "fadeOut",
-    duration: "0.3s",
-    easing: "linear",
-    fillMode: "backwards",
-  },
-};
-
-const fade = {
-  forwards: anim,
-  backwards: anim,
-};
 ---
 
 <!DOCTYPE html>
@@ -100,7 +81,9 @@ const fade = {
         </Link>
       )
     }
-    <main class="prose" transition:animate={fade}>
+    <main class="prose" transition:animate={fade({
+      duration: 0.4,
+    })}>
       <slot />
     </main>
     <style is:global>
