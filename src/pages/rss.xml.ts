@@ -6,7 +6,7 @@ import MarkdownIt from "markdown-it";
 
 const parser = new MarkdownIt();
 
-export async function get({ site }: APIContext) {
+export async function GET({ site }: APIContext) {
   const posts = (await getCollection("blog", ({ data }) => data.published)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({

@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Dependencies
         run: bun install
-        
+
       - name: Run Script
         run: bun run scripts/fetch-projects.ts
         env:
