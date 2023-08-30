@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const {
-  title: _title,
+  title,
   description,
   image = new URL("https://image.luxass.dev/og/text?width=300&height=300"),
 } = Astro.props;
@@ -23,15 +23,9 @@ const href
     : pathname.startsWith("/blog/")
       ? "/blog"
       : "/";
-
-// create a title that changes based on url domain
-const title
-  = Astro.url.hostname === "luxass.dev"
-    ? _title
-    : `${_title} | ${Astro.url.hostname}`;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- global metadata -->
@@ -75,7 +69,7 @@ const title
     />
 
     <!-- vercel analytics -->
-    <!-- <script defer src="/_vercel/insights/script.js"></script> -->
+    <script defer src="/_vercel/insights/script.js"></script>
     <ViewTransitions />
   </head>
   <body>

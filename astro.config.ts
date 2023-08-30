@@ -6,33 +6,26 @@ import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkSmartypants from "remark-smartypants";
-import vercel from "@astrojs/vercel/serverless";
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://luxass.dev",
   integrations: [
     unocss({
-      injectReset: true
-    }), 
-    sitemap(), 
-    solidJs(), 
-    mdx()
+      injectReset: true,
+    }),
+    sitemap(),
+    solidJs(),
+    mdx(),
   ],
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {
-      theme: "vitesse-dark"
+      theme: "vitesse-dark",
     },
     smartypants: false,
     remarkPlugins: [[remarkSmartypants, {
-      dashes: false
+      dashes: false,
     }]],
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings]
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
   },
-  output: "server",
-  adapter: vercel({
-    analytics: true,
-    functionPerRoute: true
-  })
 });
