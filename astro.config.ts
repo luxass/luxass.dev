@@ -6,7 +6,6 @@ import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkSmartypants from "remark-smartypants";
-import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,8 +33,4 @@ export default defineConfig({
     }]],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
   },
-  output: "static",
-  adapter: vercel({
-    analytics: true,
-  }),
 });
