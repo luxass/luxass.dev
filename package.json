@@ -21,6 +21,7 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/solid-js": "^3.0.0",
+    "@astrojs/vercel": "^4.0.3",
     "@vercel/analytics": "^1.0.2",
     "astro": "^3.0.1",
     "markdown-it": "^13.0.1",
