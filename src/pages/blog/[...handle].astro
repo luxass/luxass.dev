@@ -22,6 +22,7 @@ const {
     render,
   },
 } = Astro.props;
+
 const { Content } = await render();
 const formattedDate = date.toLocaleDateString("en-US", {
   year: "numeric",
