@@ -34,7 +34,7 @@ export default defineConfig({
     }]],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
   },
-  output: "hybrid",
+  output: "static",
   adapter: vercel({
     analytics: true,
   }),
