@@ -2,33 +2,22 @@
 
 export const projects = [
   {
-    "name": "luxass.dev",
+    "name": "jsonc-parse",
     "owner": "luxass",
-    "description": "No description was provided.",
-    "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-02T14:42:44Z",
-    "language": {
-      "color": "#ff5a03",
-      "name": "Astro"
-    }
-  },
-  {
-    "name": "cdn-resolve",
-    "owner": "luxass",
-    "description": "Resolves packages to their relative CDN URLS",
-    "url": "https://github.com/luxass/cdn-resolve",
-    "pushedAt": "2023-09-02T02:34:01Z",
+    "description": "A lightweight JSON with Comments parser.",
+    "url": "https://github.com/luxass/jsonc-parse",
+    "pushedAt": "2023-09-03T19:20:26Z",
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
     }
   },
   {
-    "name": "load-config",
+    "name": "esbuild-cdn-imports",
     "owner": "luxass",
-    "description": "No description was provided.",
-    "url": "https://github.com/luxass/load-config",
-    "pushedAt": "2023-09-02T02:23:39Z",
+    "description": "This plugin intercepts imports and resolves them to a CDN URL.",
+    "url": "https://github.com/luxass/esbuild-cdn-imports",
+    "pushedAt": "2023-09-03T19:15:49Z",
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
@@ -39,21 +28,10 @@ export const projects = [
     "owner": "luxass",
     "description": "No description was provided.",
     "url": "https://github.com/luxass/neoman",
-    "pushedAt": "2023-09-02T00:52:10Z",
+    "pushedAt": "2023-09-03T19:00:19Z",
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
-    }
-  },
-  {
-    "name": "eslint-config",
-    "owner": "luxass",
-    "description": "My shareable ESLint config",
-    "url": "https://github.com/luxass/eslint-config",
-    "pushedAt": "2023-09-01T23:23:25Z",
-    "language": {
-      "color": "#f1e05a",
-      "name": "JavaScript"
     }
   },
   {
@@ -61,29 +39,18 @@ export const projects = [
     "owner": "luxass",
     "description": "Problem matchers for tsup tasks in VSCode",
     "url": "https://github.com/luxass/tsup-problem-matchers",
-    "pushedAt": "2023-09-01T23:12:56Z",
+    "pushedAt": "2023-09-03T17:32:44Z",
     "language": {
       "color": "#f1e05a",
       "name": "JavaScript"
     }
   },
   {
-    "name": "esbuild-cdn-imports",
+    "name": "load-config",
     "owner": "luxass",
-    "description": "This plugin intercepts imports and resolves them to a CDN URL.",
-    "url": "https://github.com/luxass/esbuild-cdn-imports",
-    "pushedAt": "2023-09-01T22:57:25Z",
-    "language": {
-      "color": "#3178c6",
-      "name": "TypeScript"
-    }
-  },
-  {
-    "name": "jsonc-parse",
-    "owner": "luxass",
-    "description": "A lightweight JSON with Comments parser.",
-    "url": "https://github.com/luxass/jsonc-parse",
-    "pushedAt": "2023-09-01T22:50:26Z",
+    "description": "No description was provided.",
+    "url": "https://github.com/luxass/load-config",
+    "pushedAt": "2023-09-03T17:14:20Z",
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
@@ -94,7 +61,40 @@ export const projects = [
     "owner": "luxass",
     "description": "Utilities for working with tsconfig.json files",
     "url": "https://github.com/luxass/tsconf-utils",
-    "pushedAt": "2023-09-01T22:26:14Z",
+    "pushedAt": "2023-09-03T16:55:06Z",
+    "language": {
+      "color": "#3178c6",
+      "name": "TypeScript"
+    }
+  },
+  {
+    "name": "eslint-config",
+    "owner": "luxass",
+    "description": "My shareable ESLint config",
+    "url": "https://github.com/luxass/eslint-config",
+    "pushedAt": "2023-09-03T16:53:15Z",
+    "language": {
+      "color": "#f1e05a",
+      "name": "JavaScript"
+    }
+  },
+  {
+    "name": "luxass.dev",
+    "owner": "luxass",
+    "description": "No description was provided.",
+    "url": "https://github.com/luxass/luxass.dev",
+    "pushedAt": "2023-09-03T16:39:54Z",
+    "language": {
+      "color": "#ff5a03",
+      "name": "Astro"
+    }
+  },
+  {
+    "name": "cdn-resolve",
+    "owner": "luxass",
+    "description": "Resolves packages to their relative CDN URLS",
+    "url": "https://github.com/luxass/cdn-resolve",
+    "pushedAt": "2023-09-03T16:27:02Z",
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
