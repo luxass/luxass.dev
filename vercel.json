@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/:all*(ttf|otf|woff|woff2)",
@@ -17,29 +18,7 @@
       "has": [
         {
           "type": "host",
-          "value": "git.luxass.dev"
-        }
-      ],
-      "destination": "https://github.com/luxass",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "gh.luxass.dev"
-        }
-      ],
-      "destination": "https://github.com/luxass",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "git.luxass.com"
         }
       ],
       "destination": "https://github.com/luxass",

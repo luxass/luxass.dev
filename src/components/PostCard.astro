@@ -4,7 +4,7 @@ import readingTime from "reading-time";
 import Card from "./Card.astro";
 
 export interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<"post">
 }
 
 const {
@@ -23,7 +23,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
 const time = readingTime(body);
 ---
 
-<Card href={`/blog/${slug}`} class="flex flex-col">
+<Card href={`/posts/${slug}`} class="flex flex-col">
   <h3 class="!my-0">{title}</h3>
 
   <p class="flex-1">{description}</p>

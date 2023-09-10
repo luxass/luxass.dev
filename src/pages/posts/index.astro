@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 import PostCard from "../../components/PostCard.astro";
 
-const posts = await getCollection("blog", ({ data }) => data.published).then(
+const posts = await getCollection("post", ({ data }) => data.published).then(
   (posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
 );
 ---
