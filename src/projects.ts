@@ -2,6 +2,39 @@
 
 export const projects = [
   {
+    "name": "eslint-config",
+    "owner": "luxass",
+    "description": "My shareable ESLint config",
+    "url": "https://github.com/luxass/eslint-config",
+    "pushedAt": "2023-09-09T08:38:59Z",
+    "language": {
+      "color": "#f1e05a",
+      "name": "JavaScript"
+    }
+  },
+  {
+    "name": "cdn-resolve",
+    "owner": "luxass",
+    "description": "Resolves packages to their relative CDN URLS",
+    "url": "https://github.com/luxass/cdn-resolve",
+    "pushedAt": "2023-09-09T02:25:27Z",
+    "language": {
+      "color": "#3178c6",
+      "name": "TypeScript"
+    }
+  },
+  {
+    "name": "luxass.dev",
+    "owner": "luxass",
+    "description": "No description was provided.",
+    "url": "https://github.com/luxass/luxass.dev",
+    "pushedAt": "2023-09-09T01:56:07Z",
+    "language": {
+      "color": "#ff5a03",
+      "name": "Astro"
+    }
+  },
+  {
     "name": "load-config",
     "owner": "luxass",
     "description": "No description was provided.",
@@ -35,17 +68,6 @@ export const projects = [
     }
   },
   {
-    "name": "eslint-config",
-    "owner": "luxass",
-    "description": "My shareable ESLint config",
-    "url": "https://github.com/luxass/eslint-config",
-    "pushedAt": "2023-09-08T23:27:44Z",
-    "language": {
-      "color": "#f1e05a",
-      "name": "JavaScript"
-    }
-  },
-  {
     "name": "neoman",
     "owner": "luxass",
     "description": "No description was provided.",
@@ -73,28 +95,6 @@ export const projects = [
     "description": "Utilities for working with tsconfig.json files",
     "url": "https://github.com/luxass/tsconf-utils",
     "pushedAt": "2023-09-08T23:10:57Z",
-    "language": {
-      "color": "#3178c6",
-      "name": "TypeScript"
-    }
-  },
-  {
-    "name": "luxass.dev",
-    "owner": "luxass",
-    "description": "No description was provided.",
-    "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-08T17:30:18Z",
-    "language": {
-      "color": "#ff5a03",
-      "name": "Astro"
-    }
-  },
-  {
-    "name": "cdn-resolve",
-    "owner": "luxass",
-    "description": "Resolves packages to their relative CDN URLS",
-    "url": "https://github.com/luxass/cdn-resolve",
-    "pushedAt": "2023-09-04T16:38:51Z",
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
