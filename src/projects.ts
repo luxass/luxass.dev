@@ -2,6 +2,17 @@
 
 export const projects = [
   {
+    "name": "luxass.dev",
+    "owner": "luxass",
+    "description": "No description was provided.",
+    "url": "https://github.com/luxass/luxass.dev",
+    "pushedAt": "2023-09-10T19:54:24Z",
+    "language": {
+      "color": "#ff5a03",
+      "name": "Astro"
+    }
+  },
+  {
     "name": "eslint-config",
     "owner": "luxass",
     "description": "My shareable ESLint config",
@@ -21,17 +32,6 @@ export const projects = [
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
-    }
-  },
-  {
-    "name": "luxass.dev",
-    "owner": "luxass",
-    "description": "No description was provided.",
-    "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-09T01:56:07Z",
-    "language": {
-      "color": "#ff5a03",
-      "name": "Astro"
     }
   },
   {
