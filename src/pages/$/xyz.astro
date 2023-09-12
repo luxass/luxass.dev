@@ -9,6 +9,7 @@ const floats = await fetch(
 
 const x = ((360 * (floats[0] * 2 * Math.PI - Math.PI)) / (2 * Math.PI)).toFixed(5);
 const y = ((360 * (Math.PI / 2 - Math.acos(floats[1] * 2 - 1))) / (2 * Math.PI)).toFixed(5);
+
 ---
 
 <PageLayout title="this is so random!" description="Hmmm, what is this?">
