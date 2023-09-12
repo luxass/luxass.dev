@@ -2,9 +2,10 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
+import Notification from "../../components/Notification.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("post");
+  const posts = await getCollection("posts");
 
   return posts.map((post) => ({
     params: { handle: post.slug },
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  post: CollectionEntry<"post">
+  post: CollectionEntry<"posts">
 }
 
 const {
@@ -24,11 +25,7 @@ const {
 } = Astro.props;
 
 const { Content } = await render();
-const formattedDate = date.toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
+const formattedDate = date.toISOString();
 
 export const prerender = true;
 ---
@@ -36,18 +33,15 @@ export const prerender = true;
 <PageLayout
   title={title}
   description={description}
-  image={`https://image.luxass.dev/og/blog/?title=${title}&date=${formattedDate}&description=${description}`}
+  image={`https://image.luxass.dev/api/image/post?title=${title}&date=${formattedDate}&description=${description}`}
 >
   <div class="prose tracking-wide">
     {
       !published && (
-        <blockquote
-          class="my-8 border border-red-400 rounded border-dashed bg-red-900 py-4 pl-4"
-          role="alert"
-        >
+        <Notification type="important">
           This post is a <strong>draft</strong>. It may be incomplete or contain
           inaccuracies.
-        </blockquote>
+        </Notification>
       )
     }
 

@@ -1,8 +1,17 @@
 ---
+import Notification from "../components/Notification.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 ---
 
-<PageLayout title="aa" description="aaa">
-  <h1>aaa</h1>
+<PageLayout title="CV | Lucas Nørgård" description="CV">
+  <Notification type="note" icon="🖨️" >
+    You can print this page to a A4 paper for a more compact version.
+  </Notification>
+  <Notification type="warning">Warning</Notification>
+  <Notification type="note">Note</Notification>
+  <Notification type="tip">Tip</Notification>
+  <Notification type="important">Important</Notification>
+  <Notification type="caution">Caution</Notification>
+
 </PageLayout>

@@ -35,6 +35,7 @@
   "devDependencies": {
     "@astrojs/vercel": "^4.0.5",
     "@iconify-json/carbon": "^1.1.21",
+    "@iconify-json/octicon": "1.1.48",
     "@luxass/eslint-config": "^3.3.2",
     "@types/markdown-it": "^13.0.1",
     "@types/sanitize-html": "^2.9.0",
@@ -43,7 +44,6 @@
     "eslint": "^8.49.0",
     "eslint-plugin-astro": "^0.29.0",
     "typescript": "^5.2.2",
-    "unocss": "^0.55.7",
-    "unplugin-auto-import": "^0.16.6"
+    "unocss": "^0.55.7"
   }
 }

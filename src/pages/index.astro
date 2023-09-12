@@ -1,9 +1,24 @@
 ---
+import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import Link from "../components/Link.astro";
 
 // import { projects } from "../projects";
+
+const posts = await getCollection("posts", ({ data }) => data.published).then(
+  (posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+);
+
+function truncate(value: string, length: number): string {
+  if (value.length > length) {
+    return `${value.substring(0, length)}...`;
+  }
+
+  return value;
+}
+
+const latestPost = posts.slice(0, 1)[0];
 ---
 
 <PageLayout
@@ -14,7 +29,7 @@ import Link from "../components/Link.astro";
     <h1>
       Hey I&apos;m luxass <span
         class="inline-block animate-duration-2s animate-count-3 animate-wiggle"
-        >✌️</span
+        >👋</span
       >
     </h1>
     <p>
@@ -28,32 +43,37 @@ import Link from "../components/Link.astro";
       </Link>.
     </p>
   </div>
-  <div
-    class="mt-4 inline-block w-30 flex justify-between rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
-  >
+  <div class="mt-8 flex flex-wrap gap-2 sm:mt-14 sm:gap-4">
+    {
+      latestPost && (
+        <a
+          href={`/posts/${latestPost.slug}`}
+          class="flex flex-nowrap gap-1 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
+        >
+          {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
+          <span>{truncate(latestPost.data.title, 30)}</span>
+        </a>
+      )
+    }
+
     <a
       href="https://github.com/luxass"
       target="_blank"
       aria-label="Github"
-      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+      class="flex flex-nowrap gap-1 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
     >
-      <div class="i-carbon:logo-github text-2xl"></div>
+      <i class="i-carbon:logo-github text-2xl"></i>
+       GitHub
     </a>
+
     <a
       href="https://www.linkedin.com/in/lucasnrgaard/"
       target="_blank"
       aria-label="LinkedIn"
-      class="hover:text-neutral-600 hover:dark:text-neutral-200"
+      class="flex flex-nowrap gap-1 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
     >
-      <div class="i-carbon:logo-linkedin text-2xl"></div>
-    </a>
-    <a
-      href="mailto:lucasnrgaard@gmail.com"
-      target="_blank"
-      aria-label="Email"
-      class="hover:text-neutral-600 hover:dark:text-neutral-200"
-    >
-      <div class="i-carbon:email text-2xl"></div>
+      <i class="i-carbon:logo-linkedin text-2xl"></i>
+       LinkedIn
     </a>
   </div>
   <section class="mt-8">
