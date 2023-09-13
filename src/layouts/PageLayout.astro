@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import Link from "../components/Link.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
@@ -13,18 +12,8 @@ export interface Props {
 const {
   title,
   description,
-  image = new URL("https://image.luxass.dev/og/text?width=300&height=300"),
+  image = new URL("https://image.luxass.dev/api/image/text?width=300&height=300"),
 } = Astro.props;
-
-const { pathname } = Astro.url;
-const isBlog = pathname.startsWith("/posts") && Astro.props.title !== "404";
-
-const href
-  = pathname === "/posts" || pathname === "/posts/"
-    ? "/"
-    : pathname.startsWith("/posts/")
-      ? "/posts"
-      : "/";
 ---
 
 <!DOCTYPE html>
@@ -75,15 +64,8 @@ const href
     <ViewTransitions />
   </head>
   <body>
-    {
-      isBlog && (
-        <Link href={href} class="flex items-center gap-x-2">
-          <div class="i-carbon:arrow-left" /> back
-        </Link>
-      )
-    }
     <Header />
-    <main class="prose" transition:animate="slide">
+    <main class="prose flex-1 p-4" transition:animate="slide">
       <slot />
     </main>
     <Footer />

@@ -1,12 +1,12 @@
 import { defineConfig } from "astro/config";
 import unocss from "unocss/astro";
 import sitemap from "@astrojs/sitemap";
-import solidJs from "@astrojs/solid-js";
 import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import remarkSmartypants from "remark-smartypants";
 import vercel from "@astrojs/vercel/serverless";
+
+import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,23 +20,17 @@ export default defineConfig({
         return !page.includes("$");
       },
     }),
-    solidJs(),
     mdx(),
+    vue({
+      jsx: true,
+    }),
   ],
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {
       theme: "vitesse-dark",
     },
-    smartypants: false,
-    remarkPlugins: [
-      [
-        remarkSmartypants,
-        {
-          dashes: false,
-        },
-      ],
-    ],
+    smartypants: true,
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
   },
   output: "server",
