@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
 import Link from "../components/Link.astro";
+import GitHubLogo from "~icons/carbon/LogoGithub";
+import LinkedInLogo from "~icons/carbon/LogoLinkedin";
 
 const posts = await getCollection("posts", ({ data }) => data.published).then(
   (posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
@@ -16,6 +18,8 @@ function truncate(value: string, length: number): string {
 }
 
 const latestPost = posts.slice(0, 1)[0];
+
+export const prerender = true;
 ---
 
 <PageLayout
@@ -44,7 +48,7 @@ const latestPost = posts.slice(0, 1)[0];
       latestPost && (
         <a
           href={`/posts/${latestPost.slug}`}
-          class="flex flex-nowrap gap-1 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
+          class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
         >
           {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
           <span>{truncate(latestPost.data.title, 30)}</span>
@@ -52,25 +56,23 @@ const latestPost = posts.slice(0, 1)[0];
       )
     }
 
-    <a
+    <Link
       href="https://github.com/luxass"
-      target="_blank"
       aria-label="Github"
-      class="flex flex-nowrap gap-1 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
+      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
-      <i class="i-carbon:logo-github text-2xl"></i>
+      <GitHubLogo class="text-xl"/>
        GitHub
-    </a>
+    </Link>
 
-    <a
+    <Link
       href="https://www.linkedin.com/in/lucasnrgaard/"
-      target="_blank"
       aria-label="LinkedIn"
-      class="flex flex-nowrap gap-1 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(bg-neutral-800 text-neutral-400)"
+      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
-      <i class="i-carbon:logo-linkedin text-2xl"></i>
+     <LinkedInLogo class="text-xl" />
        LinkedIn
-    </a>
+    </Link>
   </div>
 </PageLayout>
 

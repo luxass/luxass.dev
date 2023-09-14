@@ -5,7 +5,7 @@ export interface Props {
   underline?: boolean
 }
 
-const { href, underline = false, class: clazz } = Astro.props;
+const { href, underline = false, class: clazz, ...props } = Astro.props;
 
 const isExternal = href.startsWith("http");
 const target = isExternal ? "_blank" : undefined;
@@ -16,6 +16,7 @@ const rel = isExternal ? "noopener noreferrer" : undefined;
   {href}
   {target}
   {rel}
+  {...props}
   class:list={[
     underline && "underline decoration-neutral-300 underline-offset-4 dark:decoration-neutral-600 hover:(decoration-neutral-400 dark:decoration-neutral-500)",
     clazz,

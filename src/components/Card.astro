@@ -2,13 +2,17 @@
 export interface Props {
   href?: string
   class?: string
-  component?: string
 }
-const { href, class: clazz, component } = Astro.props;
+const { href, class: clazz } = Astro.props;
+const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+const Component = href ? "a" : "div";
 
-const Component = component || href ? "a" : "div";
 const props = href
-  ? { href, target: "_blank", rel: "noopener noreferrer" }
+  ? {
+      href: isInternalLink ? href : undefined,
+      target: isInternalLink ? undefined : "_blank",
+      rel: isInternalLink ? undefined : "noopener noreferrer",
+    }
   : {};
 ---
 

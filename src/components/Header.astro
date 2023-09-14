@@ -3,15 +3,24 @@ import Link from "./Link.astro";
 ---
 
 <header>
-  <nav class="flex items-center justify-between">
-    <Link href="/" class="transition-transform active:scale-95">Lucas Nørgård</Link>
+  <nav class="flex flex-wrap items-center justify-between">
+    <Link href="/" class="transition-transform active:scale-95">
+      Lucas Nørgård
+    </Link>
 
     <div class="flex items-center gap-4 sm:gap-6">
-      <Link class="transition-transform active:scale-95" href="/projects">Projects</Link>
-      <Link class="transition-transform active:scale-95" href="/posts">Posts</Link>
+      <Link class="transition-transform active:scale-95" href="/projects">
+        Projects
+      </Link>
+      <Link class="transition-transform active:scale-95" href="/posts">
+        Posts
+      </Link>
       <Link class="transition-transform active:scale-95" href="/cv">CV</Link>
-      <Link class="transition-transform active:scale-95" href="/contact">
-        <div class="i-carbon-send-alt text-2xl"></div>
+      <Link
+        class="focus-visible:ring-ring h-9 inline-flex items-center justify-center border border-blue-600 rounded bg-blue-600 px-4 py-1 text-sm font-medium text-white transition-colors transition-transform disabled:pointer-events-none active:scale-95 hover:bg-blue-600/90 print:text-initial disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1"
+        href="/contact"
+      >
+        Contact
       </Link>
     </div>
   </nav>

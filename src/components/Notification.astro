@@ -11,7 +11,7 @@ const { type, icon, multiline, printable = false } = Astro.props;
 
 <div
   role="alert"
-  class="my-8 flex items-center gap-2 border-l-4 rounded py-4 pl-4"
+  class="my-8 hidden items-center gap-2 border-l-4 rounded py-4 pl-4 sm:flex"
   class:list={[
     {
       "print:hidden": !printable,
@@ -38,5 +38,7 @@ const { type, icon, multiline, printable = false } = Astro.props;
     {icon}
   </span>
   {multiline && <br />}
-  <slot />
+  <p>
+    <slot />
+  </p>
 </div>

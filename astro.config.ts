@@ -5,7 +5,7 @@ import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import vercel from "@astrojs/vercel/serverless";
-
+import Icons from "unplugin-icons/vite";
 import vue from "@astrojs/vue";
 
 // https://astro.build/config
@@ -24,6 +24,14 @@ export default defineConfig({
     vue({
       jsx: true,
     }),
+    {
+      name: "astro-plugin-redirects",
+      hooks: {
+        "astro:build:setup": async (options) => {
+          console.info("OPTIONS", options);
+        },
+      },
+    },
   ],
   markdown: {
     syntaxHighlight: "shiki",
@@ -39,4 +47,11 @@ export default defineConfig({
     edgeMiddleware: true,
     functionPerRoute: false,
   }),
+  vite: {
+    plugins: [
+      Icons({
+        compiler: "astro",
+      }),
+    ],
+  },
 });

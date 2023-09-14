@@ -23,7 +23,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
 const time = readingTime(body);
 ---
 
-<Card href={`/posts/${slug}`} class="flex flex-col" component="li">
+<Card href={`/posts/${slug}`} class="flex flex-col">
   <h3 class="!my-0">{title}</h3>
 
   <p class="flex-1">{description}</p>
