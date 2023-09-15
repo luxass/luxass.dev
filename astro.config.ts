@@ -27,8 +27,19 @@ export default defineConfig({
     {
       name: "astro-plugin-redirects",
       hooks: {
+        "astro:config:setup": async (options) => {
+          // options.injectRoute({
+          //   pattern: "/sitemap.xml",
+          //   entryPoint: "./sitemap.xml.ts",
+          // });
+        },
         "astro:build:setup": async (options) => {
-          console.info("OPTIONS", options);
+          console.info("OPTIONS", JSON.stringify(options.pages, (key, val) => {
+            if (val instanceof Map) {
+              return [...val];
+            }
+            return val;
+          }, 2));
         },
       },
     },

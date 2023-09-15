@@ -1,6 +1,9 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 
+// THIS NEEDS TO BE UP HERE, OTHERWISE IT WON'T BUILD?
+export const prerender = true;
+
 const floats = await fetch(
   "https://www.random.org/decimal-fractions/?num=2&dec=10&col=1&format=plain&rnd=new",
 )
