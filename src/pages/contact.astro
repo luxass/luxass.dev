@@ -1,9 +1,23 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("name");
+
+    console.info(name);
+  } catch (error) {
+    console.error(error);
+  }
+}
+console.log("AHA");
 export const prerender = true;
 ---
 
 <PageLayout title="contact | luxass" description="A">
-  <h1>Hey!</h1>
+  <form method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+  </form>
 </PageLayout>
