@@ -13,6 +13,8 @@ export async function getStaticPaths() {
   }));
 }
 
+// TODO: Look into AI recommended posts at the bottom of the page.
+
 interface Props {
   post: CollectionEntry<"posts">
 }
@@ -48,4 +50,8 @@ export const prerender = true;
     <h1 class="mt-8">{title}</h1>
     <Content />
   </div>
+
+  <section>
+    Insert the latest posts here.
+  </section>
 </PageLayout>
