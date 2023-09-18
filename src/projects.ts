@@ -2,6 +2,17 @@
 
 export const projects = [
   {
+    "name": "luxass.dev",
+    "owner": "luxass",
+    "description": "No description was provided.",
+    "url": "https://github.com/luxass/luxass.dev",
+    "pushedAt": "2023-09-17T12:20:41Z",
+    "language": {
+      "color": "#ff5a03",
+      "name": "Astro"
+    }
+  },
+  {
     "name": "esbuild-cdn-imports",
     "owner": "luxass",
     "description": "This plugin intercepts imports and resolves them to a CDN URL.",
@@ -76,17 +87,6 @@ export const projects = [
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
-    }
-  },
-  {
-    "name": "luxass.dev",
-    "owner": "luxass",
-    "description": "No description was provided.",
-    "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-16T06:03:45Z",
-    "language": {
-      "color": "#ff5a03",
-      "name": "Astro"
     }
   },
   {
