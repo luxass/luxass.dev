@@ -9,6 +9,7 @@ const posts = defineCollection({
     date: z.string().transform(str => new Date(str)),
     published: z.boolean().optional().default(true),
     icon: z.string().optional().default("📝"),
+    handle: z.string().optional(),
   }),
 });
 
