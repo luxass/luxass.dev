@@ -3,53 +3,45 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 import Notification from "../../components/Notification.astro";
+import type { Project } from "../../data/projects";
 
 export async function getStaticPaths() {
   const { projects } = await import("../../data/projects");
-  console.log(projects);
 
-  const posts = await getCollection("posts");
+  return projects.filter((project) => {
+    if (!project?.projectrc) return false;
+    if (project.projectrc.ignore) return false;
+    if (!project.projectrc.readme) return false;
 
-  return posts.map((post) => ({
-    params: { handle: post.slug },
-    props: { post },
-  }));
+    return true;
+  }).filter(Boolean).map((project) => {
+    return {
+      params: { handle: project.nameWithOwner.split("/")[1] },
+      props: { project },
+    };
+  });
 }
 
 interface Props {
-  post: CollectionEntry<"posts">
+  project: Project
 }
 
 const {
-  post: {
-    data: { title, description, date, published },
-    render,
-  },
+  project: { url },
 } = Astro.props;
-
-const { Content } = await render();
-const formattedDate = date.toISOString();
 
 export const prerender = true;
 ---
 
 <PageLayout
-  title={title}
-  description={description}
-  image={`https://image.luxass.dev/api/image/post?title=${title}&date=${formattedDate}&description=${description}`}
+  title={"title"}
+  description={"description"}
+  image={`https://image.luxass.dev/api/image/post?title=${"title"}&date=${"formattedDate"}&description=${"description"}`}
 >
   <div class="prose tracking-wide">
-    {
-      !published && (
-        <Notification type="important">
-          This post is a <strong>draft</strong>. It may be incomplete or contain
-          inaccuracies.
-        </Notification>
-      )
-    }
-
-    <h1 class="mt-8">{title}</h1>
-    <Content />
+    {url}
+    <h1 class="mt-8">{"title"}</h1>
+    <!-- <Content /> -->
   </div>
 </PageLayout>
-../../data/projects
+ ../../data/projects

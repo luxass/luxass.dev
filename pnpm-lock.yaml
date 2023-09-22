@@ -79,6 +79,9 @@ devDependencies:
   '@unocss/reset':
     specifier: ^0.56.0
     version: 0.56.0
+  bun-types:
+    specifier: ^1.0.3
+    version: 1.0.3
   eslint:
     specifier: ^8.49.0
     version: 8.49.0
@@ -2358,6 +2361,10 @@ packages:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
       semver: 7.5.4
+    dev: true
+
+  /bun-types@1.0.3:
+    resolution: {integrity: sha512-XlyKVdYCHa7K5PHYGcwOVOrGE/bMnLS51y7zFA3ZAAXyiQ6dTaNXNCWTTufgII/6ruN770uhAXphQmzvU/r2fQ==}
     dev: true
 
   /bundle-name@3.0.0:
