@@ -1,9 +1,34 @@
 ---
+import Link from "../../components/Link.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+
+const { projects } = await import("../../data/projects");
 
 export const prerender = true;
 ---
 
 <PageLayout title="projects | luxass" description="projects">
-  <h1>Hey!</h1>
+  <h1>Projects</h1>
+  <p>This is some of my projects.</p>
+  <article>
+    {
+      projects.length > 0
+        ? (
+        <ul class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
+          {projects.map((project) => (
+            <li>
+              <ProjectCard project={project} />
+            </li>
+          ))}
+        </ul>
+          )
+        : (
+        <p>
+          I haven't made any of my projects available here yet - you can always
+          checkout my <Link href="github:luxass" underline>GitHub</Link>
+        </p>
+          )
+    }
+  </article>
 </PageLayout>

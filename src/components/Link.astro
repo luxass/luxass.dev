@@ -1,11 +1,26 @@
 ---
 export interface Props {
-  href: string
+  href:
+  | `github:${string}`
+  | `twitter:${string}`
+  | `x:${string}`
+  | `linkedin:${string}`
+  | (string & {})
   class?: string
   underline?: boolean
 }
 
-const { href, underline = false, class: clazz, ...props } = Astro.props;
+let { href, underline = false, class: clazz, ...props } = Astro.props;
+
+if (href.startsWith("github:")) {
+  href = `https://github.com/${href.slice(7)}`;
+} else if (href.startsWith("twitter:")) {
+  href = `https://twitter.com/${href.slice(8)}`;
+} else if (href.startsWith("x:")) {
+  href = `https://x.nave.rs/${href.slice(2)}`;
+} else if (href.startsWith("linkedin:")) {
+  href = `https://linkedin.com/in/${href.slice(9)}`;
+}
 
 const isExternal = href.startsWith("http");
 const target = isExternal ? "_blank" : undefined;
@@ -18,7 +33,8 @@ const rel = isExternal ? "noopener noreferrer" : undefined;
   {rel}
   {...props}
   class:list={[
-    underline && "underline decoration-neutral-300 underline-offset-4 dark:decoration-neutral-600 hover:(decoration-neutral-400 dark:decoration-neutral-500)",
+    underline
+      && "underline decoration-neutral-300 underline-offset-4 dark:decoration-neutral-600 hover:(decoration-neutral-400 dark:decoration-neutral-500)",
     clazz,
   ]}
 >

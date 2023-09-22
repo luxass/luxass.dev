@@ -24,25 +24,6 @@ export default defineConfig({
     vue({
       jsx: true,
     }),
-    {
-      name: "astro-plugin-redirects",
-      hooks: {
-        "astro:config:setup": async (options) => {
-          // options.injectRoute({
-          //   pattern: "/sitemap.xml",
-          //   entryPoint: "./sitemap.xml.ts",
-          // });
-        },
-        "astro:build:setup": async (options) => {
-          console.info("OPTIONS", JSON.stringify(options.pages, (key, val) => {
-            if (val instanceof Map) {
-              return [...val];
-            }
-            return val;
-          }, 2));
-        },
-      },
-    },
   ],
   markdown: {
     syntaxHighlight: "shiki",
