@@ -47,7 +47,7 @@ export const prerender = true;
     {
       latestPost && (
         <a
-          href={`/posts/${latestPost.slug}`}
+          href={`/posts/${latestPost.data.handle || latestPost.slug}`}
           class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
         >
           {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
