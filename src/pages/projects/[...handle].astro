@@ -1,8 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
-import Notification from "../../components/Notification.astro";
 import type { Project } from "../../data/projects";
 
 export async function getStaticPaths() {
@@ -27,7 +24,7 @@ interface Props {
 }
 
 const {
-  project: { url },
+  project: { url, nameWithOwner },
 } = Astro.props;
 
 export const prerender = true;
@@ -40,8 +37,8 @@ export const prerender = true;
 >
   <div class="prose tracking-wide">
     {url}
+    {nameWithOwner}
     <h1 class="mt-8">{"title"}</h1>
     <!-- <Content /> -->
   </div>
 </PageLayout>
- ../../data/projects

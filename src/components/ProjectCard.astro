@@ -1,21 +1,38 @@
 ---
-import type { Project } from "../types";
+import type { Project } from "../data/projects";
 import Card from "./Card.astro";
+import Link from "./Link.astro";
 
 export interface Props {
   project: Project
 }
-const { name, description, language, url } = Astro.props.project;
+
+const { project } = Astro.props;
+
+const {
+  name,
+  description,
+  language,
+  url: githubUrl,
+  isContributor,
+  projectrc,
+} = project;
+
+const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
 ---
 
 <Card href={url} class="flex flex-col justify-between gap-y-2">
   <div class="flex flex-col gap-y-2">
-    <span class="overflow-hidden text-ellipsis whitespace-nowrap">{name}</span>
+    <div class="flex items-center justify-between">
+      <span class="overflow-hidden text-ellipsis whitespace-nowrap">{name}</span
+      >
+      <a></a>
+    </div>
     <p class="text-sm">{description}</p>
   </div>
   {
     language && (
-      <div class="flex items-center gap-x-2">
+      <div class="flex items-center justify-between text-sm">
         <span
           class="underline decoration-[--language-color] underline-offset-4 decoration-wavy"
           style={{
@@ -24,6 +41,8 @@ const { name, description, language, url } = Astro.props.project;
         >
           {language.name}
         </span>
+
+        {isContributor && <span class="text-gray-500">Contributor</span>}
       </div>
     )
   }
