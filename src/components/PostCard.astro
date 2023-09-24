@@ -3,8 +3,9 @@ import type { CollectionEntry } from "astro:content";
 
 // import { readingTime } from "lesetid";
 import readingTime from "reading-time";
-
 import Card from "./Card.astro";
+import CalendarIcon from "~icons/carbon/Calendar";
+import AlarmIcon from "~icons/carbon/Alarm";
 
 export interface Props {
   post: CollectionEntry<"posts">
@@ -32,11 +33,11 @@ const time = readingTime(body);
   <p class="flex-1">{description}</p>
 
   <span class="flex items-center gap-x-1">
-    <div class="i-carbon:calendar"></div>
+    <CalendarIcon />
     {formattedDate}
   </span>
   <span class="flex items-center gap-x-1">
-    <div class="i-carbon:alarm"></div>
+    <AlarmIcon />
     {time.text}
   </span>
 </Card>

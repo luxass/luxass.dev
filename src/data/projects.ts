@@ -4,6 +4,24 @@ export type Project = typeof projects[number];
 
 export const projects = [
   {
+    name: "eslint-config",
+    nameWithOwner: "luxass/eslint-config",
+    description: null,
+    pushedAt: "2023-09-24T13:05:44Z",
+    url: "https://github.com/luxass/eslint-config",
+    defaultBranch: "main",
+    projectrc: {
+      readme: true,
+      npm: true,
+      ignore: false,
+    },
+    language: {
+      name: "TypeScript",
+      color: "#3178c6",
+    },
+    isContributor: false,
+  },
+  {
     name: "github-schema",
     nameWithOwner: "luxass/github-schema",
     description: "GitHub's GraphQL schema",
@@ -40,11 +58,11 @@ export const projects = [
     isContributor: false,
   },
   {
-    name: "eslint-config",
-    nameWithOwner: "luxass/eslint-config",
-    description: "My shareable ESLint config",
-    pushedAt: "2023-09-22T19:08:58Z",
-    url: "https://github.com/luxass/eslint-config",
+    name: "eslint-config-legacy",
+    nameWithOwner: "luxass/eslint-config-legacy",
+    description: "My old shareable ESLint config",
+    pushedAt: "2023-09-24T06:23:22Z",
+    url: "https://github.com/luxass/eslint-config-legacy",
     defaultBranch: "main",
     projectrc: {
       readme: false,
@@ -61,7 +79,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-09-23T19:19:53Z",
+    pushedAt: "2023-09-23T20:42:13Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {

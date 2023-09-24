@@ -309,6 +309,12 @@ async function run() {
   )};\n`;
 
   await Bun.write("./src/data/projects.ts", code);
+
+  // format with eslint
+  Bun.spawn({
+    cmd: ["npx", "eslint", "--fix", "./src/data/projects.ts"],
+    stdout: "pipe",
+  });
 }
 
 run().catch((err) => {

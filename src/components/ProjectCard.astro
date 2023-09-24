@@ -2,6 +2,7 @@
 import type { Project } from "../data/projects";
 import Card from "./Card.astro";
 import Link from "./Link.astro";
+import GitHubLogo from "~icons/carbon/LogoGithub";
 
 export interface Props {
   project: Project
@@ -21,12 +22,15 @@ const {
 const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
 ---
 
-<Card href={url} class="flex flex-col justify-between gap-y-2">
+<Card class="flex flex-col justify-between gap-y-2">
   <div class="flex flex-col gap-y-2">
     <div class="flex items-center justify-between">
-      <span class="overflow-hidden text-ellipsis whitespace-nowrap">{name}</span
-      >
-      <a></a>
+      <Link href={url} class="overflow-hidden text-ellipsis whitespace-nowrap underline underline-offset-4">
+        {name}
+      </Link>
+      <Link href="github:luxass" aria-label="Github">
+        <GitHubLogo class="text-lg" />
+      </Link>
     </div>
     <p class="text-sm">{description}</p>
   </div>
@@ -42,7 +46,14 @@ const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
           {language.name}
         </span>
 
-        {isContributor && <span class="text-gray-500">Contributor</span>}
+        {isContributor && (
+          <Link
+            href={`${githubUrl}/commits?author=luxass`}
+            class="text-gray-500"
+          >
+            Contributor
+          </Link>
+        )}
       </div>
     )
   }

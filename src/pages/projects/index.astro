@@ -15,18 +15,19 @@ export const prerender = true;
     {
       projects.length > 0
         ? (
-        <ul class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
+        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
           {projects.map((project) => (
-            <li>
-              <ProjectCard project={project} />
-            </li>
+            <ProjectCard project={project} />
           ))}
-        </ul>
+        </div>
           )
         : (
         <p>
           I haven't made any of my projects available here yet - you can always
-          checkout my <Link href="github:luxass" underline>GitHub</Link>
+          checkout my{" "}
+          <Link href="github:luxass" underline>
+            GitHub
+          </Link>
         </p>
           )
     }

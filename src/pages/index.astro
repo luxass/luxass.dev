@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
 import Link from "../components/Link.astro";
-import GitHubLogo from "~icons/carbon/LogoGithub";
-import LinkedInLogo from "~icons/carbon/LogoLinkedin";
+import GitHubIcon from "~icons/carbon/LogoGithub";
+import LinkedInIcon from "~icons/carbon/LogoLinkedin";
 
 const posts = await getCollection("posts", ({ data }) => data.published).then(
   (posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
@@ -51,7 +51,7 @@ export const prerender = true;
           class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
         >
           {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
-          <span>{truncate(latestPost.data.title, 30)}</span>
+          <span>{truncate(latestPost.data.title, 20)}</span>
         </a>
       )
     }
@@ -61,7 +61,7 @@ export const prerender = true;
       aria-label="Github"
       class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
-      <GitHubLogo class="text-xl" />
+      <GitHubIcon class="text-xl" />
        GitHub
     </Link>
 
@@ -70,7 +70,7 @@ export const prerender = true;
       aria-label="LinkedIn"
       class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
-      <LinkedInLogo class="text-xl" />
+      <LinkedInIcon class="text-xl" />
        LinkedIn
     </Link>
   </div>
