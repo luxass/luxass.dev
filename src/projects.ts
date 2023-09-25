@@ -4,9 +4,9 @@ export const projects = [
   {
     "name": "luxass.dev",
     "owner": "luxass",
-    "description": "No description was provided.",
+    "description": "My personal website",
     "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-23T22:26:19Z",
+    "pushedAt": "2023-09-24T15:30:46Z",
     "language": {
       "color": "#ff5a03",
       "name": "Astro"
