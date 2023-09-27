@@ -1,6 +1,7 @@
-#!/usr/bin/env bun
-
 import process from "node:process";
+import { mkdir, rm, rmdir, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { Buffer } from "node:buffer";
 import { graphql } from "@octokit/graphql";
 import z from "zod";
 
@@ -219,6 +220,14 @@ async function run() {
     }),
   );
 
+  // recursively delete everything in ./src/content/projects
+
+  await rm("./src/content/projects", {
+    force: true,
+    recursive: true,
+  });
+  await mkdir("./src/content/projects");
+
   const projectPromises: Promise<Project | undefined>[] = viewer.repositories.nodes
     .concat(extraRepos)
     .filter(
@@ -285,6 +294,31 @@ async function run() {
 
       const projectrcParsed = parseResult.data;
 
+      let readmeUrl = `https://api.github.com/repos/${repo.nameWithOwner}`;
+      if (typeof projectrcParsed.readme === "string") {
+        readmeUrl += `/contents/${projectrcParsed.readme}`;
+      } else {
+        readmeUrl += "/readme";
+      }
+
+      const res = await fetch(readmeUrl, {
+        headers: {
+          "Accept": "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28",
+          "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+      });
+
+      const { content: markdown, encoding } = await res.json();
+
+      if (encoding !== "base64") {
+        console.error("Unknown encoding", encoding);
+      }
+
+      const fileName = repo.name.replace(/\.|\s/g, "");
+
+      await writeFile(`./src/content/projects/${fileName}.md`, `---\n---\n\n${Buffer.from(markdown, "base64").toString("utf-8")}`);
+
       return {
         name: repo.name,
         nameWithOwner: repo.nameWithOwner,
@@ -308,13 +342,10 @@ async function run() {
     2,
   )};\n`;
 
-  await Bun.write("./src/data/projects.ts", code);
+  await writeFile("./src/data/projects.ts", code);
 
-  // format with eslint
-  Bun.spawn({
-    cmd: ["npx", "eslint", "--fix", "./src/data/projects.ts"],
-    stdout: "pipe",
-  });
+  // format projects.ts with eslint
+  spawn("npx", ["eslint", "--fix", "./src/data/projects.ts"]);
 }
 
 run().catch((err) => {

@@ -4,6 +4,24 @@ export type Project = typeof projects[number];
 
 export const projects = [
   {
+    name: ".vscode",
+    nameWithOwner: "luxass/.vscode",
+    description: "My VSCode config",
+    pushedAt: "2023-09-25T05:18:20Z",
+    url: "https://github.com/luxass/.vscode",
+    defaultBranch: "main",
+    projectrc: {
+      readme: false,
+      npm: false,
+      ignore: false,
+    },
+    language: {
+      name: "Unknown",
+      color: "#333",
+    },
+    isContributor: false,
+  },
+  {
     name: "eslint-config",
     nameWithOwner: "luxass/eslint-config",
     description: null,
@@ -79,7 +97,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-09-23T20:42:13Z",
+    pushedAt: "2023-09-27T10:28:34Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {

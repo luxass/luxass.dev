@@ -20,15 +20,17 @@ export default defineConfig({
         return !page.includes("$");
       },
     }),
-    mdx(),
+    mdx({
+      optimize: true,
+    }),
     vue({
       jsx: true,
     }),
   ],
   markdown: {
-    syntaxHighlight: "shiki",
     shikiConfig: {
       theme: "vitesse-dark",
+      wrap: true,
     },
     smartypants: true,
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],

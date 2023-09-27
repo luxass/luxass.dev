@@ -18,4 +18,8 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const projects = defineCollection({
+  type: "content",
+});
+
+export const collections = { posts, projects };

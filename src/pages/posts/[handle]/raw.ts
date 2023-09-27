@@ -1,11 +1,7 @@
 import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
-import sanitizeHtml from "sanitize-html";
-import MarkdownIt from "markdown-it";
 
-const parser = new MarkdownIt();
-
-export async function GET({ site, url }: APIContext) {
+export async function GET({ url }: APIContext) {
   const posts = await getCollection(
     "posts",
     ({ data, slug }) =>

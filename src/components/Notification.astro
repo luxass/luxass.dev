@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: "warning" | "note" | "tip" | "important" | "caution"
+  type: "warning" | "note" | "tip" | "important" | "caution" | "custom"
   icon?: string
   multiline?: boolean
   printable?: boolean
@@ -11,10 +11,11 @@ const { type, icon, multiline, printable = false } = Astro.props;
 
 <div
   role="alert"
-  class="my-8 hidden items-center gap-2 border-l-4 rounded py-3 pl-4 sm:flex"
+  class="my-8 hidden items-center gap-2 rounded py-3 sm:flex"
   class:list={[
     !printable && "!print:hidden",
     {
+      "border-l-4 pl-4": type !== "custom",
       "bg-yellow-600 border-l-yellow-400": type === "warning",
       "bg-blue-900 border-l-blue-700": type === "note" || type === "tip",
       "bg-purple-900 border-l-purple-700": type === "important",

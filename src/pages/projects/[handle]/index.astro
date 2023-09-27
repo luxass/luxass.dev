@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PageLayout from "../../../layouts/PageLayout.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { handle: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<"projects">
+}
+
+const {
+  project: {
+    render,
+  },
+} = Astro.props;
+
+const { Content } = await render();
+
+export const prerender = true;
+---
+
+<PageLayout
+  title={"title"}
+  description={"description"}
+  image={`https://image.luxass.dev/api/image/project?url=${"url"}`}
+>
+  <div class="prose tracking-wide">
+    <Content />
+  </div>
+</PageLayout>
