@@ -22,9 +22,9 @@ pnpm add -D eslint @luxass/eslint-config
 ## 🚀 Usage
 ```js
 // eslint.config.js
-import { luxass } from '@luxass/eslint-config'
+import { luxass } from "@luxass/eslint-config";
 
-export default luxass()
+export default luxass();
 ```
 
 ## Setup for Visual Studio Code
@@ -41,7 +41,7 @@ Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=d
   "prettier.enable": false,
   "editor.formatOnSave": false,
 
-    // auto fix on save
+  // auto fix on save
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.organizeImports": false
@@ -61,7 +61,7 @@ Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=d
     { "rule": "*semi", "severity": "off" }
   ],
 
-    // The following is optional.
+  // The following is optional.
   // It's better to put under project setting `.vscode/settings.json`
   // to avoid conflicts with working with different eslint configs
   // that does not support all formats.
@@ -86,16 +86,16 @@ Normally you would only need to import the `luxass` preset:
 
 ```js
 // eslint.config.js
-import { luxass } from '@luxass/eslint-config'
+import { luxass } from "@luxass/eslint-config";
 
-export default luxass()
+export default luxass();
 ```
 
 you can also configure each `config` individually:
 
 ```js
 // eslint.config.js
-import { luxass } from '@luxass/eslint-config'
+import { luxass } from "@luxass/eslint-config";
 
 export default luxass({
   typescript: true,
@@ -106,14 +106,14 @@ export default luxass({
   unocss: true,
   tailwindcss: false,
   stylistic: true
-})
+});
 ```
 
 The `luxass` function accepts an arbitrary number of `flat configs` overrides:
 
 ```js
 // eslint.config.js
-import { luxass } from '@luxass/eslint-config'
+import { luxass } from "@luxass/eslint-config";
 
 export default luxass({},
   {
@@ -122,7 +122,7 @@ export default luxass({},
   {
     rules: {}
   }
-)
+);
 ```
 
 ### Fine Grained Configurations
@@ -152,7 +152,7 @@ import {
   unocss,
   vue,
   yml
-} from '@luxass/eslint-config/configs'
+} from "@luxass/eslint-config/configs";
 
 export default [
   ...astro,
@@ -175,7 +175,7 @@ export default [
   ...unocss,
   ...vue,
   ...yml
-]
+];
 ```
 
 > Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) and [antfu/eslint-config](https://github.com/antfu/eslint-config) for the inspiration and references.

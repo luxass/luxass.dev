@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../../layouts/PageLayout.astro";
+import { projects } from "../../../data/projects";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -29,7 +30,10 @@ export const prerender = true;
 <PageLayout
   title={"title"}
   description={"description"}
-  image={`https://image.luxass.dev/api/image/project?url=${"url"}`}
+  image={`https://image.luxass.dev/api/image/project?input=${encodeURIComponent(JSON.stringify({
+    repo: "luxass/eslint-config",
+    description: "description",
+  }))}`}
 >
   <div class="prose tracking-wide">
     <Content />

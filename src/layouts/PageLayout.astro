@@ -12,11 +12,18 @@ export interface Props {
 const {
   title,
   description,
-  image = new URL("https://image.luxass.dev/api/image/text?width=300&height=300"),
+  image = new URL(
+    `https://image.luxass.dev/api/image/text?input=${encodeURIComponent(
+      JSON.stringify({
+        width: 300,
+        height: 300,
+      }),
+    )}`,
+  ),
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- global metadata -->

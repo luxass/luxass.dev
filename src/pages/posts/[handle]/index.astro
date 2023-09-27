@@ -32,7 +32,13 @@ export const prerender = true;
 <PageLayout
   title={title}
   description={description}
-  image={`https://image.luxass.dev/api/image/post?title=${title}&date=${formattedDate}&description=${description}`}
+  image={`https://image.luxass.dev/api/image/post?input=${encodeURIComponent(
+    JSON.stringify({
+      title,
+      description,
+      date,
+    }),
+  )}`}
 >
   <div class="prose tracking-wide">
     {
