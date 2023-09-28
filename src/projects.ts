@@ -6,7 +6,7 @@ export const projects = [
     "owner": "luxass",
     "description": "My personal website",
     "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-26T01:42:12Z",
+    "pushedAt": "2023-09-27T20:36:29Z",
     "language": {
       "color": "#ff5a03",
       "name": "Astro"
