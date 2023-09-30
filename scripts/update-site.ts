@@ -317,7 +317,7 @@ async function run() {
 
       const fileName = repo.name.replace(/\.|\s/g, "");
 
-      await writeFile(`./src/content/projects/${fileName}.md`, `---\n---\n\n${Buffer.from(markdown, "base64").toString("utf-8")}`);
+      await writeFile(`./src/content/projects/${fileName}.mdx`, `---\n---\n\n${Buffer.from(markdown, "base64").toString("utf-8")}`);
 
       return {
         name: repo.name,

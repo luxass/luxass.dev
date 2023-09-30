@@ -2,6 +2,9 @@ import {
   writeFile,
 } from "node:fs/promises";
 import {
+  Buffer,
+} from "node:buffer";
+import {
   defineConfig,
   presetIcons,
   presetUno,
@@ -15,13 +18,7 @@ export default defineConfig({
     presetUno({
       dark: "media",
     }),
-    presetIcons({
-      // scale: 1.5,
-      // extraProperties: {
-      //   "color": "inherit",
-      //   "min-width": "1.5em"
-      // }
-    }),
+    presetIcons(),
     presetWebFonts({
       provider: "google",
       async customFetch(url) {
@@ -49,7 +46,10 @@ export default defineConfig({
 
           const res = await fetch(url[0].replace(/url\((.*?)\)/i, "$1"));
           const blob = await res.blob();
-          writeFile(`./public/fonts/${family[1].replace(/['"]/g, "").toLowerCase()}.woff2`, blob.stream());
+
+          await writeFile(`./public/fonts/${family[1].replace(/['"]/g, "").toLowerCase()}.woff2`,
+            Buffer.from(await blob.arrayBuffer()),
+          );
           result = result.replace(url[0], `url(/fonts/${family[1].replace(/['"]/g, "").toLowerCase()}.woff2)`);
         }
 

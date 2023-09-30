@@ -4,6 +4,24 @@ export type Project = typeof projects[number];
 
 export const projects = [
   {
+    name: "assets.worker",
+    nameWithOwner: "luxass/assets.worker",
+    description: "A cloudflare that handles my assets",
+    pushedAt: "2023-09-27T17:23:15Z",
+    url: "https://github.com/luxass/assets.worker",
+    defaultBranch: "main",
+    projectrc: {
+      readme: true,
+      npm: false,
+      ignore: false,
+    },
+    language: {
+      name: "TypeScript",
+      color: "#3178c6",
+    },
+    isContributor: false,
+  },
+  {
     name: ".vscode",
     nameWithOwner: "luxass/.vscode",
     description: "My VSCode config",
@@ -25,7 +43,7 @@ export const projects = [
     name: "eslint-config",
     nameWithOwner: "luxass/eslint-config",
     description: null,
-    pushedAt: "2023-09-24T13:05:44Z",
+    pushedAt: "2023-09-29T20:24:26Z",
     url: "https://github.com/luxass/eslint-config",
     defaultBranch: "main",
     projectrc: {
@@ -61,7 +79,7 @@ export const projects = [
     name: "github-emojis",
     nameWithOwner: "luxass/github-emojis",
     description: "A list of all available emojis on GitHub",
-    pushedAt: "2023-09-23T13:21:13Z",
+    pushedAt: "2023-09-29T14:56:13Z",
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {
@@ -79,7 +97,7 @@ export const projects = [
     name: "eslint-config-legacy",
     nameWithOwner: "luxass/eslint-config-legacy",
     description: "My old shareable ESLint config",
-    pushedAt: "2023-09-24T06:23:22Z",
+    pushedAt: "2023-09-29T16:06:30Z",
     url: "https://github.com/luxass/eslint-config-legacy",
     defaultBranch: "main",
     projectrc: {
@@ -97,7 +115,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-09-27T10:28:34Z",
+    pushedAt: "2023-09-30T02:29:06Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {
