@@ -8,9 +8,7 @@ export async function GET({ url }: APIContext) {
       slug, data: {
         handle,
       },
-    }) =>
-      handle || slug
-      === url.pathname.replace("/raw", "").split("/").pop(),
+    }) => (handle || slug) === url.pathname.replace("/raw", "").split("/").pop(),
   );
 
   if (!projects || !projects.length) {

@@ -222,8 +222,6 @@ async function run() {
     }),
   );
 
-  // recursively delete everything in ./src/content/projects
-
   await rm("./src/content/projects", {
     force: true,
     recursive: true,

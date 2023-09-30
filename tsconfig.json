@@ -2,11 +2,7 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "verbatimModuleSyntax": true,
-    "types": [
-      "unplugin-icons/types/astro"
-    ]
+    "types": ["unplugin-icons/types/astro"]
   },
-  "exclude": [
-    "dist"
-  ]
+  "exclude": ["dist"]
 }
