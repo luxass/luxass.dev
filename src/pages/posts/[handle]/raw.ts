@@ -24,7 +24,7 @@ export async function GET({ url }: APIContext) {
   return new Response(post.body, {
     status: 200,
     headers: {
-      "content-type": "text/plain",
+      "content-type": "text/plain; charset=UTF-8",
     },
   });
 }

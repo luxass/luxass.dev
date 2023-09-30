@@ -21,11 +21,10 @@ export async function GET({ url }: APIContext) {
   }
 
   const project = projects[0];
-
   return new Response(project.body, {
     status: 200,
     headers: {
-      "content-type": "text/plain",
+      "Content-Type": "text/plain; charset=UTF-8",
     },
   });
 }
