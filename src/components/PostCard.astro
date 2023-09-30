@@ -25,10 +25,12 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
   day: "numeric",
 });
 const time = readingTime(body);
+
+const formattedTitle = title.length > 30 ? `${title.slice(0, 30)}...` : title;
 ---
 
 <Card href={`/posts/${handle || slug}`} class="flex flex-col">
-  <h3 class="!my-0">{title}</h3>
+  <h3 class="!my-0">{formattedTitle}</h3>
 
   <p class="flex-1">{description}</p>
 

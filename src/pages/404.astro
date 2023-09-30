@@ -5,10 +5,12 @@ import Link from "../components/Link.astro";
 export const prerender = true;
 ---
 
-<PageLayout title="404" description="404 - Page not found">
-  <div class="h-[calc(100vh-4rem)] flex flex-col items-center justify-center">
-    <h1 class="!text-8xl !text-blue-500">404</h1>
-    <p class="mb-8 !text-2xl">Page not found</p>
-    <Link href="/">Go back</Link>
-  </div>
+<PageLayout
+  title="404"
+  description="404 - Page not found"
+  class:list={["flex flex-col items-center justify-center"]}
+>
+  <h1 class="!text-8xl !text-blue-500">404</h1>
+  <p class="mb-8 !text-2xl">Page not found</p>
+  <Link href="/">Go back</Link>
 </PageLayout>

@@ -4,8 +4,12 @@ import { getCollection } from "astro:content";
 export async function GET({ url }: APIContext) {
   const projects = await getCollection(
     "projects",
-    ({ slug }) =>
-      slug
+    ({
+      slug, data: {
+        handle,
+      },
+    }) =>
+      handle || slug
       === url.pathname.replace("/raw", "").split("/").pop(),
   );
 
