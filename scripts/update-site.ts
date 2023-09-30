@@ -1,5 +1,5 @@
 import process from "node:process";
-import { mkdir, rm, rmdir, writeFile } from "node:fs/promises";
+import { mkdir, rm, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import { Buffer } from "node:buffer";
 import { graphql } from "@octokit/graphql";
