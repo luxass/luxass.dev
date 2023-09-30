@@ -4,12 +4,7 @@ import { spawn } from "node:child_process";
 import { Buffer } from "node:buffer";
 import { graphql } from "@octokit/graphql";
 import z from "zod";
-import remarkParse from "remark-parse";
-import remarkMdx from "remark-mdx";
-import { type Plugin, unified } from "unified";
 import { remark } from "remark";
-import rehypeParse from "rehype-parse";
-import { visit } from "unist-util-visit";
 import remarkComment from "remark-comment";
 
 const BANNER
