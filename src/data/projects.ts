@@ -79,7 +79,7 @@ export const projects = [
     name: "github-emojis",
     nameWithOwner: "luxass/github-emojis",
     description: "A list of all available emojis on GitHub",
-    pushedAt: "2023-09-29T14:56:13Z",
+    pushedAt: "2023-09-30T10:28:06Z",
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {

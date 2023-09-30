@@ -7,6 +7,7 @@ export interface Props {
   title: string
   description: string
   image?: string
+  class?: string
 }
 
 const {
@@ -20,6 +21,7 @@ const {
       }),
     )}`,
   ),
+  class: clazz,
 } = Astro.props;
 ---
 
@@ -70,7 +72,7 @@ const {
   </head>
   <body>
     <Header />
-    <main class="prose flex-1 p-4" transition:animate="slide">
+    <main class="prose flex-1 p-4" class:list={clazz} transition:animate="slide">
       <slot />
     </main>
     <Footer />

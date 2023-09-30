@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../../layouts/PageLayout.astro";
 import Notification from "../../../components/Notification.astro";
+import Code from "../../../components/Code.vue";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -50,6 +51,8 @@ export const prerender = true;
     }
 
     <h1 class="mt-8">{title}</h1>
-    <Content />
+    <Content components={{
+      code: Code,
+    }} />
   </div>
 </PageLayout>

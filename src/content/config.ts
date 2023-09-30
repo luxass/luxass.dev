@@ -4,12 +4,7 @@ import { z } from "zod";
 const posts = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string().transform((val, ctx) => {
-      if (val.length > 30) {
-        val = val.slice(0, 30);
-      }
-      return val;
-    }),
+    title: z.string().max(50),
     description: z.string().max(120),
     date: z.string().transform(str => new Date(str)),
     published: z.boolean().optional().default(true),
@@ -20,6 +15,9 @@ const posts = defineCollection({
 
 const projects = defineCollection({
   type: "content",
+  schema: z.object({
+    handle: z.string().optional(),
+  }),
 });
 
 export const collections = { posts, projects };

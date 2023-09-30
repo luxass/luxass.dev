@@ -2,11 +2,12 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../../layouts/PageLayout.astro";
+import Code from "../../../components/Code.vue";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
-    params: { handle: project.slug },
+    params: { handle: project.data.handle || project.slug },
     props: { project },
   }));
 }
@@ -35,6 +36,8 @@ export const prerender = true;
   }))}`}
 >
   <div class="prose tracking-wide">
-    <Content />
+    <Content components={{
+      code: Code,
+    }} />
   </div>
 </PageLayout>
