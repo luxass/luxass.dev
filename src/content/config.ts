@@ -19,7 +19,8 @@ const projects = defineCollection({
     handle: z.string().optional(),
     githubUrl: z.string(),
     // github repo names is a maximum of 100 characters.
-    title: z.string().max(100),
+    name: z.string().max(100),
+    owner: z.string(),
     description: z.string().max(120).nullable(),
     npm: z.string().optional(),
   }),

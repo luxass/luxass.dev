@@ -296,7 +296,8 @@ async function run() {
         const file = await remark().use(remarkComment).process(readme || "No README was found.");
         const frontmatter = `---
             handle: ${repo.name}
-            title: ${repo.name}
+            name: ${repo.name}
+            owner: ${repo.nameWithOwner.split("/")[0]}
             description: ${repo.description}
             githubUrl: ${repo.url}
             ${(projectrc.raw.npm && projectrc.npm) ? `npm: ${projectrc.npm}` : ""}

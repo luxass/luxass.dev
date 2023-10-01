@@ -130,7 +130,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-09-30T14:49:25Z",
+    pushedAt: "2023-10-01T12:30:56Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {
