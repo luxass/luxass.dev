@@ -2,9 +2,9 @@ name: Trigger Vercel Build
 
 on:
   workflow_dispatch:
-  schedule:
+  # schedule:
     # Every night at 1:23
-    - cron: "23 1 * * *"
+    # - cron: "23 1 * * *"
 
 jobs:
   build:
