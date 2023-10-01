@@ -29,7 +29,7 @@ export default defineConfig({
       jsx: true,
     }),
     prefetch({
-      throttle: 5
+      throttle: 5,
     }),
   ],
   markdown: {
