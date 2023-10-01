@@ -2,6 +2,17 @@
 
 export const projects = [
   {
+    "name": "luxass.dev",
+    "owner": "luxass",
+    "description": "My personal website",
+    "url": "https://github.com/luxass/luxass.dev",
+    "pushedAt": "2023-09-30T21:33:02Z",
+    "language": {
+      "color": "#ff5a03",
+      "name": "Astro"
+    }
+  },
+  {
     "name": "jsonc-parse",
     "owner": "luxass",
     "description": "A lightweight JSON with Comments parser.",
@@ -43,17 +54,6 @@ export const projects = [
     "language": {
       "color": "#3178c6",
       "name": "TypeScript"
-    }
-  },
-  {
-    "name": "luxass.dev",
-    "owner": "luxass",
-    "description": "My personal website",
-    "url": "https://github.com/luxass/luxass.dev",
-    "pushedAt": "2023-09-29T16:34:54Z",
-    "language": {
-      "color": "#ff5a03",
-      "name": "Astro"
     }
   },
   {
