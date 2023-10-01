@@ -11,9 +11,11 @@ export const projects = [
     url: "https://github.com/luxass/assets.worker",
     defaultBranch: "main",
     projectrc: {
-      readme: true,
-      npm: false,
-      ignore: false,
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+        readme: true,
+      },
+      readme: "https://api.github.com/repos/luxass/assets.worker/readme",
     },
     language: {
       name: "TypeScript",
@@ -29,9 +31,9 @@ export const projects = [
     url: "https://github.com/luxass/.vscode",
     defaultBranch: "main",
     projectrc: {
-      readme: false,
-      npm: false,
-      ignore: false,
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+      },
     },
     language: {
       name: "Unknown",
@@ -47,9 +49,13 @@ export const projects = [
     url: "https://github.com/luxass/eslint-config",
     defaultBranch: "main",
     projectrc: {
-      readme: true,
-      npm: true,
-      ignore: false,
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+        npm: true,
+        readme: true,
+      },
+      readme: "https://api.github.com/repos/luxass/eslint-config/readme",
+      npm: "https://npmjs.org/package/@luxass/eslint-config",
     },
     language: {
       name: "TypeScript",
@@ -65,9 +71,13 @@ export const projects = [
     url: "https://github.com/luxass/github-schema",
     defaultBranch: "main",
     projectrc: {
-      readme: true,
-      npm: true,
-      ignore: false,
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+        npm: true,
+        readme: true,
+      },
+      readme: "https://api.github.com/repos/luxass/github-schema/readme",
+      npm: "https://npmjs.org/package/github-schema",
     },
     language: {
       name: "TypeScript",
@@ -83,9 +93,13 @@ export const projects = [
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {
-      readme: true,
-      npm: true,
-      ignore: false,
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+        readme: true,
+        npm: true,
+      },
+      readme: "https://api.github.com/repos/luxass/github-emojis/readme",
+      npm: "https://npmjs.org/package/github-emojis",
     },
     language: {
       name: "TypeScript",
@@ -101,9 +115,10 @@ export const projects = [
     url: "https://github.com/luxass/eslint-config-legacy",
     defaultBranch: "main",
     projectrc: {
-      readme: false,
-      npm: true,
-      ignore: false,
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+        npm: true,
+      },
     },
     language: {
       name: "JavaScript",
@@ -115,7 +130,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-09-30T02:29:06Z",
+    pushedAt: "2023-09-30T14:49:25Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {

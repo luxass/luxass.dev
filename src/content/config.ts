@@ -17,6 +17,11 @@ const projects = defineCollection({
   type: "content",
   schema: z.object({
     handle: z.string().optional(),
+    githubUrl: z.string(),
+    // github repo names is a maximum of 100 characters.
+    title: z.string().max(100),
+    description: z.string().max(120).nullable(),
+    npm: z.string().optional(),
   }),
 });
 

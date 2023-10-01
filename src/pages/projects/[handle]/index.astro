@@ -3,6 +3,10 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../../layouts/PageLayout.astro";
 import Code from "../../../components/Code.vue";
+import Link from "../../../components/Link.astro";
+import GitHubIcon from "~icons/carbon/LogoGithub";
+import NPMIcon from "~icons/logos/NpmIcon";
+import SearchIcon from "~icons/octicon/search";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -19,25 +23,70 @@ interface Props {
 const {
   project: {
     render,
+    data: { title, description, githubUrl, npm },
   },
 } = Astro.props;
 
 const { Content } = await render();
 
 export const prerender = true;
+
+const pkgName = npm?.includes("@")
+  ? npm.slice(npm.indexOf("@"))
+  : (npm || "").split("/").pop();
+
+const searchUrl = `https://github.com/search?type=code&q=path%3A%2Fpackage.json%24%2F+%22%5C%22${pkgName}%5C%22%3A%22`;
 ---
 
 <PageLayout
-  title={"title"}
-  description={"description"}
-  image={`https://image.luxass.dev/api/image/project?input=${encodeURIComponent(JSON.stringify({
-    repo: "luxass/eslint-config",
-    description: "description",
-  }))}`}
+  title={title}
+  description={description || "No description provided."}
+  image={`https://image.luxass.dev/api/image/project?input=${encodeURIComponent(
+    JSON.stringify({
+      repo: title,
+      description,
+    }),
+  )}`}
 >
-  <div class="prose tracking-wide">
-    <Content components={{
-      code: Code,
-    }} />
+  <div class="prose pt-8 tracking-wide">
+    <div
+      class="flex flex-nowrap items-center justify-between gap-3 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
+    >
+      <Link
+        href={githubUrl}
+        title="GitHub"
+        class="flex flex-nowrap items-center gap-2 transition-transform active:scale-95"
+      >
+        <GitHubIcon class="text-xl" />
+         GitHub
+      </Link>
+      {
+        npm && (
+          <>
+            <Link
+              href={npm}
+              title="NPM Package"
+              class="flex flex-nowrap items-center gap-2 transition-transform active:scale-95"
+            >
+              <NPMIcon class="text-xl" />
+              NPM
+            </Link>
+            <Link
+              href={searchUrl}
+              title="Who uses this package"
+              class="flex flex-nowrap items-center gap-2 transition-transform active:scale-95"
+            >
+              <SearchIcon class="text-xl" />
+              Who uses this package?
+            </Link>
+          </>
+        )
+      }
+    </div>
+    <Content
+      components={{
+        code: Code,
+      }}
+    />
   </div>
 </PageLayout>

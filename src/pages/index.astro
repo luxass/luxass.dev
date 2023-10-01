@@ -46,20 +46,20 @@ export const prerender = true;
   <div class="mt-8 flex flex-wrap gap-2 sm:mt-14 sm:gap-4">
     {
       latestPost && (
-        <a
+        <Link
           href={`/posts/${latestPost.data.handle || latestPost.slug}`}
-          class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
+          class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
         >
           {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
           <span>{truncate(latestPost.data.title, 20)}</span>
-        </a>
+        </Link>
       )
     }
 
     <Link
       href="github:luxass"
       aria-label="Github"
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
+      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
       <GitHubIcon class="text-xl" />
        GitHub
@@ -68,7 +68,7 @@ export const prerender = true;
     <Link
       href="linkedin:lucasnrgaard"
       aria-label="LinkedIn"
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
+      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
       <LinkedInIcon class="text-xl" />
        LinkedIn

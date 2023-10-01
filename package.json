@@ -18,6 +18,7 @@
   "dependencies": {
     "@astrojs/check": "^0.2.0",
     "@astrojs/mdx": "^1.1.0",
+    "@astrojs/prefetch": "^0.4.0",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/vue": "^3.0.0",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@astrojs/vercel": "^5.0.1",
     "@iconify-json/carbon": "^1.1.21",
+    "@iconify-json/logos": "1.1.37",
     "@iconify-json/octicon": "1.1.49",
     "@luxass/eslint-config": "^3.3.2",
     "@octokit/graphql": "^7.0.2",
@@ -48,6 +50,7 @@
     "dotenv": "^16.3.1",
     "eslint": "^8.50.0",
     "eslint-plugin-astro": "^0.29.0",
+    "ofetch": "^1.3.3",
     "typescript": "^5.2.2",
     "unocss": "^0.56.1",
     "unplugin-icons": "^0.17.0"
