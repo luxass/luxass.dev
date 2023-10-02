@@ -89,7 +89,7 @@ export const projects = [
     name: "github-emojis",
     nameWithOwner: "luxass/github-emojis",
     description: "A list of all available emojis on GitHub",
-    pushedAt: "2023-09-30T10:28:06Z",
+    pushedAt: "2023-10-02T18:15:55Z",
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {
@@ -130,7 +130,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-10-01T12:30:56Z",
+    pushedAt: "2023-10-02T09:51:35Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {

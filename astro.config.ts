@@ -7,8 +7,11 @@ import rehypeSlug from "rehype-slug";
 import vercel from "@astrojs/vercel/serverless";
 import Icons from "unplugin-icons/vite";
 import vue from "@astrojs/vue";
-
+import rehypeExternalLinks from "rehype-external-links";
 import prefetch from "@astrojs/prefetch";
+import {
+  rehypeUrl,
+} from "./rehype-urls";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,8 +41,15 @@ export default defineConfig({
       wrap: false,
     },
     smartypants: true,
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
+      target: "_blank",
+      rel: ["noopener", "noreferrer"],
+    }]],
+    remarkPlugins: [
+      rehypeUrl(),
+    ],
   },
+  compressHTML: false,
   output: "server",
   adapter: vercel({
     webAnalytics: {
