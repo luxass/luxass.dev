@@ -9,9 +9,6 @@ import Icons from "unplugin-icons/vite";
 import vue from "@astrojs/vue";
 import rehypeExternalLinks from "rehype-external-links";
 import prefetch from "@astrojs/prefetch";
-import {
-  rehypeUrl,
-} from "./rehype-urls";
 
 // https://astro.build/config
 export default defineConfig({
@@ -45,9 +42,6 @@ export default defineConfig({
       target: "_blank",
       rel: ["noopener", "noreferrer"],
     }]],
-    remarkPlugins: [
-      rehypeUrl(),
-    ],
   },
   compressHTML: false,
   output: "server",
