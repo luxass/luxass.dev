@@ -45,7 +45,7 @@ export const projects = [
     name: "eslint-config",
     nameWithOwner: "luxass/eslint-config",
     description: null,
-    pushedAt: "2023-09-29T20:24:26Z",
+    pushedAt: "2023-10-03T08:26:26Z",
     url: "https://github.com/luxass/eslint-config",
     defaultBranch: "main",
     projectrc: {
@@ -89,7 +89,7 @@ export const projects = [
     name: "github-emojis",
     nameWithOwner: "luxass/github-emojis",
     description: "A list of all available emojis on GitHub",
-    pushedAt: "2023-10-02T18:15:55Z",
+    pushedAt: "2023-10-03T20:25:37Z",
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {
@@ -130,7 +130,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-10-02T09:51:35Z",
+    pushedAt: "2023-10-03T16:46:04Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {
