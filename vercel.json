@@ -108,6 +108,10 @@
   ],
   "rewrites": [
     {
+      "source": "sitemap.xml",
+      "destination": "/sitemap-0.xml"
+    },
+    {
       "source": "/art",
       "destination": "/$/art"
     },
