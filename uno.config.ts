@@ -18,6 +18,8 @@ export default defineConfig({
     presetWebFonts({
       provider: "google",
       async customFetch(url) {
+        console.log(url);
+        
         const res = await fetch(url, {
           headers: {
             "User-Agent":
