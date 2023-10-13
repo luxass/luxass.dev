@@ -54,54 +54,12 @@
     {
       "source": "/gh/:slug*",
       "destination": "https://github.com/luxass/:slug*"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "luxass.beer"
-        }
-      ],
-      "destination": "/beer"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "luxass.horse"
-        }
-      ],
-      "destination": "/horse"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "luxass.xyz"
-        }
-      ],
-      "destination": "/xyz"
     }
   ],
   "rewrites": [
     {
       "source": "sitemap.xml",
       "destination": "/sitemap-0.xml"
-    },
-    {
-      "source": "/beer",
-      "destination": "/$/beer"
-    },
-    {
-      "source": "/horse",
-      "destination": "/$/horse"
-    },
-    {
-      "source": "/xyz",
-      "destination": "/$/xyz"
     }
   ]
 }
