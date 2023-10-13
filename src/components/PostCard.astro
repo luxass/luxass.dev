@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-// import { readingTime } from "lesetid";
 import readingTime from "reading-time";
 import Card from "./Card.astro";
 import CalendarIcon from "~icons/carbon/Calendar";
@@ -24,7 +23,9 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
 });
-const time = readingTime(body);
+const {
+  text,
+} = readingTime(body);
 
 const formattedTitle = title.length > 30 ? `${title.slice(0, 30)}...` : title;
 ---
@@ -40,6 +41,6 @@ const formattedTitle = title.length > 30 ? `${title.slice(0, 30)}...` : title;
   </span>
   <span class="flex items-center gap-x-1">
     <AlarmIcon />
-    {time.text}
+    {text}
   </span>
 </Card>

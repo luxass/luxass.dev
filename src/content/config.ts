@@ -23,6 +23,7 @@ const projects = defineCollection({
     owner: z.string(),
     description: z.string().max(120).nullable(),
     npm: z.string().optional(),
+    handles: z.array(z.string()).optional(),
   }),
 });
 

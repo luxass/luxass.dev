@@ -60,16 +60,6 @@
       "has": [
         {
           "type": "host",
-          "value": "luxass.art"
-        }
-      ],
-      "destination": "/art"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "luxass.beer"
         }
       ],
@@ -90,16 +80,6 @@
       "has": [
         {
           "type": "host",
-          "value": "luxass.lol"
-        }
-      ],
-      "destination": "/lol"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "luxass.xyz"
         }
       ],
@@ -112,20 +92,12 @@
       "destination": "/sitemap-0.xml"
     },
     {
-      "source": "/art",
-      "destination": "/$/art"
-    },
-    {
       "source": "/beer",
       "destination": "/$/beer"
     },
     {
       "source": "/horse",
       "destination": "/$/horse"
-    },
-    {
-      "source": "/lol",
-      "destination": "/$/lol"
     },
     {
       "source": "/xyz",

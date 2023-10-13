@@ -3,6 +3,7 @@ import type { Project } from "../data/projects";
 import Card from "./Card.astro";
 import Link from "./Link.astro";
 import GitHubLogo from "~icons/carbon/LogoGithub";
+import NPMIcon from "~icons/logos/NpmIcon";
 
 export interface Props {
   project: Project
@@ -10,14 +11,7 @@ export interface Props {
 
 const { project } = Astro.props;
 
-const {
-  name,
-  description,
-  language,
-  url: githubUrl,
-  isContributor,
-  projectrc,
-} = project;
+const { name, description, language, url: githubUrl, isContributor, projectrc } = project;
 
 const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
 ---
@@ -28,9 +22,18 @@ const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
       <Link href={url} class="overflow-hidden text-ellipsis whitespace-nowrap underline underline-offset-4">
         {name}
       </Link>
-      <Link href="github:luxass" aria-label="Github">
-        <GitHubLogo class="text-lg" />
-      </Link>
+      <div class="flex items-center gap-2">
+        {
+          projectrc?.npm && (
+            <Link href={projectrc.npm} aria-label="NPM Package">
+              <NPMIcon class="text-lg" />
+            </Link>
+          )
+        }
+        <Link href={githubUrl} aria-label="Github">
+          <GitHubLogo class="text-lg" />
+        </Link>
+      </div>
     </div>
     <p class="text-sm">{description}</p>
   </div>
@@ -47,10 +50,7 @@ const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
         </span>
 
         {isContributor && (
-          <Link
-            href={`${githubUrl}/commits?author=luxass`}
-            class="text-gray-500"
-          >
+          <Link href={`${githubUrl}/commits?author=luxass`} class="text-gray-500">
             Contributor
           </Link>
         )}

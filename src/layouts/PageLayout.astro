@@ -71,7 +71,7 @@ const {
     <ViewTransitions />
   </head>
   <body>
-    <Header />
+    <Header transition:animate="none" />
     <main class="prose flex-1 p-4" class:list={clazz} transition:animate="slide">
       <slot />
     </main>

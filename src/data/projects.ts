@@ -7,15 +7,14 @@ export const projects = [
     name: "assets.worker",
     nameWithOwner: "luxass/assets.worker",
     description: "A cloudflare that handles my assets",
-    pushedAt: "2023-09-27T17:23:15Z",
+    pushedAt: "2023-10-11T09:32:31Z",
     url: "https://github.com/luxass/assets.worker",
     defaultBranch: "main",
     projectrc: {
       raw: {
         $schema: "https://projectrc.luxass.dev/schema",
-        readme: true,
+        readme: false,
       },
-      readme: "https://api.github.com/repos/luxass/assets.worker/readme",
     },
     language: {
       name: "TypeScript",
@@ -24,28 +23,10 @@ export const projects = [
     isContributor: false,
   },
   {
-    name: ".vscode",
-    nameWithOwner: "luxass/.vscode",
-    description: "My VSCode config",
-    pushedAt: "2023-09-25T05:18:20Z",
-    url: "https://github.com/luxass/.vscode",
-    defaultBranch: "main",
-    projectrc: {
-      raw: {
-        $schema: "https://projectrc.luxass.dev/schema",
-      },
-    },
-    language: {
-      name: "Unknown",
-      color: "#333",
-    },
-    isContributor: false,
-  },
-  {
     name: "eslint-config",
     nameWithOwner: "luxass/eslint-config",
     description: null,
-    pushedAt: "2023-10-03T08:26:26Z",
+    pushedAt: "2023-10-13T08:45:17Z",
     url: "https://github.com/luxass/eslint-config",
     defaultBranch: "main",
     projectrc: {
@@ -67,7 +48,7 @@ export const projects = [
     name: "github-schema",
     nameWithOwner: "luxass/github-schema",
     description: "GitHub's GraphQL schema",
-    pushedAt: "2023-09-23T05:51:52Z",
+    pushedAt: "2023-10-13T08:41:06Z",
     url: "https://github.com/luxass/github-schema",
     defaultBranch: "main",
     projectrc: {
@@ -89,7 +70,7 @@ export const projects = [
     name: "github-emojis",
     nameWithOwner: "luxass/github-emojis",
     description: "A list of all available emojis on GitHub",
-    pushedAt: "2023-10-03T20:25:37Z",
+    pushedAt: "2023-10-13T08:41:46Z",
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {
@@ -111,7 +92,7 @@ export const projects = [
     name: "eslint-config-legacy",
     nameWithOwner: "luxass/eslint-config-legacy",
     description: "My old shareable ESLint config",
-    pushedAt: "2023-09-29T16:06:30Z",
+    pushedAt: "2023-10-12T13:27:43Z",
     url: "https://github.com/luxass/eslint-config-legacy",
     defaultBranch: "main",
     projectrc: {
@@ -130,7 +111,7 @@ export const projects = [
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-10-03T16:46:04Z",
+    pushedAt: "2023-10-13T05:48:58Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {
