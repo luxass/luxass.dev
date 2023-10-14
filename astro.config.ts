@@ -17,11 +17,7 @@ export default defineConfig({
     unocss({
       injectReset: true,
     }),
-    sitemap({
-      filter(page) {
-        return !page.includes("$");
-      },
-    }),
+    sitemap(),
     mdx({
       optimize: true,
     }),
