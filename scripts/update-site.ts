@@ -11,10 +11,36 @@ import {
   $fetch,
 } from "ofetch";
 
+import {
+  visit,
+} from "unist-util-visit";
+
 interface ProjectRCResponse {
   raw: ProjectRC
   readme?: string
   npm?: string
+}
+
+function isExternalLink(url: string) {
+  // there is probably a better way to do this
+  return url.startsWith("http");
+}
+
+function rewrite(options: { repoUrl: string }) {
+  console.log("OPTIONS", options);
+
+  return function transformer(tree, file) {
+    visit(tree, "link", (node) => {
+      if (!node?.url) {
+        throw new Error("No URL found");
+      }
+      if (isExternalLink(node.url)) {
+        return;
+      }
+      const newUrl = new URL(node.url, `${options.repoUrl}/blob/main/`);
+      node.url = newUrl.toString();
+    });
+  };
 }
 
 interface ProjectRC {
@@ -293,7 +319,9 @@ async function run() {
 
         const readme = Buffer.from(content, "base64").toString("utf-8");
 
-        const file = await remark().use(remarkComment).process(readme || "No README was found.");
+        const file = await remark().use(remarkComment).use(rewrite, {
+          repoUrl: repo.url,
+        }).process(readme || "No README was found.");
         const frontmatter = `---
             handle: ${repo.name}
             name: ${repo.name}

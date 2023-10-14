@@ -19,7 +19,12 @@ export default defineConfig({
     }),
     sitemap(),
     mdx({
-      optimize: true,
+      optimize: {
+        customComponentNames: [
+          "a",
+        ],
+      },
+
     }),
     vue({
       jsx: true,
