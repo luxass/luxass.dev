@@ -63,15 +63,7 @@ export default defineConfig({
         return result;
       },
       fonts: {
-        sans: [
-          {
-            name: "Inter",
-          },
-          {
-            name: "sans-serif",
-            provider: "none",
-          },
-        ],
+        sans: "Lexend",
       },
     }),
   ],
