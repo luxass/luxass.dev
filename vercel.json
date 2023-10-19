@@ -58,7 +58,7 @@
   ],
   "rewrites": [
     {
-      "source": "sitemap.xml",
+      "source": "/sitemap.xml",
       "destination": "/sitemap-0.xml"
     }
   ]
