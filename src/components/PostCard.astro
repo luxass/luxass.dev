@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-import readingTime from "reading-time";
+import { estimate } from "lesetid";
 import Card from "./Card.astro";
 import CalendarIcon from "~icons/carbon/Calendar";
 import AlarmIcon from "~icons/carbon/Alarm";
@@ -25,7 +25,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
 });
 const {
   text,
-} = readingTime(body);
+} = estimate(body);
 
 const formattedTitle = title.length > 30 ? `${title.slice(0, 30)}...` : title;
 ---

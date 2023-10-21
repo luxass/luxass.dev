@@ -24,7 +24,6 @@ export default defineConfig({
           "a",
         ],
       },
-
     }),
     vue({
       jsx: true,
