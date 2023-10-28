@@ -32,6 +32,9 @@ export default defineConfig({
       throttle: 5,
     }),
   ],
+  experimental: {
+    devOverlay: true,
+  },
   markdown: {
     shikiConfig: {
       theme: "vitesse-dark",
@@ -42,6 +45,7 @@ export default defineConfig({
       target: "_blank",
       rel: ["noopener", "noreferrer"],
     }]],
+    remarkPlugins: [],
   },
   compressHTML: false,
   output: "server",

@@ -10,7 +10,6 @@ import remarkComment from "remark-comment";
 import {
   $fetch,
 } from "ofetch";
-
 import {
   visit,
 } from "unist-util-visit";
@@ -27,8 +26,7 @@ function isExternalLink(url: string) {
 }
 
 function rewrite(options: { repoUrl: string }) {
-  console.log("OPTIONS", options);
-
+  // @ts-expect-error - hmmm what types should i use?
   return function transformer(tree, file) {
     visit(tree, "link", (node) => {
       if (!node?.url) {
