@@ -7,7 +7,7 @@ export const projects = [
     name: "tsup-problem-matchers",
     nameWithOwner: "luxass/tsup-problem-matchers",
     description: "Problem matchers for tsup tasks in VSCode",
-    pushedAt: "2023-10-23T17:40:20Z",
+    pushedAt: "2023-11-11T06:46:35Z",
     url: "https://github.com/luxass/tsup-problem-matchers",
     defaultBranch: "main",
     projectrc: {
@@ -47,7 +47,7 @@ export const projects = [
     name: "volapyk",
     nameWithOwner: "luxass/volapyk",
     description: null,
-    pushedAt: "2023-10-24T23:56:13Z",
+    pushedAt: "2023-11-01T19:05:33Z",
     url: "https://github.com/luxass/volapyk",
     defaultBranch: "main",
     projectrc: {
@@ -75,7 +75,7 @@ export const projects = [
     name: "assets.worker",
     nameWithOwner: "luxass/assets.worker",
     description: "A cloudflare that handles my assets",
-    pushedAt: "2023-10-24T02:34:40Z",
+    pushedAt: "2023-11-02T08:08:42Z",
     url: "https://github.com/luxass/assets.worker",
     defaultBranch: "main",
     projectrc: {
@@ -94,8 +94,8 @@ export const projects = [
   {
     name: "eslint-config",
     nameWithOwner: "luxass/eslint-config",
-    description: null,
-    pushedAt: "2023-10-27T02:25:32Z",
+    description: "An ESLint config preset.",
+    pushedAt: "2023-11-09T02:30:08Z",
     url: "https://github.com/luxass/eslint-config",
     defaultBranch: "main",
     projectrc: {
@@ -114,33 +114,10 @@ export const projects = [
     isContributor: false,
   },
   {
-    name: "lesetid",
-    nameWithOwner: "luxass/lesetid",
-    description: "Monorepo for the lesetid projects",
-    pushedAt: "2023-10-27T22:39:04Z",
-    url: "https://github.com/luxass/lesetid",
-    defaultBranch: "main",
-    projectrc: {
-      raw: {
-        $schema: "https://projectrc.luxass.dev/schema",
-        npm: true,
-        readme: true,
-        website: "https://lesetid.dev",
-      },
-      website: "https://lesetid.dev",
-      readme: "https://api.github.com/repos/luxass/lesetid/readme",
-    },
-    language: {
-      name: "TypeScript",
-      color: "#3178c6",
-    },
-    isContributor: false,
-  },
-  {
     name: "github-schema",
     nameWithOwner: "luxass/github-schema",
     description: "GitHub's GraphQL schema",
-    pushedAt: "2023-10-28T07:45:07Z",
+    pushedAt: "2023-11-04T13:03:22Z",
     url: "https://github.com/luxass/github-schema",
     defaultBranch: "main",
     projectrc: {
@@ -159,17 +136,23 @@ export const projects = [
     isContributor: false,
   },
   {
-    name: "projectrc.luxass.dev",
-    nameWithOwner: "luxass/projectrc.luxass.dev",
+    name: "projectrc",
+    nameWithOwner: "luxass/projectrc",
     description: "A site to describe my .projectrc usage in .github",
-    pushedAt: "2023-10-27T19:18:09Z",
-    url: "https://github.com/luxass/projectrc.luxass.dev",
+    pushedAt: "2023-11-11T06:49:04Z",
+    url: "https://github.com/luxass/projectrc",
     defaultBranch: "main",
     projectrc: {
       raw: {
         $schema: "https://projectrc.luxass.dev/schema",
         website: true,
+        handles: [
+          "/projectrc",
+        ],
       },
+      handles: [
+        "/projectrc",
+      ],
       website: "https://projectrc.luxass.dev",
     },
     language: {
@@ -182,7 +165,7 @@ export const projects = [
     name: "elysius",
     nameWithOwner: "luxass/elysius",
     description: "Find a file or directory by traversing",
-    pushedAt: "2023-10-24T01:07:40Z",
+    pushedAt: "2023-11-01T18:29:06Z",
     url: "https://github.com/luxass/elysius",
     defaultBranch: "main",
     projectrc: {
@@ -204,7 +187,7 @@ export const projects = [
     name: "jsonc-parse",
     nameWithOwner: "luxass/jsonc-parse",
     description: "A lightweight JSON with Comments parser.",
-    pushedAt: "2023-10-27T19:40:09Z",
+    pushedAt: "2023-11-10T09:23:48Z",
     url: "https://github.com/luxass/jsonc-parse",
     defaultBranch: "main",
     projectrc: {
@@ -224,7 +207,7 @@ export const projects = [
     name: "github-emojis",
     nameWithOwner: "luxass/github-emojis",
     description: "A list of all available emojis on GitHub",
-    pushedAt: "2023-10-26T04:48:16Z",
+    pushedAt: "2023-11-06T17:05:34Z",
     url: "https://github.com/luxass/github-emojis",
     defaultBranch: "main",
     projectrc: {
@@ -246,7 +229,7 @@ export const projects = [
     name: "eslint-config-legacy",
     nameWithOwner: "luxass/eslint-config-legacy",
     description: "My old shareable ESLint config",
-    pushedAt: "2023-10-19T01:18:35Z",
+    pushedAt: "2023-11-06T17:59:39Z",
     url: "https://github.com/luxass/eslint-config-legacy",
     defaultBranch: "main",
     projectrc: {
@@ -262,10 +245,28 @@ export const projects = [
     isContributor: false,
   },
   {
+    name: "luxass.dev",
+    nameWithOwner: "luxass/luxass.dev",
+    description: "My personal website",
+    pushedAt: "2023-11-06T17:36:13Z",
+    url: "https://github.com/luxass/luxass.dev",
+    defaultBranch: "main",
+    projectrc: {
+      raw: {
+        $schema: "https://projectrc.luxass.dev/schema",
+      },
+    },
+    language: {
+      name: "TypeScript",
+      color: "#3178c6",
+    },
+    isContributor: false,
+  },
+  {
     name: "schemastore",
     nameWithOwner: "SchemaStore/schemastore",
     description: "A collection of JSON schema files including full API",
-    pushedAt: "2023-10-27T20:32:02Z",
+    pushedAt: "2023-11-10T20:31:53Z",
     url: "https://github.com/SchemaStore/schemastore",
     defaultBranch: "master",
     language: {
