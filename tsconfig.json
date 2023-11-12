@@ -1,7 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
-  }
+    "verbatimModuleSyntax": true,
+    "types": ["unplugin-icons/types/astro"]
+  },
+  "exclude": ["dist"]
 }

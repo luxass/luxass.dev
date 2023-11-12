@@ -1,15 +1,18 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import readingTime from "reading-time";
+
+import { estimate } from "lesetid";
 import Card from "./Card.astro";
+import CalendarIcon from "~icons/carbon/Calendar";
+import AlarmIcon from "~icons/carbon/Alarm";
 
 export interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<"posts">
 }
 
 const {
   post: {
-    data: { title, description, date },
+    data: { title, description, date, handle },
     slug,
     body,
   },
@@ -20,20 +23,24 @@ const formattedDate = new Date(date).toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
 });
-const time = readingTime(body);
+const {
+  text,
+} = estimate(body);
+
+const formattedTitle = title.length > 30 ? `${title.slice(0, 30)}...` : title;
 ---
 
-<Card href={`/blog/${slug}`} class="flex flex-col">
-  <h3 class="!my-0">{title}</h3>
+<Card href={`/posts/${handle || slug}`} class="flex flex-col">
+  <h3 class="!my-0">{formattedTitle}</h3>
 
   <p class="flex-1">{description}</p>
 
   <span class="flex items-center gap-x-1">
-    <div class="i-carbon:calendar"></div>
+    <CalendarIcon />
     {formattedDate}
   </span>
   <span class="flex items-center gap-x-1">
-    <div class="i-carbon:alarm"></div>
-    {time.text}
+    <AlarmIcon />
+    {text}
   </span>
 </Card>

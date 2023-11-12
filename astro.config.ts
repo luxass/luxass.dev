@@ -1,11 +1,13 @@
 import { defineConfig } from "astro/config";
 import unocss from "unocss/astro";
 import sitemap from "@astrojs/sitemap";
-import solidJs from "@astrojs/solid-js";
 import mdx from "@astrojs/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import remarkSmartypants from "remark-smartypants";
+import vercel from "@astrojs/vercel/serverless";
+import Icons from "unplugin-icons/vite";
+import vue from "@astrojs/vue";
+import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,23 +16,48 @@ export default defineConfig({
     unocss({
       injectReset: true,
     }),
-    sitemap({
-      filter(page) {
-        return !page.includes("$");
+    sitemap(),
+    mdx({
+      optimize: {
+        customComponentNames: [
+          "a",
+        ],
       },
     }),
-    solidJs(),
-    mdx(),
+    vue({
+      jsx: true,
+    }),
   ],
+  experimental: {
+    contentCollectionCache: true,
+  },
+  prefetch: true,
   markdown: {
-    syntaxHighlight: "shiki",
     shikiConfig: {
       theme: "vitesse-dark",
+      wrap: false,
     },
-    smartypants: false,
-    remarkPlugins: [[remarkSmartypants, {
-      dashes: false,
+    smartypants: true,
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
+      target: "_blank",
+      rel: ["noopener", "noreferrer"],
     }]],
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+    remarkPlugins: [],
+  },
+  compressHTML: false,
+  output: "server",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    edgeMiddleware: true,
+    functionPerRoute: false,
+  }),
+  vite: {
+    plugins: [
+      Icons({
+        compiler: "astro",
+      }),
+    ],
   },
 });

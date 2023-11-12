@@ -9,27 +9,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Bun Runtime
-        uses: oven-sh/setup-bun@v0.1.8
         with:
-          bun-version: latest
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ROBOBUB_TOKEN }}
+      - run: corepack enable
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
 
-      - name: Install Dependencies
-        run: bun install
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: true
 
-      - name: Run Script
-        run: bun run scripts/fetch-projects.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Update Site Script
+        run: pnpm run update:site
 
-      - name: Add files
+      - name: Commit & Push
         run: |
-          git config user.name luxass
-          git config user.email lucasnrgaard@gmail.com
-          git add src/projects.ts
-          git commit -m "chore: updated projects"
+          git config --global user.name "robobub"
+          git config --global user.email "bot@luxass.dev"
+          git add ./src/data/projects.ts
+          git add "./src/content/projects/*.md"
+
+          git commit -m "chore: update site"
           git push
