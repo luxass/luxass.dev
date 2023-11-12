@@ -1,3 +1,4 @@
 {
-  "$schema": "https://projectrc.luxass.dev/schema"
+  "$schema": "https://projectrc.luxass.dev/schema",
+  "description": "The website you're currently viewing."
 }
