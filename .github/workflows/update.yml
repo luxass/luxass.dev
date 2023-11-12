@@ -44,4 +44,4 @@ jobs:
           branch: ${{ github.head_ref }}
           commit_user_name: robobub
           commit_user_email: bot@luxass.dev
-          file_pattern: "**/projects.ts **/projects/*.md"
+          file_pattern: "**/projects.ts **/projects/*.mdx"
