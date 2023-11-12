@@ -3,10 +3,6 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PageLayout from "../../../layouts/PageLayout.astro";
 import Code from "../../../components/Code.vue";
-import Table from "../../../components/Table.vue";
-import Tr from "../../../components/Tr.vue";
-import Th from "../../../components/Th.vue";
-import Td from "../../../components/Td.vue";
 import Link from "../../../components/Link.astro";
 
 import GitHubIcon from "~icons/carbon/LogoGithub";
@@ -77,10 +73,6 @@ const searchUrl = `https://github.com/search?type=code&q=path%3A%2Fpackage.json%
     <Content
       components={{
         code: Code,
-        table: Table,
-        tr: Tr,
-        th: Th,
-        td: Td,
         a: Link,
       }}
     />

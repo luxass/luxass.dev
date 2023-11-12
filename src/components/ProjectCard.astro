@@ -6,14 +6,14 @@ import GitHubLogo from "~icons/carbon/LogoGithub";
 import NPMIcon from "~icons/logos/NpmIcon";
 
 export interface Props {
-  project: Project
+  project: Project;
 }
 
 const { project } = Astro.props;
 
-const { name, description, language, url: githubUrl, isContributor, projectrc } = project;
+const { name, description, language, url: githubUrl, isContributor, $projectrc, $values } = project;
 
-const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
+const url = $projectrc?.readme ? `/projects/${name}` : githubUrl;
 ---
 
 <Card class="flex flex-col justify-between gap-y-2">
@@ -24,8 +24,8 @@ const url = projectrc?.readme ? `/projects/${name}` : githubUrl;
       </Link>
       <div class="flex items-center gap-2">
         {
-          projectrc?.npm && (
-            <Link href={projectrc.npm} aria-label="NPM Package">
+          $projectrc.npm && $values.npm && (
+            <Link href={$values.npm} aria-label="NPM Package">
               <NPMIcon class="text-lg" />
             </Link>
           )

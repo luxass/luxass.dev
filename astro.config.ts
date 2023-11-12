@@ -8,7 +8,6 @@ import vercel from "@astrojs/vercel/serverless";
 import Icons from "unplugin-icons/vite";
 import vue from "@astrojs/vue";
 import rehypeExternalLinks from "rehype-external-links";
-import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,13 +27,11 @@ export default defineConfig({
     vue({
       jsx: true,
     }),
-    prefetch({
-      throttle: 5,
-    }),
   ],
   experimental: {
-    devOverlay: true,
+    contentCollectionCache: true,
   },
+  prefetch: true,
   markdown: {
     shikiConfig: {
       theme: "vitesse-dark",
