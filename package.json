@@ -12,7 +12,6 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "update:site": "npx tsx -r dotenv/config ./scripts/update-site.ts"
   },
   "dependencies": {
