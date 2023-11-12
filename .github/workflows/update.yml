@@ -34,7 +34,7 @@ jobs:
       - name: Run Update Site Script
         run: pnpm run update:site
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.LUXASS_TOKEN }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
