@@ -308,8 +308,8 @@ export const projects = [
   {
     name: "luxass.dev",
     nameWithOwner: "luxass/luxass.dev",
-    description: "My personal website",
-    pushedAt: "2023-11-12T11:38:41Z",
+    description: "The website you're currently viewing.",
+    pushedAt: "2023-11-12T14:24:05Z",
     url: "https://github.com/luxass/luxass.dev",
     defaultBranch: "main",
     isContributor: false,
@@ -318,11 +318,12 @@ export const projects = [
       color: "#3178c6",
     },
     $projectrc: {
+      description: "The website you're currently viewing.",
       $path: "https://api.github.com/repos/luxass/luxass.dev/contents/.github/.projectrc.json",
     },
     $values: {
       name: "luxass.dev",
-      description: "My personal website",
+      description: "The website you're currently viewing.",
     },
   },
 ];
