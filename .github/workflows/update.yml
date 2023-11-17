@@ -15,10 +15,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions: 
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.ROBOBUB_TOKEN }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -42,6 +43,4 @@ jobs:
         with:
           commit_message: "fix: use correct list of projects"
           branch: ${{ github.head_ref }}
-          commit_user_name: robobub
-          commit_user_email: bot@luxass.dev
           file_pattern: "**/projects.ts **/projects/*.mdx"
