@@ -6,7 +6,7 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string().max(50),
     description: z.string().max(120),
-    date: z.string().transform(str => new Date(str)),
+    date: z.string().transform((str) => new Date(str)),
     published: z.boolean().optional().default(true),
     icon: z.string().optional().default("📝"),
     handle: z.string().optional(),
