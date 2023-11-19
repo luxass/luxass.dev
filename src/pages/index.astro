@@ -5,9 +5,7 @@ import Link from "../components/Link.astro";
 import GitHubIcon from "~icons/carbon/LogoGithub";
 import LinkedInIcon from "~icons/carbon/LogoLinkedin";
 
-const posts = await getCollection("posts", ({ data }) => data.published).then(
-  (posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
-);
+const posts = await getCollection("posts", ({ data }) => data.published).then((posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()));
 
 function truncate(value: string, length: number): string {
   if (value.length > length) {
@@ -22,21 +20,14 @@ const latestPost = posts.slice(0, 1)[0];
 export const prerender = true;
 ---
 
-<PageLayout
-  title="home"
-  description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications"
->
+<PageLayout title="home" description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications">
   <div class="min-h-250px">
     <h1>
-      Hey I&apos;m luxass <span
-        class="inline-block animate-duration-2s animate-count-3 animate-wiggle"
-        >👋</span
-      >
+      Hey I&apos;m luxass <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
     </h1>
     <p>
       I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
-       In my spare time, I enjoy learning new technologies and working on side
-      projects.
+       In my spare time, I enjoy learning new technologies and working on side projects.
       <br />
       <br />
        occasionally I also write some articles on my <Link underline href="/posts">blog.</Link>

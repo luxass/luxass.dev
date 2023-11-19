@@ -5,7 +5,8 @@ export async function GET({ url }: APIContext) {
   const projects = await getCollection(
     "projects",
     ({
-      slug, data: {
+      slug,
+      data: {
         handle,
       },
     }) => (handle || slug) === url.pathname.replace("/raw", "").split("/").pop(),

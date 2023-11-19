@@ -6,7 +6,7 @@ import { remark } from "remark";
 import remarkComment from "remark-comment";
 import { $fetch } from "ofetch";
 import { visit } from "unist-util-visit";
-import { type ProjectRCResponse } from "@luxass/projectrc";
+import type { ProjectRCResponse } from "@luxass/projectrc";
 import { type Language, type Repository, type User, gql } from "github-schema";
 
 function isExternalLink(url: string) {
