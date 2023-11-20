@@ -29,7 +29,7 @@ export const projects = [
     name: "strip-json-comments",
     nameWithOwner: "luxass/strip-json-comments",
     description: "strip comments from your json",
-    pushedAt: "2023-11-11T13:28:38Z",
+    pushedAt: "2023-11-19T12:55:48Z",
     url: "https://github.com/luxass/strip-json-comments",
     defaultBranch: "main",
     isContributor: false,
@@ -39,7 +39,7 @@ export const projects = [
     },
     $projectrc: {
       npm: true,
-      $path: "https://api.github.com/repos/luxass/strip-json-comments/contents/.github/.projectrc",
+      $path: "https://api.github.com/repos/luxass/strip-json-comments/contents/.github/.projectrc.json",
     },
     $values: {
       description: "strip comments from your json",
@@ -51,7 +51,7 @@ export const projects = [
     name: "volapyk",
     nameWithOwner: "luxass/volapyk",
     description: null,
-    pushedAt: "2023-11-01T19:05:33Z",
+    pushedAt: "2023-11-19T11:08:48Z",
     url: "https://github.com/luxass/volapyk",
     defaultBranch: "main",
     isContributor: false,
@@ -65,7 +65,7 @@ export const projects = [
       ],
       npm: true,
       readme: true,
-      $path: "https://api.github.com/repos/luxass/volapyk/contents/.github/.projectrc",
+      $path: "https://api.github.com/repos/luxass/volapyk/contents/.github/.projectrc.json",
     },
     $values: {
       name: "volapyk",
@@ -82,8 +82,8 @@ export const projects = [
   {
     name: "eslint-config",
     nameWithOwner: "luxass/eslint-config",
-    description: "An ESLint config preset.",
-    pushedAt: "2023-11-18T13:02:58Z",
+    description: "🔧 My ESLint Config",
+    pushedAt: "2023-11-19T17:39:06Z",
     url: "https://github.com/luxass/eslint-config",
     defaultBranch: "main",
     isContributor: false,
@@ -97,10 +97,10 @@ export const projects = [
       $path: "https://api.github.com/repos/luxass/eslint-config/contents/.github/.projectrc.json",
     },
     $values: {
-      description: "An ESLint config preset.",
+      description: "🔧 My ESLint Config",
       name: "eslint-config",
       readme: {
-        content: "# @luxass/eslint-config\n\n> [!IMPORTANT]\n> The configuration is not currently finished, and the old config should be used. You can find it [here](https://github.com/luxass/eslint-config-legacy)\n\n\n## ✨ Features\n\n- Designed to work with JavaScript, Typescript, React, Svelte, Astro, Vue out of the box.\n- Support for JSON, YAML, Markdown\n- Sorted imports for `package.json` and `tsconfig.json`\n- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!\n- Using [ESLint Stylistic](https://eslint.style/guide/why)\n\n## 📦 Install\n\n```bash\npnpm add -D eslint @luxass/eslint-config\n```\n\n## 🚀 Usage\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass();\n```\n\n## Setup for Visual Studio Code\n\nInstall [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and add the following to your `.vscode/settings.json`:\n\n```jsonc\n// .vscode/settings.json\n{\n  // will ensure that eslint can use the experimental flat config\n  \"eslint.experimental.useFlatConfig\": true,\n\n  // disable the default formatter\n  \"prettier.enable\": false,\n  \"editor.formatOnSave\": false,\n\n  // auto fix on save\n  \"editor.codeActionsOnSave\": {\n    \"source.fixAll\": \"explicit\",\n    \"source.organizeImports\": \"never\"\n  },\n\n  // silent the stylistic rules in you IDE, but still auto fix them\n  \"eslint.rules.customizations\": [\n    { \"rule\": \"style/*\", \"severity\": \"off\" },\n    { \"rule\": \"*-indent\", \"severity\": \"off\" },\n    { \"rule\": \"*-spacing\", \"severity\": \"off\" },\n    { \"rule\": \"*-spaces\", \"severity\": \"off\" },\n    { \"rule\": \"*-order\", \"severity\": \"off\" },\n    { \"rule\": \"*-dangle\", \"severity\": \"off\" },\n    { \"rule\": \"*-newline\", \"severity\": \"off\" },\n    { \"rule\": \"*quotes\", \"severity\": \"off\" },\n    { \"rule\": \"*semi\", \"severity\": \"off\" }\n  ],\n\n  // The following is optional.\n  // It's better to put under project setting `.vscode/settings.json`\n  // to avoid conflicts with working with different eslint configs\n  // that does not support all formats.\n  \"eslint.validate\": [\n    \"javascript\",\n    \"javascriptreact\",\n    \"typescript\",\n    \"typescriptreact\",\n    \"vue\",\n    \"html\",\n    \"markdown\",\n    \"json\",\n    \"jsonc\",\n    \"yaml\"\n  ]\n}\n```\n\n## Customization\n\nNormally you would only need to import the `luxass` preset:\n\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass();\n```\n\nyou can also configure each `config` individually:\n\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass({\n  typescript: true,\n  vue: true,\n  react: false,\n  astro: true,\n  svelte: false,\n  unocss: true,\n  stylistic: true\n});\n```\n\nThe `luxass` function accepts an arbitrary number of `flat configs` overrides:\n\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass({}, {\n  rules: {}\n}, {\n  rules: {}\n});\n```\n\n### Fine Grained Configurations\n\nIf you want it more advanced, you can also just import the `config` you need.\n\n```js\n// eslint.config.js\nimport {\n  astro,\n  comments,\n  ignores,\n  imports,\n  javascript,\n  javascriptStylistic,\n  jsdoc,\n  jsonc,\n  markdown,\n  node,\n  react,\n  sort,\n  svelte,\n  tailwindcss,\n  typescript,\n  typescriptStylistic,\n  unicorn,\n  unocss,\n  vue,\n  yml\n} from \"@luxass/eslint-config/configs\";\n\nexport default [\n  ...astro,\n  ...comments,\n  ...ignores,\n  ...imports,\n  ...javascript,\n  ...javascriptStylistic,\n  ...jsdoc,\n  ...jsonc,\n  ...markdown,\n  ...node,\n  ...react,\n  ...sort,\n  ...svelte,\n  ...tailwindcss,\n  ...typescript,\n  ...typescriptStylistic,\n  ...unicorn,\n  ...unocss,\n  ...vue,\n  ...yml\n];\n```\n\n> Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) and [antfu/eslint-config](https://github.com/antfu/eslint-config) for the inspiration and references.\n\n## 📄 License\n\nPublished under [MIT License](./LICENSE).\n",
+        content: "# @luxass/eslint-config\n\n> [!IMPORTANT]\n> The configuration is not currently finished.  \n> I could change at any moment.\n\n## ✨ Features\n\n- Designed to work with JavaScript, Typescript, React, Svelte, Astro, Vue out of the box.\n- Support for JSON, YAML, Markdown\n- Sorted imports for `package.json` and `tsconfig.json`\n- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!\n- Using [ESLint Stylistic](https://eslint.style/guide/why)\n\n## 📦 Install\n\n```bash\npnpm add -D eslint @luxass/eslint-config\n```\n\n## 🚀 Usage\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass();\n```\n\n## Setup for Visual Studio Code\n\nInstall [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and add the following to your `.vscode/settings.json`:\n\n```jsonc\n// .vscode/settings.json\n{\n  // will ensure that eslint can use the experimental flat config\n  \"eslint.experimental.useFlatConfig\": true,\n\n  // disable the default formatter\n  \"prettier.enable\": false,\n  \"editor.formatOnSave\": false,\n\n  // auto fix on save\n  \"editor.codeActionsOnSave\": {\n    \"source.fixAll\": \"explicit\",\n    \"source.organizeImports\": \"never\"\n  },\n\n  // silent the stylistic rules in you IDE, but still auto fix them\n  \"eslint.rules.customizations\": [\n    { \"rule\": \"style/*\", \"severity\": \"off\" },\n    { \"rule\": \"*-indent\", \"severity\": \"off\" },\n    { \"rule\": \"*-spacing\", \"severity\": \"off\" },\n    { \"rule\": \"*-spaces\", \"severity\": \"off\" },\n    { \"rule\": \"*-order\", \"severity\": \"off\" },\n    { \"rule\": \"*-dangle\", \"severity\": \"off\" },\n    { \"rule\": \"*-newline\", \"severity\": \"off\" },\n    { \"rule\": \"*quotes\", \"severity\": \"off\" },\n    { \"rule\": \"*semi\", \"severity\": \"off\" }\n  ],\n\n  // The following is optional.\n  // It's better to put under project setting `.vscode/settings.json`\n  // to avoid conflicts with working with different eslint configs\n  // that does not support all formats.\n  \"eslint.validate\": [\n    \"javascript\",\n    \"javascriptreact\",\n    \"typescript\",\n    \"typescriptreact\",\n    \"vue\",\n    \"html\",\n    \"markdown\",\n    \"json\",\n    \"jsonc\",\n    \"yaml\"\n  ]\n}\n```\n\n## Customization\n\nNormally you would only need to import the `luxass` preset:\n\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass();\n```\n\nyou can also configure each `config` individually:\n\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass({\n  typescript: true,\n  vue: true,\n  react: false,\n  astro: true,\n  svelte: false,\n  unocss: true,\n  stylistic: true\n});\n```\n\nThe `luxass` function accepts an arbitrary number of `flat configs` overrides:\n\n```js\n// eslint.config.js\nimport { luxass } from \"@luxass/eslint-config\";\n\nexport default luxass({}, {\n  rules: {}\n}, {\n  rules: {}\n});\n```\n\n### Fine Grained Configurations\n\nIf you want it more advanced, you can also just import the `config` you need.\n\n```js\n// eslint.config.js\nimport {\n  astro,\n  comments,\n  ignores,\n  imports,\n  javascript,\n  javascriptStylistic,\n  jsdoc,\n  jsonc,\n  markdown,\n  node,\n  react,\n  sort,\n  svelte,\n  tailwindcss,\n  typescript,\n  typescriptStylistic,\n  unicorn,\n  unocss,\n  vue,\n  yml\n} from \"@luxass/eslint-config/configs\";\n\nexport default [\n  ...astro,\n  ...comments,\n  ...ignores,\n  ...imports,\n  ...javascript,\n  ...javascriptStylistic,\n  ...jsdoc,\n  ...jsonc,\n  ...markdown,\n  ...node,\n  ...react,\n  ...sort,\n  ...svelte,\n  ...tailwindcss,\n  ...typescript,\n  ...typescriptStylistic,\n  ...unicorn,\n  ...unocss,\n  ...vue,\n  ...yml\n];\n```\n\n> Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) and [antfu/eslint-config](https://github.com/antfu/eslint-config) for the inspiration and references.\n\n## 📄 License\n\nPublished under [MIT License](./LICENSE).\n",
         path: "https://api.github.com/repos/luxass/eslint-config/readme",
       },
       npm: "https://www.npmjs.com/package/@luxass/eslint-config",
@@ -156,7 +156,7 @@ export const projects = [
     name: "github-schema",
     nameWithOwner: "luxass/github-schema",
     description: "GitHub's GraphQL schema",
-    pushedAt: "2023-11-18T00:06:23Z",
+    pushedAt: "2023-11-19T11:36:43Z",
     url: "https://github.com/luxass/github-schema",
     defaultBranch: "main",
     isContributor: false,
@@ -173,7 +173,7 @@ export const projects = [
       description: "GitHub's GraphQL schema",
       name: "github-schema",
       readme: {
-        content: "# github-schema\n\n> GitHub's GraphQL Schema\n\n## 📦 Installation\n\n```sh\nnpm install github-schema\n```\n\n## 📚 Usage\n\n```ts\nimport { gql, gqlTyped } from \"github-schema\";\n\n// we are also exporting a ton of types from the graphql schema.\n\nconst REPOSITORY_QUERY = gql`\n  query getRepository($owner: String!, $name: String!) {\n    repository(owner: $owner, name: $name) {\n      nameWithOwner\n      description\n      pushedAt\n      url\n      defaultBranchRef {\n        name\n      }\n      languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {\n        nodes {\n          name\n          color\n        }\n      }\n    }\n  }\n`;\n```\n\n> [!NOTE]\n> If you want to use `gql` with return type of `DocumentNode` you can do something like this:\n\n```ts\nimport { gqlTyped } from \"github-schema\";\n```\n\n## Editor Autocompletion\n\n> [!NOTE]\n> You will need to have [GraphQL LSP](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) installed, and have a `.graphqlrc.yaml` file in your project root.  \n> If you also want nice colors, i would recommend [GraphQL Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql-syntax) installed.\n\n```yaml\n# .graphqlrc.yaml\nschema: node_modules/github-schema/schema.graphql\n```\n\n## 📄 License\n\nPublished under [MIT License](./LICENSE).\n",
+        content: "# github-schema\n\nGitHub's GraphQL Schema\n\n## 📦 Installation\n\n```sh\nnpm install github-schema\n```\n\n## 📚 Usage\n\n```ts\nimport { gql, gqlTyped } from \"github-schema\";\n\n// we are also exporting a ton of types from the graphql schema.\n\nconst REPOSITORY_QUERY = gql`\n  query getRepository($owner: String!, $name: String!) {\n    repository(owner: $owner, name: $name) {\n      nameWithOwner\n      description\n      pushedAt\n      url\n      defaultBranchRef {\n        name\n      }\n      languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {\n        nodes {\n          name\n          color\n        }\n      }\n    }\n  }\n`;\n```\n\n> [!NOTE]\n> If you want to use `gql` with return type of `DocumentNode` you can do something like this:\n\n```ts\nimport { gqlTyped } from \"github-schema\";\n```\n\n## Editor Autocompletion\n\n> [!NOTE]\n> You will need to have [GraphQL LSP](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) installed, and have a `.graphqlrc.yaml` file in your project root.  \n> If you also want nice colors, i would recommend [GraphQL Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql-syntax) installed.\n\n```yaml\n# .graphqlrc.yaml\nschema: node_modules/github-schema/schema.graphql\n```\n\n## 📄 License\n\nPublished under [MIT License](./LICENSE).\n",
         path: "https://api.github.com/repos/luxass/github-schema/readme",
       },
       npm: "https://www.npmjs.com/package/github-schema",
@@ -183,7 +183,7 @@ export const projects = [
     name: "projectrc",
     nameWithOwner: "luxass/projectrc",
     description: "A site to describe my .projectrc usage in .github",
-    pushedAt: "2023-11-17T18:18:02Z",
+    pushedAt: "2023-11-19T07:12:52Z",
     url: "https://github.com/luxass/projectrc",
     defaultBranch: "main",
     isContributor: false,
@@ -211,7 +211,7 @@ export const projects = [
     name: "elysius",
     nameWithOwner: "luxass/elysius",
     description: "Find a file or directory by traversing",
-    pushedAt: "2023-11-01T18:29:06Z",
+    pushedAt: "2023-11-19T12:45:13Z",
     url: "https://github.com/luxass/elysius",
     defaultBranch: "main",
     isContributor: false,
@@ -222,7 +222,7 @@ export const projects = [
     $projectrc: {
       npm: true,
       readme: true,
-      $path: "https://api.github.com/repos/luxass/elysius/contents/.github/.projectrc",
+      $path: "https://api.github.com/repos/luxass/elysius/contents/.github/.projectrc.json",
     },
     $values: {
       description: "Find a file or directory by traversing",
@@ -238,7 +238,7 @@ export const projects = [
     name: "jsonc-parse",
     nameWithOwner: "luxass/jsonc-parse",
     description: "A lightweight JSON with Comments parser.",
-    pushedAt: "2023-11-10T09:23:48Z",
+    pushedAt: "2023-11-19T13:04:33Z",
     url: "https://github.com/luxass/jsonc-parse",
     defaultBranch: "main",
     isContributor: false,
@@ -248,7 +248,7 @@ export const projects = [
     },
     $projectrc: {
       npm: true,
-      $path: "https://api.github.com/repos/luxass/jsonc-parse/contents/.github/.projectrc",
+      $path: "https://api.github.com/repos/luxass/jsonc-parse/contents/.github/.projectrc.json",
     },
     $values: {
       description: "A lightweight JSON with Comments parser.",
@@ -286,8 +286,8 @@ export const projects = [
   {
     name: "eslint-config-legacy",
     nameWithOwner: "luxass/eslint-config-legacy",
-    description: "My old shareable ESLint config",
-    pushedAt: "2023-11-17T18:24:04Z",
+    description: "🔧 Old shareable ESLint Config",
+    pushedAt: "2023-11-19T07:19:57Z",
     url: "https://github.com/luxass/eslint-config-legacy",
     defaultBranch: "main",
     isContributor: false,
@@ -304,7 +304,7 @@ export const projects = [
       $path: "https://api.github.com/repos/luxass/eslint-config-legacy/contents/.github/.projectrc.json",
     },
     $values: {
-      description: "My old shareable ESLint config",
+      description: "🔧 Old shareable ESLint Config",
       name: "eslint-config-legacy",
       npm: "https://www.npmjs.com/package/@luxass/eslint-config-monorepo",
       deprecated: {
@@ -317,7 +317,7 @@ export const projects = [
     name: "luxass.dev",
     nameWithOwner: "luxass/luxass.dev",
     description: "The website you're currently viewing.",
-    pushedAt: "2023-11-18T15:49:15Z",
+    pushedAt: "2023-11-19T12:34:14Z",
     url: "https://github.com/luxass/luxass.dev",
     defaultBranch: "main",
     isContributor: false,
