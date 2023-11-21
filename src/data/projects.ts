@@ -317,7 +317,7 @@ export const projects = [
     name: "luxass.dev",
     nameWithOwner: "luxass/luxass.dev",
     description: "The website you're currently viewing.",
-    pushedAt: "2023-11-19T12:34:14Z",
+    pushedAt: "2023-11-20T04:01:01Z",
     url: "https://github.com/luxass/luxass.dev",
     defaultBranch: "main",
     isContributor: false,
