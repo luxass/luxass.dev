@@ -55,15 +55,5 @@
       "source": "/gh/:slug*",
       "destination": "https://github.com/luxass/:slug*"
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap-0.xml"
-    },
-    {
-      "source": "/random-secret/:length*",
-      "destination": "/api/random-secret/:length*"
-    }
   ]
 }
