@@ -1,14 +1,14 @@
 import { defineMiddleware } from "astro:middleware";
 
 export const onRequest = defineMiddleware((context, next) => {
-  const url = new URL(context.url);
-  if (url.pathname === "/sitemap.xml") {
-    context.url.pathname = "/sitemap-0.xml";
+  if (context.url.pathname === "/sitemap.xml") {
+    return context.redirect("/sitemap-0.xml");
   }
 
-  if (url.pathname.startsWith("/random-secret")) {
-    const length = url.pathname.split("/").pop();
-    context.url.pathname = `/api/random-secret/${length || "32"}`;
+  if (context.url.pathname.startsWith("/random-secret")) {
+    const length = context.url.pathname.split("/").pop();
+    return context.redirect(`/api/random-secret/${length || "32"}`);
   }
+
   return next();
 });
