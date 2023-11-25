@@ -49,10 +49,6 @@
     {
       "source": "/sitemap.xml",
       "destination": "/sitemap-0.xml"
-    },
-    {
-      "source": "/random-secret/:length*",
-      "destination": "/api/random-secret/:length*"
     }
   ]
 }
