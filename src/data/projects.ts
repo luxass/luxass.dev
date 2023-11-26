@@ -109,8 +109,8 @@ export const projects = [
   {
     name: "lesetid",
     nameWithOwner: "luxass/lesetid",
-    description: "A dead simple read time estimation",
-    pushedAt: "2023-11-24T15:09:10Z",
+    description: "📖 A dead simple read time estimation",
+    pushedAt: "2023-11-25T13:35:39Z",
     url: "https://github.com/luxass/lesetid",
     defaultBranch: "main",
     isContributor: false,
@@ -142,7 +142,7 @@ export const projects = [
       $path: "https://api.github.com/repos/luxass/lesetid/contents/.github/.projectrc.json",
     },
     $values: {
-      description: "A dead simple read time estimation",
+      description: "📖 A dead simple read time estimation",
       name: "lesetid",
       website: "https://lesetid.dev",
       readme: {
@@ -317,7 +317,7 @@ export const projects = [
     name: "luxass.dev",
     nameWithOwner: "luxass/luxass.dev",
     description: "The website you're currently viewing.",
-    pushedAt: "2023-11-24T13:56:43Z",
+    pushedAt: "2023-11-25T10:45:04Z",
     url: "https://github.com/luxass/luxass.dev",
     defaultBranch: "main",
     isContributor: false,
