@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^1.1.21
     version: 1.1.21
   '@iconify-json/logos':
-    specifier: 1.1.37
-    version: 1.1.37
+    specifier: 1.1.38
+    version: 1.1.38
   '@iconify-json/octicon':
     specifier: 1.1.49
     version: 1.1.49
@@ -1320,8 +1320,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
-  /@iconify-json/logos@1.1.37:
-    resolution: {integrity: sha512-H2S8frTEznk6paX2kMzeUGn4KSiykghvO0b8UvEDd1fFFzt0WxCXpP1tBv67XaWK99e6JgA34hhv4lRGAm1hJg==}
+  /@iconify-json/logos@1.1.38:
+    resolution: {integrity: sha512-26sPSWn/Y3nY4Kx3kbHOPU8zzEFaDMeuStFhDbW2SpLy6grusqTAgf0o4r4irNAPkdI1gPF8kuSyGDKeSPFzZw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -3130,6 +3130,7 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    requiresBuild: true
 
   /color-string@1.9.1:
     resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==}
