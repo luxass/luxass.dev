@@ -16,7 +16,10 @@ export default defineConfig({
     unocss({
       injectReset: true,
     }),
-    sitemap(),
+    sitemap({
+      lastmod: new Date(),
+      changefreq: "daily",
+    }),
     mdx({
       optimize: {
         customComponentNames: [
