@@ -130,6 +130,15 @@ async function run() {
     throw new Error("No profile found");
   }
 
+  try {
+    await $fetch("https://projectrc.luxass.dev/ping", {
+      responseType: "text",
+    });
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to ping projectrc.luxass.dev");
+  }
+
   await rm("./src/content/projects", {
     force: true,
     recursive: true,
