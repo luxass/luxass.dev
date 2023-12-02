@@ -12,7 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "update:site": "npx tsx -r dotenv/config ./scripts/update-site.ts"
+    "update:site": "npx tsx --env-file=.env ./scripts/update-site.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
@@ -42,12 +42,11 @@
     "@luxass/projectrc": "^1.4.0",
     "@octokit/graphql": "^7.0.2",
     "@types/markdown-it": "^13.0.7",
-    "@types/node": "^18.18.9",
+    "@types/node": "^20.10.2",
     "@types/sanitize-html": "^2.9.5",
     "@unocss/eslint-plugin": "^0.57.7",
     "@unocss/reset": "^0.57.7",
     "astro-eslint-parser": "^0.16.0",
-    "dotenv": "^16.3.1",
     "eslint": "^8.55.0",
     "eslint-plugin-astro": "^0.30.0",
     "fontaine": "^0.4.1",
