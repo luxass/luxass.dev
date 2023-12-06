@@ -37,7 +37,10 @@ export default defineConfig({
   prefetch: true,
   markdown: {
     shikiConfig: {
-      theme: "vitesse-dark",
+      experimentalThemes: {
+        dark: "github-dark",
+        light: "github-light",
+      },
       wrap: false,
     },
     smartypants: true,

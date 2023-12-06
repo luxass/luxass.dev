@@ -88,6 +88,14 @@ const {
         @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) py-8 min-h-screen max-w-2xl md:!mx-auto !mx-4 font-sans flex flex-col justify-between min-h-100dvh;
       }
 
+      @media (prefers-color-scheme: dark) {
+        .astro-code,
+        .astro-code span {
+          color: var(--shiki-dark) !important;
+          background-color: var(--shiki-dark-bg) !important;
+        }
+      }
+
       .prose {
         @apply [&>:not(:last-child)]:mb-6;
 
