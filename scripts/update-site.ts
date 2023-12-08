@@ -163,10 +163,10 @@ async function run() {
     },
   );
 
-  for (const repository of repositories) {
+  await Promise.all(repositories.map(async (repository) => {
     console.log(`Fetching .projectrc for ${repository.nameWithOwner}`);
     const projectRCResponse = await $fetch<ProjectRCResponse>(
-      `https://projectrc.luxass.dev/api/projectrc/${repository.nameWithOwner}`,
+      `https://projectrc.luxass.dev/projectrc/${repository.name}`,
       {
         ignoreResponseError: true,
       },
@@ -195,7 +195,7 @@ async function run() {
     }
     if (!projectRC) {
       if (!REPOS_TO_INCLUDE.includes(repository.nameWithOwner)) {
-        continue;
+        return;
       }
 
       projects.push({
@@ -208,8 +208,10 @@ async function run() {
         isContributor,
         language,
       });
-      continue;
+      return;
     }
+
+    console.log(`Found .projectrc for ${repository.nameWithOwner}`);
 
     for (const project of projectRC.projects) {
       if (project.readme) {
@@ -252,7 +254,7 @@ async function run() {
         $values: project,
       });
     }
-  }
+  }));
 
   const types = "export type Project = typeof projects[number];";
 
@@ -264,7 +266,6 @@ async function run() {
 
   await writeFile("./src/data/projects.ts", code);
 
-  // format projects.ts with eslint
   spawn("npx", ["eslint", "--fix", "./src/data/projects.ts"]);
 }
 
