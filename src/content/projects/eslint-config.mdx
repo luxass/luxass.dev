@@ -13,16 +13,22 @@ npm: https://www.npmjs.com/package/@luxass/eslint-config
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 
 > \[!IMPORTANT]
-> The configuration is not currently finished.\
+> The configuration is not currently finished.
 > I could change at any moment.
 
 ## ✨ Features
 
-* Designed to work with JavaScript, Typescript, React, Astro, Vue out of the box.
-* Support for JSON, YAML, Markdown
-* Sorted imports for `package.json` and `tsconfig.json`
+* Based on [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
+* Auto fix for formatting (aimed to be used standalone **without** Prettier)
+* Designed to work with TypeScript, JSX, Vue & Astro out-of-box
+* Lints also for json, yaml, markdown
+* Sorted imports, dangling commas
+* Reasonable defaults, best practices, only one-line of config
+* Opinionated, but [very customizable](https://github.com/luxass/eslint-config/blob/main/#customization)
 * [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-* Using [ESLint Stylistic](https://eslint.style/guide/why)
+* Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+* Respects `.gitignore` by default
+* Optional [formatters](https://github.com/luxass/eslint-config/blob/main/#formatters) support for CSS, HTML, TOML, etc.
 
 ## 📦 Install
 
@@ -38,7 +44,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 // eslint.config.js
 import luxass from "@luxass/eslint-config";
 
-export default await luxass();
+export default luxass();
 ```
 
 With CJS:
@@ -138,7 +144,7 @@ Normally you would only need to import the `luxass` preset:
 // eslint.config.js
 import luxass from "@luxass/eslint-config";
 
-export default await luxass();
+export default luxass();
 ```
 
 you can also configure each `config` individually:
@@ -147,7 +153,7 @@ you can also configure each `config` individually:
 // eslint.config.js
 import luxass from "@luxass/eslint-config";
 
-export default await luxass({
+export default luxass({
   stylistic: true,
   typescript: true,
   vue: true,
@@ -168,7 +174,7 @@ The `luxass` function accepts an arbitrary number of `flat configs` overrides:
 // eslint.config.js
 import luxass from "@luxass/eslint-config";
 
-export default await luxass({
+export default luxass({
   // configuration points for my config
 }, {
   rules: {}
@@ -204,7 +210,7 @@ import {
 
 import { combine } from "@luxass/eslint-config";
 
-export default await combine(
+export default combine(
   ignores(),
   javascript(/* Options */),
   comments(),
@@ -231,15 +237,15 @@ Check out the [configs](https://github.com/luxass/eslint-config/blob/main/src/co
 
 Since flat config requires us to explicitly provide the plugin names (instead of mandatory convention from npm package name), we renamed some plugins to make overall scope more consistent and easier to write.
 
-| New Prefix | Original Prefix | Source Plugin |
-| --- | --- | --- |
-| `import/*` | `i/*` | [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i) |
-| `node/*` | `n/*` | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n) |
-| `yaml/*` | `yml/*` | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml) |
-| `ts/*` | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
-| `style/*` | `@stylistic/*` | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic) |
-| `test/*` | `vitest/*` | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest) |
-| `test/*` | `no-only-tests/*` | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests) |
+| New Prefix | Original Prefix        | Source Plugin                                                                              |
+| ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
+| `import/*` | `i/*`                  | [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i)                                |
+| `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
+| `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
+| `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
+| `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
+| `test/*`   | `vitest/*`             | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)                    |
+| `test/*`   | `no-only-tests/*`      | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests)  |
 
 When you want to override rules, or disable them inline, you need to update to the new prefix:
 
@@ -257,7 +263,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 // eslint.config.js
 import luxass from "@luxass/eslint-config";
 
-export default await luxass(
+export default luxass(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
@@ -299,6 +305,50 @@ export default luxass({
 
 We provide some optional configs for specific use cases, that we don't include their dependencies by default.
 
+#### Formatters
+
+> \[!WARNING]
+> Experimental feature, changes might not follow semver.
+
+Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
+
+```js
+// eslint.config.js
+import luxass from "@luxass/eslint-config";
+
+export default luxass({
+  formatters: {
+    /**
+     * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
+     * By default uses Prettier
+     */
+    css: true,
+    /**
+     * Format HTML files
+     * By default uses Prettier
+     */
+    html: true,
+    /**
+     * Format TOML files
+     * Currently only supports dprint
+     */
+    toml: "dprint",
+    /**
+     * Format Markdown files
+     * Supports Prettier and dprint
+     * By default uses Prettier
+     */
+    markdown: "prettier"
+  }
+});
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-format
+```
+
 #### React
 
 To enable React support, need to explicitly turn it on:
@@ -318,6 +368,27 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
 ```
 
+#### Next.JS
+
+To enable Next.JS support, need to explicitly turn it on:
+
+Next.JS also enables React support.
+
+```js
+// eslint.config.js
+import luxass from "@luxass/eslint-config";
+
+export default luxass({
+  nextjs: true,
+});
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh @next/eslint-plugin-next
+```
+
 #### UnoCSS
 
 To enable UnoCSS support, need to explicitly turn it on:
@@ -335,25 +406,6 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 
 ```bash
 npm i -D @unocss/eslint-plugin
-```
-
-#### TailwindCSS
-
-To enable TailwindCSS support, need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import luxass from "@luxass/eslint-config";
-
-export default luxass({
-  tailwindcss: true,
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-tailwindcss
 ```
 
 ### Optional Rules
@@ -386,7 +438,7 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 // eslint.config.js
 import luxass from "@luxass/eslint-config";
 
-export default await luxass({
+export default luxass({
   typescript: {
     tsconfigPath: "tsconfig.json",
   },
