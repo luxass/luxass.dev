@@ -166,7 +166,7 @@ async function run() {
   await Promise.all(repositories.map(async (repository) => {
     console.log(`Fetching .projectrc for ${repository.nameWithOwner}`);
     const projectRCResponse = await $fetch<ProjectRCResponse>(
-      `https://projectrc.luxass.dev/projectrc/${repository.name}`,
+      `https://projectrc.luxass.dev/resolve/${repository.name}`,
       {
         ignoreResponseError: true,
       },
