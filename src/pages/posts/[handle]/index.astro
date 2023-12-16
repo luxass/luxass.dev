@@ -1,9 +1,13 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import {
+  Icon,
+} from "astro-icon";
 import PageLayout from "../../../layouts/PageLayout.astro";
-import Notification from "../../../components/Notification.astro";
 import Code from "../../../components/Code.vue";
+import Link from "../../../components/ui/Link.astro";
+import { isEmoji } from "../../../utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -19,7 +23,7 @@ interface Props {
 
 const {
   post: {
-    data: { title, description, date, published },
+    data: { title, description, date, icon },
     render,
   },
 } = Astro.props;
@@ -40,20 +44,21 @@ export const prerender = true;
     }),
   )}`}
 >
-  <div class="prose tracking-wide">
-    {
-      !published && (
-        <Notification type="important">
-          This post is a <strong>draft</strong>. It may be incomplete or contain inaccuracies.
-        </Notification>
-      )
-    }
-
-    <h1 class="mt-8">{title}</h1>
+  <Link href="/posts">Go Back to posts</Link>
+  <article class="tracking-wide">
+    <h1 class="mt-8">
+      {icon && (
+        <span class="mr-2">
+          {isEmoji(icon) ? icon : (
+            <Icon name={icon} class="inline-block w-6 h-6" />
+          )}
+        </span>
+      )}
+      {title}</h1>
     <Content
       components={{
         code: Code,
       }}
     />
-  </div>
+  </article>
 </PageLayout>

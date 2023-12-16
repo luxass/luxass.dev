@@ -27,6 +27,8 @@ You can view the documentation [here](https://www.jsdocs.io/package/@luxass/util
 
 Published under [MIT License](https://github.com/luxass/utils/blob/main/LICENSE).
 
+<!-- Badges -->
+
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/utils?style=flat&colorA=18181B&colorB=4169E1
 
 [npm-version-href]: https://npmjs.com/package/@luxass/utils

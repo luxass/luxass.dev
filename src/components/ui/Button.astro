@@ -1,0 +1,124 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Link from "./Link.astro";
+
+interface Props extends HTMLAttributes<"button"> {
+
+  // type: {
+  //     type: String,
+  //     default: 'button'
+  //   },
+  //   block: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   label: {
+  //     type: String,
+  //     default: null
+  //   },
+  //   loading: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   disabled: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   padded: {
+  //     type: Boolean,
+  //     default: true
+  //   },
+  //   size: {
+  //     type: String as PropType<ButtonSize>,
+  //     default: () => config.default.size,
+  //     validator (value: string) {
+  //       return Object.keys(config.size).includes(value)
+  //     }
+  //   },
+  //   color: {
+  //     type: String as PropType<ButtonColor>,
+  //     default: () => config.default.color,
+  //     validator (value: string) {
+  //       return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
+  //     }
+  //   },
+  //   variant: {
+  //     type: String as PropType<ButtonVariant>,
+  //     default: () => config.default.variant,
+  //     validator (value: string) {
+  //       return [
+  //         ...Object.keys(config.variant),
+  //         ...Object.values(config.color).flatMap(value => Object.keys(value))
+  //       ].includes(value)
+  //     }
+  //   },
+  //   icon: {
+  //     type: String,
+  //     default: null
+  //   },
+  //   loadingIcon: {
+  //     type: String,
+  //     default: () => config.default.loadingIcon
+  //   },
+  //   leadingIcon: {
+  //     type: String,
+  //     default: null
+  //   },
+  //   trailingIcon: {
+  //     type: String,
+  //     default: null
+  //   },
+  //   trailing: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   leading: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   square: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   truncate: {
+  //     type: Boolean,
+  //     default: false
+  //   },
+  //   class: {
+  //     type: [String, Object, Array] as PropType<any>,
+  //     default: () => ''
+  //   },
+  //   ui: {
+  //     type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+  //     default: () => ({})
+  //   }
+};
+
+const {
+  type,
+  disabled,
+} = Astro.props;
+---
+
+<!-- <Link
+  type={type}
+  disabled={disabled}
+>
+  <slot />
+</Link> -->
+
+<!-- <ULink :type="type" :disabled="disabled || loading" :class="buttonClass" v-bind="attrs">
+  <slot name="leading" :disabled="disabled" :loading="loading">
+    <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="leadingIconClass" aria-hidden="true" />
+  </slot>
+
+  <slot>
+    <span v-if="label" :class="[truncate ? ui.truncate : '']">
+      {{ label }}
+    </span>
+  </slot>
+
+  <slot name="trailing" :disabled="disabled" :loading="loading">
+    <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="trailingIconClass" aria-hidden="true" />
+  </slot>
+</ULink> -->

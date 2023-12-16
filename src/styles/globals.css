@@ -1,0 +1,55 @@
+html {
+  @apply antialiased touch-manipulation scroll-smooth text-base;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) py-8 min-h-screen max-w-4xl md:mx-auto mx-4 font-sans flex flex-col justify-between min-h-100dvh;
+}
+
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+.callout {
+  /* @apply: my-8 hidden items-center gap-2 rounded py-2 sm:flex; */
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+
+  & .callout-title {
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    line-height: 1;
+
+    & .octicon {
+      margin-right: 0.5rem;
+      display: inline-block;
+      overflow: visible !important;
+      vertical-align: text-bottom;
+      fill: currentColor;
+    }
+  }
+
+  &.callout-note {
+    border-left-color: #2f81f7;
+
+    & .callout-title {
+      color: #2f81f7;
+    }
+  }
+}
+
+.callout>:first-child {
+  margin-top: 0;
+}
+
+.callout>:last-child {
+  margin-bottom: 0;
+}

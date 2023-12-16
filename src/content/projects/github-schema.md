@@ -5,7 +5,7 @@ owner: luxass
 description: GitHub's GraphQL schema
 githubUrl: https://github.com/luxass/github-schema
 npm: https://www.npmjs.com/package/github-schema
-downloads: 985
+downloads: 1012
 ---
 
 # 📋 github-schema
@@ -70,6 +70,8 @@ schema: node_modules/github-schema/schema.graphql
 ## 📄 License
 
 Published under [MIT License](https://github.com/luxass/github-schema/blob/main/LICENSE).
+
+<!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/github-schema?style=flat&colorA=18181B&colorB=4169E1
 

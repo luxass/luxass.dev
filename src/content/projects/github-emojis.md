@@ -59,6 +59,8 @@ import emojis from "github-emojis/emojis";
 <details>
 <summary>View all emojis right here</summary>
 
+<!-- table start -->
+
 | Name | Emoji | Name | Emoji |
 |------|-------|------|-------|
 | 100 | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4af.png?v8" loading="lazy" />| 1234 | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f522.png?v8" loading="lazy" /> |
@@ -1000,6 +1002,8 @@ import emojis from "github-emojis/emojis";
 | zipper\_mouth\_face | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f910.png?v8" loading="lazy" />| zombie | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f9df.png?v8" loading="lazy" /> |
 | zombie\_man | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f9df-2642.png?v8" loading="lazy" />| zombie\_woman | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f9df-2640.png?v8" loading="lazy" /> |
 | zzz | <img width="20" height="20" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a4.png?v8" loading="lazy" />|  |  |
+
+<!-- table end -->
 
 </details>
 

@@ -1,9 +1,11 @@
 ---
-import type { Project } from "../data/projects";
-import Card from "./Card.astro";
-import Link from "./Link.astro";
-import GitHubLogo from "~icons/carbon/LogoGithub";
-import NPMIcon from "~icons/logos/NpmIcon";
+import { Icon } from "astro-icon";
+import type { Project } from "../../data/projects";
+import Card from "../ui/Card.astro";
+import Link from "../ui/Link.astro";
+
+// import GitHubLogo from "~icons/carbon/LogoGithub";
+// import NPMIcon from "~icons/logos/NpmIcon";
 
 export interface Props {
   project: Project
@@ -24,14 +26,14 @@ const url = $projectrc?.readme ? `/projects/${name}` : githubUrl;
       </Link>
       <div class="flex items-center gap-2">
         {
-          $projectrc.npm && $values.npm && (
-            <Link href={$values.npm} aria-label="NPM Package">
-              <NPMIcon class="text-lg" />
+          $projectrc.npm && $values.npm?.url && (
+            <Link href={$values.npm.url} aria-label="NPM Package">
+              <Icon name="logos:npm-icon" class="w-6 h-6" />
             </Link>
           )
         }
         <Link href={githubUrl} aria-label="Github">
-          <GitHubLogo class="text-lg" />
+          <Icon name="carbon:logo-github" class="w-6 h-6" />
         </Link>
       </div>
     </div>

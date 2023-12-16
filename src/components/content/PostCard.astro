@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content";
+import {
+  Icon,
+} from "astro-icon";
+
+import Card from "../ui/Card.astro";
+import { isEmoji } from "../../utils";
+
+export interface Props {
+  post: CollectionEntry<"posts">
+}
+
+const {
+  post: {
+    data: { title, description, handle, icon },
+    slug,
+  },
+} = Astro.props;
+---
+
+<Card href={`/posts/${handle || slug}`} class="flex flex-col gap-4">
+  <h3 class="text-xl whitespace-nowrap text-ellipsis overflow-hidden">
+    {icon && (
+      <span class="mr-2">
+        {isEmoji(icon) ? icon : (
+          <Icon name={icon} class="inline-block w-6 h-6" />
+        )}
+      </span>
+    )}
+    {title}
+  </h3>
+  <p class="flex-1">{description}</p>
+</Card>

@@ -1,6 +1,6 @@
 ---
-import Link from "../../components/Link.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import Link from "../../components/ui/Link.astro";
+import ProjectCard from "../../components/content/ProjectCard.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 const { projects } = await import("../../data/projects");
@@ -13,23 +13,21 @@ export const prerender = true;
     <h1>Projects</h1>
     <p>This is some of my projects.</p>
     {
-      projects.length > 0
-        ? (
+      projects.length > 0 ? (
         <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
           {projects.map((project) => (
             <ProjectCard project={project} />
           ))}
         </div>
-          )
-        : (
+      ) : (
         <p>
           I haven't made any of my projects available here yet - you can always
           checkout my{" "}
-          <Link href="github:luxass" underline>
+          <Link href="https://github.com/luxass">
             GitHub
           </Link>
         </p>
-          )
+      )
     }
   </article>
 </PageLayout>

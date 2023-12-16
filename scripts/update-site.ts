@@ -3,11 +3,10 @@ import { mkdir, rm, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import { graphql } from "@octokit/graphql";
 import { remark } from "remark";
-import remarkComment from "remark-comment";
-import { $fetch } from "ofetch";
 import { visit } from "unist-util-visit";
 import type { ProjectRCResponse } from "@luxass/projectrc";
-import { type Language, type Repository, type User, gql } from "github-schema";
+import { gql } from "github-schema";
+import type { Language, Repository, User } from "github-schema";
 
 function isExternalLink(url: string) {
   // there is probably a better way to do this
@@ -131,9 +130,11 @@ async function run() {
   }
 
   try {
-    await $fetch("https://projectrc.luxass.dev/ping", {
-      responseType: "text",
-    });
+    const res = await fetch("https://projectrc.luxass.dev/ping");
+
+    if (!res.ok) {
+      throw new Error("Failed to ping projectrc.luxass.dev");
+    }
   } catch (err) {
     console.error(err);
     throw new Error("Failed to ping projectrc.luxass.dev");
@@ -164,13 +165,15 @@ async function run() {
   );
 
   await Promise.all(repositories.map(async (repository) => {
-    console.log(`Fetching .projectrc for ${repository.nameWithOwner}`);
-    const projectRCResponse = await $fetch<ProjectRCResponse>(
+    const projectRCResponseRes = await fetch(
       `https://projectrc.luxass.dev/resolve/${repository.name}`,
-      {
-        ignoreResponseError: true,
-      },
     );
+
+    if (!projectRCResponseRes.ok) {
+      return;
+    }
+
+    const projectRCResponse = await projectRCResponseRes.json();
 
     const projectRC
       = typeof projectRCResponse === "object" ? projectRCResponse : undefined;
@@ -218,11 +221,11 @@ async function run() {
         const fileName = project.name.replace(/^\./, "").replace(/\./g, "-");
 
         const file = await remark()
-          .use(remarkComment)
           .use(rewrite, {
             repoUrl: repository.url,
           })
           .process(project.readme.content || "No README was found.");
+
         const frontmatter = `---
                     handle: ${project.name}
                     name: ${project.name}
@@ -240,7 +243,7 @@ async function run() {
           .join("\n");
 
         await writeFile(
-          `./src/content/projects/${fileName}.mdx`,
+          `./src/content/projects/${fileName}.md`,
           `${frontmatter}\n\n${file.toString()}`,
         );
       }

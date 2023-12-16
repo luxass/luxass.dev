@@ -3,6 +3,7 @@ import { Buffer } from "node:buffer";
 import {
   defineConfig,
   presetIcons,
+  presetTypography,
   presetUno,
   presetWebFonts,
   transformerDirectives,
@@ -15,6 +16,7 @@ export default defineConfig({
       dark: "media",
     }),
     presetIcons(),
+    presetTypography(),
     presetWebFonts({
       provider: "google",
       async customFetch(url) {

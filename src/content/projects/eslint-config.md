@@ -5,7 +5,7 @@ owner: luxass
 description: 🔧 My ESLint Config
 githubUrl: https://github.com/luxass/eslint-config
 npm: https://www.npmjs.com/package/@luxass/eslint-config
-downloads: 2975
+downloads: 3025
 ---
 
 # @luxass/eslint-config
@@ -466,6 +466,8 @@ This project follows [Semantic Versioning](https://semver.org/) for releases. Ho
 ## 📄 License
 
 Published under [MIT License](https://github.com/luxass/eslint-config/blob/main/LICENSE).
+
+<!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/eslint-config?style=flat&colorA=18181B&colorB=4169E1
 

@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
+import {
+  Icon,
+} from "astro-icon";
 import PageLayout from "../layouts/PageLayout.astro";
-import Link from "../components/Link.astro";
-import GitHubIcon from "~icons/carbon/LogoGithub";
-import LinkedInIcon from "~icons/carbon/LogoLinkedin";
+import Link from "../components/ui/Link.astro";
 
 const posts = await getCollection("posts", ({ data }) => data.published).then((posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()));
 
@@ -30,7 +31,7 @@ export const prerender = true;
        In my spare time, I enjoy learning new technologies and working on side projects.
       <br />
       <br />
-       occasionally I also write some articles on my <Link underline href="/posts">blog.</Link>
+       occasionally I also write some articles on my <Link href="/posts">blog.</Link>
     </p>
   </div>
   <div class="mt-8 flex flex-wrap gap-2 sm:mt-14 sm:gap-4">
@@ -47,20 +48,20 @@ export const prerender = true;
     }
 
     <Link
-      href="github:luxass"
+      href="https://github.com/luxass"
       aria-label="Github"
       class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
-      <GitHubIcon class="text-xl" />
+      <Icon name="carbon:logo-github" class="w-6 h-6" />
        GitHub
     </Link>
 
     <Link
-      href="linkedin:lucasnrgaard"
+      href="https://www.linkedin.com/in/lucasnrgaard/"
       aria-label="LinkedIn"
       class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
     >
-      <LinkedInIcon class="text-xl" />
+      <Icon name="carbon:logo-linkedin" class="w-6 h-6" />
        LinkedIn
     </Link>
   </div>
