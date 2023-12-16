@@ -21,11 +21,11 @@ export default defineConfig({
       changefreq: "daily",
     }),
     mdx({
-      optimize: {
-        customComponentNames: [
-          "a",
-        ],
-      },
+      // optimize: {
+      //   customComponentNames: [
+      //     "a",
+      //   ],
+      // },
     }),
     vue({
       jsx: true,
@@ -34,7 +34,10 @@ export default defineConfig({
   experimental: {
     contentCollectionCache: true,
   },
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport",
+  },
   markdown: {
     shikiConfig: {
       experimentalThemes: {
@@ -43,8 +46,7 @@ export default defineConfig({
       },
       wrap: false,
     },
-    smartypants: true,
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
+    rehypePlugins: [[rehypeExternalLinks, {
       target: "_blank",
       rel: ["noopener", "noreferrer"],
     }]],

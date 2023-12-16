@@ -228,11 +228,15 @@ async function run() {
                     name: ${project.name}
                     owner: ${repository.nameWithOwner.split("/")[0]}
                     description: ${repository.description}
-                    githubUrl: ${repository.url}${project.npm ? `\nnpm: ${project.npm}` : ""
-          }
+                    githubUrl: ${repository.url}
+                    ${project.npm ? `npm: ${project.npm.url}` : ""}
+                    ${project.npm?.downloads ? `downloads: ${project.npm.downloads}` : ""}
+                    ${project.stars ? `stars: ${project.stars}` : ""}
+                    ${project.version ? `version: ${project.version}` : ""}
                     ---`
           .split("\n")
           .map((line) => line.trim())
+          .filter(Boolean)
           .join("\n");
 
         await writeFile(

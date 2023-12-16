@@ -1,6 +1,6 @@
 <template>
   <code
-    class="[letter-spacing:-0.02em] rounded text-sm after:(font-black text-blue-600) before:(font-black text-blue-600)"
+    class="[letter-spacing:-0.02em] rounded text-sm after:(font-black text-white) before:(font-black text-white)"
   >
     <slot />
   </code>
