@@ -5,7 +5,7 @@ owner: luxass
 description: 📖 A dead simple read time estimation
 githubUrl: https://github.com/luxass/lesetid
 npm: https://www.npmjs.com/package/remark-lesetid
-downloads: 94
+downloads: 96
 ---
 
 # 📖 remark-lesetid
