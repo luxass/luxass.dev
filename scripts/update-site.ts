@@ -7,15 +7,16 @@ import { visit } from "unist-util-visit";
 import type { ProjectRCResponse } from "@luxass/projectrc";
 import { gql } from "github-schema";
 import type { Language, Repository, User } from "github-schema";
+import type { Root } from "mdast";
+import type { Plugin, Transformer } from "unified";
 
 function isExternalLink(url: string) {
   // there is probably a better way to do this
   return url.startsWith("http");
 }
 
-function rewrite(options: { repoUrl: string }) {
-  // @ts-expect-error - hmmm what types should i use?
-  return function transformer(tree) {
+function rewrite(options: { repoUrl: string }): Plugin<any[], Root> {
+  const transformer: Transformer<Root> = (tree) => {
     visit(tree, "link", (node) => {
       if (!node?.url) {
         throw new Error("No URL found");
@@ -26,6 +27,38 @@ function rewrite(options: { repoUrl: string }) {
       const newUrl = new URL(node.url, `${options.repoUrl}/blob/main/`);
       node.url = newUrl.toString();
     });
+  };
+
+  return function attacher() {
+    return transformer;
+  };
+}
+
+function addSidebar(): Plugin<any[], Root> {
+  const transformer: Transformer<Root> = (tree) => {
+    visit(tree, "heading", (node, index, parent) => {
+      if (!parent || index === undefined) {
+        return;
+      }
+
+      if (node.type !== "heading" || node.depth !== 1 || index !== 0) {
+        return;
+      }
+
+      tree.children.splice(index + 1, 0, {
+        type: "paragraph",
+        children: [
+          {
+            type: "text",
+            value: "::sidebar",
+          },
+        ],
+      });
+    });
+  };
+
+  return function attacher() {
+    return transformer;
   };
 }
 
@@ -221,9 +254,10 @@ async function run() {
         const fileName = project.name.replace(/^\./, "").replace(/\./g, "-");
 
         const file = await remark()
-          .use(rewrite, {
+          .use(rewrite({
             repoUrl: repository.url,
-          })
+          }))
+          .use(addSidebar())
           .process(project.readme.content || "No README was found.");
 
         const frontmatter = `---

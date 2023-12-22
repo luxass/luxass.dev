@@ -17,7 +17,7 @@ const { as: Element = "div", href, class: _class, ...props } = Astro.props;
   !href ? (
     <Element
       class:list={[
-        "h-full min-h-36 border border-transparent hover:(border-neutral-700) rounded p-4 text-neutral-800 dark:text-neutral-200",
+        "h-full border border-transparent hover:(border-neutral-700) rounded p-4 text-neutral-800 dark:text-neutral-200",
         _class,
       ]}
       {...props}
@@ -27,7 +27,7 @@ const { as: Element = "div", href, class: _class, ...props } = Astro.props;
   ) : (
     <Link
       class:list={[
-        "h-full min-h-36 border border-transparent hover:(border-neutral-700) rounded p-4 text-neutral-800 dark:text-neutral-200",
+        "h-full border border-transparent hover:(border-neutral-700) rounded p-4 text-neutral-800 dark:text-neutral-200",
         _class,
       ]}
       {...props}

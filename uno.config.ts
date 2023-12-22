@@ -2,6 +2,7 @@ import { writeFile } from "node:fs/promises";
 import { Buffer } from "node:buffer";
 import {
   defineConfig,
+  presetAttributify,
   presetIcons,
   presetTypography,
   presetUno,
@@ -15,6 +16,7 @@ export default defineConfig({
     presetUno({
       dark: "media",
     }),
+    presetAttributify(),
     presetIcons(),
     presetTypography(),
     presetWebFonts({
@@ -69,6 +71,38 @@ export default defineConfig({
       },
     }),
   ],
+  theme: {
+    colors: {
+      primary: {
+        50: "rgb(239 246 255 / <alpha-value>)",
+        100: "rgb(219 234 254 / <alpha-value>)",
+        200: "rgb(191 219 254 / <alpha-value>)",
+        300: "rgb(147 197 253 / <alpha-value>)",
+        400: "rgb(96 165 250 / <alpha-value>)",
+        500: "rgb(59 130 246 / <alpha-value>)",
+        600: "rgb(37 99 235 / <alpha-value>)",
+        700: "rgb(29 78 216 / <alpha-value>)",
+        800: "rgb(30 64 175 / <alpha-value>)",
+        900: "rgb(30 58 138 / <alpha-value>)",
+        950: "rgb(23 37 84 / <alpha-value>)",
+        DEFAULT: "rgb(37 99 235 / <alpha-value>)",
+      },
+      test: {
+        50: "rgb(var(--color-primary-50) / <alpha-value>)",
+        100: "rgb(var(--un-primary-100) / <alpha-value>)",
+        200: "rgb(var(--color-primary-200) / <alpha-value>)",
+        300: "rgb(var(--un-color-primary-300) / <alpha-value>)",
+        400: "rgb(var(--color-primary-400) / <alpha-value>)",
+        500: "rgb(var(--color-primary-500) / <alpha-value>)",
+        600: "rgb(var(--color-primary-600) / <alpha-value>)",
+        700: "rgb(var(--color-primary-700) / <alpha-value>)",
+        800: "rgb(var(--color-primary-800) / <alpha-value>)",
+        900: "rgb(var(--color-primary-900) / <alpha-value>)",
+        950: "rgb(var(--color-primary-950) / <alpha-value>)",
+        DEFAULT: "rgb(var(--color-primary-DEFAULT) / <alpha-value>)",
+      },
+    },
+  },
   transformers: [transformerDirectives(), transformerVariantGroup()],
   rules: [
     [

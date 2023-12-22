@@ -5,10 +5,12 @@ owner: luxass
 description: A collection of utilities for JavaScript/TypeScript
 githubUrl: https://github.com/luxass/utils
 npm: https://www.npmjs.com/package/@luxass/utils
-downloads: 126
+downloads: 128
 ---
 
 # utils
+
+::sidebar
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -30,9 +32,6 @@ Published under [MIT License](https://github.com/luxass/utils/blob/main/LICENSE)
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/utils?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-version-href]: https://npmjs.com/package/@luxass/utils
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/utils?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-downloads-href]: https://npmjs.com/package/@luxass/utils

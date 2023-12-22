@@ -1,9 +1,7 @@
 /// <reference types="mdast-util-directive" />
 
-import type { AstroConfig, AstroUserConfig } from "astro";
 import { type Properties, h as _h, s as _s } from "hastscript";
 import type { Paragraph as P, Root } from "mdast";
-import remarkDirective from "remark-directive";
 import type { Plugin, Transformer } from "unified";
 import { remove } from "unist-util-remove";
 import { visit } from "unist-util-visit";
@@ -118,18 +116,40 @@ export function remarkAsides(): Plugin<any[], Root> {
 
   const transformer: Transformer<Root> = (tree) => {
     visit(tree, (node, index, parent) => {
-      if (!parent || index === undefined || node.type !== "containerDirective") {
+      if (!parent || index === undefined || (node.type !== "containerDirective" && node.type !== "paragraph")) {
         return;
       }
 
-      const variant = node.name;
+      if (node.type === "paragraph" && parent.type !== "blockquote") {
+        return;
+      }
+
+      let variant = "note";
+      if (node.type === "paragraph") {
+        const firstChild = node.children[0];
+        if (!firstChild || firstChild.type !== "text") {
+          return;
+        }
+
+        const type = firstChild.value.match(/^\[\!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/);
+        if (!type) {
+          return;
+        }
+
+        variant = type[1].toLowerCase();
+        firstChild.value = firstChild.value.replace(/^\[\!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/, "").trim();
+      } else {
+        variant = node.name;
+      }
+
       if (!isAsideVariant(variant)) return;
 
-      // remark-directive converts a container’s “label” to a paragraph in
-      // its children, but we want to pass it as the title prop to <Aside>, so
+      // remark-directive converts a container"s "label" to a paragraph in
+      // its children, but we want to pass it as the title prop to <aside>, so
       // we iterate over the children, find a directive label, store it for the
       // title prop, and remove the paragraph from children.
       let title = variant.toUpperCase();
+
       remove(node, (child): boolean | void => {
         if (child.data && "directiveLabel" in child.data && child.data.directiveLabel) {
           if (
@@ -158,7 +178,12 @@ export function remarkAsides(): Plugin<any[], Root> {
         ],
       );
 
-      parent.children[index] = aside;
+      if (parent.type === "blockquote") {
+        const blockquoteIndex = tree.children.findIndex((n) => n.type === "blockquote");
+        tree.children[blockquoteIndex] = aside;
+      } else {
+        parent.children[index] = aside;
+      }
     });
   };
 

@@ -10,6 +10,8 @@ downloads: 513
 
 # 🗣️ volapyk
 
+::sidebar
+
 `/vɔlɑˈpyg/`, "volapyk", or "volapük"
 
 ## 📦 Installation

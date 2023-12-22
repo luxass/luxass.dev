@@ -3,7 +3,8 @@ import {
   luxass,
 } from "@luxass/eslint-config";
 
-export default await luxass({
+export default luxass({
   unocss: true,
   astro: true,
+  formatters: true,
 });

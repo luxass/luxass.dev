@@ -1,13 +1,10 @@
 /// <reference types="mdast-util-directive" />
 
-import type { AstroConfig, AstroUserConfig } from "astro";
 import { type Properties, h as _h, s as _s } from "hastscript";
 import type { LinkReference, Paragraph as P, Root } from "mdast";
-import remarkDirective from "remark-directive";
 import type { Plugin, Transformer } from "unified";
 import { remove } from "unist-util-remove";
 import { visit } from "unist-util-visit";
-import { is } from "unist-util-is";
 
 /** Hacky function that generates an mdast HTML tree ready for conversion to HTML by rehype. */
 function h(el: string, attrs: Properties = {}, children: any[] = []): P {

@@ -5,31 +5,32 @@ owner: luxass
 description: 🔧 My ESLint Config
 githubUrl: https://github.com/luxass/eslint-config
 npm: https://www.npmjs.com/package/@luxass/eslint-config
-downloads: 3025
+downloads: 2902
 ---
 
 # @luxass/eslint-config
+
+::sidebar
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 
 > \[!IMPORTANT]
-> The configuration is not currently finished.
-> I could change at any moment.
+> The configuration is not currently finished, it could change at any moment.
 
 ## ✨ Features
 
-* Based on [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
-* Auto fix for formatting (aimed to be used standalone **without** Prettier)
-* Designed to work with TypeScript, JSX, Vue & Astro out-of-box
-* Lints also for json, yaml, markdown
-* Sorted imports, dangling commas
-* Reasonable defaults, best practices, only one-line of config
-* Opinionated, but [very customizable](https://github.com/luxass/eslint-config/blob/main/#customization)
-* [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-* Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
-* Respects `.gitignore` by default
-* Optional [formatters](https://github.com/luxass/eslint-config/blob/main/#formatters) support for CSS, HTML, TOML, etc.
+- Based on [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
+- Auto fix for formatting (aimed to be used standalone **without** Prettier)
+- Designed to work with TypeScript, JSX, Vue & Astro out-of-box
+- Lints also for json, yaml, markdown
+- Sorted imports, dangling commas
+- Reasonable defaults, best practices, only one-line of config
+- Opinionated, but [very customizable](https://github.com/luxass/eslint-config/blob/main/#customization)
+- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+- Respects `.gitignore` by default
+- Optional [formatters](https://github.com/luxass/eslint-config/blob/main/#formatters) support for CSS, HTML, TOML, etc.
 
 ## 📦 Install
 
@@ -452,16 +453,16 @@ This project follows [Semantic Versioning](https://semver.org/) for releases. Ho
 
 ### Changes Considered as Breaking Changes
 
-* Node.js version requirement changes
-* Huge refactors that might break the config
-* Plugins made major changes that might break the config
-* Changes that might affect most of the codebases
+- Node.js version requirement changes
+- Huge refactors that might break the config
+- Plugins made major changes that might break the config
+- Changes that might affect most of the codebases
 
 ### Changes Considered as Non-breaking Changes
 
-* Enable/disable rules and plugins (that might become stricter)
-* Rules options changes
-* Version bumps of dependencies
+- Enable/disable rules and plugins (that might become stricter)
+- Rules options changes
+- Version bumps of dependencies
 
 ## 📄 License
 
@@ -470,9 +471,6 @@ Published under [MIT License](https://github.com/luxass/eslint-config/blob/main/
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/eslint-config?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-version-href]: https://npmjs.com/package/@luxass/eslint-config
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/eslint-config?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-downloads-href]: https://npmjs.com/package/@luxass/eslint-config
