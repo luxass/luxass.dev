@@ -9,12 +9,12 @@ export const prerender = true;
 ---
 
 <PageLayout title="projects | luxass" description="projects">
-  <article class="typo dark:typo-invert max-w-none">
+  <article class="prose">
     <h1>Projects</h1>
     <p>This is some of my projects.</p>
     {
       projects.length > 0 ? (
-        <div class="not-prose grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
+        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
           {projects.map((project) => (
             <ProjectCard project={project} />
           ))}
