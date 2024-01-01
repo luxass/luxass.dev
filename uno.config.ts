@@ -18,7 +18,9 @@ export default defineConfig({
     }),
     presetAttributify(),
     presetIcons(),
-    presetTypography(),
+    presetTypography({
+      selectorName: "typo",
+    }),
     // {
     //   name: "typography-preset",
     //   enforce: "post",
@@ -109,6 +111,6 @@ export default defineConfig({
     ],
   ],
   shortcuts: {
-    text: "prose dark:prose-invert !max-w-none",
+    // text: "prose dark:prose-invert !max-w-none",
   },
 });
