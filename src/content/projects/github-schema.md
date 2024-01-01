@@ -5,7 +5,7 @@ owner: luxass
 description: GitHub's GraphQL schema
 githubUrl: https://github.com/luxass/github-schema
 npm: https://www.npmjs.com/package/github-schema
-downloads: 1108
+downloads: 574
 ---
 
 # 📋 github-schema
@@ -61,7 +61,7 @@ import { gqlTyped } from "github-schema";
 ## Editor Autocompletion
 
 > \[!TIP]
-> You will need to have [GraphQL LSP](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) installed, and have a `.graphqlrc.yaml` file in your project root.\
+> You will need to have [GraphQL LSP](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) installed, and have a `.graphqlrc.yaml` file in your project root.
 > If you also want nice colors, i would recommend [GraphQL Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql-syntax) installed.
 
 ```yaml
@@ -76,6 +76,9 @@ Published under [MIT License](https://github.com/luxass/github-schema/blob/main/
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/github-schema?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-version-href]: https://npmjs.com/package/github-schema
+
 [npm-downloads-src]: https://img.shields.io/npm/dm/github-schema?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-downloads-href]: https://npmjs.com/package/github-schema

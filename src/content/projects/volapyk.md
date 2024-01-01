@@ -5,7 +5,7 @@ owner: luxass
 description: null
 githubUrl: https://github.com/luxass/volapyk
 npm: https://www.npmjs.com/package/volapyk
-downloads: 513
+downloads: 362
 ---
 
 # 🗣️ volapyk

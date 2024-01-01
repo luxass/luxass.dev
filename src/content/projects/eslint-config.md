@@ -5,7 +5,7 @@ owner: luxass
 description: 🔧 My ESLint Config
 githubUrl: https://github.com/luxass/eslint-config
 npm: https://www.npmjs.com/package/@luxass/eslint-config
-downloads: 2902
+downloads: 1982
 ---
 
 # @luxass/eslint-config
@@ -20,17 +20,17 @@ downloads: 2902
 
 ## ✨ Features
 
-- Based on [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
-- Auto fix for formatting (aimed to be used standalone **without** Prettier)
-- Designed to work with TypeScript, JSX, Vue & Astro out-of-box
-- Lints also for json, yaml, markdown
-- Sorted imports, dangling commas
-- Reasonable defaults, best practices, only one-line of config
-- Opinionated, but [very customizable](https://github.com/luxass/eslint-config/blob/main/#customization)
-- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
-- Respects `.gitignore` by default
-- Optional [formatters](https://github.com/luxass/eslint-config/blob/main/#formatters) support for CSS, HTML, TOML, etc.
+* Based on [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
+* Auto fix for formatting (aimed to be used standalone **without** Prettier)
+* Designed to work with TypeScript, JSX, Vue & Astro out-of-box
+* Lints also for json, yaml, toml, markdown
+* Sorted imports, dangling commas
+* Reasonable defaults, best practices, only one-line of config
+* Opinionated, but [very customizable](https://github.com/luxass/eslint-config/blob/main/#customization)
+* [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+* Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+* Respects `.gitignore` by default
+* Optional [formatters](https://github.com/luxass/eslint-config/blob/main/#formatters) support for CSS, HTML, etc.
 
 ## 📦 Install
 
@@ -247,7 +247,6 @@ Since flat config requires us to explicitly provide the plugin names (instead of
 | `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
 | `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
 | `test/*`   | `vitest/*`             | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)                    |
-| `test/*`   | `no-only-tests/*`      | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests)  |
 
 When you want to override rules, or disable them inline, you need to update to the new prefix:
 
@@ -410,6 +409,25 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D @unocss/eslint-plugin
 ```
 
+#### TailwindCSS
+
+To enable TailwindCSS support, need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import luxass from "@luxass/eslint-config";
+
+export default luxass({
+  tailwindcss: true,
+});
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-tailwindcss
+```
+
 ### Optional Rules
 
 This config also provides some optional plugins/rules for extended usages.
@@ -453,16 +471,16 @@ This project follows [Semantic Versioning](https://semver.org/) for releases. Ho
 
 ### Changes Considered as Breaking Changes
 
-- Node.js version requirement changes
-- Huge refactors that might break the config
-- Plugins made major changes that might break the config
-- Changes that might affect most of the codebases
+* Node.js version requirement changes
+* Huge refactors that might break the config
+* Plugins made major changes that might break the config
+* Changes that might affect most of the codebases
 
 ### Changes Considered as Non-breaking Changes
 
-- Enable/disable rules and plugins (that might become stricter)
-- Rules options changes
-- Version bumps of dependencies
+* Enable/disable rules and plugins (that might become stricter)
+* Rules options changes
+* Version bumps of dependencies
 
 ## 📄 License
 
@@ -471,6 +489,9 @@ Published under [MIT License](https://github.com/luxass/eslint-config/blob/main/
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/eslint-config?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-version-href]: https://npmjs.com/package/@luxass/eslint-config
+
 [npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/eslint-config?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-downloads-href]: https://npmjs.com/package/@luxass/eslint-config
