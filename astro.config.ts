@@ -8,8 +8,8 @@ import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import { remarkAsides } from "./integrations/asides";
 import icon from "astro-icon";
+import { remarkAsides } from "./integrations/asides";
 
 // https://astro.build/config
 export default defineConfig({

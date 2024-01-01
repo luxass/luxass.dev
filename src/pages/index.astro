@@ -1,8 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import {
-  Icon,
-} from "astro-icon/components";
 import PageLayout from "../layouts/PageLayout.astro";
 import Link from "../components/ui/Link.astro";
 import Button from "../components/ui/Button.astro";
@@ -18,7 +15,7 @@ export const prerender = true;
   title="home"
   description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications"
 >
-  <div class="min-h-250px">
+  <div class="min-h-250px text">
     <h1>
       Hey I&apos;m luxass <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
     </h1>
@@ -30,135 +27,32 @@ export const prerender = true;
        occasionally I also write some articles on my <Link href="/posts">blog.</Link>
     </p>
   </div>
-  <!-- <div class="grid grid-cols-2">
-    <div border border-neutral-300 p3>
-      <span text-blue-50>
-        text-blue-50
-      </span>
-      <span text-test-50>
-        text-test-50
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-100>
-        text-blue-100
-      </span>
-      <span text-test-100>
-        text-test-100
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-200>
-        text-blue-200
-      </span>
-      <span text-test-200>
-        text-test-200
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-300>
-        text-blue-300
-      </span>
-      <span text-test-300>
-        text-test-300
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-400>
-        text-blue-400
-      </span>
-      <span text-test-400>
-        text-test-400
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-500>
-        text-blue-500
-      </span>
-      <span text-test-500>
-        text-test-500
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-600>
-        text-blue-600
-      </span>
-      <span text-test-600>
-        text-test-600
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-700>
-        text-blue-700
-      </span>
-      <span text-test-700>
-        text-test-700
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-800>
-        text-blue-800
-      </span>
-      <span text-test-800>
-        text-test-800
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-900>
-        text-blue-900
-      </span>
-      <span text-test-900>
-        text-test-900
-      </span>
-    </div>
-    <div border border-neutral-300 p3>
-      <span text-blue-950>
-        text-blue-950
-      </span>
-      <span text-test-950>
-        text-test-950
-      </span>
-    </div>
-  </div> -->
-
   <div class="mt-8 flex flex-wrap gap-2 sm:mt-14 sm:gap-4">
     {
       latestPost && (
-        <Button intent="solid" icon={latestPost.data.icon} href={`/posts/${latestPost.data.handle || latestPost.slug}`}>
+        <Button icon={latestPost.data.icon} href={`/posts/${latestPost.data.handle || latestPost.slug}`}>
           <span>{latestPost.data.title}</span>
         </Button>
       )
     }
 
-{
-  latestPost && (
-    <Link
-      href={`/posts/${latestPost.data.handle || latestPost.slug}`}
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
-    >
-      {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
-      <span>{latestPost.data.title}</span>
-    </Link>
-  )
-}
-
-    <Link
+    <Button
+      icon="carbon:logo-github"
       href="https://github.com/luxass"
-      aria-label="Github"
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
+      aria-label="GitHub"
+      intent="outline"
     >
-      <Icon name="carbon:logo-github" class="w-6 h-6" />
-       GitHub
-    </Link>
+      GitHub
+    </Button>
 
-    <Link
+    <Button
       href="https://www.linkedin.com/in/lucasnrgaard/"
       aria-label="LinkedIn"
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
+      icon="carbon:logo-linkedin"
+      intent="outline"
     >
-      <Icon name="carbon:logo-linkedin" class="w-6 h-6" />
        LinkedIn
-    </Link>
+    </Button>
   </div>
 </PageLayout>
 

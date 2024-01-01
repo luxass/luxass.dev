@@ -36,7 +36,7 @@ const buttonStyles = cva(["focus:outline-none focus-visible:outline-0 disabled:c
   },
   defaultVariants: {
     intent: "solid",
-    size: "sm",
+    size: "md",
     truncate: false,
     inline: true,
   },
@@ -50,7 +50,7 @@ interface Props extends HTMLAttributes<"button">, VariantProps<typeof buttonStyl
 }
 
 const {
-  size = "sm",
+  size = "md",
   icon,
   intent = "solid",
   type,
