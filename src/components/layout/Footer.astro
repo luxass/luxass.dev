@@ -1,10 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
 import Link from "../ui/Link.astro";
+
+const date = new Date().getFullYear();
 ---
 
 <footer class="mt-8 border-t border-t-neutral-700 pt-8 text-center flex items-center justify-between gap-2">
   <p>Lucas Nørgård</p>
+  <p>© {date}</p>
   <ul>
     <li class="flex items-center gap-2">
       <Link href="/rss.xml">
