@@ -9,7 +9,7 @@ import remarkDirective from "remark-directive";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { remarkAsides } from "./integrations/asides";
-import { remarkSidebar } from "./integrations/sidebar";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,6 +32,7 @@ export default defineConfig({
     vue({
       jsx: true,
     }),
+    icon(),
   ],
   experimental: {
     contentCollectionCache: true,
