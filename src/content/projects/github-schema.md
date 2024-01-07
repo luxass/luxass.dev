@@ -4,6 +4,11 @@ name: github-schema
 owner: luxass
 description: GitHub's GraphQL schema
 githubUrl: https://github.com/luxass/github-schema
+<<<<<<< HEAD:src/content/projects/github-schema.md
+=======
+npm: https://www.npmjs.com/package/github-schema
+downloads: 507
+>>>>>>> 3016e8da0e8d133858e0f79a6ebcaf7a7f8305e6:src/content/projects/github-schema.mdx
 ---
 
 # 📋 github-schema

@@ -4,6 +4,11 @@ name: jsonc-parse
 owner: luxass
 description: A lightweight JSON with Comments parser.
 githubUrl: https://github.com/luxass/jsonc-parse
+<<<<<<< HEAD:src/content/projects/jsonc-parse.md
+=======
+npm: https://www.npmjs.com/package/jsonc-parse
+downloads: 288
+>>>>>>> 3016e8da0e8d133858e0f79a6ebcaf7a7f8305e6:src/content/projects/jsonc-parse.mdx
 ---
 
 # jsonc-parse
