@@ -4,10 +4,10 @@ import { getCollection } from "astro:content";
 import {
   Icon,
 } from "astro-icon/components";
-import PageLayout from "../../../layouts/PageLayout.astro";
-import Code from "../../../components/Code.vue";
-import Link from "../../../components/ui/Link.astro";
-import { isEmoji } from "../../../utils";
+import PageLayout from "../../layouts/PageLayout.astro";
+import Code from "../../components/Code.vue";
+import Link from "../../components/ui/Link.astro";
+import { isEmoji } from "../../utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
