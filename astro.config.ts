@@ -43,10 +43,15 @@ export default defineConfig({
       },
       wrap: false,
     },
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
-      target: "_blank",
-      rel: ["noopener", "noreferrer"],
-    }]],
+    rehypePlugins: [
+      rehypeSlug,
+      rehypeAutolinkHeadings,
+      [rehypeExternalLinks, {
+        target: "_blank",
+        rel: ["noopener", "noreferrer"],
+      }],
+
+    ],
     remarkPlugins: [
       remarkDirective,
       remarkAsides(),

@@ -17,13 +17,14 @@ export interface Props {
 
 const {
   post: {
-    data: { title, date },
+    data: { title, description, date },
     slug,
   },
 } = Astro.props;
 ---
 
-<Link href={`/posts/${slug}`} class="flex justify-between border border-neutral-700 bg-neutral-800 rounded p-3">
-  <span>{title}</span>
+<Link href={`/posts/${slug}`} class="flex flex-col justify-between border border-neutral-700 bg-neutral-800 rounded p-3 gap-3">
+  <span class="text-(lg imp) font-semibold">{title}</span>
+  <span>{description}</span>
   <span>{formatDate(date)}</span>
 </Link>

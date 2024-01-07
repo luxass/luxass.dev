@@ -97,6 +97,9 @@ devDependencies:
   '@octokit/graphql':
     specifier: ^7.0.2
     version: 7.0.2
+  '@types/hast':
+    specifier: ^3.0.3
+    version: 3.0.3
   '@types/markdown-it':
     specifier: ^13.0.7
     version: 13.0.7

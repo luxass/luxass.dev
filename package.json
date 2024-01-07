@@ -47,6 +47,7 @@
     "@luxass/eslint-config": "^4.0.1",
     "@luxass/projectrc": "^2.1.2",
     "@octokit/graphql": "^7.0.2",
+    "@types/hast": "^3.0.3",
     "@types/markdown-it": "^13.0.7",
     "@types/mdast": "^4.0.3",
     "@types/node": "^20.10.2",

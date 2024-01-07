@@ -1,0 +1,32 @@
+---
+import Link from "../ui/Link.astro";
+import type { Project } from "../../lib/types";
+
+export interface Props {
+  project: Project
+}
+
+const {
+  project,
+} = Astro.props;
+
+const {
+  name,
+  description,
+  url: githubUrl,
+  isContributor,
+  $projectrc,
+} = project;
+
+const url = $projectrc?.readme ? `/projects/${name}` : githubUrl;
+---
+
+<Link href={url} class="flex flex-col justify-between border border-neutral-700 bg-neutral-800 rounded p-3 gap-3">
+  <span>
+    {name}
+    {isContributor && (
+      <span class="text-sm text-neutral-500"> (contributor)</span>
+    )}
+  </span>
+  <span>{description}</span>
+</Link>

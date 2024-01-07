@@ -1,21 +1,31 @@
 ---
-import type { Project } from "../../data/projects";
-import Card from "../ui/Card.astro";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Link from "../ui/Link.astro";
 
 export interface Props {
-  project: Project
+  project: CollectionEntry<"projects">
 }
 
-const { project } = Astro.props;
-
-const { name, description, url: githubUrl, $projectrc } = project;
-
-const url = $projectrc?.readme ? `/projects/${name}` : githubUrl;
+const {
+  project: {
+    data: { name, githubUrl },
+    slug,
+  },
+} = Astro.props;
 ---
 
-<Card href={url} class="flex flex-col justify-between gap-y-2">
-  <h2 class="overflow-hidden text-ellipsis whitespace-nowrap">
-    {name}
-  </h2>
-  <p class="text-sm">{description}</p>
-</Card>
+<div class="flex justify-between items-center border border-neutral-700 bg-neutral-800 rounded p-3">
+  <Link href={`/projects/${slug}`}>
+    <span>{name}</span>
+  </Link>
+
+  <span class="flex items-center gap-3">
+    <Link href={githubUrl}>
+      <Icon name="mdi:github" class="size-6" />
+    </Link>
+    <Link href={`projects/${name}`}>
+      <Icon name="mdi:arrow-top-right-thin" class="size-6" />
+    </Link>
+  </span>
+</div>

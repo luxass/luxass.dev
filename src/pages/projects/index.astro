@@ -1,23 +1,27 @@
 ---
 import Link from "../../components/ui/Link.astro";
-import ProjectCard from "../../components/content/ProjectCard.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectPreviewCard from "../../components/content/ProjectPreviewCard.astro";
+import type { Project } from "../../lib/types";
 
-const { projects } = await import("../../data/projects");
+const { projects } = await fetch("https://projectrc.luxass.dev/projects")
+  .then((res) => res.json() as Promise<{ projects: Project[] }>);
 
 export const prerender = true;
 ---
 
-<PageLayout title="projects | luxass" description="projects">
+<PageLayout title="projects | luxass.dev" description="projects">
   <article class="prose">
     <h1>Projects</h1>
     <p>This is some of my projects.</p>
     {
       projects.length > 0 ? (
         <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
-          {projects.map((project) => (
-            <ProjectCard project={project} />
-          ))}
+          {
+            projects.map((project) => (
+              <ProjectPreviewCard {project} />
+            ))
+          }
         </div>
       ) : (
         <p>

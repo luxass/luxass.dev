@@ -1,10 +1,19 @@
 html {
   @apply antialiased touch-manipulation scroll-smooth text-base;
   text-rendering: optimizeLegibility;
+
+
+  &.dark {
+    color-scheme: dark;
+  }
+}
+
+* {
+  @apply outline-white selection-(bg-neutral-700 text-white)
 }
 
 body {
-  @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) py-8 max-w-2xl md:mx-auto mx-4 font-sans flex flex-col justify-between min-h-100dvh;
+  @apply text-neutral-300 bg-neutral-900 px-0 md:px-4 py-4 md:py-8 max-w-3xl md:mx-auto relative min-h-screen text-sm md:text-base flex flex-col;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,203 +109,47 @@ body {
 }
 
 .prose {
-  & :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
-    @apply font-semibold leading-tight;
+  @apply [&>:not(:last-child)]:mb-6;
+
+  & p {
+    @apply my-6 line-height-7.2
   }
 
-  & :where(a):not(:where(.not-prose, .not-prose *)) {
-    text-decoration: underline;
-    font-weight: 500;
+  & h1,
+  & h2,
+  & h3 {
+    @apply text-neutral-100 font-semibold my-8;
   }
 
-  & :where(p, ul, ol, pre):not(:where(.not-prose, .not-prose *)) {
-    margin: 1em 0;
-    line-height: 1.75;
+  & h1 {
+    @apply text-2xl;
   }
 
-  & :where(blockquote):not(:where(.not-prose, .not-prose *)) {
-    margin: 1rem 0;
-    /* @apply my-4 pl-4 italic; */
-    padding-left: 1rem;
-    font-style: italic;
-    border-left: 0.25em solid var(--un-prose-borders);
+  & h2 {
+    @apply text-xl;
   }
 
-  & :where(h1):not(:where(.not-prose, .not-prose *)) {
-    margin: 1rem 0;
-    /* @apply my-4; */
-    font-size: 1.75rem;
+  & h3 {
+    @apply text-lg;
   }
 
-  & :where(h2):not(:where(.not-prose, .not-prose *)) {
-    /* @apply mt-7 mb-2; */
-    margin: 1.75rem 0 0.5rem;
-    /* font-size: 1.75em; */
-    font-size: 1.5rem;
+  & strong {
+    @apply font-medium text-neutral-100;
   }
 
-  & :where(h3):not(:where(.not-prose, .not-prose *)) {
-    margin: 1.5rem 0 0.5rem;
-    font-size: 1.25rem;
+  & hr {
+    @apply border-neutral-600 border-b-0.5;
   }
 
-  & :where(h4):not(:where(.not-prose, .not-prose *)) {
-    margin: 1rem 0;
-    font-size: 1.125rem;
+  & ul {
+    @apply list-disc list-outside pl-4;
   }
 
-  & :where(img, video):not(:where(.not-prose, .not-prose *)) {
-    max-width: 100%;
+  & ul > li {
+    @apply mb-2;
   }
 
-  & :where(figure, picture):not(:where(.not-prose, .not-prose *)) {
-    margin: 1rem 0;
-  }
-
-  & :where(figcaption):not(:where(.not-prose, .not-prose *)) {
-    color: var(--un-prose-captions);
-    font-size: 0.875rem;
-  }
-
-  & :where(code):not(:where(.not-prose, .not-prose *)) {
-    color: var(--un-prose-code);
-    font-size: 0.875rem;
-    font-weight: 600;
-    font-family:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      Liberation Mono,
-      Courier New,
-      monospace;
-  }
-
-  & :where(:not(pre) > code):not(:where(.not-prose, .not-prose *)):before,
-  & :where(:not(pre) > code):not(:where(.not-prose, .not-prose *)):after {
-    content: "`";
-  }
-
-  & :where(pre):not(:where(.not-prose, .not-prose *)) {
-    padding: 1.25rem 1.5rem;
-    overflow-x: auto;
-    border-radius: 0.375rem;
-  }
-
-  & :where(pre, code):not(:where(.not-prose, .not-prose *)) {
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    hyphens: none;
-    background: transparent;
-  }
-
-  & :where(pre code):not(:where(.not-prose, .not-prose *)) {
-    font-weight: inherit;
-  }
-
-  & :where(ol, ul):not(:where(.not-prose, .not-prose *)) {
-    padding-left: 1.25em;
-  }
-
-  & :where(ol):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: decimal;
-  }
-
-  & :where(ol[type="A"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: upper-alpha;
-  }
-
-  & :where(ol[type="a"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: lower-alpha;
-  }
-
-  & :where(ol[type="A s"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: upper-alpha;
-  }
-
-  & :where(ol[type="a s"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: lower-alpha;
-  }
-
-  & :where(ol[type="I"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: upper-roman;
-  }
-
-  & :where(ol[type="i"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: lower-roman;
-  }
-
-  & :where(ol[type="I s"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: upper-roman;
-  }
-
-  & :where(ol[type="i s"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: lower-roman;
-  }
-
-  & :where(ol[type="1"]):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: decimal;
-  }
-
-  & :where(ul):not(:where(.not-prose, .not-prose *)) {
-    list-style-type: disc;
-  }
-
-  & :where(ol > li):not(:where(.not-prose, .not-prose *))::marker,
-  & :where(ul > li):not(:where(.not-prose, .not-prose *))::marker,
-  & :where(summary):not(:where(.not-prose, .not-prose *))::marker {
-    color: var(--un-prose-lists);
-  }
-
-  & :where(hr):not(:where(.not-prose, .not-prose *)) {
-    margin: 2em 0;
-    border: 1px solid var(--un-prose-hr);
-  }
-
-  & :where(table):not(:where(.not-prose, .not-prose *)) {
-    display: block;
-    margin: 1em 0;
-    border-collapse: collapse;
-    overflow-x: auto;
-  }
-
-  & :where(tr):not(:where(.not-prose, .not-prose *)):nth-child(2n) {
-    background: var(--un-prose-bg-soft);
-  }
-
-  & :where(td, th):not(:where(.not-prose, .not-prose *)) {
-    border: 1px solid var(--un-prose-borders);
-    padding: 0.625em 1em;
-  }
-
-  & :where(abbr):not(:where(.not-prose, .not-prose *)) {
-    cursor: help;
-  }
-
-  & :where(kbd):not(:where(.not-prose, .not-prose *)) {
-    color: var(--un-prose-code);
-    border: 1px solid;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875em;
-    border-radius: 0.25rem;
-  }
-
-  & :where(details):not(:where(.not-prose, .not-prose *)) {
-    margin: 1em 0;
-    padding: 1.25rem 1.5rem;
-    background: var(--un-prose-bg-soft);
-  }
-
-  & :where(summary):not(:where(.not-prose, .not-prose *)) {
-    cursor: pointer;
-    font-weight: 600;
+  & img {
+    @apply mx-auto rounded my-6;
   }
 }
