@@ -4,13 +4,9 @@ name: volapyk
 owner: luxass
 description: null
 githubUrl: https://github.com/luxass/volapyk
-npm: https://www.npmjs.com/package/volapyk
-downloads: 362
 ---
 
 # 🗣️ volapyk
-
-::sidebar
 
 `/vɔlɑˈpyg/`, "volapyk", or "volapük"
 

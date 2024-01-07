@@ -53,6 +53,9 @@ dependencies:
   remark-comment:
     specifier: ^1.0.0
     version: 1.0.0
+  remark-mdx:
+    specifier: ^3.0.0
+    version: 3.0.0
   sanitize-html:
     specifier: ^2.11.0
     version: 2.11.0

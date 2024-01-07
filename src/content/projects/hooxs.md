@@ -4,13 +4,9 @@ name: hooxs
 owner: luxass
 description: Build a powerful project with typed hooks for a smooth plugin API. ✨
 githubUrl: https://github.com/luxass/hooxs
-npm: https://www.npmjs.com/package/hooxs
-downloads: 8
 ---
 
 # hooxs
-
-::sidebar
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -63,6 +59,9 @@ Published under [MIT License](https://github.com/luxass/hooxs/blob/main/LICENSE)
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/hooxs?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-version-href]: https://npmjs.com/package/hooxs
+
 [npm-downloads-src]: https://img.shields.io/npm/dm/hooxs?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-downloads-href]: https://npmjs.com/package/hooxs

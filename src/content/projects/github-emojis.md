@@ -4,13 +4,9 @@ name: github-emojis
 owner: luxass
 description: A list of all available emojis on GitHub
 githubUrl: https://github.com/luxass/github-emojis
-npm: https://www.npmjs.com/package/github-emojis
-downloads: 9
 ---
 
 # github-emojis
-
-::sidebar
 
 All GitHub's emojis in one place. <br/> <br/>
 

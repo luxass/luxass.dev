@@ -4,23 +4,19 @@ name: lesetid
 owner: luxass
 description: 📖 A dead simple read time estimation
 githubUrl: https://github.com/luxass/lesetid
-npm: https://www.npmjs.com/package/lesetid
-downloads: 160
 ---
 
 # 📖 lesetid
-
-::sidebar
 
 `/leːsətiːd/`, Norwegian: "lesetid"
 
 ## ✨ Features
 
-- ESM Support
-- Tree Shakeable
-- Using `CPM` (Characters Per Minute) to estimate for CJK languages
-- Streaming support
-- Implements [Medium's reading time algorithm](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
+* ESM Support
+* Tree Shakeable
+* Using `CPM` (Characters Per Minute) to estimate for CJK languages
+* Streaming support
+* Implements [Medium's reading time algorithm](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
 
 ## 📦 Installation
 
