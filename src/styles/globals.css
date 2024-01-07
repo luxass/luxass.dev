@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) py-8 max-w-4xl md:mx-auto mx-4 font-sans flex flex-col justify-between min-h-100dvh;
+  @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) py-8 max-w-2xl md:mx-auto mx-4 font-sans flex flex-col justify-between min-h-100dvh;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -9,35 +9,32 @@ import remarkDirective from "remark-directive";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import icon from "astro-icon";
+import solid from "@astrojs/solid-js";
 import { remarkAsides } from "./integrations/asides";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://luxass.dev",
   integrations: [
-    unocss({
-      injectReset: true,
-    }),
+    mdx(),
     sitemap({
       lastmod: new Date(),
       changefreq: "daily",
     }),
-    mdx({
-      // optimize: {
-      //   customComponentNames: [
-      //     "a",
-      //   ],
-      // },
-    }),
-    vue({
-      jsx: true,
+    solid(),
+    unocss({
+      injectReset: true,
     }),
     icon(),
+    vue(),
   ],
   experimental: {
     contentCollectionCache: true,
   },
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport",
+  },
   markdown: {
     shikiConfig: {
       experimentalThemes: {
