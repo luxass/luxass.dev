@@ -85,6 +85,9 @@ devDependencies:
   '@iconify-json/octicon':
     specifier: ^1.1.52
     version: 1.1.52
+  '@iconify-json/tabler':
+    specifier: ^1.1.103
+    version: 1.1.103
   '@luxass/eslint-config':
     specifier: ^4.0.1
     version: 4.0.1(@unocss/eslint-plugin@0.58.3)(@vue/compiler-sfc@3.4.5)(eslint-plugin-format@0.1.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -1039,6 +1042,12 @@ packages:
 
   /@iconify-json/octicon@1.1.52:
     resolution: {integrity: sha512-0bLc9t54p55nVlQ8SKF7BYOBTy/Q5SfvqYcOD09APDksRTikO45MwKTfG3fzkbaIwpobuVQM1sXiSCsyWJX9Tg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/tabler@1.1.103:
+    resolution: {integrity: sha512-8lCzy0GP4sjhRfFQO2nubytMb1OsEItjJ75ts/cOBPuj6bs9Wwq/Pxycz3DWg7cemTOVxiOyG1lednlhMy4DLg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

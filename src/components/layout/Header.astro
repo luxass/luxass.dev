@@ -1,27 +1,16 @@
 ---
-import Button from "../ui/Button.astro";
 import Link from "../ui/Link.astro";
 ---
 
 <header>
   <nav class="flex flex-wrap items-center justify-between">
-    <Link href="/" class="transition-transform active:scale-95">
-      Lucas Nørgård
-    </Link>
+    <Link href="/" class="transition-transform active:scale-95">Lucas Nørgård</Link>
 
     <div class="flex items-center gap-4 sm:gap-6">
-      <Link class="transition-transform active:scale-95" href="/projects">
-        Projects
-      </Link>
-      <Link class="transition-transform active:scale-95" href="/posts">
-        Posts
-      </Link>
+      <Link class="transition-transform active:scale-95" href="/projects">Projects</Link>
+      <Link class="transition-transform active:scale-95" href="/posts">Posts</Link>
       <Link class="transition-transform active:scale-95" href="https://cv.luxass.dev">CV</Link>
-      <Button
-        href="mailto:mail@luxass.dev"
-      >
-      Contact
-      </Button>
+      <Link class="transition-transform active:scale-95" href="mailto:mail@luxass.dev">Contact</Link>
     </div>
   </nav>
 </header>

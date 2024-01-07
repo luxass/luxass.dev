@@ -1,29 +1,26 @@
 ---
 import { Icon } from "astro-icon/components";
 import Link from "../ui/Link.astro";
-
-const date = new Date().getFullYear();
 ---
 
 <footer class="mt-8 border-t border-t-neutral-700 pt-8 text-center flex items-center justify-between gap-2">
   <p>Lucas Nørgård</p>
-  <p>© {date}</p>
   <ul>
     <li class="flex items-center gap-2">
       <Link href="/rss.xml">
-        <Icon name="octicon:rss" class="w-5 h-5" />
+        <Icon name="mdi:rss" class="w-5 h-5" />
       </Link>
-      <Link href="/sitemap.xml">
+      <Link href="/sitemap-index.xml">
         <Icon name="mdi:sitemap" class="w-5 h-5" />
       </Link>
       <Link href="mailto:mail@luxass.dev">
-        <Icon name="octicon:mail" class="w-5 h-5" />
+        <Icon name="tabler:mail" class="w-5 h-5" />
       </Link>
       <Link href="https://github.com/luxass">
-        <Icon name="octicon:mark-github-16" class="w-5 h-5" />
+        <Icon name="mdi:github" class="w-5 h-5" />
       </Link>
       <Link href="https://linkedin.com/in/luxass">
-        <Icon name="carbon:logo-linkedin" class="w-5 h-5" />
+        <Icon name="mdi:linkedin" class="w-5 h-5" />
       </Link>
     </li>
   </ul>
