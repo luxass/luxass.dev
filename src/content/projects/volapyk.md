@@ -4,11 +4,6 @@ name: volapyk
 owner: luxass
 description: null
 githubUrl: https://github.com/luxass/volapyk
-<<<<<<< HEAD:src/content/projects/volapyk.md
-=======
-npm: https://www.npmjs.com/package/volapyk
-downloads: 368
->>>>>>> 3016e8da0e8d133858e0f79a6ebcaf7a7f8305e6:src/content/projects/volapyk.mdx
 ---
 
 # 🗣️ volapyk

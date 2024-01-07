@@ -4,11 +4,6 @@ name: eslint-config
 owner: luxass
 description: 🔧 My ESLint Config
 githubUrl: https://github.com/luxass/eslint-config
-<<<<<<< HEAD:src/content/projects/eslint-config.md
-=======
-npm: https://www.npmjs.com/package/@luxass/eslint-config
-downloads: 1936
->>>>>>> 3016e8da0e8d133858e0f79a6ebcaf7a7f8305e6:src/content/projects/eslint-config.mdx
 ---
 
 # @luxass/eslint-config

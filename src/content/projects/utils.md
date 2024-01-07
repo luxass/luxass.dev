@@ -4,11 +4,6 @@ name: utils
 owner: luxass
 description: A collection of utilities for JavaScript/TypeScript
 githubUrl: https://github.com/luxass/utils
-<<<<<<< HEAD:src/content/projects/utils.md
-=======
-npm: https://www.npmjs.com/package/@luxass/utils
-downloads: 148
->>>>>>> 3016e8da0e8d133858e0f79a6ebcaf7a7f8305e6:src/content/projects/utils.mdx
 ---
 
 # utils

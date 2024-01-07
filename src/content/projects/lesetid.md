@@ -4,11 +4,6 @@ name: lesetid
 owner: luxass
 description: 📖 A dead simple read time estimation
 githubUrl: https://github.com/luxass/lesetid
-<<<<<<< HEAD:src/content/projects/lesetid.md
-=======
-npm: https://www.npmjs.com/package/lesetid
-downloads: 154
->>>>>>> 3016e8da0e8d133858e0f79a6ebcaf7a7f8305e6:src/content/projects/lesetid.mdx
 ---
 
 # 📖 lesetid
