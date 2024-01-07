@@ -1,69 +1,52 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
-import Link from "../components/Link.astro";
-import GitHubIcon from "~icons/carbon/LogoGithub";
-import LinkedInIcon from "~icons/carbon/LogoLinkedin";
+import Link from "../components/ui/Link.astro";
+import { sortPosts } from "../lib/utils";
+import PostCard from "../components/content/PostCard.astro";
+import ProjectCard from "../components/content/ProjectCard.astro";
 
-const posts = await getCollection("posts", ({ data }) => data.published).then((posts) => posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()));
-
-function truncate(value: string, length: number): string {
-  if (value.length > length) {
-    return `${value.substring(0, length)}...`;
-  }
-
-  return value;
-}
-
-const latestPost = posts.slice(0, 1)[0];
+const posts = sortPosts(await getCollection("posts", ({ data }) => data.published === true)).slice(0, 4);
+const projects = await getCollection("projects").then((projects) => projects.slice(0, 6));
 
 export const prerender = true;
 ---
 
-<PageLayout title="home" description="With a background as a fullstack developer. Lucas Nørgård builds both modern and scalable applications">
-  <div class="min-h-250px">
-    <h1>
-      Hey I&apos;m luxass <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
-    </h1>
-    <p>
-      I&apos;m a self-taught developer based in Aarhus, Denmark. <br />
-       In my spare time, I enjoy learning new technologies and working on side projects.
-      <br />
-      <br />
-       occasionally I also write some articles on my <Link underline href="/posts">blog.</Link>
-    </p>
-  </div>
-  <div class="mt-8 flex flex-wrap gap-2 sm:mt-14 sm:gap-4">
-    {
-      latestPost && (
-        <Link
-          href={`/posts/${latestPost.data.handle || latestPost.slug}`}
-          class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
-        >
-          {latestPost.data.icon && <span>{latestPost.data.icon}</span>}
-          <span>{truncate(latestPost.data.title, 20)}</span>
-        </Link>
-      )
-    }
+<PageLayout title="home - luxass.dev" description="personal website and blog of lucas nørgård">
+  <h1>
+    Hi there, I'm Lucas <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
+  </h1>
+  <p>I'm a software engineer with a strong focus on JavaScript, TypeScript & Language Tooling. My passion lies in enhancing developer experience and productivity through tooling and automation.</p>
 
-    <Link
-      href="github:luxass"
-      aria-label="Github"
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
-    >
-      <GitHubIcon class="text-xl" />
-       GitHub
-    </Link>
+  <section id="projects">
+    <h2>Projects</h2>
 
-    <Link
-      href="linkedin:lucasnrgaard"
-      aria-label="LinkedIn"
-      class="flex flex-nowrap gap-1 border border-neutral-300 rounded bg-neutral-300 px-3 py-2 font-normal text-neutral-800 transition-transform active:scale-95 dark:(border-neutral-800 bg-neutral-800 text-neutral-400)"
-    >
-      <LinkedInIcon class="text-xl" />
-       LinkedIn
-    </Link>
-  </div>
+    <div class="flex flex-col gap-4">
+      {projects.map((project) => <ProjectCard {project} />)}
+
+      <span>
+        <Link href="/projects">All projects →</Link>
+      </span>
+    </div>
+  </section>
+
+  {
+    posts.length > 0 && (
+      <section id="posts">
+        <h2>Posts</h2>
+
+        <div class="flex flex-col gap-4">
+          {posts.map((post) => (
+            <PostCard {post} />
+          ))}
+
+          <span>
+            <Link href="/posts">All posts →</Link>
+          </span>
+        </div>
+      </section>
+    )
+  }
 </PageLayout>
 
 <style>

@@ -11,8 +11,8 @@ export async function GET({ site }: APIContext) {
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
-    title: "luxass' blog",
-    description: "luxass' blog",
+    title: "luxass's blog",
+    description: "writing about web development, programming, and more",
     site: site?.toString() || "https://luxass.dev",
     items: posts.map(({ body, slug, data: { title, description, date: pubDate } }) => ({
       title,
@@ -21,5 +21,6 @@ export async function GET({ site }: APIContext) {
       link: `/posts/${slug}`,
       content: sanitizeHtml(parser.render(body)),
     })),
+    stylesheet: "/rss/styles.xsl",
   });
 }

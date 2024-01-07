@@ -1,35 +1,42 @@
 ---
-import Link from "../../components/Link.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import Link from "../../components/ui/Link.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectPreviewCard from "../../components/content/ProjectPreviewCard.astro";
+import type { Project } from "../../lib/types";
 
-const { projects } = await import("../../data/projects");
+const res = await fetch("https://projectrc.luxass.dev/projects");
+
+if (!res.ok) {
+  throw new Error("Failed to fetch projects");
+}
+
+const { projects } = await res.json() as { projects: Project[] };
 
 export const prerender = true;
 ---
 
-<PageLayout title="projects | luxass" description="projects">
-  <article>
+<PageLayout title="projects | luxass.dev" description="projects">
+  <article class="prose">
     <h1>Projects</h1>
     <p>This is some of my projects.</p>
     {
-      projects.length > 0
-        ? (
+      projects.length > 0 ? (
         <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
-          {projects.map((project) => (
-            <ProjectCard project={project} />
-          ))}
+          {
+            projects.map((project) => (
+              <ProjectPreviewCard {project} />
+            ))
+          }
         </div>
-          )
-        : (
+      ) : (
         <p>
           I haven't made any of my projects available here yet - you can always
           checkout my{" "}
-          <Link href="github:luxass" underline>
+          <Link href="https://github.com/luxass">
             GitHub
           </Link>
         </p>
-          )
+      )
     }
   </article>
 </PageLayout>

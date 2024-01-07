@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import Code from "../../components/content/mdx/Code.astro";
+
+import Link from "../../components/ui/Link.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { handle: project.data.handle || project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<"projects">
+}
+
+const {
+  project: {
+    render,
+    data: { name, owner, description, githubUrl, npm },
+  },
+} = Astro.props;
+
+const { Content } = await render();
+
+export const prerender = true;
+
+const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
+
+const searchUrl = `https://github.com/search?type=code&q=path%3A%2Fpackage.json%24%2F+%22%5C%22${pkgName}%5C%22%3A%22`;
+---
+
+<PageLayout
+  title={name}
+  description={description || "No description provided."}
+  image={`https://image.luxass.dev/api/image/project?input=${encodeURIComponent(
+    JSON.stringify({
+      repo: `${owner}/${name}`,
+      description,
+    }),
+  )}`}
+>
+  <article class="tracking-wide pt-8 md:col-span-2 prose">
+    <Content
+      components={{
+        code: Code,
+        a: Link,
+      }}
+    />
+  </article>
+</PageLayout>

@@ -1,0 +1,61 @@
+---
+handle: elysius
+name: elysius
+owner: luxass
+description: Find a file or directory by traversing
+githubUrl: https://github.com/luxass/elysius
+---
+
+# elysius
+
+## ✨ Features
+
+* ESM Support
+* Tree Shakeable
+* Supports `async` and `sync` functions
+
+## 📦 Installation
+
+```sh
+pnpm install elysius
+```
+
+## 📚 Usage
+
+```ts
+import { find, findSync } from "elysius";
+
+const path = await find("package.json"); // returns `null` if not found
+const path = findSync("package.json"); // returns `null` if not found
+
+const path = await find(["package.json", "tsconfig.json"]); // returns the first found file
+const path = findSync(["package.json", "tsconfig.json"]); // returns the first found file
+
+const path = await find(["package.json", "tsconfig.json"], {
+  cwd: "src",
+  async test: (path) => {
+    const base = basename(file);
+    if (base === "package.json") {
+      const content = JSON.parse(await readFile(file, "utf-8"));
+      return content.version;
+    }
+    return false;
+  }
+}); // returns `package.json` if it has a version field
+
+const path = findSync(["package.json", "tsconfig.json"], {
+  cwd: "src",
+  test: (path) => {
+    const base = basename(file);
+    if (base === "package.json") {
+      const content = JSON.parse(readFileSync(file, "utf-8"));
+      return content.version;
+    }
+    return false;
+  }
+}); // returns `package.json` if it has a version field
+```
+
+## 📄 License
+
+Published under [MIT License](https://github.com/luxass/elysius/blob/main/LICENSE).

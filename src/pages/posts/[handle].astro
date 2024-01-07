@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+import Code from "../../components/content/mdx/Code.astro";
+
+import Link from "../../components/ui/Link.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { handle: post.data.handle || post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"posts">
+}
+
+const {
+  post: {
+    data: { title, description, date },
+    render,
+  },
+} = Astro.props;
+
+const { Content } = await render();
+
+export const prerender = true;
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  image={`https://image.luxass.dev/api/image/post?input=${encodeURIComponent(
+    JSON.stringify({
+      title,
+      description,
+      date,
+    }),
+  )}`}
+>
+  <Link href="/posts">Go Back to posts</Link>
+  <article class="tracking-wide prose">
+    <h1 class="mt-8">
+      <!-- {icon && (
+        <span class="mr-2">
+          {isEmoji(icon) ? icon : (
+            <Icon name={icon} class="inline-block w-6 h-6" />
+          )}
+        </span>
+      )} -->
+      {title}
+    </h1>
+    <Content
+      components={{
+        code: Code,
+      }}
+    />
+
+    <div>
+      <pre>
+        <code>
+          Hello!
+        </code>
+      </pre>
+    </div>
+  </article>
+</PageLayout>
