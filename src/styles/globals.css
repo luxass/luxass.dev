@@ -13,7 +13,18 @@ html {
 }
 
 body {
-  @apply text-neutral-300 bg-neutral-900 px-0 md:px-4 py-4 md:py-8 max-w-3xl md:mx-auto relative min-h-screen text-sm md:text-base flex flex-col;
+  @apply text-neutral-300 bg-neutral-900 px-0 md:px-4 py-4 md:py-8
+      max-w-3xl md:mx-auto relative min-h-screen text-sm
+      md:text-base flex flex-col;
+  font-family: "DM Sans", "DM Sans Fallback";
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/dm-sans.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @media (prefers-color-scheme: dark) {

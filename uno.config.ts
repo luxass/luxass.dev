@@ -2,7 +2,6 @@ import {
   defineConfig,
   presetIcons,
   presetUno,
-  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
@@ -13,11 +12,6 @@ export default defineConfig({
       dark: "media",
     }),
     presetIcons(),
-    presetWebFonts({
-      fonts: {
-        sans: "DM Sans",
-      },
-    }),
   ],
   theme: {
     colors: {
