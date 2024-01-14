@@ -10,9 +10,9 @@ githubUrl: https://github.com/luxass/jsonc-parse
 
 ## ✨ Features
 
-- ESM Support
-- Tree Shakeable
-- Lightweight
+* ESM Support
+* Tree Shakeable
+* Lightweight
 
 ## 📦 Installation
 

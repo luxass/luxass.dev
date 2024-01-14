@@ -35,6 +35,9 @@ Published under [MIT License](https://github.com/luxass/github-languages/blob/ma
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/github-languages?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-version-href]: https://npmjs.com/package/@luxass/github-languages
+
 [npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/github-languages?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-downloads-href]: https://npmjs.com/package/@luxass/github-languages

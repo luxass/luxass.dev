@@ -38,8 +38,8 @@ JSON.parse(strip(json)); // { foo: "bar" }
 
 The main differences are:
 
-- This package is published as ESM & CJS
-- And the `default export` is moved to a `named export` called `strip`
+* This package is published as ESM & CJS
+* And the `default export` is moved to a `named export` called `strip`
 
 ```diff
 - import stripJsonComments from "strip-json-comments";
@@ -48,10 +48,10 @@ The main differences are:
 
 ## 💻 Development
 
-- Clone this repository
-- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
-- Install dependencies using `pnpm install`
-- Run tests using `pnpm dev`
+* Clone this repository
+* Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+* Install dependencies using `pnpm install`
+* Run tests using `pnpm dev`
 
 ## 📄 License
 
@@ -60,6 +60,9 @@ Published under [MIT License](https://github.com/luxass/strip-json-comments/blob
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/@luxass/strip-json-comments?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-version-href]: https://npmjs.com/package/@luxass/strip-json-comments
+
 [npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/strip-json-comments?style=flat&colorA=18181B&colorB=4169E1
+
 [npm-downloads-href]: https://npmjs.com/package/@luxass/strip-json-comments

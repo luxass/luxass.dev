@@ -36,7 +36,7 @@ The config `@luxass/eslint-config` is just using `@luxass/eslint-config-vue` und
 
 This is a repository that contains multiple different eslint configs:
 
-- [JavaScript](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-js)
-- [TypeScript](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-ts)
-- [React](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-react)
-- [Vue](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-vue)
+* [JavaScript](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-js)
+* [TypeScript](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-ts)
+* [React](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-react)
+* [Vue](https://github.com/luxass/eslint-config-legacy/blob/main/packages/eslint-config-vue)
