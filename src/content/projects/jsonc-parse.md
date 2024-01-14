@@ -6,8 +6,6 @@ description: A lightweight JSON with Comments parser.
 githubUrl: https://github.com/luxass/jsonc-parse
 ---
 
-# jsonc-parse
-
 ## ✨ Features
 
 * ESM Support

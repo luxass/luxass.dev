@@ -4,9 +4,8 @@ name: lesetid
 owner: luxass
 description: 📖 A dead simple read time estimation
 githubUrl: https://github.com/luxass/lesetid
+icon: 📖
 ---
-
-# 📖 lesetid
 
 `/leːsətiːd/`, Norwegian: "lesetid"
 

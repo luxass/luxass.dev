@@ -6,10 +6,8 @@ description: 📦 Resolves packages to their relative cdn url
 githubUrl: https://github.com/luxass/cdn-resolve
 ---
 
-# cdn-resolve
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 Resolves packages to their relative CDN URLS.
 

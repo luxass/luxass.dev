@@ -4,9 +4,8 @@ name: volapyk
 owner: luxass
 description: undefined
 githubUrl: https://github.com/luxass/volapyk
+icon: 🗣
 ---
-
-# 🗣️ volapyk
 
 `/vɔlɑˈpyg/`, "volapyk", or "volapük"
 

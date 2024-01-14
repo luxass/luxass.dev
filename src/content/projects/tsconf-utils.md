@@ -6,10 +6,8 @@ description: Utilities for working with tsconfig.json files
 githubUrl: https://github.com/luxass/tsconf-utils
 ---
 
-# tsconf-utils
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 ## Install
 

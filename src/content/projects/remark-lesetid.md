@@ -4,9 +4,8 @@ name: remark-lesetid
 owner: luxass
 description: 📖 A dead simple read time estimation
 githubUrl: https://github.com/luxass/lesetid
+icon: 📖
 ---
-
-# 📖 remark-lesetid
 
 ```sh
 pnpm install remark-lesetid

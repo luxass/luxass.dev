@@ -6,10 +6,8 @@ description: A collection of utilities for JavaScript/TypeScript
 githubUrl: https://github.com/luxass/utils
 ---
 
-# utils
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 ## 📦 Installation
 

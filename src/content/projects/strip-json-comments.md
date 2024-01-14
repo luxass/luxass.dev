@@ -6,10 +6,8 @@ description: strip comments from your json
 githubUrl: https://github.com/luxass/strip-json-comments
 ---
 
-# strip-json-comments
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 A fork of [sindresorhus/strip-json-comments](https://github.com/sindresorhus/strip-json-comments) but with support for CJS & ESM. And some small modifications.
 

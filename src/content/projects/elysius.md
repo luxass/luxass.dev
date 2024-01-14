@@ -6,8 +6,6 @@ description: Find a file or directory by traversing
 githubUrl: https://github.com/luxass/elysius
 ---
 
-# elysius
-
 ## ✨ Features
 
 * ESM Support

@@ -6,8 +6,6 @@ description: A list of all available emojis on GitHub
 githubUrl: https://github.com/luxass/github-emojis
 ---
 
-# github-emojis
-
 All GitHub's emojis in one place. <br/> <br/>
 
 ## 📦 Installation

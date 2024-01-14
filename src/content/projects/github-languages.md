@@ -4,12 +4,11 @@ name: github-languages
 owner: luxass
 description: 🎨 GitHub languages with colors and file extensions
 githubUrl: https://github.com/luxass/github-languages
+icon: 📋
 ---
 
-# 📋 github-languages
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 ## 📦 Installation
 

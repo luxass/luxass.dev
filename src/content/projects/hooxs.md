@@ -6,10 +6,8 @@ description: Build a powerful project with typed hooks for a smooth plugin API. 
 githubUrl: https://github.com/luxass/hooxs
 ---
 
-# hooxs
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 Effortlessly empower your project with typed hooks, enabling you to easily construct a plugin API for your needs.
 

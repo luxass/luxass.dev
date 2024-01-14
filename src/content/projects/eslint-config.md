@@ -6,10 +6,8 @@ description: 🔧 My ESLint Config
 githubUrl: https://github.com/luxass/eslint-config
 ---
 
-# @luxass/eslint-config
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 ## ✨ Features
 

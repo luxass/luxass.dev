@@ -6,10 +6,8 @@ description: ✨ Transform imports in esbuild
 githubUrl: https://github.com/luxass/esbuild-import-transform
 ---
 
-# esbuild-plugin-import-transform
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
 
 ✨ Transform imports in esbuild
 
