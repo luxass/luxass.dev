@@ -17,12 +17,13 @@ const projects = defineCollection({
   schema: z.object({
     handle: z.string().optional(),
     githubUrl: z.string(),
-    // github repo names is a maximum of 100 characters.
-    name: z.string().max(100),
+    // github repo names is a maximum of 100 characters, but why do we need that much?
+    name: z.string().max(30),
     owner: z.string(),
     description: z.string().max(120).nullable(),
     npm: z.string().optional(),
     handles: z.array(z.string()).optional(),
+    icon: z.string().optional(),
   }),
 });
 
