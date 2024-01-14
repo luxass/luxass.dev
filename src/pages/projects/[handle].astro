@@ -21,7 +21,7 @@ interface Props {
 const {
   project: {
     render,
-    data: { name, owner, description },
+    data: { name, owner, description, icon, npm },
   },
 } = Astro.props;
 
@@ -29,9 +29,7 @@ const { Content } = await render();
 
 export const prerender = true;
 
-// const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
-
-// const searchUrl = `https://github.com/search?type=code&q=path%3A%2Fpackage.json%24%2F+%22%5C%22${pkgName}%5C%22%3A%22`;
+const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
 ---
 
 <PageLayout
@@ -45,6 +43,15 @@ export const prerender = true;
   )}`}
 >
   <article class="tracking-wide pt-8 md:col-span-2 prose">
+    <h1>
+      {icon && <span>{icon}</span>}
+      {name}
+    </h1>
+
+    {description && (
+      <p>{description}</p>
+    )}
+
     <Content
       components={{
         code: Code,
