@@ -9,15 +9,15 @@ export function EmojiCycle() {
     "🌍",
     "🏥",
   ];
-  const [index, setIndex] = createSignal(0);
+  const [emoji, setEmoji] = createSignal(Math.floor(Math.random() * emojis.length));
 
   const cycle = () => {
-    setIndex((current) => (current + 1) % emojis.length);
+    setEmoji((current) => (current + 1) % emojis.length);
   };
 
   return (
     <button onClick={cycle}>
-      {emojis[index()]}
+      {emojis[emoji()]}
     </button>
   );
 }
