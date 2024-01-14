@@ -20,11 +20,11 @@ const {
 const url = project?.readme ? `/projects/${name}` : githubUrl;
 ---
 
-<Link href={url} class="flex flex-col justify-between border border-neutral-700 bg-neutral-800 rounded p-3 gap-3">
+<Link href={url} class="flex flex-col justify-between border border-neutral-600 bg-neutral-800 rounded p-3 gap-3">
   <span>
     {name}
     {isContributor && (
-      <span class="text-sm text-neutral-500"> (contributor)</span>
+      <span class="text-sm"> (contributor)</span>
     )}
   </span>
   <span>{description}</span>
