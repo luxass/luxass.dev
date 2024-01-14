@@ -52,16 +52,6 @@ function extractIcon(project: string): Plugin<any[], Root> {
 
 const BADGE_SRC = ["https://img.shields.io", "https://flat.badgen.net/"];
 
-function hasBadgeSrc(node: MarkdownNode): boolean {
-  if (!node?.props?.src) { return false; };
-
-  for (const src of BADGE_SRC) {
-    if (node.props.src.startsWith(src)) { return true; };
-  }
-
-  return false;
-}
-
 function isBadge(url: string): boolean {
   for (const src of BADGE_SRC) {
     if (url.startsWith(src)) { return true; };
