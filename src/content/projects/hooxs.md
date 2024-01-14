@@ -59,9 +59,6 @@ Published under [MIT License](https://github.com/luxass/hooxs/blob/main/LICENSE)
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/hooxs?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-version-href]: https://npmjs.com/package/hooxs
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/hooxs?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-downloads-href]: https://npmjs.com/package/hooxs

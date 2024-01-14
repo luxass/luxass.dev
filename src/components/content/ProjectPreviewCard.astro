@@ -15,10 +15,9 @@ const {
   description,
   url: githubUrl,
   isContributor,
-  $projectrc,
 } = project;
 
-const url = $projectrc?.readme ? `/projects/${name}` : githubUrl;
+const url = project?.readme ? `/projects/${name}` : githubUrl;
 ---
 
 <Link href={url} class="flex flex-col justify-between border border-neutral-700 bg-neutral-800 rounded p-3 gap-3">

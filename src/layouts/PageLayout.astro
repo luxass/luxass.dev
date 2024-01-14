@@ -8,12 +8,14 @@ export interface Props {
   title: string
   description: string
   image?: string
+  keywords?: string[]
   class?: string
 }
 
 const {
-  title,
-  description,
+  title = "home - luxass.dev",
+  description = "personal website and blog of lucas nørgård",
+  keywords = [],
   image = new URL(
     `https://image.luxass.dev/api/image/text?input=${encodeURIComponent(
       JSON.stringify({
@@ -42,6 +44,7 @@ const {
     <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
+    <meta name="keywords" content={keywords.join(", ")} />
     <meta name="description" content={description} />
 
     <!-- open graph -->

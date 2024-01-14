@@ -55,9 +55,6 @@ Published under [MIT License](https://github.com/luxass/tsconf-utils/blob/main/L
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/tsconf-utils?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-version-href]: https://npmjs.com/package/tsconf-utils
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/tsconf-utils?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-downloads-href]: https://npmjs.com/package/tsconf-utils

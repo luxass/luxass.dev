@@ -2,14 +2,13 @@ html {
   @apply antialiased touch-manipulation scroll-smooth text-base;
   text-rendering: optimizeLegibility;
 
-
   &.dark {
     color-scheme: dark;
   }
 }
 
 * {
-  @apply outline-white selection-(bg-neutral-700 text-white)
+  @apply outline-white selection-(bg-neutral-700 text-white);
 }
 
 body {
@@ -123,7 +122,7 @@ body {
   @apply [&>:not(:last-child)]:mb-6;
 
   & p {
-    @apply my-6 line-height-7.2
+    @apply my-6 line-height-7.2;
   }
 
   & h1,

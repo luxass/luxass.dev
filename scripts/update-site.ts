@@ -4,7 +4,6 @@ import { remark } from "remark";
 import { visit } from "unist-util-visit";
 import type { Root } from "mdast";
 import type { Plugin, Transformer } from "unified";
-import remarkMdx from "remark-mdx";
 import type { Project } from "../src/lib/types";
 
 function isExternalLink(url: string) {
@@ -44,12 +43,19 @@ async function run() {
 
   // fetch all projects from https://projectrc.luxass.dev
   const { projects } = await fetch(
-    "https://projectrc.luxass.dev/projects",
+    "https://projectrc.luxass.dev/api/projects.json",
   ).then((res) => res.json() as Promise<{ projects: Project[] }>);
 
-  for (const project of projects.filter((project) => project.$projectrc?.readme)) {
+  for (const project of projects.filter((project) => project.readme)) {
     const fileName = project.name.replace(/^\./, "").replace(/\./g, "-");
-    if (!project.$values?.readme) {
+    if (!project.readme) {
+      console.log(`No README found for ${project.name}`);
+      continue;
+    }
+
+    const readmeContent: unknown = await fetch(project.readme).then((res) => res.json());
+
+    if (!readmeContent || typeof readmeContent !== "object" || !("content" in readmeContent) || typeof readmeContent.content !== "string") {
       console.log(`No README found for ${project.name}`);
       continue;
     }
@@ -67,7 +73,7 @@ async function run() {
           }
         };
       })
-      .process(project.$values.readme.content || "No README was found.");
+      .process(readmeContent.content || "No README was found.");
 
     const frontmatter = `---
                 handle: ${project.name}

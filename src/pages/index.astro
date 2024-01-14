@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import PageLayout from "../layouts/PageLayout.astro";
 import Link from "../components/ui/Link.astro";
 import { sortPosts } from "../lib/utils";
@@ -12,7 +13,23 @@ const projects = await getCollection("projects").then((projects) => projects.sli
 export const prerender = true;
 ---
 
-<PageLayout title="home - luxass.dev" description="personal website and blog of lucas nørgård">
+<PageLayout
+  title="home - luxass.dev"
+  description="personal website and blog of lucas nørgård"
+  keywords={[
+    "lucas nørgård",
+    "luxass",
+    "nørgård",
+    "lucas",
+    "fullstack",
+    "backend",
+    "frontend",
+    "web developer",
+    "website",
+    "Web",
+    "blog",
+  ]}
+>
   <h1>
     Hi there, I'm Lucas <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
   </h1>
@@ -24,9 +41,10 @@ export const prerender = true;
     <div class="flex flex-col gap-4">
       {projects.map((project) => <ProjectCard {project} />)}
 
-      <span>
-        <Link href="/projects">All projects →</Link>
-      </span>
+      <Link href="/projects" class="flex items-center gap-2">
+        All projects
+        <Icon name="mdi:arrow-right-thin" class="size-6" />
+      </Link>
     </div>
   </section>
 

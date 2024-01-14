@@ -2,7 +2,7 @@
 handle: volapyk
 name: volapyk
 owner: luxass
-description: null
+description: undefined
 githubUrl: https://github.com/luxass/volapyk
 ---
 
