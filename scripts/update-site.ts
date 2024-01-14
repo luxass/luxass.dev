@@ -1,15 +1,14 @@
 import process from "node:process";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { remark } from "remark";
-import { visit } from "unist-util-visit";
-import type { Root } from "mdast";
+import { SKIP, visit } from "unist-util-visit";
+import type { ImageReference, Node, Root, Text } from "mdast";
 import type { Plugin, Transformer } from "unified";
+import { remove } from "unist-util-remove";
+import { type GetDefinition, definitions } from "mdast-util-definitions";
 import type { Project } from "../src/lib/types";
 
-function isExternalLink(url: string) {
-  // there is probably a better way to do this
-  return url.startsWith("http");
-}
+const ICONS = new Map<string, string>();
 
 function rewrite(options: { repoUrl: string }): Plugin<any[], Root> {
   const transformer: Transformer<Root> = (tree) => {
@@ -17,11 +16,119 @@ function rewrite(options: { repoUrl: string }): Plugin<any[], Root> {
       if (!node?.url) {
         throw new Error("No URL found");
       }
-      if (isExternalLink(node.url)) {
+      if (node.url.startsWith("http")) {
         return;
       }
       const newUrl = new URL(node.url, `${options.repoUrl}/blob/main/`);
       node.url = newUrl.toString();
+    });
+  };
+
+  return function attacher() {
+    return transformer;
+  };
+}
+
+function extractIcon(project: string): Plugin<any[], Root> {
+  const transformer: Transformer<Root> = (tree) => {
+    visit(tree, "heading", (node) => {
+      if (node.depth === 1) {
+        const text = node.children[0] as Text;
+        const matched = text.value.match(/\p{Emoji}/u);
+        if (!matched) return;
+
+        const emoji = matched[0];
+        console.log(`Found emoji for ${project}: ${emoji}`);
+        ICONS.set(project, emoji);
+      }
+    });
+    remove(tree, (it) => it.type === "heading" && "depth" in it && it.depth === 1);
+  };
+
+  return function attacher() {
+    return transformer;
+  };
+}
+
+const BADGE_SRC = ["https://img.shields.io", "https://flat.badgen.net/"];
+
+function hasBadgeSrc(node: MarkdownNode): boolean {
+  if (!node?.props?.src) { return false; };
+
+  for (const src of BADGE_SRC) {
+    if (node.props.src.startsWith(src)) { return true; };
+  }
+
+  return false;
+}
+
+function isBadge(url: string): boolean {
+  for (const src of BADGE_SRC) {
+    if (url.startsWith(src)) { return true; };
+  }
+
+  return false;
+}
+
+function badgeImage(node: Node, define: GetDefinition) {
+  if (node.type === "imageReference") {
+    const def = define((node as ImageReference).identifier);
+    return def ? isBadge(def.url) : false;
+  }
+
+  if (!("url" in node) || typeof node.url !== "string") return false; ;
+
+  return node.type === "image" ? isBadge(node.url) : false;
+}
+
+function remarkStripBadges(): Plugin<any[], Root> {
+  const transformer: Transformer<Root> = (tree) => {
+    const define = definitions(tree);
+
+    // Remove badge images, and links that include a badge image.
+    visit(tree, (node, index, parent) => {
+      let remove = false;
+
+      if (node.type === "link" || node.type === "linkReference") {
+        const children = node.children;
+        let offset = -1;
+
+        while (++offset < children.length) {
+          const child = children[offset];
+
+          if (badgeImage(child, define)) {
+            remove = true;
+            break;
+          }
+        }
+      } else if (badgeImage(node, define)) {
+        remove = true;
+      }
+
+      if (remove === true && parent && typeof index === "number") {
+        parent.children.splice(index, 1);
+
+        if (index === parent.children.length) {
+          let tail = parent.children[index - 1];
+
+          // If the remaining tail is a text.
+          while (tail && tail.type === "text") {
+            index--;
+
+            // Remove trailing tabs and spaces.
+            tail.value = tail.value.replace(/[ \t]+$/, "");
+
+            // Remove the whole if it was whitespace only.
+            if (!tail.value) {
+              parent.children.splice(index, 1);
+            }
+
+            tail = parent.children[index - 1];
+          }
+        }
+
+        return [SKIP, index];
+      }
     });
   };
 
@@ -64,15 +171,8 @@ async function run() {
       .use(rewrite({
         repoUrl: project.url,
       }))
-      .use(() => {
-        return (tree) => {
-          if (fileName.includes("elysius")) {
-            visit(tree, "list", (node) => {
-              console.log(JSON.stringify(node, null, 2));
-            });
-          }
-        };
-      })
+      .use(extractIcon(project.name))
+      .use(remarkStripBadges())
       .process(readmeContent.content || "No README was found.");
 
     const frontmatter = `---
@@ -81,6 +181,8 @@ async function run() {
                 owner: ${project.nameWithOwner.split("/")[0]}
                 description: ${project.description}
                 githubUrl: ${project.url}
+
+                ${ICONS.has(project.name) ? `icon: ${ICONS.get(project.name)}` : ""}
                 ---`
       .split("\n")
       .map((line) => line.trim())

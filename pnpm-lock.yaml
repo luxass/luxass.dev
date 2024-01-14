@@ -41,6 +41,9 @@ dependencies:
   markdown-it:
     specifier: ^14.0.0
     version: 14.0.0
+  mdast-util-definitions:
+    specifier: ^6.0.0
+    version: 6.0.0
   rehype-autolink-headings:
     specifier: ^7.1.0
     version: 7.1.0
