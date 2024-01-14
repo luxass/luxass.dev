@@ -16,7 +16,7 @@ export function EmojiCycle() {
   };
 
   return (
-    <button onClick={cycle}>
+    <button onClick={cycle} class="p-2">
       {emojis[emoji()]}
     </button>
   );
