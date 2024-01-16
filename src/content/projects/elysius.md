@@ -8,9 +8,9 @@ githubUrl: https://github.com/luxass/elysius
 
 ## ✨ Features
 
-* ESM Support
-* Tree Shakeable
-* Supports `async` and `sync` functions
+- ESM Support
+- Tree Shakeable
+- Supports `async` and `sync` functions
 
 ## 📦 Installation
 

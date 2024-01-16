@@ -6,16 +6,13 @@ description: 📦 Resolves packages to their relative cdn url
 githubUrl: https://github.com/luxass/cdn-resolve
 ---
 
-
-
-
 Resolves packages to their relative CDN URLS.
 
 ## Features
 
-* Resolves a package name to a CDN URL
-* Supports all major CDNs (esm.sh, skypack, unpkg, jsdelivr, etc.)
-* Resolves types
+- Resolves a package name to a CDN URL
+- Supports all major CDNs (esm.sh, skypack, unpkg, jsdelivr, etc.)
+- Resolves types
 
 ## 📦 Installation
 
@@ -103,9 +100,6 @@ Published under [MIT License](https://github.com/luxass/cdn-resolve/blob/main/LI
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/cdn-resolve?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-version-href]: https://npmjs.com/package/cdn-resolve
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/cdn-resolve?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-downloads-href]: https://npmjs.com/package/cdn-resolve

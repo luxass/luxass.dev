@@ -11,11 +11,11 @@ icon: 📖
 
 ## ✨ Features
 
-* ESM Support
-* Tree Shakeable
-* Using `CPM` (Characters Per Minute) to estimate for CJK languages
-* Streaming support
-* Implements [Medium's reading time algorithm](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
+- ESM Support
+- Tree Shakeable
+- Using `CPM` (Characters Per Minute) to estimate for CJK languages
+- Streaming support
+- Implements [Medium's reading time algorithm](https://help.medium.com/hc/en-us/articles/214991667-Read-time).
 
 ## 📦 Installation
 

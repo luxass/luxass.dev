@@ -7,9 +7,6 @@ githubUrl: https://github.com/luxass/github-schema
 icon: 📋
 ---
 
-
-
-
 GitHub's GraphQL Schema
 
 ## 📦 Installation
@@ -71,9 +68,6 @@ Published under [MIT License](https://github.com/luxass/github-schema/blob/main/
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/github-schema?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-version-href]: https://npmjs.com/package/github-schema
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/github-schema?style=flat&colorA=18181B&colorB=4169E1
-
 [npm-downloads-href]: https://npmjs.com/package/github-schema
