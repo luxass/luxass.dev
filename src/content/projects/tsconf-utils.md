@@ -4,6 +4,7 @@ name: tsconf-utils
 owner: luxass
 description: Utilities for working with tsconfig.json files
 githubUrl: https://github.com/luxass/tsconf-utils
+npm: "tsconf-utils"
 ---
 
 ## Install

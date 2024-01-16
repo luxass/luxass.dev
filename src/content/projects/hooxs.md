@@ -4,6 +4,7 @@ name: hooxs
 owner: luxass
 description: Build a powerful project with typed hooks for a smooth plugin API. ✨
 githubUrl: https://github.com/luxass/hooxs
+npm: "hooxs"
 ---
 
 Effortlessly empower your project with typed hooks, enabling you to easily construct a plugin API for your needs.

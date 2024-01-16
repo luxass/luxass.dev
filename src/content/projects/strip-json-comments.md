@@ -4,6 +4,7 @@ name: strip-json-comments
 owner: luxass
 description: strip comments from your json
 githubUrl: https://github.com/luxass/strip-json-comments
+npm: "@luxass/strip-json-comments"
 ---
 
 A fork of [sindresorhus/strip-json-comments](https://github.com/sindresorhus/strip-json-comments) but with support for CJS & ESM. And some small modifications.

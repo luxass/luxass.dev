@@ -4,6 +4,7 @@ name: eslint-config
 owner: luxass
 description: 🔧 My ESLint Config
 githubUrl: https://github.com/luxass/eslint-config
+npm: "@luxass/eslint-config"
 ---
 
 ## ✨ Features

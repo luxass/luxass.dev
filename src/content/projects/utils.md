@@ -4,6 +4,7 @@ name: utils
 owner: luxass
 description: A collection of utilities for JavaScript/TypeScript
 githubUrl: https://github.com/luxass/utils
+npm: "@luxass/utils"
 ---
 
 ## 📦 Installation

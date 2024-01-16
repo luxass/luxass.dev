@@ -4,6 +4,7 @@ name: cdn-resolve
 owner: luxass
 description: 📦 Resolves packages to their relative cdn url
 githubUrl: https://github.com/luxass/cdn-resolve
+npm: "cdn-resolve"
 ---
 
 Resolves packages to their relative CDN URLS.

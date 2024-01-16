@@ -4,6 +4,7 @@ name: esbuild-cdn-imports
 owner: luxass
 description: This plugin intercepts imports and resolves them to a CDN URL.
 githubUrl: https://github.com/luxass/esbuild-cdn-imports
+npm: "esbuild-plugin-cdn-imports"
 ---
 
 <h1 align="center">CDN Import Plugin</h1>

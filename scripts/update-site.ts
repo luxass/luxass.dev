@@ -170,9 +170,9 @@ async function run() {
                 handle: ${project.name}
                 name: ${project.name}
                 owner: ${project.nameWithOwner.split("/")[0]}
-                description: ${project.description}
+                ${project.description ? `description: ${project.description}` : ""}
                 githubUrl: ${project.url}
-
+                ${project.npm ? `npm: "${project.npm.name}"` : ""}
                 ${ICONS.has(project.name) ? `icon: ${ICONS.get(project.name)}` : ""}
                 ---`
       .split("\n")

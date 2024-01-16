@@ -4,6 +4,7 @@ name: esbuild-import-transform
 owner: luxass
 description: ✨ Transform imports in esbuild
 githubUrl: https://github.com/luxass/esbuild-import-transform
+npm: "esbuild-plugin-import-transform"
 ---
 
 ✨ Transform imports in esbuild

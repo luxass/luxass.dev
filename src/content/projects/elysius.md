@@ -4,6 +4,7 @@ name: elysius
 owner: luxass
 description: Find a file or directory by traversing
 githubUrl: https://github.com/luxass/elysius
+npm: "elysius"
 ---
 
 ## ✨ Features

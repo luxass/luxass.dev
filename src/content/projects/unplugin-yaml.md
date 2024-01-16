@@ -4,6 +4,7 @@ name: unplugin-yaml
 owner: luxass
 description: undefined
 githubUrl: https://github.com/luxass/unplugin-yaml
+npm: "unplugin-yaml"
 ---
 
 Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by [unplugin](https://github.com/unjs/unplugin).

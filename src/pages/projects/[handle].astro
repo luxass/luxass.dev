@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import PageLayout from "../../layouts/PageLayout.astro";
 import Code from "../../components/content/mdx/Code.astro";
-
 import Link from "../../components/ui/Link.astro";
 
 export async function getStaticPaths() {
@@ -21,7 +21,7 @@ interface Props {
 const {
   project: {
     render,
-    data: { name, owner, description, icon, npm },
+    data: { name, owner, description, icon, npm, githubUrl },
   },
 } = Astro.props;
 
@@ -30,6 +30,7 @@ const { Content } = await render();
 export const prerender = true;
 
 const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
+console.log(pkgName);
 ---
 
 <PageLayout
@@ -43,10 +44,23 @@ const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").s
   )}`}
 >
   <article class="tracking-wide pt-8 md:col-span-2 prose">
-    <h1>
-      {icon && <span>{icon}</span>}
-      {name}
-    </h1>
+    <div class="flex items-center justify-between">
+      <h1>
+        {icon && <span>{icon}</span>}
+        {name}
+      </h1>
+
+      <div class="flex items-center gap-2">
+        <Link href={githubUrl}>
+          <Icon name="mdi:github" class="size-6" />
+        </Link>
+        {npm && (
+          <Link href={`https://www.npmjs.com/package/${pkgName}`}>
+            <Icon name="logos:npm-icon" class="size-5" />
+          </Link>
+        )}
+      </div>
+    </div>
 
     {description && (
       <p>{description}</p>
