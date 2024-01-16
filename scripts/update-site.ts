@@ -1,5 +1,6 @@
 import process from "node:process";
 import { mkdir, rm, writeFile } from "node:fs/promises";
+import { execSync } from "node:child_process";
 import { remark } from "remark";
 import { SKIP, visit } from "unist-util-visit";
 import type { ImageReference, Node, Root, Text } from "mdast";
@@ -184,6 +185,7 @@ async function run() {
       `${frontmatter}\n\n${file.toString()}`,
     );
   }
+  execSync(`npx eslint --fix ./src/content/projects/*.md`);
 }
 
 run().catch((err) => {
