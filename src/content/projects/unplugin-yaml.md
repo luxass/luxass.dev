@@ -2,7 +2,6 @@
 handle: unplugin-yaml
 name: unplugin-yaml
 owner: luxass
-description: undefined
 githubUrl: https://github.com/luxass/unplugin-yaml
 npm: "unplugin-yaml"
 ---
