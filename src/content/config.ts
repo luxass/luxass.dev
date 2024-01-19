@@ -20,7 +20,7 @@ const projects = defineCollection({
     // github repo names is a maximum of 100 characters, but why do we need that much?
     name: z.string().max(30),
     owner: z.string(),
-    description: z.string().max(120).nullable(),
+    description: z.string().max(120).optional(),
     npm: z.string().optional(),
     handles: z.array(z.string()).optional(),
     icon: z.string().optional(),
