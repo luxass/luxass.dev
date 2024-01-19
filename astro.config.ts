@@ -13,9 +13,11 @@ import solid from "@astrojs/solid-js";
 import { FontaineTransform } from "fontaine";
 import { remarkAsides } from "./integrations/asides";
 
+const site = import.meta.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://luxass.dev",
+  site,
   integrations: [
     mdx(),
     sitemap({
