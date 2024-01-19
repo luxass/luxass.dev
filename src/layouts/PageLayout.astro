@@ -26,6 +26,9 @@ const {
   ),
   class: clazz,
 } = Astro.props;
+
+console.warn("ASTRO.URL", Astro.url);
+console.warn("VERCEL URL", import.meta.env.PUBLIC_VERCEL_URL);
 ---
 
 <!doctype html>
