@@ -56,8 +56,6 @@ export default defineConfig({
     remarkPlugins: [
       remarkDirective,
       remarkAsides(),
-      // remarkBadges(),
-      // remarkSidebar(),
     ],
   },
   compressHTML: false,

@@ -55,7 +55,9 @@ const BADGE_SRC = ["https://img.shields.io", "https://flat.badgen.net/"];
 
 function isBadge(url: string): boolean {
   for (const src of BADGE_SRC) {
-    if (url.startsWith(src)) { return true; };
+    if (url.startsWith(src)) {
+      return true;
+    };
   }
 
   return false;
