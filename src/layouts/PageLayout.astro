@@ -27,7 +27,7 @@ const {
   class: clazz,
 } = Astro.props;
 
-console.warn("TITLE", title.includes("luxass.dev"), import.meta.env.SITE_HOST);
+console.warn("TITLE", title, title.includes("luxass.dev"), import.meta.env.SITE_HOST);
 
 if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
   title.replace("luxass.dev", "luxass.com");
