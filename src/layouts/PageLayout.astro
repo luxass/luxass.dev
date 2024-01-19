@@ -27,8 +27,7 @@ const {
   class: clazz,
 } = Astro.props;
 
-console.warn("ASTRO.URL", Astro.url);
-console.warn("VERCEL URL", import.meta.env.SITE_HOST);
+console.warn("ORIGIN", Astro.url.origin, import.meta.env.SITE_HOST);
 
 if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
   title.replace("luxass.dev", "luxass.com");
