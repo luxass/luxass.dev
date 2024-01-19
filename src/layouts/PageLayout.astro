@@ -13,7 +13,6 @@ export interface Props {
 }
 
 const {
-  title = "home - luxass.dev",
   description = "personal website and blog of lucas nørgård",
   keywords = [],
   image = new URL(
@@ -26,11 +25,10 @@ const {
   ),
   class: clazz,
 } = Astro.props;
-
-console.warn("TITLE", title, title.includes("luxass.dev"), import.meta.env.SITE_HOST);
+let { title } = Astro.props;
 
 if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
-  title.replace("luxass.dev", "luxass.com");
+  title = title.replace("luxass.dev", "luxass.com");
 }
 ---
 
