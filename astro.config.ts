@@ -48,7 +48,6 @@ export default defineConfig({
         dark: "vitesse-dark",
         light: "vitesse-light",
       },
-      wrap: false,
     },
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
       target: "_blank",
