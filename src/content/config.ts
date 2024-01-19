@@ -1,5 +1,5 @@
-import { defineCollection } from "astro:content";
-import { z } from "zod";
+import { defineCollection } from "astro:content"
+import { z } from "zod"
 
 const posts = defineCollection({
   type: "content",
@@ -10,7 +10,7 @@ const posts = defineCollection({
     published: z.boolean().optional().default(true),
     handle: z.string().optional(),
   }),
-});
+})
 
 const projects = defineCollection({
   type: "content",
@@ -25,6 +25,6 @@ const projects = defineCollection({
     handles: z.array(z.string()).optional(),
     icon: z.string().optional(),
   }),
-});
+})
 
-export const collections = { posts, projects };
+export const collections = { posts, projects }

@@ -19,13 +19,13 @@ npm i -D unplugin-yaml
 
 ```ts
 // vite.config.ts
-import YAMLPlugin from "unplugin-yaml/vite";
+import YAMLPlugin from "unplugin-yaml/vite"
 
 export default defineConfig({
   plugins: [
     YAMLPlugin({ /* options */ }),
   ],
-});
+})
 ```
 
 Example: [`playground/vite`](https://github.com/luxass/unplugin-yaml/blob/main/playground/vite)
@@ -37,13 +37,13 @@ Example: [`playground/vite`](https://github.com/luxass/unplugin-yaml/blob/main/p
 
 ```ts
 // rollup.config.js
-import YAMLPlugin from "unplugin-yaml/rollup";
+import YAMLPlugin from "unplugin-yaml/rollup"
 
 export default {
   plugins: [
     YAMLPlugin({ /* options */ }),
   ],
-};
+}
 ```
 
 Example: [`playground/rollup`](https://github.com/luxass/unplugin-yaml/blob/main/playground/rollup)
@@ -60,7 +60,7 @@ module.exports = {
   plugins: [
     require("unplugin-yaml/webpack").default({ /* options */ }),
   ],
-};
+}
 ```
 
 Example: [`playground/webpack`](https://github.com/luxass/unplugin-yaml/blob/main/playground/webpack)
@@ -76,7 +76,7 @@ export default defineNuxtConfig({
   modules: [
     ["unplugin-yaml/nuxt", { /* options */ }]
   ],
-});
+})
 ```
 
 <br/></details>
@@ -86,8 +86,8 @@ export default defineNuxtConfig({
 
 ```ts
 // esbuild.config.js
-import { build } from "esbuild";
-import YAMLPlugin from "unplugin-yaml/esbuild";
+import { build } from "esbuild"
+import YAMLPlugin from "unplugin-yaml/esbuild"
 
 build({
   /* ... */
@@ -96,7 +96,7 @@ build({
       /* options */
     }),
   ],
-});
+})
 ```
 
 <br/></details>
@@ -112,7 +112,7 @@ YAMLPlugin({
     // see js-yaml load options
   }
 
-});
+})
 ```
 
 ### TypeScript

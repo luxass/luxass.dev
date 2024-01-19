@@ -1,18 +1,18 @@
 ---
-import Link from "../../components/ui/Link.astro";
-import PageLayout from "../../layouts/PageLayout.astro";
-import ProjectPreviewCard from "../../components/content/ProjectPreviewCard.astro";
-import type { Project } from "../../lib/types";
+import Link from "../../components/ui/Link.astro"
+import PageLayout from "../../layouts/PageLayout.astro"
+import ProjectPreviewCard from "../../components/content/ProjectPreviewCard.astro"
+import type { Project } from "../../lib/types"
 
-const res = await fetch("https://projectrc.luxass.dev/api/projects.json");
+const res = await fetch("https://projectrc.luxass.dev/api/projects.json")
 
 if (!res.ok) {
-  throw new Error("Failed to fetch projects");
+  throw new Error("Failed to fetch projects")
 }
 
-const { projects } = await res.json() as { projects: Project[] };
+const { projects } = await res.json() as { projects: Project[] }
 
-export const prerender = true;
+export const prerender = true
 ---
 
 <PageLayout title="projects | luxass.dev" description="projects">

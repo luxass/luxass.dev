@@ -1,35 +1,35 @@
 /// <reference types="mdast-util-directive" />
 
-import { type Properties, h as _h, s as _s } from "hastscript";
-import type { Paragraph as P, Root } from "mdast";
-import type { Plugin, Transformer } from "unified";
-import { remove } from "unist-util-remove";
-import { visit } from "unist-util-visit";
+import { type Properties, h as _h, s as _s } from "hastscript"
+import type { Paragraph as P, Root } from "mdast"
+import type { Plugin, Transformer } from "unified"
+import { remove } from "unist-util-remove"
+import { visit } from "unist-util-visit"
 
 /** Hacky function that generates an mdast HTML tree ready for conversion to HTML by rehype. */
 function h(el: string, attrs: Properties = {}, children: any[] = []): P {
-  const { tagName, properties } = _h(el, attrs);
+  const { tagName, properties } = _h(el, attrs)
   return {
     type: "paragraph",
     data: { hName: tagName, hProperties: properties },
     children,
-  };
+  }
 }
 
 /** Hacky function that generates an mdast SVG tree ready for conversion to HTML by rehype. */
 function s(el: string, attrs: Properties = {}, children: any[] = []): P {
-  const { tagName, properties } = _s(el, attrs);
+  const { tagName, properties } = _s(el, attrs)
   return {
     type: "paragraph",
     data: { hName: tagName, hProperties: properties },
     children,
-  };
+  }
 }
 
 export function remarkAsides(): Plugin<any[], Root> {
-  type Variant = "note" | "important" | "warning" | "tip" | "caution";
-  const variants = new Set(["note", "tip", "important", "warning", "caution"]);
-  const isAsideVariant = (s: string): s is Variant => variants.has(s);
+  type Variant = "note" | "important" | "warning" | "tip" | "caution"
+  const variants = new Set(["note", "tip", "important", "warning", "caution"])
+  const isAsideVariant = (s: string): s is Variant => variants.has(s)
 
   const icons: Record<Variant, P> = {
     note: s(
@@ -112,43 +112,43 @@ export function remarkAsides(): Plugin<any[], Root> {
         }),
       ],
     ),
-  };
+  }
 
   const transformer: Transformer<Root> = (tree) => {
     visit(tree, (node, index, parent) => {
       if (!parent || index === undefined || (node.type !== "containerDirective" && node.type !== "paragraph")) {
-        return;
+        return
       }
 
       if (node.type === "paragraph" && parent.type !== "blockquote") {
-        return;
+        return
       }
 
-      let variant = "note";
+      let variant = "note"
       if (node.type === "paragraph") {
-        const firstChild = node.children[0];
+        const firstChild = node.children[0]
         if (!firstChild || firstChild.type !== "text") {
-          return;
+          return
         }
 
-        const type = firstChild.value.match(/^\[\!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/);
+        const type = firstChild.value.match(/^\[\!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/)
         if (!type) {
-          return;
+          return
         }
 
-        variant = type[1].toLowerCase();
-        firstChild.value = firstChild.value.replace(/^\[\!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/, "").trim();
+        variant = type[1].toLowerCase()
+        firstChild.value = firstChild.value.replace(/^\[\!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/, "").trim()
       } else {
-        variant = node.name;
+        variant = node.name
       }
 
-      if (!isAsideVariant(variant)) return;
+      if (!isAsideVariant(variant)) return
 
       // remark-directive converts a container"s "label" to a paragraph in
       // its children, but we want to pass it as the title prop to <aside>, so
       // we iterate over the children, find a directive label, store it for the
       // title prop, and remove the paragraph from children.
-      let title = variant.toUpperCase();
+      let title = variant.toUpperCase()
 
       remove(node, (child): boolean | void => {
         if (child.data && "directiveLabel" in child.data && child.data.directiveLabel) {
@@ -157,11 +157,11 @@ export function remarkAsides(): Plugin<any[], Root> {
             && Array.isArray(child.children)
             && "value" in child.children[0]
           ) {
-            title = child.children[0].value;
+            title = child.children[0].value
           }
-          return true;
+          return true
         }
-      });
+      })
 
       const aside = h(
         "aside",
@@ -176,18 +176,18 @@ export function remarkAsides(): Plugin<any[], Root> {
           ]),
           ...node.children,
         ],
-      );
+      )
 
       if (parent.type === "blockquote") {
-        const blockquoteIndex = tree.children.findIndex((n) => n.type === "blockquote");
-        tree.children[blockquoteIndex] = aside;
+        const blockquoteIndex = tree.children.findIndex((n) => n.type === "blockquote")
+        tree.children[blockquoteIndex] = aside
       } else {
-        parent.children[index] = aside;
+        parent.children[index] = aside
       }
-    });
-  };
+    })
+  }
 
   return function attacher() {
-    return transformer;
-  };
+    return transformer
+  }
 }

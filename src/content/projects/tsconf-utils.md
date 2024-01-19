@@ -23,25 +23,25 @@ import {
   parseTSConfigSync,
   resolveTSConfig,
   resolveTSConfigSync
-} from "tsconf-utils";
+} from "tsconf-utils"
 
 // Find tsconfig.json files
-const path = await findTSConfig();
+const path = await findTSConfig()
 
 // Find tsconfig.json files synchronously
-const path = findTSConfigSync();
+const path = findTSConfigSync()
 
 // Parse tsconfig.json files
-const config = await parseTSConfig(path);
+const config = await parseTSConfig(path)
 
 // Parse tsconfig.json files synchronously
-const config = parseTSConfigSync(path);
+const config = parseTSConfigSync(path)
 
 // Resolve tsconfig.json files (find and parse)
-const config = await resolveTSConfig(path);
+const config = await resolveTSConfig(path)
 
 // Resolve tsconfig.json files synchronously (find and parse)
-const config = resolveTSConfigSync(path);
+const config = resolveTSConfigSync(path)
 ```
 
 ## 📄 License

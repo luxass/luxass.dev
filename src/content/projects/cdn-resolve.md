@@ -26,18 +26,18 @@ npm install cdn-resolve
 Resolve React from [esm.sh](https://esm.sh)
 
 ```js
-import { resolveCDN } from "cdn-resolve";
+import { resolveCDN } from "cdn-resolve"
 
 // You can also import the esm resolver directly
-import { resolveESM } from "cdn-resolve/esm";
+import { resolveESM } from "cdn-resolve/esm"
 
-const resolver = resolveESM("esm");
+const resolver = resolveESM("esm")
 
 resolver("swr", {
   alias: {
     react: "preact/compat"
   }
-});
+})
 
 // => https://esm.sh/swr?alias=react:preact/compat
 
@@ -45,7 +45,7 @@ resolveESM("swr", {
   alias: {
     react: "preact/compat"
   }
-});
+})
 
 // => https://esm.sh/swr?alias=react:preact/compat
 ```
@@ -53,15 +53,15 @@ resolveESM("swr", {
 Resolve typedefs for React from [esm.sh](https://esm.sh)
 
 ```js
-import { resolveESM, resolveESMTypes } from "cdn-resolve/esm";
+import { resolveESM, resolveESMTypes } from "cdn-resolve/esm"
 
 const resolved = resolveESM("swr@2.1.1", {
   alias: {
     react: "preact/compat"
   }
-});
+})
 
-const typesUrl = await resolveESMTypes(resolved);
+const typesUrl = await resolveESMTypes(resolved)
 
 // => https://esm.sh/v113/swr@2.1.1/X-YS9yZWFjdDpwcmVhY3QvY29tcGF0/core/dist/index.d.ts
 ```
@@ -69,23 +69,23 @@ const typesUrl = await resolveESMTypes(resolved);
 Parse a Package Name
 
 ```js
-import { parsePackage } from "cdn-resolve";
+import { parsePackage } from "cdn-resolve"
 
-const parsed = parsePackage("vue");
+const parsed = parsePackage("vue")
 
 // => {
 //   "name": "vue",
 //   "version": "latest",
 // }
 
-const parsedWithVersion = parsePackage("vue@3.2.47");
+const parsedWithVersion = parsePackage("vue@3.2.47")
 
 // => {
 //   "name": "vue",
 //   "version": "3.2.47",
 // }
 
-const parsedWithPathAndVersion = parsePackage("vue@3.2.47/package.json");
+const parsedWithPathAndVersion = parsePackage("vue@3.2.47/package.json")
 
 // => {
 //   "name": "vue",

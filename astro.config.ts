@@ -1,23 +1,23 @@
-import process from "node:process";
-import { defineConfig } from "astro/config";
-import unocss from "unocss/astro";
-import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx";
-import vercel from "@astrojs/vercel/serverless";
-import vue from "@astrojs/vue";
-import rehypeExternalLinks from "rehype-external-links";
-import remarkDirective from "remark-directive";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSlug from "rehype-slug";
-import icon from "astro-icon";
-import solid from "@astrojs/solid-js";
-import { FontaineTransform } from "fontaine";
-import { remarkAsides } from "./integrations/asides";
+import process from "node:process"
+import { defineConfig } from "astro/config"
+import unocss from "unocss/astro"
+import sitemap from "@astrojs/sitemap"
+import mdx from "@astrojs/mdx"
+import vercel from "@astrojs/vercel/serverless"
+import vue from "@astrojs/vue"
+import rehypeExternalLinks from "rehype-external-links"
+import remarkDirective from "remark-directive"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeSlug from "rehype-slug"
+import icon from "astro-icon"
+import solid from "@astrojs/solid-js"
+import { FontaineTransform } from "fontaine"
+import { remarkAsides } from "./integrations/asides"
 
-const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
+const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev"
 
 // eslint-disable-next-line no-console
-console.log("site", site);
+console.log("site", site)
 
 // https://astro.build/config
 export default defineConfig({
@@ -81,4 +81,4 @@ export default defineConfig({
       }),
     ],
   },
-});
+})

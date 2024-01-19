@@ -22,10 +22,10 @@ pnpm install -D esbuild esbuild-plugin-cdn-imports
 Add this to your build file
 
 ```js
-import { build } from "esbuild";
-import { CDNImports } from "esbuild-plugin-cdn-imports";
+import { build } from "esbuild"
+import { CDNImports } from "esbuild-plugin-cdn-imports"
 
-const yourConfig = {};
+const yourConfig = {}
 
 await build({
   ...yourConfig,
@@ -43,7 +43,7 @@ await build({
       exclude: ["@prisma/client"]
     })
   ]
-});
+})
 ```
 
 ## 💻 Development

@@ -18,7 +18,7 @@ npm install hooxs
 ## 📚 Usage
 
 ```ts
-import { createHooks } from "hooxs";
+import { createHooks } from "hooxs"
 
 interface RuntimeHooks {
   "build:before": () => void
@@ -29,23 +29,23 @@ interface RuntimeHooks {
 
 const hooks = createHooks<RuntimeHooks>({
   "build:before": () => {
-    console.log("before build");
+    console.log("before build")
   },
   "build:after": (files) => {
-    console.log("after build", files);
+    console.log("after build", files)
   },
-});
+})
 // or initialize hooks at a later point
-const hooks = createHooks<RuntimeHooks>();
+const hooks = createHooks<RuntimeHooks>()
 
 hooks.on("config:load", (config) => {
-  console.log("config loaded", config);
-});
+  console.log("config loaded", config)
+})
 
-await hooks.call("build:before");
-const files = ["index.js", "index.css"];
+await hooks.call("build:before")
+const files = ["index.js", "index.css"]
 
-await hooks.call("build:after", files);
+await hooks.call("build:after", files)
 ```
 
 ## 📄 License

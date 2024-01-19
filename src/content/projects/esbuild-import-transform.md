@@ -20,10 +20,10 @@ npm install -D esbuild esbuild-plugin-import-transform
 Add this to your build file
 
 ```js
-import { build } from "esbuild";
-import importTransform from "esbuild-plugin-import-transform";
+import { build } from "esbuild"
+import importTransform from "esbuild-plugin-import-transform"
 
-const yourConfig = {};
+const yourConfig = {}
 
 await build({
   ...yourConfig,
@@ -46,7 +46,7 @@ await build({
       "./utils": "./lib/utils2"
     })
   ]
-});
+})
 ```
 
 ## 📄 License
