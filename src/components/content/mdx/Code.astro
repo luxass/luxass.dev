@@ -4,8 +4,6 @@ import { CopyToClipboard } from "./CopyToClipboard"
 const id = Math.random().toString(36).substr(2, 9)
 ---
 
-<code id={id}>
-  <slot />
-</code>
+<code id={id}><slot /></code>
 
 <CopyToClipboard client:load id={id} />
