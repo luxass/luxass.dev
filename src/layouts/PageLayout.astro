@@ -46,16 +46,13 @@ if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") 
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
-    {import.meta.env.SITE_HOST === "luxass.com" && <link rel="canonical" href={Astro.url} />}
+    {import.meta.env.SITE_HOST === "luxass.com" && (
+      <link rel="canonical" href={Astro.url} />
+    )}
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
     <!-- primary meta tags -->
-
-    {import.meta.env.SITE_HPST === "luxass.com" ? (
-      <title>no way</title>
-    ) : (
-      <title>{title}</title>
-    )}
+    <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="keywords" content={keywords.join(", ")} />
     <meta name="description" content={description} />
