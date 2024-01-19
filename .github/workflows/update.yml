@@ -41,6 +41,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         if: ${{ github.event.inputs.dry-run != 'true' }}
         with:
-          commit_message: "fix: use correct list of projects"
+          commit_message: "chore: update projects"
           branch: ${{ github.head_ref }}
-          file_pattern: "**/projects.ts **/projects/*.mdx"
+          file_pattern: "**/projects/*.md"
