@@ -1,3 +1,4 @@
+import process from "node:process";
 import { defineConfig } from "astro/config";
 import unocss from "unocss/astro";
 import sitemap from "@astrojs/sitemap";
@@ -13,7 +14,10 @@ import solid from "@astrojs/solid-js";
 import { FontaineTransform } from "fontaine";
 import { remarkAsides } from "./integrations/asides";
 
-const site = import.meta.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
+const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
+
+// eslint-disable-next-line no-console
+console.log("site", site);
 
 // https://astro.build/config
 export default defineConfig({
@@ -36,7 +40,7 @@ export default defineConfig({
   },
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: "viewport",
+    defaultStrategy: "load",
   },
   markdown: {
     shikiConfig: {
