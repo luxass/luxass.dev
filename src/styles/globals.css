@@ -1,10 +1,6 @@
 html {
   @apply antialiased touch-manipulation scroll-smooth text-base;
   text-rendering: optimizeLegibility;
-
-  &.dark {
-    color-scheme: dark;
-  }
 }
 
 * {
@@ -12,7 +8,7 @@ html {
 }
 
 body {
-  @apply dark:text-neutral-300 dark:bg-neutral-900 px-0 md:px-4 py-4 md:py-8
+  @apply text-neutral-900 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8
       max-w-3xl md:mx-auto relative min-h-screen text-sm
       md:text-base flex flex-col;
   font-family: "DM Sans", "DM Sans Fallback";
@@ -128,7 +124,7 @@ body {
   & h1,
   & h2,
   & h3 {
-    @apply text-neutral-100 font-semibold my-8;
+    @apply text-neutral-900 dark:text-neutral-300 font-semibold my-8;
   }
 
   & h1 {
@@ -144,11 +140,7 @@ body {
   }
 
   & strong {
-    @apply font-medium text-neutral-100;
-  }
-
-  & hr {
-    @apply border-neutral-600 border-b-0.5;
+    @apply font-medium text-neutral-900 dark:text-neutral-300;
   }
 
   & ul {
