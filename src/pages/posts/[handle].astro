@@ -3,9 +3,9 @@ import type { CollectionEntry } from "astro:content"
 import { getCollection } from "astro:content"
 import PageLayout from "../../layouts/PageLayout.astro"
 
-import Code from "../../components/content/mdx/ACode.astro"
-
+import Code from "../../components/content/mdx/Code.astro"
 import Link from "../../components/ui/Link.astro"
+import Pre from "../../components/content/mdx/Pre.astro"
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts")
@@ -57,6 +57,8 @@ export const prerender = true;
     <Content
       components={{
         code: Code,
+        a: Link,
+        pre: Pre,
       }}
     />
 
