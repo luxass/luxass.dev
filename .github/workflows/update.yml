@@ -43,4 +43,4 @@ jobs:
         with:
           commit_message: "chore: update projects"
           branch: ${{ github.head_ref }}
-          file_pattern: "**/projects/*.md"
+          file_pattern: "**/projects/*.mdx"

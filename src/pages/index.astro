@@ -8,7 +8,16 @@ import PostCard from "../components/content/PostCard.astro"
 import ProjectCard from "../components/content/ProjectCard.astro"
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => data.published === true)).slice(0, 4)
-const projects = await getCollection("projects").then((projects) => projects.slice(0, 6))
+const projects = await getCollection("projects").then((projects) => {
+  // Shuffle array
+  for (let i = projects.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [projects[i], projects[j]] = [projects[j], projects[i]]
+  }
+
+  // Return the first 6 items
+  return projects.slice(0, 6)
+})
 
 export const prerender = true;
 ---

@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  @apply text-neutral-300 bg-neutral-900 px-0 md:px-4 py-4 md:py-8
+  @apply dark:text-neutral-300 dark:bg-neutral-900 px-0 md:px-4 py-4 md:py-8
       max-w-3xl md:mx-auto relative min-h-screen text-sm
       md:text-base flex flex-col;
   font-family: "DM Sans", "DM Sans Fallback";

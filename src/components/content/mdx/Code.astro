@@ -1,19 +1,11 @@
-<code class="[letter-spacing:-0.02em] rounded text-sm after:(font-black text-white) before:(font-black text-white)">
+---
+import { CopyToClipboard } from "./CopyToClipboard"
+
+const id = Math.random().toString(36).substr(2, 9)
+---
+
+<code id={id}>
   <slot />
 </code>
 
-<style is:global>
-  code::before,
-  code::after {
-    content: "`";
-  }
-
-  pre {
-    --at-apply: "[tab-size:2] overflow-x-auto rounded p-4 text-sm [&code]:(text-base after:content-none before:content-none) [letter-spacing:unset]";
-  }
-
-  pre code::before,
-  pre code::after {
-    content: none;
-  }
-</style>
+<CopyToClipboard client:load id={id} />

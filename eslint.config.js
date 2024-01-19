@@ -6,5 +6,6 @@ import {
 export default luxass({
   unocss: true,
   astro: true,
+  solid: true,
   formatters: true,
 })
