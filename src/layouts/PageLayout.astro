@@ -29,6 +29,10 @@ const {
 
 console.warn("ASTRO.URL", Astro.url);
 console.warn("VERCEL URL", import.meta.env.SITE_HOST);
+
+if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
+  title.replace("luxass.dev", "luxass.com");
+}
 ---
 
 <!doctype html>
@@ -41,7 +45,8 @@ console.warn("VERCEL URL", import.meta.env.SITE_HOST);
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={Astro.url} />
+
+    {import.meta.env.SITE_HOST === "luxass.com" && <link rel="canonical" href={Astro.url} />}
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
     <!-- primary meta tags -->
