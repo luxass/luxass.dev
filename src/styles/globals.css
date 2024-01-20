@@ -24,7 +24,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   .astro-code,
-  .astro-code span {
+  .astro-code span:not(button span) {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
   }
