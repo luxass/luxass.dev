@@ -2,7 +2,7 @@ import { createSignal, onCleanup } from "solid-js"
 
 type CopyFn = (text: string) => Promise<boolean>
 
-export interface CopyToClipboardProps {
+interface CopyToClipboardProps {
   id: string
 }
 

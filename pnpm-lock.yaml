@@ -79,9 +79,6 @@ devDependencies:
   '@astrojs/vercel':
     specifier: ^7.0.0
     version: 7.0.0(astro@4.2.1)
-  '@iconify-json/carbon':
-    specifier: ^1.1.27
-    version: 1.1.27
   '@iconify-json/logos':
     specifier: ^1.1.42
     version: 1.1.42
@@ -91,9 +88,6 @@ devDependencies:
   '@iconify-json/mdi':
     specifier: ^1.1.64
     version: 1.1.64
-  '@iconify-json/octicon':
-    specifier: ^1.1.52
-    version: 1.1.52
   '@iconify-json/tabler':
     specifier: ^1.1.104
     version: 1.1.104
@@ -151,6 +145,9 @@ devDependencies:
   remark-directive:
     specifier: ^3.0.0
     version: 3.0.0
+  tsx:
+    specifier: ^4.7.0
+    version: 4.7.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -1015,12 +1012,6 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
-  /@iconify-json/carbon@1.1.27:
-    resolution: {integrity: sha512-tJVXv9+D9cjU5HcaY+8J0awv9AL/Mjo9MWR/fxHfHFPP/iokjPBEgq4jOBDGNe8W0k/BTrVI3zpgZjLoi6RNGg==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
   /@iconify-json/logos@1.1.42:
     resolution: {integrity: sha512-/f+frtPm3m3Z30oy8Pk+QqRDkbmAiIaWGPl5CmsCXm15MVfvw9a/V/gD7WzdyuSGAZcFuQaqbHXj92y/n+2ifg==}
     dependencies:
@@ -1035,12 +1026,6 @@ packages:
 
   /@iconify-json/mdi@1.1.64:
     resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/octicon@1.1.52:
-    resolution: {integrity: sha512-0bLc9t54p55nVlQ8SKF7BYOBTy/Q5SfvqYcOD09APDksRTikO45MwKTfG3fzkbaIwpobuVQM1sXiSCsyWJX9Tg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -7465,6 +7450,17 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+    dev: true
+
+  /tsx@4.7.0:
+    resolution: {integrity: sha512-I+t79RYPlEYlHn9a+KzwrvEwhJg35h/1zHsLC2JXvhC2mdynMv6Zxzvhv5EMV6VF5qJlLlkSnMVvdZV3PSIGcg==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.19.11
+      get-tsconfig: 4.7.2
+    optionalDependencies:
+      fsevents: 2.3.3
     dev: true
 
   /tunnel-agent@0.6.0:

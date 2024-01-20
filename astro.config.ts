@@ -31,7 +31,21 @@ export default defineConfig({
     unocss({
       injectReset: true,
     }),
-    icon(),
+    icon({
+      include: {
+        logos: ["npm-icon"],
+        lucide: ["clipboard", "clipboard-check"],
+        tabler: ["mail"],
+        mdi: [
+          "github",
+          "arrow-top-right-thin",
+          "rss",
+          "sitemap",
+          "linkedin",
+          "arrow-right-thin",
+        ],
+      },
+    }),
     vue(),
     mdx(),
   ],

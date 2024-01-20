@@ -1,3 +1,5 @@
+/// <reference types="mdast-util-directive" />
+
 import type { Paragraph, Root } from "mdast"
 import type { Plugin } from "unified"
 import { remove } from "unist-util-remove"
@@ -31,7 +33,7 @@ const ICONS: Record<Variant, Paragraph> = {
   note: s(
     "svg",
     {
-      "class": "octicon octicon-info mr-2",
+      "class": "icon",
       "viewBox": "0 0 16 16",
       "version": "1.1",
       "width": "16",
@@ -47,7 +49,7 @@ const ICONS: Record<Variant, Paragraph> = {
   tip: s(
     "svg",
     {
-      "class": "octicon octicon-light-bulb mr-2",
+      "class": "icon",
       "viewBox": "0 0 16 16",
       "version": "1.1",
       "width": "16",
@@ -63,7 +65,7 @@ const ICONS: Record<Variant, Paragraph> = {
   important: s(
     "svg",
     {
-      "class": "octicon octicon-report mr-2",
+      "class": "icon",
       "viewBox": "0 0 16 16",
       "version": "1.1",
       "width": "16",
@@ -79,7 +81,7 @@ const ICONS: Record<Variant, Paragraph> = {
   warning: s(
     "svg",
     {
-      "class": "octicon octicon-alert mr-2",
+      "class": "icon",
       "viewBox": "0 0 16 16",
       "version": "1.1",
       "width": "16",
@@ -95,7 +97,7 @@ const ICONS: Record<Variant, Paragraph> = {
   caution: s(
     "svg",
     {
-      "class": "octicon octicon-stop mr-2",
+      "class": "icon",
       "viewBox": "0 0 16 16",
       "version": "1.1",
       "width": "16",
