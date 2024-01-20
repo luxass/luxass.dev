@@ -43,15 +43,8 @@ export const prerender = true;
   )}`}
 >
   <Link href="/posts">Go Back to posts</Link>
-  <article class="tracking-wide prose">
+  <article class="tracking-wide prose markdown">
     <h1 class="mt-8">
-      <!-- {icon && (
-        <span class="mr-2">
-          {isEmoji(icon) ? icon : (
-            <Icon name={icon} class="inline-block w-6 h-6" />
-          )}
-        </span>
-      )} -->
       {title}
     </h1>
     <Content

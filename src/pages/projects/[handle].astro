@@ -52,14 +52,15 @@ const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").s
     }),
   )}`}
 >
-  <article class="tracking-wide pt-8 md:col-span-2 prose">
+  <Link href="/projects">Go Back to projects</Link>
+  <article class="tracking-wide prose markdown">
     <div class="flex items-center justify-between">
       <h1>
         {icon && <span>{icon}</span>}
         {name}
       </h1>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 not-markdown">
         <Link href={githubUrl}>
           <Icon name="mdi:github" class="size-6" />
         </Link>

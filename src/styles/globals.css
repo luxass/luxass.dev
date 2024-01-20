@@ -155,3 +155,9 @@ body {
     @apply mx-auto rounded my-6;
   }
 }
+
+.markdown {
+  & a:not([class*="not-markdown"] a) {
+    @apply text-blue-600 dark:text-blue-400 underline underline-offset-2;
+  }
+}
