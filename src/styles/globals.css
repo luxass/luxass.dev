@@ -8,9 +8,7 @@ html {
 }
 
 body {
-  @apply text-neutral-900 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8
-      max-w-3xl md:mx-auto relative min-h-screen text-sm
-      md:text-base flex flex-col;
+  @apply text-neutral-900 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 max-w-3xl md:mx-auto relative min-h-screen text-sm md:text-base flex flex-col;
   font-family: "DM Sans", "DM Sans Fallback";
 }
 
@@ -23,6 +21,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+
   .astro-code,
   .astro-code span:not(button span) {
     color: var(--shiki-dark) !important;
@@ -49,12 +48,14 @@ body {
   margin-bottom: 16px;
   color: inherit;
   border-left: 0.25em solid #888;
+  @apply font-sans;
 
   & .callout-title {
     display: flex;
-    font-weight: 500;
+    font-weight: 600;
     align-items: center;
     line-height: 1;
+    margin-bottom: 1.25em;
 
     & .octicon {
       margin-right: 0.5rem;
@@ -106,18 +107,18 @@ body {
   }
 }
 
-.callout > :first-child {
+.callout> :first-child {
   margin-top: 0;
 }
 
-.callout > :last-child {
+.callout> :last-child {
   margin-bottom: 0;
 }
 
 .prose {
   @apply [&>:not(:last-child)]:mb-6;
 
-  & p {
+  & p:not([class*='callout'] p) {
     @apply my-6 line-height-7.2;
   }
 
@@ -147,7 +148,7 @@ body {
     @apply list-disc list-outside pl-4;
   }
 
-  & ul > li {
+  & ul>li {
     @apply mb-2;
   }
 

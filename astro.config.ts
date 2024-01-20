@@ -12,7 +12,7 @@ import icon from "astro-icon"
 import solid from "@astrojs/solid-js"
 import { FontaineTransform } from "fontaine"
 import mdx from "@astrojs/mdx"
-import { remarkAsides } from "./integrations/asides"
+import { asides } from "./remark-plugins/asides"
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev"
 
@@ -53,7 +53,7 @@ export default defineConfig({
       target: "_blank",
       rel: ["noopener", "noreferrer"],
     }]],
-    remarkPlugins: [remarkDirective, remarkAsides()],
+    remarkPlugins: [remarkDirective, asides],
   },
   output: "hybrid",
   adapter: vercel({
