@@ -22,10 +22,10 @@ const {
 
   <span class="flex items-center gap-3">
     <Link href={githubUrl}>
-      <Icon name="mdi:github" class="size-6" />
+      <Icon name="mdi:github" class="size-6" aria-label={`GitHub URL for ${name}`} />
     </Link>
     <Link href={`projects/${name}`}>
-      <Icon name="mdi:arrow-top-right-thin" class="size-6" />
+      <Icon name="mdi:arrow-top-right-thin" class="size-6" aria-label={`Go to ${name} project page`} />
     </Link>
   </span>
 </div>
