@@ -3,7 +3,6 @@ import { defineConfig } from "astro/config"
 import unocss from "unocss/astro"
 import sitemap from "@astrojs/sitemap"
 import vercel from "@astrojs/vercel/serverless"
-import vue from "@astrojs/vue"
 import rehypeExternalLinks from "rehype-external-links"
 import remarkDirective from "remark-directive"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
@@ -46,7 +45,6 @@ export default defineConfig({
         ],
       },
     }),
-    vue(),
     mdx(),
   ],
   experimental: {
