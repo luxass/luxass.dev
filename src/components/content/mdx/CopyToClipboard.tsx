@@ -47,6 +47,7 @@ export function CopyToClipboard(props: CopyToClipboardProps) {
 
   return (
     <button
+      aria-label="Copy to clipboard"
       class="copy absolute right-2 top-2 flex items-center justify-center border border-gray-400/20 rounded bg-[#ffffff] p-2 opacity-0 dark:bg-[#121212] group-hover:opacity-100"
       onClick={handleClick}
     >
