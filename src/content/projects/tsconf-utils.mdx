@@ -1,49 +1,24 @@
 ---
-handle: tsconf-utils
-name: tsconf-utils
+handle: utils
+name: utils
 owner: luxass
-description: Utilities for working with tsconfig.json files
-githubUrl: https://github.com/luxass/tsconf-utils
-npm: "tsconf-utils"
+description: ✨ A collection of utilities for JavaScript/TypeScript
+githubUrl: https://github.com/luxass/utils
+npm: "@luxass/utils"
 ---
 
-## Install
+# utils
 
-```bash
-npm install tsconf-utils
+## 📦 Installation
+
+```sh
+npm install @luxass/utils
 ```
 
-## Usage
+## 📚 Usage
 
-```ts
-import {
-  findTSConfig,
-  findTSConfigSync,
-  parseTSConfig,
-  parseTSConfigSync,
-  resolveTSConfig,
-  resolveTSConfigSync
-} from "tsconf-utils";
-
-// Find tsconfig.json files
-const path = await findTSConfig();
-
-// Find tsconfig.json files synchronously
-const path = findTSConfigSync();
-
-// Parse tsconfig.json files
-const config = await parseTSConfig(path);
-
-// Parse tsconfig.json files synchronously
-const config = parseTSConfigSync(path);
-
-// Resolve tsconfig.json files (find and parse)
-const config = await resolveTSConfig(path);
-
-// Resolve tsconfig.json files synchronously (find and parse)
-const config = resolveTSConfigSync(path);
-```
+You can view the documentation [here](https://www.jsdocs.io/package/@luxass/utils).
 
 ## 📄 License
 
-Published under [MIT License](https://github.com/luxass/tsconf-utils/blob/main/LICENSE).
+Published under [MIT License](https://github.com/luxass/utils/blob/main/LICENSE).
