@@ -55,7 +55,7 @@ const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").s
   <Link href="/projects">Go Back to projects</Link>
   <article class="tracking-wide prose markdown">
     <div class="flex items-center justify-between">
-      <h1>
+      <h1 class="mb-0">
         {icon && <span>{icon}</span>}
         {name}
       </h1>
@@ -71,10 +71,6 @@ const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").s
         )}
       </div>
     </div>
-
-    {description && (
-      <p>{description}</p>
-    )}
 
     <Content
       components={{
