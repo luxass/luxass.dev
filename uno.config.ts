@@ -5,7 +5,6 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss"
-import { presetScrollbar } from "unocss-preset-scrollbar"
 
 export default defineConfig({
   presets: [
@@ -13,7 +12,6 @@ export default defineConfig({
       dark: "media",
     }),
     presetIcons(),
-    presetScrollbar(),
   ],
   theme: {
     colors: {

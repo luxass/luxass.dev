@@ -38,7 +38,6 @@
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/tabler": "^1.1.104",
     "@luxass/eslint-config": "^4.2.4",
-    "@types/hast": "^3.0.3",
     "@types/markdown-it": "^13.0.7",
     "@types/mdast": "^4.0.3",
     "@types/node": "^20.10.2",
@@ -51,15 +50,12 @@
     "fontaine": "^0.4.1",
     "github-schema": "^1.6.2",
     "hastscript": "^8.0.0",
-    "mdast-util-directive": "^3.0.0",
-    "remark": "^15.0.1",
     "remark-directive": "^3.0.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
     "unified": "^11.0.4",
     "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.0.0",
-    "unocss": "^0.58.3",
-    "unocss-preset-scrollbar": "^0.3.0"
+    "unocss": "^0.58.3"
   }
 }
