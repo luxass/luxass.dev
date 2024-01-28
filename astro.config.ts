@@ -1,4 +1,5 @@
 import process from "node:process"
+import { readFile } from "node:fs/promises"
 import { defineConfig } from "astro/config"
 import unocss from "unocss/astro"
 import sitemap from "@astrojs/sitemap"
@@ -25,6 +26,36 @@ export default defineConfig({
     sitemap({
       lastmod: new Date(),
       changefreq: "daily",
+      async serialize(item) {
+        if (item.url !== `${site}/posts/` && item.url.includes("/posts/")) {
+          const url = item.url.replace("https://luxass.dev", "")
+
+          const content = await readFile(`./src/content${url.slice(0, url.length - 1)}.mdx`, "utf-8")
+          // parse front matter in content file.
+          const frontMatterEndIndex = content.indexOf("---", 3)
+          if (frontMatterEndIndex === -1) {
+            throw new Error(`Front matter not found in ${url}`)
+          }
+
+          const frontMatter = content.slice(3, frontMatterEndIndex).trim()
+          const isDraft = frontMatter.includes("draft: true")
+
+          // If draft is set to true, do not include in sitemap.
+          if (isDraft) {
+            return undefined
+          }
+        }
+
+        return {
+          url: item.url,
+          lastmod: item.lastmod,
+          changefreq: item.changefreq,
+          priority: item.priority,
+        }
+      },
+      // filter(page) {
+      //   return !page.startsWith("/posts")
+      // },
     }),
     solid(),
     unocss({
