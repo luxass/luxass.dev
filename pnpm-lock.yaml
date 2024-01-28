@@ -70,6 +70,9 @@ devDependencies:
   '@luxass/eslint-config':
     specifier: ^4.2.4
     version: 4.2.4(@unocss/eslint-plugin@0.58.3)(@vue/compiler-sfc@3.4.15)(eslint-plugin-format@0.1.0)(eslint-plugin-solid@0.13.1)(eslint@8.56.0)(typescript@5.3.3)
+  '@types/hast':
+    specifier: ^3.0.3
+    version: 3.0.3
   '@types/markdown-it':
     specifier: ^13.0.7
     version: 13.0.7
