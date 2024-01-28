@@ -11,8 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --report-unused-disable-directives",
-    "update:site": "tsx --env-file=.env ./scripts/update-site.ts"
+    "lint": "eslint . --report-unused-disable-directives"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
@@ -51,6 +50,7 @@
     "fontaine": "^0.4.1",
     "github-schema": "^1.6.2",
     "hastscript": "^8.0.0",
+    "mdast-util-directive": "^3.0.0",
     "remark-directive": "^3.0.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",

@@ -109,6 +109,9 @@ devDependencies:
   hastscript:
     specifier: ^8.0.0
     version: 8.0.0
+  mdast-util-directive:
+    specifier: ^3.0.0
+    version: 3.0.0
   remark-directive:
     specifier: ^3.0.0
     version: 3.0.0
