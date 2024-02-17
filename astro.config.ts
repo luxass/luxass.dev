@@ -12,6 +12,7 @@ import icon from "astro-icon"
 import solid from "@astrojs/solid-js"
 import { FontaineTransform } from "fontaine"
 import mdx from "@astrojs/mdx"
+import type { AstroIntegration } from "astro"
 import { asides } from "./remark-plugins/asides"
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev"
@@ -19,10 +20,31 @@ const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "ht
 // eslint-disable-next-line no-console
 console.log("site", site)
 
+function test(): AstroIntegration {
+  return {
+    name: "test",
+    hooks: {
+      // "astro:build:setup": async (options) => {
+      //   console.log("astro:build:setup", options)
+      // },
+      // "astro:build:generated": async (options) => {
+      //   console.log("astro:build:generated", options)
+      // },
+      // "astro:build:start": async (options) => {
+      //   console.log("astro:build:start", options)
+      // },
+      "astro:build:done": async (options) => {
+        console.log("astro:build:done", options)
+      },
+    },
+  }
+};
+
 // https://astro.build/config
 export default defineConfig({
   site,
   integrations: [
+    test(),
     sitemap({
       lastmod: new Date(),
       changefreq: "daily",
