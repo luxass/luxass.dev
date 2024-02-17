@@ -1,14 +1,14 @@
-import rss from "@astrojs/rss"
-import type { APIContext } from "astro"
-import { getCollection } from "astro:content"
-import sanitizeHtml from "sanitize-html"
-import MarkdownIt from "markdown-it"
+import rss from "@astrojs/rss";
+import type { APIContext } from "astro";
+import { getCollection } from "astro:content";
+import sanitizeHtml from "sanitize-html";
+import MarkdownIt from "markdown-it";
 
-const parser = new MarkdownIt()
+const parser = new MarkdownIt();
 
 export async function GET({ site }: APIContext) {
   const posts = (await getCollection("posts", ({ data }) => !data.draft))
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
     title: "luxass's blog",
@@ -22,5 +22,5 @@ export async function GET({ site }: APIContext) {
       content: sanitizeHtml(parser.render(body)),
     })),
     stylesheet: "/rss/styles.xsl",
-  })
+  });
 }

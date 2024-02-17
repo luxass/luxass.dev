@@ -1,28 +1,28 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import { getCollection } from "astro:content"
-import { Icon } from "astro-icon/components"
-import PageLayout from "../../layouts/PageLayout.astro"
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import PageLayout from "../../layouts/PageLayout.astro";
 
-import Code from "../../components/content/mdx/Code.astro"
-import Link from "../../components/ui/Link.astro"
-import Pre from "../../components/content/mdx/Pre.astro"
+import Code from "../../components/content/mdx/Code.astro";
+import Link from "../../components/ui/Link.astro";
+import Pre from "../../components/content/mdx/Pre.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects")
+  const projects = await getCollection("projects");
   return projects.map((project) => ({
     params: { handle: project.data.handle || project.slug },
     props: { project },
-  }))
+  }));
 }
 
 interface Props {
-  project: CollectionEntry<"projects">
+  project: CollectionEntry<"projects">;
 }
 
 const {
   project,
-} = Astro.props
+} = Astro.props;
 
 const {
   data: {
@@ -33,13 +33,13 @@ const {
     description,
     icon,
   },
-} = project
+} = project;
 
-export const prerender = true
+export const prerender = true;
 
-const { Content } = await project.render()
+const { Content } = await project.render();
 
-const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop()
+const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
 ---
 
 <PageLayout

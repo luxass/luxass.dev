@@ -1,70 +1,49 @@
-import process from "node:process"
-import { readFile } from "node:fs/promises"
-import { defineConfig } from "astro/config"
-import unocss from "unocss/astro"
-import sitemap from "@astrojs/sitemap"
-import vercel from "@astrojs/vercel/serverless"
-import rehypeExternalLinks from "rehype-external-links"
-import remarkDirective from "remark-directive"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypeSlug from "rehype-slug"
-import icon from "astro-icon"
-import solid from "@astrojs/solid-js"
-import { FontaineTransform } from "fontaine"
-import mdx from "@astrojs/mdx"
-import type { AstroIntegration } from "astro"
-import { asides } from "./remark-plugins/asides"
+import process from "node:process";
+import { readFile } from "node:fs/promises";
+import { defineConfig } from "astro/config";
+import unocss from "unocss/astro";
+import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/serverless";
+import rehypeExternalLinks from "rehype-external-links";
+import remarkDirective from "remark-directive";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
+import icon from "astro-icon";
+import solid from "@astrojs/solid-js";
+import { FontaineTransform } from "fontaine";
+import mdx from "@astrojs/mdx";
+import type { AstroIntegration } from "astro";
+import { asides } from "./remark-plugins/asides";
 
-const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev"
+const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
 // eslint-disable-next-line no-console
-console.log("site", site)
-
-function test(): AstroIntegration {
-  return {
-    name: "test",
-    hooks: {
-      // "astro:build:setup": async (options) => {
-      //   console.log("astro:build:setup", options)
-      // },
-      // "astro:build:generated": async (options) => {
-      //   console.log("astro:build:generated", options)
-      // },
-      // "astro:build:start": async (options) => {
-      //   console.log("astro:build:start", options)
-      // },
-      "astro:build:done": async (options) => {
-        console.log("astro:build:done", options)
-      },
-    },
-  }
-};
+console.log("site", site);
 
 // https://astro.build/config
 export default defineConfig({
   site,
   integrations: [
-    test(),
     sitemap({
       lastmod: new Date(),
       changefreq: "daily",
       async serialize(item) {
         if (item.url !== `${site}/posts/` && item.url.includes("/posts/")) {
-          const url = item.url.replace("https://luxass.dev", "")
+          const url = item.url.replace("https://luxass.dev", "");
 
-          const content = await readFile(`./src/content${url.slice(0, url.length - 1)}.mdx`, "utf-8")
+          const content = await readFile(`./src/content${url.slice(0, url.length - 1)}.mdx`, "utf-8");
           // parse front matter in content file.
-          const frontMatterEndIndex = content.indexOf("---", 3)
+          const frontMatterEndIndex = content.indexOf("---", 3);
           if (frontMatterEndIndex === -1) {
-            throw new Error(`Front matter not found in ${url}`)
+            throw new Error(`Front matter not found in ${url}`);
           }
 
-          const frontMatter = content.slice(3, frontMatterEndIndex).trim()
-          const isDraft = frontMatter.includes("draft: true")
+          const frontMatter = content.slice(3, frontMatterEndIndex).trim();
+          const isDraft = frontMatter.includes("draft: true");
 
           // If draft is set to true, do not include in sitemap.
           if (isDraft) {
-            return undefined
+            return undefined;
           }
         }
 
@@ -73,7 +52,7 @@ export default defineConfig({
           lastmod: item.lastmod,
           changefreq: item.changefreq,
           priority: item.priority,
-        }
+        };
       },
       // filter(page) {
       //   return !page.startsWith("/posts")
@@ -136,4 +115,4 @@ export default defineConfig({
       }),
     ],
   },
-})
+});

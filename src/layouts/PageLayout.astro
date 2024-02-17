@@ -1,15 +1,15 @@
 ---
-import "../styles/globals.css"
-import { ViewTransitions, fade } from "astro:transitions"
-import Footer from "../components/layout/Footer.astro"
-import Header from "../components/layout/Header.astro"
+import "../styles/globals.css";
+import { ViewTransitions, fade } from "astro:transitions";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
 
 export interface Props {
-  title: string
-  description: string
-  image?: string
-  keywords?: string[]
-  class?: string
+  title: string;
+  description: string;
+  image?: string;
+  keywords?: string[];
+  class?: string;
 }
 
 const {
@@ -24,11 +24,11 @@ const {
     )}`,
   ),
   class: clazz,
-} = Astro.props
-let { title } = Astro.props
+} = Astro.props;
+let { title } = Astro.props;
 
 if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
-  title = title.replace("luxass.dev", "luxass.com")
+  title = title.replace("luxass.dev", "luxass.com");
 }
 ---
 

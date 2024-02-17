@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 const IMAGE_SCHEMA = z
   .object({
@@ -23,7 +23,7 @@ const IMAGE_SCHEMA = z
       .describe("the twitter card type"),
     twitter: z.boolean().optional().describe("include twitter card meta tags"),
   })
-  .describe("image information e.g. og:image or twitter:image")
+  .describe("image information e.g. og:image or twitter:image");
 
 const PROJECTRC_DEPRECATION_SCHEMA = z
   .object({
@@ -33,7 +33,7 @@ const PROJECTRC_DEPRECATION_SCHEMA = z
       .optional()
       .describe("the replacement package. if not set, the package is considered deprecated without a replacement"),
   })
-  .describe("deprecation information")
+  .describe("deprecation information");
 
 const PROJECTRC_NPM_SHCMEA = z
   .union([
@@ -50,7 +50,7 @@ const PROJECTRC_NPM_SHCMEA = z
       })
       .describe("npm package information"),
   ])
-  .describe("npm package")
+  .describe("npm package");
 
 const PROJECT_SCHEMA = z.object({
   // meta tags - used for the project page
@@ -90,7 +90,7 @@ const PROJECT_SCHEMA = z.object({
     ),
   deprecated: PROJECTRC_DEPRECATION_SCHEMA.optional(),
   npm: PROJECTRC_NPM_SHCMEA.optional(),
-})
+});
 
 export const PROJECTRC_SCHEMA = PROJECT_SCHEMA.merge(
   z.object({
@@ -110,4 +110,4 @@ export const PROJECTRC_SCHEMA = PROJECT_SCHEMA.merge(
       })
       .optional(),
   }),
-)
+);
