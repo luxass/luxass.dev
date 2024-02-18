@@ -162,6 +162,43 @@ export const remarkAsides: Plugin<void[], Root> = () => {
         }
       });
 
+      if ((node.children[0].type === "text" && node.children[0].value === "") && node.children[1].type === "break") {
+        node.children.shift();
+        node.children.shift();
+      }
+
+      // check if a child of node.children is a paragraph without a space at the end.
+
+      visit(node, (child, idx, childrenParent) => {
+        if (!childrenParent || idx === undefined || child.type !== "text") return;
+        if (!child.value.endsWith(" ") && childrenParent.children[idx + 1]) {
+          const nextChild = childrenParent.children[idx + 1];
+
+          if (nextChild.type === "inlineCode") {
+            // eslint-disable-next-line no-console
+            console.log("injecting a space before the next child");
+            child.value = `${child.value} `;
+            return;
+          }
+
+          if (!("children" in nextChild) || nextChild.children.length === 0) {
+            return;
+          }
+
+          if (nextChild.children[0].type !== "text") {
+            return;
+          }
+
+          if (nextChild.children[0].value.startsWith(" ")) {
+            return;
+          }
+
+          // eslint-disable-next-line no-console
+          console.log("injecting a space before the next child");
+          child.value = `${child.value} `;
+        }
+      });
+
       const aside = h(
         "aside",
         {
