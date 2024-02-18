@@ -1,7 +1,15 @@
 ---
-let { class: clazz, ...props } = Astro.props;
+import { CopyToClipboard } from "./CopyToClipboard";
 
-clazz += " rounded p-4 overflow-x-auto border border-gray-400/20 group relative";
+let { class: clazz, copy, ...props } = Astro.props;
+
+clazz += " rounded p-4 overflow-x-auto border border-gray-400/20";
+const id = `code-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
-<pre class={clazz} {...props}><slot /></pre>
+<div class="relative group">
+  <pre id={id} class={clazz} {...props}><slot /></pre>
+  {copy && (
+    <CopyToClipboard client:load id={id} />
+  )}
+</div>

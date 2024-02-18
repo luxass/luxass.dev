@@ -31,7 +31,7 @@ export function CopyToClipboard(props: CopyToClipboardProps) {
 
   const handleClick = async () => {
     // get the text from the dom element with the id
-    const text = document.getElementById(props.id)?.textContent;
+    const text = document.querySelectorAll(`#${props.id} > code`)[0].textContent;
     if (!text) {
       console.warn("No text to copy");
       throw new Error("No text to copy");
