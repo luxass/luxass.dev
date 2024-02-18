@@ -12,8 +12,10 @@ import icon from "astro-icon";
 import solid from "@astrojs/solid-js";
 import { FontaineTransform } from "fontaine";
 import mdx from "@astrojs/mdx";
-import type { AstroIntegration } from "astro";
-import { asides } from "./remark-plugins/asides";
+import {
+  rehypeCopy,
+  remarkAsides,
+} from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
@@ -93,11 +95,19 @@ export default defineConfig({
         light: "vitesse-light",
       },
     },
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
-      target: "_blank",
-      rel: ["noopener", "noreferrer"],
-    }]],
-    remarkPlugins: [remarkDirective, asides],
+    rehypePlugins: [
+      rehypeSlug,
+      rehypeAutolinkHeadings,
+      [rehypeExternalLinks, {
+        target: "_blank",
+        rel: ["noopener", "noreferrer"],
+      }],
+      rehypeCopy,
+    ],
+    remarkPlugins: [
+      remarkDirective,
+      remarkAsides,
+    ],
   },
   output: "hybrid",
   adapter: vercel({

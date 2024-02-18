@@ -112,7 +112,7 @@ const ICONS: Record<Variant, Paragraph> = {
   ),
 };
 
-export const asides: Plugin<void[], Root> = () => {
+export const remarkAsides: Plugin<void[], Root> = () => {
   return (tree) => {
     visit(tree, (node, index, parent) => {
       if (!parent || index === undefined || (node.type !== "containerDirective" && node.type !== "paragraph")) {
