@@ -19,9 +19,23 @@ export const prerender = true;
   <article class="prose">
     <h1>Projects</h1>
     <p>This is some of my projects.</p>
+
+    <input
+      type="search"
+      name="search"
+      class=""
+      placeholder="Begin Typing To Search Users..."
+      hx-post="/search"
+      hx-trigger="input changed delay:250ms, search"
+      hx-target="#search-results"
+      hx-indicator=".htmx-indicator"
+    />
+
+  <span class="htmx-indicator"> Searching...</span>
+
     {
-      projects.sort((a, b) => a.priority > b.priority ? 1 : -1).length > 0 ? (
-        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
+      projects.length > 0 ? (
+        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3" id="search-results">
           {
             projects.map((project) => (
               <ProjectPreviewCard {project} />

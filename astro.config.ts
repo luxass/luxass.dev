@@ -12,10 +12,26 @@ import icon from "astro-icon";
 import solid from "@astrojs/solid-js";
 import { FontaineTransform } from "fontaine";
 import mdx from "@astrojs/mdx";
+import type { AstroIntegration } from "astro";
 import {
   rehypeCopy,
   remarkAsides,
 } from "./mdx-plugins";
+
+const astroHTMX: AstroIntegration = {
+  name: "astro-htmx",
+  hooks: {
+    "astro:config:setup": ({ injectScript }) => {
+      injectScript(
+        "page",
+        `import * as htmx from "htmx.org";
+        document.addEventListener('astro:after-swap', () => {
+          htmx.process(document.body)
+        })`,
+      );
+    },
+  },
+};
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
@@ -60,6 +76,7 @@ export default defineConfig({
       //   return !page.startsWith("/posts")
       // },
     }),
+    astroHTMX,
     solid(),
     unocss({
       injectReset: true,
