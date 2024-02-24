@@ -84,7 +84,7 @@ export default defineConfig({
     icon({
       include: {
         logos: ["npm-icon"],
-        lucide: ["clipboard", "clipboard-check"],
+        lucide: ["clipboard", "clipboard-check", "search"],
         tabler: ["mail"],
         mdi: [
           "github",
