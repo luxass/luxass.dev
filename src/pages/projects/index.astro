@@ -10,7 +10,7 @@ if (!res.ok) {
   throw new Error("Failed to fetch projects");
 }
 
-const { projects } = await res.json() as { projects: Project[] };
+const { projects } = (await res.json()) as { projects: Project[] };
 
 export const prerender = true;
 ---
@@ -19,22 +19,32 @@ export const prerender = true;
   <article class="prose">
     <h1>Projects</h1>
     <p>This is some of my projects.</p>
+
+    <div class="relative border-neutral-300 bg-neutral-100 dark:(border-neutral-700 bg-neutral-800) focus-within:ring-context/50 focus-within:border-context mb8 flex flex items-center border rounded py-1 pl-1 pr-2 focus-within:(ring-2)">
+      <input
+        type="text"
+        name="search"
+        class="bg-neutral-100 dark:bg-neutral-800 ml-0.4em w-full flex-auto !outline-none"
+        placeholder="Search projects"
+        hx-post="/search"
+        hx-trigger="input changed delay:250ms, search"
+        hx-target="#search-results"
+        hx-indicator=".htmx-indicator"
+      />
+    </div>
+
+    <span class="htmx-indicator opacity-0"> Searching...</span>
+
     {
-      projects.sort((a, b) => a.priority > b.priority ? 1 : -1).length > 0 ? (
-        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3">
-          {
-            projects.map((project) => (
-              <ProjectPreviewCard {project} />
-            ))
-          }
+      projects.length > 0 ? (
+        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3" id="search-results">
+          {projects.map((project) => (
+            <ProjectPreviewCard {project} />
+          ))}
         </div>
       ) : (
         <p>
-          I haven't made any of my projects available here yet - you can always
-          checkout my{" "}
-          <Link href="https://github.com/luxass">
-            GitHub
-          </Link>
+          I haven't made any of my projects available here yet - you can always checkout my <Link href="https://github.com/luxass">GitHub</Link>
         </p>
       )
     }
