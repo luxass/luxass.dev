@@ -109,9 +109,6 @@ devDependencies:
   eslint-plugin-format:
     specifier: ^0.1.0
     version: 0.1.0(eslint@8.57.0)
-  eslint-plugin-solid:
-    specifier: ^0.13.1
-    version: 0.13.1(eslint@8.57.0)(typescript@5.4.2)
   fontaine:
     specifier: ^0.5.0
     version: 0.5.0
@@ -3640,23 +3637,6 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /eslint-plugin-solid@0.13.1(eslint@8.57.0)(typescript@5.4.2):
-    resolution: {integrity: sha512-PdNrAylFzeh/SbnLc2pQ432l+bXFGzXj/qNqkh5QNVZCoWIdSs0CJA2D7hqW0DloztwUrzkVZCDWFWc3iRAm/Q==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-    dependencies:
-      '@typescript-eslint/utils': 6.21.0(eslint@8.57.0)(typescript@5.4.2)
-      eslint: 8.57.0
-      is-html: 2.0.0
-      kebab-case: 1.0.2
-      known-css-properties: 0.24.0
-      style-to-object: 0.3.0
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-    dev: true
-
   /eslint-plugin-sort-keys@2.3.5:
     resolution: {integrity: sha512-2j/XKQ9sNJwK8kIp/U0EvuF6stS6/8aIc53/NskE4C5NRNh4dt3xzbZyOdrVC11cTH6Zo59/pdzA0Kb+2fQGWg==}
     dependencies:
@@ -4591,11 +4571,6 @@ packages:
   /html-escaper@3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
 
-  /html-tags@3.3.1:
-    resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
-    engines: {node: '>=8'}
-    dev: true
-
   /html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
 
@@ -4678,6 +4653,7 @@ packages:
 
   /inline-style-parser@0.1.1:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
+    dev: false
 
   /inline-style-parser@0.2.2:
     resolution: {integrity: sha512-EcKzdTHVe8wFVOGEYXiW9WmJXPjqi1T+234YpJr98RiFYKHV3cdy1+3mkTE+KHTHxFFLH51SfaGOoUdW+v7ViQ==}
@@ -4838,13 +4814,6 @@ packages:
 
   /is-hexadecimal@2.0.1:
     resolution: {integrity: sha512-DgZQp241c8oO6cA1SbTEWiXeoxV42vlcJxgH+B3hi1AiqqKruZR3ZGF8In3fj4+/y/7rHvlOZLZtgJ/4ttYGZg==}
-
-  /is-html@2.0.0:
-    resolution: {integrity: sha512-S+OpgB5i7wzIue/YSE5hg0e5ZYfG3hhpNh9KGl6ayJ38p7ED6wxQLd1TV91xHpcTvw90KMJ9EwN3F/iNflHBVg==}
-    engines: {node: '>=8'}
-    dependencies:
-      html-tags: 3.3.1
-    dev: true
 
   /is-inside-container@1.0.0:
     resolution: {integrity: sha512-KIYLCCJghfHZxqjYBE7rEy0OBuTd5xCHS7tHVgvCLkx7StIoaxwNW3hCALgEUjFfeRk+MG/Qxmp/vtETEF3tRA==}
@@ -5088,10 +5057,6 @@ packages:
       object.values: 1.1.7
     dev: true
 
-  /kebab-case@1.0.2:
-    resolution: {integrity: sha512-7n6wXq4gNgBELfDCpzKc+mRrZFs7D+wgfF5WRFLNAr4DA/qtr9Js8uOAVAfHhuLMfAcQ0pRKqbpjx+TcJVdE1Q==}
-    dev: true
-
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
@@ -5109,10 +5074,6 @@ packages:
   /kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
-
-  /known-css-properties@0.24.0:
-    resolution: {integrity: sha512-RTSoaUAfLvpR357vWzAz/50Q/BmHfmE6ETSWfutT0AJiw10e6CmcdYRQJlLRd95B53D0Y2aD1jSxD3V3ySF+PA==}
-    dev: true
 
   /kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
@@ -7217,12 +7178,6 @@ packages:
   /strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
     dev: false
-
-  /style-to-object@0.3.0:
-    resolution: {integrity: sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==}
-    dependencies:
-      inline-style-parser: 0.1.1
-    dev: true
 
   /style-to-object@0.4.4:
     resolution: {integrity: sha512-HYNoHZa2GorYNyqiCaBgsxvcJIn7OHq6inEga+E6Ke3m5JkoqpQbnFssk4jwe+K7AhGa2fcha4wSOf1Kn01dMg==}
