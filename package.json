@@ -55,6 +55,7 @@
     "github-schema": "^1.7.3",
     "hastscript": "^9.0.0",
     "mdast-util-directive": "^3.0.0",
+    "prettier-plugin-astro": "^0.13.0",
     "remark-directive": "^3.0.0",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2",
