@@ -14,13 +14,13 @@
     "lint": "eslint . --report-unused-disable-directives"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.6",
-    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/check": "^0.5.8",
+    "@astrojs/mdx": "^2.2.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/solid-js": "^4.0.1",
     "@vercel/analytics": "^1.2.2",
-    "astro": "^4.4.15",
+    "astro": "^4.5.2",
     "astro-icon": "^1.1.0",
     "fuse.js": "^7.0.0",
     "htmx.org": "^1.9.10",
@@ -33,11 +33,11 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@astrojs/vercel": "^7.3.5",
+    "@astrojs/vercel": "^7.3.6",
     "@iconify-json/logos": "^1.1.42",
-    "@iconify-json/lucide": "^1.1.172",
+    "@iconify-json/lucide": "^1.1.173",
     "@iconify-json/mdi": "^1.1.64",
-    "@iconify-json/tabler": "^1.1.106",
+    "@iconify-json/tabler": "^1.1.107",
     "@luxass/eslint-config": "^4.2.6",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^13.0.7",
