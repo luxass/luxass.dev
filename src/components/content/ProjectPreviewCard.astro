@@ -6,26 +6,20 @@ export interface Props {
   project: Project;
 }
 
-const {
-  project,
-} = Astro.props;
+const { project } = Astro.props;
 
-const {
-  name,
-  description,
-  url: githubUrl,
-  isContributor,
-} = project;
+const { name, description, url: githubUrl, isContributor } = project;
 
 const url = project?.readme ? `/projects/${name}` : githubUrl;
 ---
 
-<Link href={url} class="flex flex-col border border-neutral-300 bg-neutral-100 dark:(border-neutral-700 bg-neutral-800) rounded p-3 gap-3">
+<Link
+  href={url}
+  class="flex flex-col border border-neutral-300 bg-neutral-100 dark:(border-neutral-700 bg-neutral-800) rounded p-3 gap-3"
+>
   <span class="text-(lg imp)">
     {name}
-    {isContributor && (
-      <span class="text-sm"> (contributor)</span>
-    )}
+    {isContributor && <span class="text-sm"> (contributor)</span>}
   </span>
   <span>{description}</span>
 </Link>

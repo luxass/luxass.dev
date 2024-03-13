@@ -20,26 +20,19 @@ interface Props {
   project: CollectionEntry<"projects">;
 }
 
-const {
-  project,
-} = Astro.props;
+const { project } = Astro.props;
 
 const {
-  data: {
-    npm,
-    githubUrl,
-    name,
-    owner,
-    description,
-    icon,
-  },
+  data: { npm, githubUrl, name, owner, description, icon },
 } = project;
 
 export const prerender = true;
 
 const { Content } = await project.render();
 
-const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
+const pkgName = npm?.includes("@")
+  ? npm.slice(npm.indexOf("@"))
+  : (npm || "").split("/").pop();
 ---
 
 <PageLayout
@@ -64,11 +57,13 @@ const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").s
         <Link href={githubUrl}>
           <Icon name="mdi:github" class="size-6" />
         </Link>
-        {npm && (
-          <Link href={`https://www.npmjs.com/package/${pkgName}`}>
-            <Icon name="logos:npm-icon" class="size-5" />
-          </Link>
-        )}
+        {
+          npm && (
+            <Link href={`https://www.npmjs.com/package/${pkgName}`}>
+              <Icon name="logos:npm-icon" class="size-5" />
+            </Link>
+          )
+        }
       </div>
     </div>
 

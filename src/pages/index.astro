@@ -7,7 +7,9 @@ import { sortPosts } from "../lib/utils";
 import PostCard from "../components/content/PostCard.astro";
 import ProjectCard from "../components/content/ProjectCard.astro";
 
-const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
+const posts = sortPosts(
+  await getCollection("posts", ({ data }) => !data.draft),
+).slice(0, 4);
 const projects = await getCollection("projects").then((projects) => {
   for (let i = projects.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -38,9 +40,16 @@ export const prerender = true;
   ]}
 >
   <h1>
-    Hi there, I'm Lucas <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
+    Hi there, I'm Lucas <span
+      class="inline-block animate-duration-2s animate-count-3 animate-wiggle"
+      >👋</span
+    >
   </h1>
-  <p>I'm a software engineer with a strong focus on JavaScript, TypeScript & Language Tooling. My passion lies in enhancing developer experience and productivity through tooling and automation.</p>
+  <p>
+    I'm a software engineer with a strong focus on JavaScript, TypeScript &
+    Language Tooling. My passion lies in enhancing developer experience and
+    productivity through tooling and automation.
+  </p>
 
   <section id="projects">
     <h2>Projects</h2>

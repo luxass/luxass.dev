@@ -9,7 +9,5 @@ const id = `code-${Math.random().toString(36).slice(2, 9)}`;
 
 <div class="relative group">
   <pre id={id} class={clazz} {...props}><slot /></pre>
-  {copy && (
-    <CopyToClipboard client:load id={id} />
-  )}
+  {copy && <CopyToClipboard client:load id={id} />}
 </div>

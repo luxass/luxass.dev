@@ -9,7 +9,14 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
   external?: boolean;
 };
 
-const { as: Element = "button", href, disabled, rel: _rel, target: _target, ...props } = Astro.props;
+const {
+  as: Element = "button",
+  href,
+  disabled,
+  rel: _rel,
+  target: _target,
+  ...props
+} = Astro.props;
 
 const isExternal = (href || "").startsWith("http");
 const target = _target ?? isExternal ? "_blank" : undefined;
