@@ -9,12 +9,12 @@ html {
 
 body {
   @apply text-neutral-900 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 max-w-3xl md:mx-auto relative min-h-screen text-sm md:text-base flex flex-col;
-  font-family: "DM Sans", "DM Sans Fallback";
+  font-family: 'DM Sans', 'DM Sans Fallback';
 }
 
 @font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dm-sans.woff2") format("woff2");
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans.woff2') format('woff2');
   font-weight: 300 900;
   font-style: normal;
   font-display: swap;
@@ -117,7 +117,7 @@ body {
 .prose {
   @apply [&>:not(:last-child)]:mb-6;
 
-  & p:not([class*="callout"] p) {
+  & p:not([class*='callout'] p) {
     @apply my-6 line-height-7.2;
   }
 
@@ -157,7 +157,7 @@ body {
 }
 
 .markdown {
-  & a:not([class*="not-markdown"] a) {
+  & a:not([class*='not-markdown'] a) {
     @apply text-blue-600 dark:text-blue-400 underline underline-offset-2;
   }
 }

@@ -1,10 +1,10 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
-import Link from "../ui/Link.astro";
+import type { CollectionEntry } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import Link from '../ui/Link.astro'
 
 export interface Props {
-  project: CollectionEntry<"projects">;
+  project: CollectionEntry<'projects'>
 }
 
 const {
@@ -12,7 +12,7 @@ const {
     data: { name, githubUrl },
     slug,
   },
-} = Astro.props;
+} = Astro.props
 ---
 
 <div

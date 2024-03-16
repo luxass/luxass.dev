@@ -1,19 +1,19 @@
 ---
-import "../styles/globals.css";
-import { ViewTransitions, fade } from "astro:transitions";
-import Footer from "../components/layout/Footer.astro";
-import Header from "../components/layout/Header.astro";
+import '../styles/globals.css'
+import { ViewTransitions, fade } from 'astro:transitions'
+import Footer from '../components/layout/Footer.astro'
+import Header from '../components/layout/Header.astro'
 
 export interface Props {
-  title: string;
-  description: string;
-  image?: string;
-  keywords?: string[];
-  class?: string;
+  title: string
+  description: string
+  image?: string
+  keywords?: string[]
+  class?: string
 }
 
 const {
-  description = "personal website and blog of lucas nørgård",
+  description = 'personal website and blog of lucas nørgård',
   keywords = [],
   image = new URL(
     `https://image.luxass.dev/api/image/text?input=${encodeURIComponent(
@@ -24,21 +24,21 @@ const {
     )}`,
   ),
   class: clazz,
-} = Astro.props;
-let { title } = Astro.props;
+} = Astro.props
+let { title } = Astro.props
 
 if (
-  title.includes("luxass.dev") &&
-  import.meta.env.SITE_HOST === "luxass.com"
+  title.includes('luxass.dev') &&
+  import.meta.env.SITE_HOST === 'luxass.com'
 ) {
-  title = title.replace("luxass.dev", "luxass.com");
+  title = title.replace('luxass.dev', 'luxass.com')
 }
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <ViewTransitions transition:animate={fade({ duration: "0.2s" })} />
+    <ViewTransitions transition:animate={fade({ duration: '0.2s' })} />
 
     <!-- global metadata -->
     <meta charset="utf-8" />
@@ -47,7 +47,7 @@ if (
     <meta name="generator" content={Astro.generator} />
 
     {
-      import.meta.env.SITE_HOST === "luxass.com" && (
+      import.meta.env.SITE_HOST === 'luxass.com' && (
         <link rel="canonical" href="https://luxass.dev" />
       )
     }
@@ -62,7 +62,7 @@ if (
     <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
-    <meta name="keywords" content={keywords.join(", ")} />
+    <meta name="keywords" content={keywords.join(', ')} />
     <meta name="description" content={description} />
 
     <!-- open graph -->
