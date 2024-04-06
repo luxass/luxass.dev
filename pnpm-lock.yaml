@@ -74,8 +74,8 @@ devDependencies:
     specifier: ^1.1.109
     version: 1.1.109
   '@luxass/eslint-config':
-    specifier: ^4.3.5
-    version: 4.3.5(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.33.1)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4)
+    specifier: ^4.3.6
+    version: 4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.33.1)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4)
   '@types/hast':
     specifier: ^3.0.4
     version: 3.0.4
@@ -1273,8 +1273,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@luxass/eslint-config@4.3.5(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.33.1)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4):
-    resolution: {integrity: sha512-t0/7Y83+HLLCqG8Z5bbsDH2UZR8v66CqyA3OkNAXtRTE3JusHfsrwS3L+ryVYhBrwOwGnsgOB+2JzFEnLG2+bA==}
+  /@luxass/eslint-config@4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.33.1)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4):
+    resolution: {integrity: sha512-OVmOoS99LLRqCdFk6QGE9jZBtIRhYks6Xo4JroCJy6CyTkHqBDrZ0dKzAVnas9RhiO3IgpPEKoXApY+Xl1dRaQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@next/eslint-plugin-next': '>=14.0.0'
