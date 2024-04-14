@@ -10,7 +10,7 @@ icon: 🔧
 
 ## ✨ Features
 
-* Based on [Antfu's ESLint Config](https://github.com/antfu/eslint-config) with some modifications
+* Based on [antfu's ESLint Config](https://github.com/antfu/eslint-config) with some modifications
 * Auto fix for formatting (aimed to be used standalone **without** Prettier)
 * Designed to work with TypeScript, JSX, Vue out-of-box
 * Lints also for json, yaml, toml, markdown
@@ -20,7 +20,7 @@ icon: 🔧
 * [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 * Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 * Respects `.gitignore` by default
-* Optional [React](https://github.com/luxass/eslint-config/blob/main/#react), [Svelte](https://github.com/luxass/eslint-config/blob/main/#svelte), [UnoCSS](https://github.com/luxass/eslint-config/blob/main/#unocss), [Astro](https://github.com/luxass/eslint-config/blob/main/#astro) support
+* Optional [React](https://github.com/luxass/eslint-config/blob/main/#react), [Svelte](https://github.com/luxass/eslint-config/blob/main/#svelte), [Solid](https://github.com/luxass/eslint-config/blob/main/#solid), [UnoCSS](https://github.com/luxass/eslint-config/blob/main/#unocss), [Astro](https://github.com/luxass/eslint-config/blob/main/#astro) support
 * Optional [formatters](https://github.com/luxass/eslint-config/blob/main/#formatters) support for CSS, HTML, etc.
 
 ## Usage
@@ -43,7 +43,7 @@ export default luxass()
 Combined with legacy config:
 </summary>
 
-If you still use some configs from the legacy eslintrc format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
+If you still use some configs from the legacy ESLint RC format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
 
 ```js
 // eslint.config.mjs
@@ -260,7 +260,7 @@ Check out the [configs](https://github.com/luxass/eslint-config/blob/main/src/co
 
 ### Plugins Renaming
 
-Since flat config requires us to explicitly provide the plugin names (instead of mandatory convention from npm package name), we renamed some plugins to make overall scope more consistent and easier to write.
+Since flat config requires us to explicitly provide the plugin names (instead of mandatory convention from NPM package name), we renamed some plugins to make overall scope more consistent and easier to write.
 
 | New Prefix | Original Prefix        | Source Plugin                                                                              |
 | ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
@@ -280,11 +280,11 @@ type foo = { bar: 2 }
 ```
 
 > \[!NOTE]
-> About plugin renaming - it is actually rather a dangrous move that might leading to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
+> About plugin renaming - it is actually rather a dangerous move that might lead to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivot the taste of how rules are named.
 >
 > This config cares more about the user-facings DX, and try to ease out the implementation details. For example, users could keep using the semantic `import/order` without ever knowing the underlying plugin has migrated twice to `eslint-plugin-i` and then to `eslint-plugin-import-x`. User are also not forced to migrate to the implicit `i/order` halfway only because we swapped the implementation to a fork.
 >
-> That said, it's probably still not a good idea. You might not want to doing this if you are maintaining your own eslint config.
+> That said, it's probably still not a good idea. You might not want to do this if you are maintaining your own ESLint config.
 >
 > Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
 
@@ -344,9 +344,9 @@ export default luxass({
 })
 ```
 
-### Pipeline
+### Config Composer
 
-Since v4.3.0, the factory function `luxass()` returns a [pipeline object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#pipe) where you can chain the methods to compose the config even more flexibly.
+Since v4.3.0, the factory function `luxass()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
 
 ```js
 // eslint.config.js
@@ -379,7 +379,7 @@ We provide some optional configs for specific use cases, that we don't include t
 
 #### Formatters
 
-Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
+Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc.). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
 
 ```js
 // eslint.config.js
@@ -455,7 +455,7 @@ npm i -D eslint-plugin-react eslint-plugin-react-hooks @next/eslint-plugin-next
 
 #### Astro
 
-To enable astro support, you need to explicitly turn it on:
+To enable Astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
@@ -570,7 +570,7 @@ npx simple-git-hooks
 
 ## View what rules are enabled
 
-[Antfu](https://github.com/antfu) built a visual tool to help you view what rules are enabled in your project and apply them to what files, [@eslint/config-inspector](https://github.com/eslint/config-inspector)
+[antfu](https://github.com/antfu) built a visual tool to help you view what rules are enabled in your project and apply them to what files, [@eslint/config-inspector](https://github.com/eslint/config-inspector)
 
 Go to your project root that contains `eslint.config.js` and run:
 
