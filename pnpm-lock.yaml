@@ -75,7 +75,7 @@ devDependencies:
     version: 1.1.109
   '@luxass/eslint-config':
     specifier: ^4.3.6
-    version: 4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.33.1)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4)
+    version: 4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.34.0)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4)
   '@types/hast':
     specifier: ^3.0.4
     version: 3.0.4
@@ -104,8 +104,8 @@ devDependencies:
     specifier: ^9.0.0
     version: 9.0.0
   eslint-plugin-astro:
-    specifier: ^0.33.1
-    version: 0.33.1(eslint@9.0.0)
+    specifier: ^0.34.0
+    version: 0.34.0(eslint@9.0.0)(typescript@5.4.4)
   eslint-plugin-format:
     specifier: ^0.1.0
     version: 0.1.0(eslint@9.0.0)
@@ -1273,7 +1273,7 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@luxass/eslint-config@4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.33.1)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4):
+  /@luxass/eslint-config@4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.34.0)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4):
     resolution: {integrity: sha512-OVmOoS99LLRqCdFk6QGE9jZBtIRhYks6Xo4JroCJy6CyTkHqBDrZ0dKzAVnas9RhiO3IgpPEKoXApY+Xl1dRaQ==}
     engines: {node: '>=20'}
     peerDependencies:
@@ -1326,7 +1326,7 @@ packages:
       eslint-flat-config-utils: 0.2.1
       eslint-merge-processors: 0.1.0(eslint@9.0.0)
       eslint-plugin-antfu: 2.1.2(eslint@9.0.0)
-      eslint-plugin-astro: 0.33.1(eslint@9.0.0)
+      eslint-plugin-astro: 0.34.0(eslint@9.0.0)(typescript@5.4.4)
       eslint-plugin-format: 0.1.0(eslint@9.0.0)
       eslint-plugin-import-x: 0.5.0(eslint@9.0.0)(typescript@5.4.4)
       eslint-plugin-jsdoc: 48.2.3(eslint@9.0.0)
@@ -2621,23 +2621,6 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-eslint-parser@0.16.3:
-    resolution: {integrity: sha512-CGaBseNtunAV2DCpwBXqTKq8+9Tw65XZetMaC0FsMoZuLj0gxNIkbCf2QyKYScVrNOU7/ayfNdVw8ZCSHBiqCg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    dependencies:
-      '@astrojs/compiler': 2.7.1
-      '@typescript-eslint/scope-manager': 5.62.0
-      '@typescript-eslint/types': 5.62.0
-      astrojs-compiler-sync: 0.3.5(@astrojs/compiler@2.7.1)
-      debug: 4.3.4
-      entities: 4.5.0
-      eslint-visitor-keys: 3.4.3
-      espree: 9.6.1
-      semver: 7.6.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /astro-eslint-parser@0.17.0(typescript@5.4.4):
     resolution: {integrity: sha512-yTgzioUI9MKgBF4LxP7YI+uuZLrnXgHDeW4dpa3VqCNbDmPzL7ix93tc0JJIwWGcskoSAAHZZVaBSp8bHyZZZA==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -3766,8 +3749,8 @@ packages:
       eslint: 9.0.0
     dev: true
 
-  /eslint-plugin-astro@0.33.1(eslint@9.0.0):
-    resolution: {integrity: sha512-wVyxAf8Ulmljv5qJQLgspWe17LR4hLXcksIENtUlEC3W7rleBVEKXS+hIqzBfCbpkBLZpl1tsYes1AGpYHd13w==}
+  /eslint-plugin-astro@0.34.0(eslint@9.0.0)(typescript@5.4.4):
+    resolution: {integrity: sha512-nzw2H4g7HPXPLsWVpGUxuJ/ViVPLI8lM/AaUCJ51qTLTWtaMhvlvoe2d7yIPMFc+7xeCzQdo1POK8eR7NFsdKQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=7.0.0'
@@ -3775,7 +3758,7 @@ packages:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.0.0)
       '@jridgewell/sourcemap-codec': 1.4.15
       '@typescript-eslint/types': 5.62.0
-      astro-eslint-parser: 0.16.3
+      astro-eslint-parser: 0.17.0(typescript@5.4.4)
       eslint: 9.0.0
       eslint-compat-utils: 0.5.0(eslint@9.0.0)
       globals: 13.24.0
@@ -3783,6 +3766,7 @@ packages:
       postcss-selector-parser: 6.0.16
     transitivePeerDependencies:
       - supports-color
+      - typescript
     dev: true
 
   /eslint-plugin-es-x@7.6.0(eslint@9.0.0):
