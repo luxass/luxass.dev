@@ -75,7 +75,7 @@ devDependencies:
     version: 1.1.109
   '@luxass/eslint-config':
     specifier: ^4.3.6
-    version: 4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.34.0)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4)
+    version: 4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@1.0.1)(eslint-plugin-astro@0.34.0)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4)
   '@types/hast':
     specifier: ^3.0.4
     version: 3.0.4
@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^0.59.0
     version: 0.59.0
   astro-eslint-parser:
-    specifier: ^0.17.0
-    version: 0.17.0(typescript@5.4.4)
+    specifier: ^1.0.0
+    version: 1.0.1(typescript@5.4.4)
   eslint:
     specifier: ^9.0.0
     version: 9.0.0
@@ -1273,7 +1273,7 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@luxass/eslint-config@4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@0.17.0)(eslint-plugin-astro@0.34.0)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4):
+  /@luxass/eslint-config@4.3.6(@unocss/eslint-plugin@0.59.0)(@vue/compiler-sfc@3.4.21)(astro-eslint-parser@1.0.1)(eslint-plugin-astro@0.34.0)(eslint-plugin-format@0.1.0)(eslint@9.0.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.4):
     resolution: {integrity: sha512-OVmOoS99LLRqCdFk6QGE9jZBtIRhYks6Xo4JroCJy6CyTkHqBDrZ0dKzAVnas9RhiO3IgpPEKoXApY+Xl1dRaQ==}
     engines: {node: '>=20'}
     peerDependencies:
@@ -1320,7 +1320,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 7.5.0(@typescript-eslint/parser@7.5.0)(eslint@9.0.0)(typescript@5.4.4)
       '@typescript-eslint/parser': 7.5.0(eslint@9.0.0)(typescript@5.4.4)
       '@unocss/eslint-plugin': 0.59.0(eslint@9.0.0)(typescript@5.4.4)
-      astro-eslint-parser: 0.17.0(typescript@5.4.4)
+      astro-eslint-parser: 1.0.1(typescript@5.4.4)
       eslint: 9.0.0
       eslint-config-flat-gitignore: 0.1.5
       eslint-flat-config-utils: 0.2.1
@@ -2642,6 +2642,28 @@ packages:
       - typescript
     dev: true
 
+  /astro-eslint-parser@1.0.1(typescript@5.4.4):
+    resolution: {integrity: sha512-dbBnHjxLjX4G6mFo9GCl8VcHIM8xwtxfqzqefUjOU1PwRJ48qWrVeIl2/mz4Usl3YyT+BFO2AP3it17oLjdqtQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    dependencies:
+      '@astrojs/compiler': 2.7.1
+      '@typescript-eslint/scope-manager': 7.5.0
+      '@typescript-eslint/types': 7.5.0
+      '@typescript-eslint/typescript-estree': 7.5.0(typescript@5.4.4)
+      astrojs-compiler-sync: 1.0.0(@astrojs/compiler@2.7.1)
+      debug: 4.3.4
+      entities: 4.5.0
+      eslint-scope: 8.0.1
+      eslint-visitor-keys: 4.0.0
+      espree: 10.0.1
+      globby: 11.1.0
+      is-glob: 4.0.3
+      semver: 7.6.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   /astro-icon@1.1.0:
     resolution: {integrity: sha512-Nksc09p7UuHeMcPNS9w1pKqRw3+wEmmh0A3FJW+FNXvqaeWI4RLvD1MCWErpY3Z5Cvad317rvLdik/Hg8GEk8Q==}
     dependencies:
@@ -2735,6 +2757,16 @@ packages:
   /astrojs-compiler-sync@0.3.5(@astrojs/compiler@2.7.1):
     resolution: {integrity: sha512-y420rhIIJ2HHDkYeqKArBHSdJNIIGMztLH90KGIX3zjcJyt/cr9Z2wYA8CP5J1w6KE7xqMh0DAkhfjhNDpQb2Q==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      '@astrojs/compiler': '>=0.27.0'
+    dependencies:
+      '@astrojs/compiler': 2.7.1
+      synckit: 0.9.0
+    dev: true
+
+  /astrojs-compiler-sync@1.0.0(@astrojs/compiler@2.7.1):
+    resolution: {integrity: sha512-IM6FxpMoBxkGGdKppkFHNQIC9Wge7jspG2MIJff8DOhG41USNJLxJfxRm7wnkTKWlYK5Y1YFFNYr2vUUKkI8sw==}
+    engines: {node: ^18.18.0 || >=20.9.0}
     peerDependencies:
       '@astrojs/compiler': '>=0.27.0'
     dependencies:
