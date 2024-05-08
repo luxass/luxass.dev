@@ -34,13 +34,7 @@ export const prerender = true
 <PageLayout
   title={`${title} - posts - luxass.dev`}
   description={description}
-  image={`https://image.luxass.dev/api/image/post?input=${encodeURIComponent(
-    JSON.stringify({
-      title,
-      description,
-      date,
-    }),
-  )}`}
+  image={`https://image.luxass.dev/api/image/post?title=${title}&description=${description}&date=${date}`}
 >
   <Link href="/posts">Go Back to posts</Link>
   <article class="tracking-wide prose markdown">

@@ -38,12 +38,7 @@ const pkgName = npm?.includes('@')
 <PageLayout
   title={`${name} - projects - luxass.dev`}
   description={description || 'No description provided.'}
-  image={`https://image.luxass.dev/api/image/project?input=${encodeURIComponent(
-    JSON.stringify({
-      repo: `${owner}/${name}`,
-      description,
-    }),
-  )}`}
+  image={`https://image.luxass.dev/api/image/project?repo=${owner + '/' + name}&description=${description}`}
 >
   <Link href="/projects">Go Back to projects</Link>
   <article class="tracking-wide prose markdown">

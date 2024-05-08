@@ -16,12 +16,7 @@ const {
   description = 'personal website and blog of lucas nørgård',
   keywords = [],
   image = new URL(
-    `https://image.luxass.dev/api/image/text?input=${encodeURIComponent(
-      JSON.stringify({
-        width: 300,
-        height: 300,
-      }),
-    )}`,
+    `https://image.luxass.dev/api/image/text?width=300&height=300`,
   ),
   class: clazz,
 } = Astro.props
