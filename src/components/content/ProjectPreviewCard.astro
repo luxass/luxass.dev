@@ -1,16 +1,16 @@
 ---
-import Link from '../ui/Link.astro'
-import type { Project } from '../../lib/types'
+import Link from "../ui/Link.astro";
+import type { Project } from "../../lib/types";
 
 export interface Props {
-  project: Project
+  project: Project;
 }
 
-const { project } = Astro.props
+const { project } = Astro.props;
 
-const { name, description, url: githubUrl, isContributor } = project
+const { name, description, url: githubUrl, isContributor } = project;
 
-const url = project?.readme ? `/projects/${name}` : githubUrl
+const url = project?.readme ? `/projects/${name}` : githubUrl;
 ---
 
 <Link

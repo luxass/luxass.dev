@@ -1,10 +1,10 @@
 ---
-import { CopyToClipboard } from './CopyToClipboard'
+import { CopyToClipboard } from "./CopyToClipboard";
 
-let { class: clazz, copy, ...props } = Astro.props
+let { class: clazz, copy, ...props } = Astro.props;
 
-clazz += ' rounded p-4 overflow-x-auto border border-gray-400/20'
-const id = `code-${Math.random().toString(36).slice(2, 9)}`
+clazz += " rounded p-4 overflow-x-auto border border-gray-400/20";
+const id = `code-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 <div class="relative group">
