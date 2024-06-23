@@ -44,17 +44,5 @@
       "source": "/gh/:slug*",
       "destination": "https://github.com/luxass/:slug*"
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "cowsay.luxass.dev"
-        }
-      ],
-      "destination": "/cowsay.json"
-    }
   ]
 }
