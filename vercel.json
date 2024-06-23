@@ -21,7 +21,7 @@
           "value": "cowsay.luxass.dev"
         }
       ],
-      "destination": "/cowsay"
+      "destination": "/__cowsay"
     },
     {
       "source": "/",
