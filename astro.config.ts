@@ -140,7 +140,8 @@ export default defineConfig({
     plugins: [
       FontaineTransform.vite({
         fallbacks: ["Arial"],
-        resolvePath: (id) => new URL(`./public${id}`, import.meta.url), // id is the font src value in the CSS
+        // id is the font src value in the CSS
+        resolvePath: (id) => new URL(`./public${id}`, import.meta.url),
       }),
     ],
   },
