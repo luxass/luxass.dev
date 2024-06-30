@@ -37,7 +37,7 @@
     "@iconify-json/logos": "^1.1.43",
     "@iconify-json/lucide": "^1.1.196",
     "@iconify-json/mdi": "^1.1.67",
-    "@iconify-json/tabler": "^1.1.114",
+    "@iconify-json/tabler": "^1.1.115",
     "@luxass/eslint-config": "^4.7.0",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.1",
