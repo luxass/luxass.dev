@@ -115,8 +115,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
       github-schema:
-        specifier: ^1.9.0
-        version: 1.9.0
+        specifier: ^1.10.1
+        version: 1.10.1
       hastscript:
         specifier: ^9.0.0
         version: 9.0.0
@@ -2166,8 +2166,8 @@ packages:
   get-tsconfig@4.7.5:
     resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
-  github-schema@1.9.0:
-    resolution: {integrity: sha512-Pwrwrvs6pgyScbLnN1TfTicas/zH+zY4HaQyigM5DpZ0mR0/bVvLw9IA2a9zhdKLAMX9Ird+DEWB47OCI+yHCA==}
+  github-schema@1.10.1:
+    resolution: {integrity: sha512-l7o0v1ZDeyAI53psqZT1/IVxs1OfwaxL/I/1oIE1bfY0MJrA1J68kW9IMEsZFv9X4z3840G0zSUSOR2Xs8+8GA==}
     engines: {node: '>=18'}
 
   github-slugger@2.0.0:
@@ -2217,8 +2217,8 @@ packages:
     peerDependencies:
       graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
 
-  graphql@16.8.2:
-    resolution: {integrity: sha512-cvVIBILwuoSyD54U4cF/UXDh5yAobhNV/tPygI4lZhgOIJQE/WLWC4waBRb4I6bDVYb3OVx3lfHbaQOEoUD5sg==}
+  graphql@16.9.0:
+    resolution: {integrity: sha512-GGTKBX4SD7Wdb8mqeDLni2oaRGYQWjWHGKPQ24ZMnUtKfcsVoiv4uX8+LJr1K6U5VW2Lu1BwJnj7uiori0YtRw==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
 
   gray-matter@4.0.3:
@@ -6495,10 +6495,10 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  github-schema@1.9.0:
+  github-schema@1.10.1:
     dependencies:
-      graphql: 16.8.2
-      graphql-tag: 2.12.6(graphql@16.8.2)
+      graphql: 16.9.0
+      graphql-tag: 2.12.6(graphql@16.9.0)
 
   github-slugger@2.0.0: {}
 
@@ -6542,12 +6542,12 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  graphql-tag@2.12.6(graphql@16.8.2):
+  graphql-tag@2.12.6(graphql@16.9.0):
     dependencies:
-      graphql: 16.8.2
+      graphql: 16.9.0
       tslib: 2.6.3
 
-  graphql@16.8.2: {}
+  graphql@16.9.0: {}
 
   gray-matter@4.0.3:
     dependencies:
