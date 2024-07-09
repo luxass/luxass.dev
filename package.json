@@ -34,7 +34,7 @@
   "devDependencies": {
     "@astrojs/vercel": "^7.7.2",
     "@iconify-json/logos": "^1.1.43",
-    "@iconify-json/lucide": "^1.1.198",
+    "@iconify-json/lucide": "^1.1.199",
     "@iconify-json/mdi": "^1.1.67",
     "@iconify-json/tabler": "^1.1.116",
     "@luxass/eslint-config": "^4.8.3",
