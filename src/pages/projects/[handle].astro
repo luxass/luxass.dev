@@ -11,28 +11,23 @@ import Pre from "../../components/content/mdx/Pre.astro";
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
-    params: { handle: project.data.handle || project.slug },
-    props: { project },
+    params: { handle: project.id },
+    props: { project: project.data },
   }));
 }
 
 interface Props {
-  project: CollectionEntry<"projects">;
+  project: CollectionEntry<"projects">["data"];
 }
 
 const { project } = Astro.props;
-
-const {
-  data: { npm, githubUrl, name, owner, description, icon },
-} = project;
+const { npm, githubUrl, name, owner, description, icon } = project;
 
 export const prerender = true;
 
-const { Content } = await project.render();
-
-const pkgName = npm?.includes("@")
-  ? npm.slice(npm.indexOf("@"))
-  : (npm || "").split("/").pop();
+// const pkgName = npm.name?.includes("@")
+//   ? npm.name.slice(npm.name.indexOf("@"))
+//   : (npm.name || "").split("/").pop();
 ---
 
 <PageLayout
@@ -52,22 +47,24 @@ const pkgName = npm?.includes("@")
         <Link href={githubUrl}>
           <Icon name="mdi:github" class="size-6" />
         </Link>
-        {
+        <!-- {
           npm && (
             <Link href={`https://www.npmjs.com/package/${pkgName}`}>
               <Icon name="logos:npm-icon" class="size-5" />
             </Link>
           )
-        }
+        } -->
       </div>
     </div>
 
-    <Content
+    {project.description && <p>{project.description}</p>}
+
+    <!-- <Content
       components={{
         code: Code,
         a: Link,
         pre: Pre,
       }}
-    />
+    /> -->
   </article>
 </PageLayout>
