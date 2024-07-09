@@ -6,12 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
-    "typecheck": "tsc --noEmit",
-    "check": "astro check",
+    "build": "astro check && pnpm lint && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --report-unused-disable-directives"
+    "lint": "eslint .",
+    "typecheck": "astro-check"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
