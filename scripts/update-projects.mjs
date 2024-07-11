@@ -40,6 +40,29 @@ export async function run(ctx) {
 
     const latestCommitSHA = commits[0].sha;
 
+    let updateBranchExists = false;
+    try {
+      await github.rest.git.getRef({
+        owner: "luxass",
+        repo: "luxass.dev",
+        ref: `heads/${branchName}`,
+      });
+      updateBranchExists = true;
+    } catch (/** @type {any} */error) {
+      if (error.status !== 404) throw error;
+    }
+
+    if (updateBranchExists) {
+      await github.rest.git.updateRef({
+        owner: "luxass",
+        repo: "luxass.dev",
+        ref: `heads/${branchName}`,
+        sha: latestCommitSHA,
+        force: true,
+      });
+      console.log(`Updated ${branchName} to match main`);
+    }
+
     const contentPath = "src/content/projects";
 
     const { data: { tree: projectsTree } } = await github.rest.git.getTree({
@@ -209,35 +232,26 @@ export async function run(ctx) {
       parents: [latestCommitSHA],
     });
 
-    try {
-      await github.rest.git.getRef({
+    if (updateBranchExists) {
+      await github.rest.git.updateRef({
         owner: "luxass",
         repo: "luxass.dev",
         ref: `heads/${branchName}`,
+        sha: newCommit.data.sha,
       });
-    } catch (error) {
-      if (typeof error === "object" && error && "status" in error && error.status === 404) {
-        await github.rest.git.createRef({
-          owner: "luxass",
-          repo: "luxass.dev",
-          ref: `refs/heads/${branchName}`,
-          sha: newCommit.data.sha,
-        });
-        console.log(`created branch ${branchName}`);
-      } else {
-        throw error;
-      }
+      console.log(`Updated ${branchName} with new changes`);
+    } else {
+      await github.rest.git.createRef({
+        owner: "luxass",
+        repo: "luxass.dev",
+        ref: `refs/heads/${branchName}`,
+        sha: newCommit.data.sha,
+      });
+      console.log(`Created branch ${branchName}`);
     }
 
-    await github.rest.git.updateRef({
-      owner: "luxass",
-      repo: "luxass.dev",
-      ref: `heads/${branchName}`,
-      sha: newCommit.data.sha,
-    });
-
     core.setOutput("branchName", branchName);
-    core.setOutput("created", true);
+    core.setOutput("created", !updateBranchExists);
   } catch (/** @type {any} */ err) {
     core.setFailed(err.message);
   }
