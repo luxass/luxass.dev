@@ -4,7 +4,7 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import ProjectPreviewCard from "../../components/content/ProjectPreviewCard.astro";
 import type { Project } from "../../lib/types";
 
-const res = await fetch("https://projectrc.luxass.dev/api/projects.json");
+const res = await fetch("https://mosaic.luxass.dev/api/projects.json");
 
 if (!res.ok) {
   throw new Error("Failed to fetch projects");
