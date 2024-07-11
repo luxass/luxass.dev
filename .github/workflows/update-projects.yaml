@@ -34,7 +34,6 @@ jobs:
 
       - name: run update script
         uses: actions/github-script@v7
-        id: update-projects
         with:
           script: |
             const { run } = await import('${{ github.workspace }}/scripts/update-projects.mjs')
@@ -49,19 +48,3 @@ jobs:
               require,
               __original_require__,
             });
-
-      - name: print output
-        run: |
-          echo "branchName: ${{ steps.update-projects.outputs.branchName }}"
-          echo "success: ${{ steps.update-projects.outputs.success }}"
-
-      - name: create pull request
-        if: ${{ github.event.inputs.dry-run }} != 'true' && steps.update-projects.outputs.success == 'true'
-        uses: peter-evans/create-pull-request@v6.1.0
-        with:
-          # token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: update projects"
-          title: "chore: update projects"
-          body: "This PR updates all projects to the latest version."
-          branch: ${{ steps.update-projects.outputs.branchName }}
-          base: "main"
