@@ -23,7 +23,6 @@
 /** @param {import('github-script').AsyncFunctionArguments} ctx */
 export async function run(ctx) {
   const { github, core } = ctx;
-
   try {
     /** @type {Map<string, string>} */
     const ICONS = new Map();
@@ -59,7 +58,7 @@ export async function run(ctx) {
         sha: latestCommitSHA,
         force: true,
       });
-      console.log(`Updated ${branchName} to match main`);
+      core.info(`updated ${branchName} to match main`);
     }
 
     const contentPath = "src/content/projects";
@@ -89,7 +88,7 @@ export async function run(ctx) {
     ).then((res) => /** @type {Promise<{ projects: Project[] }>} */(res.json()));
 
     if (!projects) {
-      console.error("no projects found");
+      core.error("no projects found");
       core.setFailed("no projects found");
     }
 
@@ -99,7 +98,7 @@ export async function run(ctx) {
     for (const project of projects.filter((project) => project.readme)) {
       const fileName = project.name.replace(/^\./, "").replace(/\./g, "-");
       if (!project.readme) {
-        console.warn(`no README found for ${project.name}`);
+        core.warning(`no readme found for ${project.name}`);
         continue;
       }
 
@@ -110,7 +109,7 @@ export async function run(ctx) {
       }).then((res) => res.json());
 
       if (!readmeContent || typeof readmeContent !== "object" || !("content" in readmeContent) || typeof readmeContent.content !== "string") {
-        console.error(`No README found for ${project.name}`);
+        core.error(`no readme found for ${project.name}`);
         continue;
       }
 
@@ -167,9 +166,9 @@ export async function run(ctx) {
             type: "blob",
             content: newContent,
           });
-          console.info(`updated ${fileName}`);
+          core.info(`updated ${fileName}`);
         } else {
-          console.info(`no changes detected for ${fileName}`);
+          core.info(`no changes detected for ${fileName}`);
         }
 
         existingFiles.delete(`${fileName}.mdx`);
@@ -180,7 +179,7 @@ export async function run(ctx) {
           type: "blob",
           content: newContent,
         });
-        console.info(`added ${fileName}`);
+        core.info(`added ${fileName}`);
       }
     }
 
@@ -191,7 +190,7 @@ export async function run(ctx) {
         type: file.type,
         sha: null,
       });
-      console.info(`deleted ${fileName}`);
+      core.info(`deleted ${fileName}`);
     }
 
     const projectsTreePaths = projectsTree.map((file) => file.path);
@@ -213,7 +212,7 @@ export async function run(ctx) {
     });
 
     if (changes.length === 0) {
-      console.info("no changes detected");
+      core.info("no changes detected");
       return;
     }
 
@@ -239,7 +238,7 @@ export async function run(ctx) {
         ref: `heads/${branchName}`,
         sha: newCommit.data.sha,
       });
-      console.log(`Updated ${branchName} with new changes`);
+      core.info(`updated ${branchName} with new changes`);
     } else {
       await github.rest.git.createRef({
         owner: "luxass",
@@ -247,10 +246,10 @@ export async function run(ctx) {
         ref: `refs/heads/${branchName}`,
         sha: newCommit.data.sha,
       });
-      console.log(`Created branch ${branchName}`);
+      core.info(`create branch ${branchName}`);
     }
 
-    console.log(`wrote ${changes.length} changes to ${branchName}`);
+    core.info(`wrote ${changes.length} changes to ${branchName}`);
 
     const { data: branchCommit } = await github.rest.repos.getCommit({
       owner: "luxass",
@@ -258,12 +257,18 @@ export async function run(ctx) {
       ref: branchName,
     });
 
-    console.log(`Latest commit on ${branchName}: ${branchCommit.sha}`);
-    console.log(`Commit message: ${branchCommit.commit.message}`);
+    core.info(`latest commit on ${branchName}: ${branchCommit.sha}`);
 
     if (branchCommit.sha !== newCommit.data.sha) {
-      console.error("Commit mismatch");
+      core.error("commit mismatch between main and update-projects");
       core.setFailed("Commit mismatch");
+    }
+
+    const dryRun = core.getBooleanInput("dry-run");
+
+    if (dryRun) {
+      core.info("dry run enabled, skipping pr creation");
+      return;
     }
 
     await github.rest.pulls.create({
@@ -284,7 +289,7 @@ export async function run(ctx) {
       maintainer_can_modify: true,
     });
   } catch (/** @type {any} */ err) {
-    console.error(err);
+    core.error(err);
     core.setFailed(err.message);
   }
 }
