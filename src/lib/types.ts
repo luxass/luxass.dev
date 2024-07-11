@@ -1,40 +1,26 @@
 import type { z } from "zod";
 import type { Language, Repository } from "github-schema";
-import type { PROJECTRC_SCHEMA } from "./projectrc-schema";
+import type {
+  DEPRECATED_SCHEMA,
+  NPM_SCHEMA,
+  PROJECT_SCHEMA,
+  WEBSITE_SCHEMA,
+} from "./mosaic-schema";
 
 type SafeOmit<T, K extends keyof T> = Omit<T, K>;
 
-type ResolvedProject = SafeOmit<z.infer<typeof PROJECTRC_SCHEMA>, "readme" | "workspace" | "stars" | "npm" | "version"> & {
-  /**
-   * The name of the project
-   */
+export type ResolvedProject = {
   name: string;
-
-  /**
-   * URL to the readme file
-   *
-   * NOTE:
-   * We are not including the full readme in the response,
-   * due to some readme files being very large.
-   */
-  readme?: string;
-
-  /**
-   * The number of stars the repository has
-   */
-  stars?: number;
-
-  /**
-   * The npm configuration
-   */
-  npm?: SafeOmit<Exclude<NonNullable<z.infer<typeof PROJECTRC_SCHEMA>["npm"]>, boolean>, "enabled"> & {
+  website?: SafeOmit<z.infer<typeof WEBSITE_SCHEMA>, "enabled">;
+  npm?: SafeOmit<z.infer<typeof NPM_SCHEMA>, "enabled" | "downloads"> & {
     url?: string;
+    downloads?: number;
   };
-
-  /**
-   * The version of the project
-   */
+  deprecated?: z.infer<typeof DEPRECATED_SCHEMA>;
+  readme?: string;
+} & SafeOmit<z.infer<typeof PROJECT_SCHEMA>, "version" | "stars"> & {
   version?: string;
+  stars?: number;
 };
 
 export type Project = ResolvedProject & Pick<Repository, "nameWithOwner" | "pushedAt" | "url"> & {
