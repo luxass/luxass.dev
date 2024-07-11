@@ -6,7 +6,7 @@
 
 [project]
 name = "luxass.dev"
+description = "The website you're currently viewing."
 
 [website]
 enabled = true
-description = "The website you're currently viewing."
