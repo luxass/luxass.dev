@@ -251,7 +251,7 @@ export async function run(ctx) {
     }
 
     core.setOutput("branchName", branchName);
-    core.setOutput("success", updateBranchExists ? "true" : "false");
+    core.setOutput("success", "true");
   } catch (/** @type {any} */ err) {
     core.setFailed(err.message);
   }
