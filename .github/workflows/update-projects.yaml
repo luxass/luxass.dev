@@ -53,10 +53,10 @@ jobs:
       - name: print output
         run: |
           echo "branchName: ${{ steps.update-projects.outputs.branchName }}"
-          echo "created: ${{ steps.update-projects.outputs.created }}"
+          echo "success: ${{ steps.update-projects.outputs.success }}"
 
       - name: create pull request
-        if: ${{ github.event.inputs.dry-run }} != 'true' && steps.update-projects.outputs.created == 'true'
+        if: ${{ github.event.inputs.dry-run }} != 'true' && steps.update-projects.outputs.success == 'true'
         uses: peter-evans/create-pull-request@v6.1.0
         with:
           # token: ${{ secrets.GITHUB_TOKEN }}
