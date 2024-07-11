@@ -1,0 +1,54 @@
+---
+handle: esbuild-cdn-imports
+name: esbuild-cdn-imports
+owner: luxass
+githubUrl: https://github.com/luxass/esbuild-cdn-imports
+npm: "esbuild-plugin-cdn-imports"
+---
+
+# esbuild-plugin-cdn-imports
+
+
+
+
+✨ Intercepts imports and resolves them to a CDN URL - useful for places where the filesystem is not available, such as in the browser.
+
+## 📦 Installation
+
+```sh
+npm install -D esbuild esbuild-plugin-cdn-imports
+```
+
+## 📚 Usage
+
+Add this to your build file
+
+```js
+import { build } from "esbuild";
+import { CDNImports } from "esbuild-plugin-cdn-imports";
+
+const yourConfig = {};
+
+await build({
+  ...yourConfig,
+  plugins: [
+    CDNImports({
+      // Available cdns: "esm", "unpkg", "jsdelivr", "skypack"
+      cdn: "esm",
+      versions: {
+        // The version of the package to use
+        // If not specified, the latest version will be used
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
+      },
+      // This will not be resolved to a CDN URL
+      exclude: ["@prisma/client"]
+    })
+  ]
+});
+```
+
+## 📄 License
+
+Published under [MIT License](https://github.com/luxass/esbuild-cdn-imports/blob/main/LICENSE).
+
