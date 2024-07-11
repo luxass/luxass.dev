@@ -279,8 +279,7 @@ export async function run(ctx) {
 
         I will be waiting for your approval 👋.
 
-        This is an automated PR to update the list of projects showcased on your website.
-      `,
+        This is an automated PR to update the list of projects showcased on your website.`,
       maintainer_can_modify: true,
     });
   } catch (/** @type {any} */ err) {
