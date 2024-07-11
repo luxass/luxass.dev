@@ -51,7 +51,7 @@ jobs:
             });
 
       - name: create pull request
-        if: ${{ github.event.inputs.dry-run }} != 'true' && steps.update-projects.outputs.created
+        if: ${{ github.event.inputs.dry-run }} != 'true' && steps.update-projects.outputs.created == 'true'
         uses: peter-evans/create-pull-request@v6.1.0
         with:
           # token: ${{ secrets.GITHUB_TOKEN }}
