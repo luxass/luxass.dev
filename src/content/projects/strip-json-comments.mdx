@@ -2,10 +2,14 @@
 handle: strip-json-comments
 name: strip-json-comments
 owner: luxass
-description: strip comments from your json
 githubUrl: https://github.com/luxass/strip-json-comments
 npm: "@luxass/strip-json-comments"
 ---
+
+# strip-json-comments
+
+
+
 
 A fork of [sindresorhus/strip-json-comments](https://github.com/sindresorhus/strip-json-comments) but with support for CJS & ESM. And some small modifications.
 
@@ -20,14 +24,14 @@ npm install @luxass/strip-json-comments
 There is a small difference to the original package. You can see it [here](https://github.com/luxass/strip-json-comments/blob/main/#differences-to-sindresorhusstrip-json-comments).
 
 ```ts
-import { strip } from "@luxass/strip-json-comments"
+import { strip } from "@luxass/strip-json-comments";
 
 const json = `{
   // this is a comment
   "foo": /* this is also a comment */ "bar"
-}`
+}`;
 
-JSON.parse(strip(json)) // { foo: "bar" }
+JSON.parse(strip(json)); // { foo: "bar" }
 ```
 
 ## Differences to [sindresorhus/strip-json-comments](https://github.com/sindresorhus/strip-json-comments)
@@ -45,3 +49,4 @@ The main differences are:
 ## 📄 License
 
 Published under [MIT License](https://github.com/luxass/strip-json-comments/blob/main/LICENSE).
+

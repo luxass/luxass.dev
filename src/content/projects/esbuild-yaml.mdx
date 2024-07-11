@@ -1,0 +1,89 @@
+---
+handle: esbuild-yaml
+name: esbuild-yaml
+owner: luxass
+githubUrl: https://github.com/luxass/esbuild-yaml
+npm: "esbuild-yaml"
+---
+
+# esbuild-yaml
+
+
+
+
+## 📦 Installation
+
+```sh
+npm install --save-dev esbuild-yaml esbuild
+```
+
+## 📚 Usage
+
+Add this to your build file
+
+```js
+import { build } from "esbuild";
+import { YAMLPlugin } from "esbuild-yaml";
+
+const yourConfig = {};
+
+build({
+  ...yourConfig,
+  plugins: [
+    YAMLPlugin()
+  ]
+});
+```
+
+### TypeScript
+
+If you are using TypeScript, you need to add the following to your `tsconfig.json` file:
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "esbuild-yaml/types"
+    ]
+  }
+}
+```
+
+## 📖 Examples
+
+```js
+// build.js
+import { build } from "esbuild";
+import { YAMLPlugin } from "esbuild-yaml";
+
+const yourConfig = {};
+
+build({
+  ...yourConfig,
+  plugins: [
+    YAMLPlugin()
+  ]
+});
+```
+
+```yaml
+# config.yaml
+name: esbuild-yaml
+
+version: 1.0.0
+```
+
+```ts
+// index.ts
+
+import config from "./config.yaml"; // this will be converted to a JSON object
+import configRaw from "./config.yaml?raw"; // this will be the raw YAML string
+
+console.log(config); // { name: "esbuild-yaml", version: "1.0.0" }
+console.log(configRaw); // name: esbuild-yaml\nversion: 1.0.0
+```
+
+## 📄 License
+
+Published under [MIT License](https://github.com/luxass/esbuild-yaml/blob/main/LICENSE).
+

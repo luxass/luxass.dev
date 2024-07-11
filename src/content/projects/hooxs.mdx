@@ -2,11 +2,14 @@
 handle: hooxs
 name: hooxs
 owner: luxass
-description: Build a powerful project with typed hooks for a smooth plugin API.
 githubUrl: https://github.com/luxass/hooxs
 npm: "hooxs"
-icon: ✨
 ---
+
+# hooxs
+
+
+
 
 Effortlessly empower your project with typed hooks, enabling you to easily construct a plugin API for your needs.
 
@@ -22,10 +25,10 @@ npm install hooxs
 import { createHooks } from "hooxs";
 
 interface RuntimeHooks {
-  "build:before": () => void
-  "build:after": (files: string[]) => void
+  "build:before": () => void;
+  "build:after": (files: string[]) => void;
   // can either be registered inside the hooks object or registered at a later point
-  "config:load"?: (config: Record<string, unknown>) => void
+  "config:load"?: (config: Record<string, unknown>) => void;
 }
 
 const hooks = createHooks<RuntimeHooks>({
@@ -52,3 +55,4 @@ await hooks.call("build:after", files);
 ## 📄 License
 
 Published under [MIT License](https://github.com/luxass/hooxs/blob/main/LICENSE).
+
