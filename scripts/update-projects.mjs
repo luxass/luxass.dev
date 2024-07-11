@@ -236,7 +236,7 @@ export async function run(ctx) {
       await github.rest.git.updateRef({
         owner: "luxass",
         repo: "luxass.dev",
-        ref: `heads/main`,
+        ref: `heads/${branchName}`,
         sha: newCommit.data.sha,
       });
       console.log(`Updated ${branchName} with new changes`);
@@ -244,13 +244,27 @@ export async function run(ctx) {
       await github.rest.git.createRef({
         owner: "luxass",
         repo: "luxass.dev",
-        ref: `refs/heads/main`,
+        ref: `refs/heads/${branchName}`,
         sha: newCommit.data.sha,
       });
       console.log(`Created branch ${branchName}`);
     }
 
     console.log(`wrote ${changes.length} changes to ${branchName}`);
+
+    const { data: branchCommit } = await github.rest.repos.getCommit({
+      owner: "luxass",
+      repo: "luxass.dev",
+      ref: branchName,
+    });
+
+    console.log(`Latest commit on ${branchName}: ${branchCommit.sha}`);
+    console.log(`Commit message: ${branchCommit.commit.message}`);
+
+    if (branchCommit.sha !== newCommit.data.sha) {
+      console.error("Commit mismatch");
+      core.setFailed("Commit mismatch");
+    }
 
     core.setOutput("branchName", branchName);
     core.setOutput("success", "true");
