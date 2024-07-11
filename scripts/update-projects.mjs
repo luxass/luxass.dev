@@ -250,9 +250,12 @@ export async function run(ctx) {
       console.log(`Created branch ${branchName}`);
     }
 
+    console.log(`wrote ${changes.length} changes to ${branchName}`);
+
     core.setOutput("branchName", branchName);
     core.setOutput("success", "true");
   } catch (/** @type {any} */ err) {
+    console.error(err);
     core.setFailed(err.message);
   }
 }
