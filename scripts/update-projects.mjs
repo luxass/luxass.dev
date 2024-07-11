@@ -264,7 +264,8 @@ export async function run(ctx) {
       core.setFailed("Commit mismatch");
     }
 
-    const dryRun = core.getBooleanInput("dry-run");
+    // eslint-disable-next-line node/prefer-global/process
+    const dryRun = process.env.DRY_RUN === "true";
 
     if (dryRun) {
       core.info("dry run enabled, skipping pr creation");
