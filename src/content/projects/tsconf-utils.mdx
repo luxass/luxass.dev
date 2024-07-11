@@ -1,0 +1,54 @@
+---
+handle: tsconf-utils
+name: tsconf-utils
+owner: luxass
+githubUrl: https://github.com/luxass/tsconf-utils
+npm: "tsconf-utils"
+---
+
+# tsconf-utils
+
+
+
+
+## Install
+
+```bash
+npm install tsconf-utils
+```
+
+## Usage
+
+```ts
+import {
+  findTSConfig,
+  findTSConfigSync,
+  parseTSConfig,
+  parseTSConfigSync,
+  resolveTSConfig,
+  resolveTSConfigSync
+} from "tsconf-utils";
+
+// Find tsconfig.json files
+const path = await findTSConfig();
+
+// Find tsconfig.json files synchronously
+const path = findTSConfigSync();
+
+// Parse tsconfig.json files
+const config = await parseTSConfig(path);
+
+// Parse tsconfig.json files synchronously
+const config = parseTSConfigSync(path);
+
+// Resolve tsconfig.json files (find and parse)
+const config = await resolveTSConfig(path);
+
+// Resolve tsconfig.json files synchronously (find and parse)
+const config = resolveTSConfigSync(path);
+```
+
+## 📄 License
+
+Published under [MIT License](https://github.com/luxass/tsconf-utils/blob/main/LICENSE).
+
