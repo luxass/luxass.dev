@@ -23,13 +23,13 @@ import process from "node:process";
 
 /** @param {import('github-script').AsyncFunctionArguments} ctx */
 export async function run(ctx) {
-  const { github } = ctx;
+  const { github, core } = ctx;
 
   try {
     /** @type {Map<string, string>} */
     const ICONS = new Map();
 
-    const branchName = "main";
+    const branchName = "update-projects";
 
     const { data: commits } = await github.rest.repos.listCommits({
       owner: "luxass",
@@ -68,11 +68,7 @@ export async function run(ctx) {
 
     if (!projects) {
       console.error("no projects found");
-      return Response.json({
-        message: "No projects found",
-        status: 404,
-        timestamp: new Date().toISOString(),
-      });
+      core.setFailed("no projects found");
     }
 
     /** @type {GitTree[]} */
@@ -195,7 +191,7 @@ export async function run(ctx) {
 
     if (changes.length === 0) {
       console.info("no changes detected");
-      process.exit(1);
+      return;
     }
 
     const newTree = await github.rest.git.createTree({
@@ -239,8 +235,10 @@ export async function run(ctx) {
       ref: `heads/${branchName}`,
       sha: newCommit.data.sha,
     });
+
+    core.setOutput("branchName", branchName);
+    core.setOutput("created", true);
   } catch (err) {
-    console.error(err);
-    process.exit(1);
+    core.setFailed(err.message);
   }
 }
