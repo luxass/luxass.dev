@@ -236,7 +236,7 @@ export async function run(ctx) {
       await github.rest.git.updateRef({
         owner: "luxass",
         repo: "luxass.dev",
-        ref: `heads/${branchName}`,
+        ref: `heads/main`,
         sha: newCommit.data.sha,
       });
       console.log(`Updated ${branchName} with new changes`);
@@ -244,7 +244,7 @@ export async function run(ctx) {
       await github.rest.git.createRef({
         owner: "luxass",
         repo: "luxass.dev",
-        ref: `refs/heads/${branchName}`,
+        ref: `refs/heads/main`,
         sha: newCommit.data.sha,
       });
       console.log(`Created branch ${branchName}`);
