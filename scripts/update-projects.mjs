@@ -238,7 +238,7 @@ export async function run(ctx) {
 
     core.setOutput("branchName", branchName);
     core.setOutput("created", true);
-  } catch (err) {
+  } catch (/** @type {any} */ err) {
     core.setFailed(err.message);
   }
 }
