@@ -1,5 +1,5 @@
 // @ts-check
-import process from "node:process";
+import dedent from "dedent";
 
 /**
  * @typedef {object} Project
@@ -273,11 +273,11 @@ export async function run(ctx) {
       title: "chore: update list of projects",
       head: branchName,
       base: "main",
-      body: `
+      body: dedent`
         I found some new projects that aren't showcased on your website.
 
         The following projects have been added or updated:
-        ${changes.map((change) => `  - ${change.path}`).join("\n")}
+        ${changes.map((change) => `  - ${change.path.slice(contentPath.length + 1)}`).join("\n")}
 
         I will be waiting for your approval 👋.
 
