@@ -24,6 +24,16 @@
 export async function run(ctx) {
   const { github, core } = ctx;
   try {
+    // eslint-disable-next-line node/prefer-global/process
+    const shouldInvalidateCache = process.env.INVALIDATE_CACHE === "true";
+    // eslint-disable-next-line node/prefer-global/process
+    const invalidateCacheToken = process.env.INVALIDATE_CACHE_TOKEN;
+
+    if (shouldInvalidateCache && !invalidateCacheToken) {
+      core.error("INVALIDATE_CACHE is enabled but no token was provided");
+      core.setFailed("INVALIDATE_CACHE is enabled but no token was provided");
+    }
+
     /** @type {Map<string, string>} */
     const ICONS = new Map();
 
@@ -85,6 +95,15 @@ export async function run(ctx) {
 
     const { projects } = await fetch(
       "https://mosaic.luxass.dev/api/v1/projects.json",
+      {
+        headers: {
+          ...(shouldInvalidateCache
+            ? {
+                "x-prerender-revalidate": invalidateCacheToken,
+              }
+            : {}),
+        },
+      },
     ).then((res) => /** @type {Promise<{ projects: Project[] }>} */(res.json()));
 
     if (!projects) {
