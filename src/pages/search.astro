@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import ProjectPreviewCard from "../components/content/ProjectPreviewCard.astro";
 import type { Project } from "../lib/types";
 
-const res = await fetch("https://projectrc.luxass.dev/api/projects.json", {
+const res = await fetch("https://mosaic.luxass.dev/api/v1/projects.json", {
   cache: "force-cache",
 });
 if (!res.ok) {
