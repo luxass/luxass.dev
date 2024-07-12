@@ -298,7 +298,7 @@ export async function run(ctx) {
       head: branchName,
       base: "main",
       body: `
-        I found some new projects that aren't showcased on your website.
+        I found some new projects or changes to projects that aren't showcased on your website.
         The following projects have been added or updated:
         ${changes.map((change) => `  - ${change.path.slice(contentPath.length + 1)}`).join("\n")}
 
