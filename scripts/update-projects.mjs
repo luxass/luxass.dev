@@ -1,5 +1,9 @@
 // @ts-check
 
+import { visit } from "unist-util-visit";
+import { remove } from "unist-util-remove";
+import { remark } from "remark";
+
 /**
  * @typedef {object} Project
  * @property {string} name
@@ -18,6 +22,12 @@
  * @property {'100644' | '100755' | '040000' | '160000' | '120000'} mode
  * @property {'blob' | 'tree' | 'commit'} type
  * @property {string} [content]
+ */
+
+/**
+ * @typedef {import('mdast').Root} Root
+ * @typedef {import('mdast').Text} Text
+ * @typedef {import('unified').Plugin} Plugin
  */
 
 /** @param {import('github-script').AsyncFunctionArguments} ctx */
@@ -132,12 +142,12 @@ export async function run(ctx) {
         continue;
       }
 
-      // const file = await remark()
-      //   .use(ICON, {
-      //     name: project.name,
-      //     icons: ICONS,
-      //   })
-      //   .process(readmeContent.content || "No README was found.");
+      const file = await remark()
+        .use(ICON, {
+          name: project.name,
+          icons: ICONS,
+        })
+        .process(readmeContent.content || "No README was found.");
 
       if (project.description) {
         const emoji = project.description.match(/\p{Emoji}/u);
@@ -163,8 +173,7 @@ export async function run(ctx) {
         .filter(Boolean)
         .join("\n");
 
-      // const newContent = `${frontmatter}\n\n${file.toString()}`;
-      const newContent = `${frontmatter}\n\n${readmeContent.content}`;
+      const newContent = `${frontmatter}\n\n${file.toString()}`;
       const filePath = `${contentPath}/${fileName}.mdx`;
 
       const existingFile = existingFiles.get(`${fileName}.mdx`);
@@ -312,4 +321,30 @@ export async function run(ctx) {
     core.error(err);
     core.setFailed(err.message);
   }
+}
+
+/**
+ * @typedef {object} Options
+ * @property {string} name - The name of the icon
+ * @property {Map<string, string>} icons - A map to store icon names and their corresponding emoji
+ */
+
+function ICON(/** @type {Options} */ { name, icons }) {
+  return (/** @type {import('mdast').Root} */ tree) => {
+    visit(tree, "heading", (node) => {
+      if (node.depth === 1) {
+        const text = /** @type {Text} */ (node.children[0]);
+        const matched = text.value.match(/\p{Emoji}/u);
+        if (!matched) return;
+
+        const [emoji] = matched;
+
+        console.log(`found emoji for ${name}: ${emoji}`);
+        icons.set(name, emoji);
+      }
+    });
+
+    remove(tree, (node) =>
+      node.type === "heading" && "depth" in node && node.depth === 1);
+  };
 }
