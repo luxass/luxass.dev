@@ -16,6 +16,7 @@ on:
 
 jobs:
   update:
+    name: "update projects (dry-run: ${{ github.event.inputs.dry-run }}, invalidate-cache: ${{ github.event.inputs.invalidate-cache }})"
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
