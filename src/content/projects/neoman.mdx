@@ -20,7 +20,7 @@ npm install @luxass/neoman
 ```ts
 import { NeomanGenerator, createEnvironment } from "@luxass/neoman";
 
-function projectGenerator(): NeomanGenerator<{}> {
+function projectGenerator(): NeomanGenerator<Record<string, unknown>> {
   return {
     sourceRoot: "./template",
     destinationRoot: "./out",
