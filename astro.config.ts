@@ -100,7 +100,7 @@ export default defineConfig({
   ],
   experimental: {
     contentCollectionCache: true,
-    contentCollectionJsonSchema: true,
+    contentLayer: true,
     directRenderScript: true,
   },
   prefetch: {
