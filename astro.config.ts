@@ -3,7 +3,6 @@ import { readFile } from "node:fs/promises";
 import { defineConfig } from "astro/config";
 import unocss from "unocss/astro";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -12,26 +11,8 @@ import icon from "astro-icon";
 import solid from "@astrojs/solid-js";
 import { FontaineTransform } from "fontaine";
 import mdx from "@astrojs/mdx";
-import type { AstroIntegration } from "astro";
-import {
-  rehypeCopy,
-  remarkAsides,
-} from "./mdx-plugins";
-
-const astroHTMX: AstroIntegration = {
-  name: "astro-htmx",
-  hooks: {
-    "astro:config:setup": ({ injectScript }) => {
-      injectScript(
-        "page",
-        `import * as htmx from "htmx.org";
-        document.addEventListener('astro:after-swap', () => {
-          htmx.process(document.body)
-        })`,
-      );
-    },
-  },
-};
+import vercel from "@astrojs/vercel/serverless";
+import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
@@ -48,14 +29,12 @@ export default defineConfig({
       async serialize(item) {
         if (item.url !== `${site}/posts/` && item.url.includes("/posts/")) {
           const url = item.url.replace("https://luxass.dev", "");
-
           const content = await readFile(`./src/content${url.slice(0, url.length - 1)}.mdx`, "utf-8");
           // parse front matter in content file.
           const frontMatterEndIndex = content.indexOf("---", 3);
           if (frontMatterEndIndex === -1) {
             throw new Error(`Front matter not found in ${url}`);
           }
-
           const frontMatter = content.slice(3, frontMatterEndIndex).trim();
           const isDraft = frontMatter.includes("draft: true");
 
@@ -64,7 +43,6 @@ export default defineConfig({
             return undefined;
           }
         }
-
         return {
           url: item.url,
           lastmod: item.lastmod,
@@ -72,11 +50,10 @@ export default defineConfig({
           priority: item.priority,
         };
       },
-      // filter(page) {
-      //   return !page.startsWith("/posts")
-      // },
+    // filter(page) {
+    //   return !page.startsWith("/posts")
+    // },
     }),
-    astroHTMX,
     solid(),
     unocss({
       injectReset: true,
@@ -86,14 +63,7 @@ export default defineConfig({
         logos: ["npm-icon"],
         lucide: ["clipboard", "clipboard-check", "search"],
         tabler: ["mail"],
-        mdi: [
-          "github",
-          "arrow-top-right-thin",
-          "rss",
-          "sitemap",
-          "linkedin",
-          "arrow-right-thin",
-        ],
+        mdi: ["github", "arrow-top-right-thin", "rss", "sitemap", "linkedin", "arrow-right-thin"],
       },
     }),
     mdx(),
@@ -102,6 +72,7 @@ export default defineConfig({
     contentCollectionCache: true,
     contentLayer: true,
     directRenderScript: true,
+    contentIntellisense: true,
   },
   prefetch: {
     prefetchAll: true,
@@ -129,20 +100,12 @@ export default defineConfig({
     ],
   },
   output: "hybrid",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    edgeMiddleware: true,
-    functionPerRoute: false,
-  }),
+  adapter: vercel(),
   vite: {
-    plugins: [
-      FontaineTransform.vite({
-        fallbacks: ["Arial"],
-        // id is the font src value in the CSS
-        resolvePath: (id) => new URL(`./public${id}`, import.meta.url),
-      }),
-    ],
+    plugins: [FontaineTransform.vite({
+      fallbacks: ["Arial"],
+      // id is the font src value in the CSS
+      resolvePath: (id) => new URL(`./public${id}`, import.meta.url),
+    })],
   },
 });

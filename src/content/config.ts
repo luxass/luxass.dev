@@ -1,5 +1,6 @@
 import { defineCollection } from "astro:content";
 import { z } from "zod";
+import { mosaic } from "../loaders/mosaic-loader";
 
 const posts = defineCollection({
   type: "content",
@@ -13,7 +14,8 @@ const posts = defineCollection({
 });
 
 const projects = defineCollection({
-  type: "content",
+  type: "content_layer",
+  loader: mosaic(),
   schema: z.object({
     handle: z.string().optional(),
     githubUrl: z.string(),

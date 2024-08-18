@@ -5,15 +5,17 @@ import { Icon } from "astro-icon/components";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 import Code from "../../components/content/mdx/Code.astro";
-import Link from "../../components/ui/Link.astro";
 import Pre from "../../components/content/mdx/Pre.astro";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map((project) => ({
-    params: { handle: project.data.handle || project.slug },
-    props: { project },
-  }));
+  return projects.map((project) => {
+    return {
+      params: { handle: project.data.handle },
+      props: { project },
+    };
+  });
 }
 
 interface Props {
@@ -28,11 +30,8 @@ const {
 
 export const prerender = true;
 
-const { Content } = await project.render();
-
-const pkgName = npm?.includes("@")
-  ? npm.slice(npm.indexOf("@"))
-  : (npm || "").split("/").pop();
+const { Content } = await render(project);
+const pkgName = npm?.includes("@") ? npm.slice(npm.indexOf("@")) : (npm || "").split("/").pop();
 ---
 
 <PageLayout
@@ -40,7 +39,7 @@ const pkgName = npm?.includes("@")
   description={description || "No description provided."}
   image={`https://image.luxass.dev/api/image/project?repo=${owner + "/" + name}&description=${description}`}
 >
-  <Link href="/projects">Go Back to projects</Link>
+  <a href="/projects">Go Back to projects</a>
   <article class="tracking-wide prose markdown">
     <div class="flex items-center justify-between mb-0">
       <h1 class="!mb-0">
@@ -49,14 +48,14 @@ const pkgName = npm?.includes("@")
       </h1>
 
       <div class="flex items-center gap-2 not-markdown">
-        <Link href={githubUrl}>
+        <a target="_blank" rel="noopener noreferrer" href={githubUrl}>
           <Icon name="mdi:github" class="size-6" />
-        </Link>
+        </a>
         {
           npm && (
-            <Link href={`https://www.npmjs.com/package/${pkgName}`}>
+            <a target="_blank" rel="noopener noreferrer" href={`https://www.npmjs.com/package/${pkgName}`}>
               <Icon name="logos:npm-icon" class="size-5" />
-            </Link>
+            </a>
           )
         }
       </div>
@@ -65,7 +64,6 @@ const pkgName = npm?.includes("@")
     <Content
       components={{
         code: Code,
-        a: Link,
         pre: Pre,
       }}
     />
