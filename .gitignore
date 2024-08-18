@@ -2,6 +2,7 @@
 dist/
 .output/
 .vercel
+.netlify
 
 # generated types
 .astro/
