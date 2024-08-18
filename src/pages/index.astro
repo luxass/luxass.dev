@@ -1,15 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
-import PageLayout from "../layouts/PageLayout.astro";
-import Link from "../components/ui/Link.astro";
-import { sortPosts } from "../lib/utils";
+import { getCollection } from "astro:content";
 import PostCard from "../components/content/PostCard.astro";
 import ProjectCard from "../components/content/ProjectCard.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { sortPosts } from "../lib/utils";
 
-const posts = sortPosts(
-  await getCollection("posts", ({ data }) => !data.draft),
-).slice(0, 4);
+const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
 const projects = await getCollection("projects").then((projects) => {
   for (let i = projects.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -40,15 +37,11 @@ export const prerender = true;
   ]}
 >
   <h1>
-    Hi there, I'm Lucas <span
-      class="inline-block animate-duration-2s animate-count-3 animate-wiggle"
-      >👋</span
-    >
+    Hi there, I'm Lucas <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
   </h1>
   <p>
-    I'm a software engineer with a strong focus on JavaScript, TypeScript &
-    Language Tooling. My passion lies in enhancing developer experience and
-    productivity through tooling and automation.
+    I'm a software engineer with a strong focus on JavaScript, TypeScript & Language Tooling. My passion lies in
+    enhancing developer experience and productivity through tooling and automation.
   </p>
 
   <section id="projects">
@@ -57,10 +50,10 @@ export const prerender = true;
     <div class="flex flex-col gap-4">
       {projects.map((project) => <ProjectCard {project} />)}
 
-      <Link href="/projects" class="flex items-center gap-2">
+      <a href="/projects" class="flex items-center gap-2">
         All projects
         <Icon name="mdi:arrow-right-thin" class="size-6" />
-      </Link>
+      </a>
     </div>
   </section>
 
@@ -75,7 +68,7 @@ export const prerender = true;
           ))}
 
           <span>
-            <Link href="/posts">All posts →</Link>
+            <a href="/posts">All posts →</a>
           </span>
         </div>
       </section>

@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
-import Link from "../ui/Link.astro";
 
 export interface Props {
   project: CollectionEntry<"projects">;
@@ -9,8 +8,7 @@ export interface Props {
 
 const {
   project: {
-    data: { name, githubUrl },
-    slug,
+    data: { name, githubUrl, handle },
   },
 } = Astro.props;
 ---
@@ -18,24 +16,16 @@ const {
 <div
   class="flex justify-between items-center border border-neutral-300 bg-neutral-100 dark:(border-neutral-700 bg-neutral-800) rounded p-3"
 >
-  <Link href={`/projects/${slug}`}>
+  <a href={`/projects/${handle}`}>
     <span>{name}</span>
-  </Link>
+  </a>
 
   <span class="flex items-center gap-3">
-    <Link href={githubUrl}>
-      <Icon
-        name="mdi:github"
-        class="size-6"
-        aria-label={`GitHub URL for ${name}`}
-      />
-    </Link>
-    <Link href={`projects/${name}`}>
-      <Icon
-        name="mdi:arrow-top-right-thin"
-        class="size-6"
-        aria-label={`Go to ${name} project page`}
-      />
-    </Link>
+    <a target="_blank" rel="noopener noreferrer" href={githubUrl}>
+      <Icon name="mdi:github" class="size-6" aria-label={`GitHub URL for ${name}`} />
+    </a>
+    <a href={`projects/${name}`}>
+      <Icon name="mdi:arrow-top-right-thin" class="size-6" aria-label={`Go to ${name} project page`} />
+    </a>
   </span>
 </div>
