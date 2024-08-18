@@ -70,6 +70,7 @@ export function mosaic(): Loader {
           const { content: content2 } = await fetch(project.readme, {
             headers: {
               "x-transform": "true",
+              "x-transform-name": project.name,
             },
           }).then((res) => res.json());
 
