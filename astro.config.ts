@@ -3,7 +3,6 @@ import { readFile } from "node:fs/promises";
 import { defineConfig } from "astro/config";
 import unocss from "unocss/astro";
 import sitemap from "@astrojs/sitemap";
-// import vercel from "@astrojs/vercel/serverless";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -12,7 +11,7 @@ import icon from "astro-icon";
 import solid from "@astrojs/solid-js";
 import { FontaineTransform } from "fontaine";
 import mdx from "@astrojs/mdx";
-import netlify from "@astrojs/netlify";
+import vercel from "@astrojs/vercel/serverless";
 import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
@@ -101,7 +100,7 @@ export default defineConfig({
     ],
   },
   output: "hybrid",
-  adapter: netlify(),
+  adapter: vercel(),
   vite: {
     plugins: [FontaineTransform.vite({
       fallbacks: ["Arial"],
