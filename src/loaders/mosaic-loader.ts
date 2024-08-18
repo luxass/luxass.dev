@@ -31,7 +31,7 @@ export function mosaic(): Loader {
       }
 
       const mosaicUrl = import.meta.env.DEV ? "http://localhost:3000" : "https://mosaic.luxass.dev";
-      logger.info(`using mosaic url: ${mosaicUrl} in ${import.meta.env.MODE} mode`);
+      logger.info(`using mosaic url: ${mosaicUrl}`);
       const mdxEntryType = settings.contentEntryTypes.find((entryType) => entryType.extensions.includes(".mdx"));
 
       if (!mdxEntryType) {
