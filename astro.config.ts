@@ -60,7 +60,6 @@ export default defineConfig({
       //   return !page.startsWith("/posts")
       // },
     }),
-    astroHTMX,
     solid(),
     unocss({
       injectReset: true,
