@@ -100,7 +100,14 @@ export default defineConfig({
     ],
   },
   output: "hybrid",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    isr: {
+      expiration: 60 * 60 * 8,
+    },
+  }),
   vite: {
     plugins: [FontaineTransform.vite({
       fallbacks: ["Arial"],
