@@ -13,7 +13,8 @@ export function mosaic(): Loader {
       collection,
       parseData,
       generateDigest,
-      settings,
+      entryTypes,
+      config,
     }) => {
       logger.info("loading projects from mosaic");
 
@@ -30,17 +31,25 @@ export function mosaic(): Loader {
         return;
       }
 
-      const mosaicUrl = import.meta.env.DEV ? "http://localhost:3000" : "https://mosaic.luxass.dev";
+      let mosaicUrl = "https://mosaic.luxass.dev";
+
+      if (import.meta.env.DEV && (await isLocalMosaicRunning())) {
+        mosaicUrl = "http://localhost:3000";
+      }
+
       logger.info(`using mosaic url: ${mosaicUrl}`);
-      const mdxEntryType = settings.contentEntryTypes.find((entryType) => entryType.extensions.includes(".mdx"));
+      const mdxEntryType = entryTypes.get(".mdx");
+      // const mdxEntryType = entryTypes.find((entryType) => entryType.extensions.includes(".mdx"));
 
       if (!mdxEntryType) {
         logger.error("no mdx entry type found");
         return;
       }
 
+      const astroDotDir = new URL("../../.astro/", import.meta.url);
+
       // create remote content dir
-      const remoteContentDir = new URL(`remote-content/${collection}`, settings.dotAstroDir);
+      const remoteContentDir = new URL(`./remote-content/${collection}`, astroDotDir);
       await mkdir(fileURLToPath(remoteContentDir), { recursive: true });
       const repositories = await fetch(`${mosaicUrl}/api/v1/mosaic/projects`).then((res) => res.json()) as {
         github_id: string;
@@ -102,7 +111,7 @@ export function mosaic(): Loader {
             filePath: fileURLToPath(fileUrl),
           });
 
-          const relativePath = relative(fileURLToPath(settings.config.root), fileURLToPath(fileUrl));
+          const relativePath = relative(fileURLToPath(config.root), fileURLToPath(fileUrl));
 
           store.set({
             id: fileId,
@@ -118,4 +127,13 @@ export function mosaic(): Loader {
       meta.set("lastSynced", String(Date.now()));
     },
   };
+}
+
+async function isLocalMosaicRunning() {
+  try {
+    await fetch("http://localhost:3000");
+    return true;
+  } catch {
+    return false;
+  }
 }
