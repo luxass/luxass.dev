@@ -9,7 +9,12 @@ const { project } = Astro.props;
 
 const { name, description, githubUrl } = project;
 const isContributor = false;
-const url = `/projects/${name}` ?? githubUrl;
+
+let url = githubUrl;
+
+if (name != null) {
+  url = `/projects/${name}`;
+}
 ---
 
 <a
