@@ -1,17 +1,17 @@
-import process from "node:process";
 import { readFile } from "node:fs/promises";
-import { defineConfig } from "astro/config";
-import unocss from "unocss/astro";
-import sitemap from "@astrojs/sitemap";
-import rehypeExternalLinks from "rehype-external-links";
-import remarkDirective from "remark-directive";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSlug from "rehype-slug";
-import icon from "astro-icon";
-import solid from "@astrojs/solid-js";
-import { FontaineTransform } from "fontaine";
+import process from "node:process";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import solid from "@astrojs/solid-js";
 import vercel from "@astrojs/vercel/serverless";
+import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+import { FontaineTransform } from "fontaine";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeSlug from "rehype-slug";
+import remarkDirective from "remark-directive";
+import unocss from "unocss/astro";
 import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";

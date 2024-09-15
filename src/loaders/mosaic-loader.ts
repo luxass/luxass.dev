@@ -1,7 +1,7 @@
+import type { Loader } from "astro/loaders";
 import { mkdir, writeFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Loader } from "astro/loaders";
 
 export function mosaic(): Loader {
   return {
