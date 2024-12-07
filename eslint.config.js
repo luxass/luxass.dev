@@ -5,6 +5,7 @@ export default luxass({
   unocss: true,
   astro: true,
   formatters: true,
+}, {
   ignores: [
     "**/vercel.json",
   ],
