@@ -1,26 +1,14 @@
-html {
-  @apply antialiased touch-manipulation scroll-smooth text-base;
-  text-rendering: optimizeLegibility;
-}
-
-* {
-  @apply outline-white selection-(bg-neutral-700 text-white);
+:root {
+  --background: #111;
+  --foreground: #d1d5db;
 }
 
 body {
-  @apply text-neutral-900 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 max-w-4xl md:mx-auto relative min-h-screen text-sm md:text-base flex flex-col;
-  font-family: "DM Sans", "DM Sans Fallback";
+  color: var(--foreground);
+  background: var(--background);
 }
 
-@font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dm-sans.woff2") format("woff2");
-  font-weight: 300 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .astro-code,
   .astro-code span:not(button span) {
     color: var(--shiki-dark) !important;
@@ -160,4 +148,4 @@ body {
   & a:not([class*="not-markdown"] a) {
     @apply text-blue-600 dark:text-blue-400 underline underline-offset-2;
   }
-}
+} */

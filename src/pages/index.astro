@@ -28,66 +28,12 @@ export const prerender = true;
     "blog",
   ]}
 >
-  <h1>
-    Hi there, I'm Lucas <span class="inline-block animate-duration-2s animate-count-3 animate-wiggle">👋</span>
-  </h1>
+  <h1>Lucas Nørgård</h1>
+
   <p>
     I'm a software engineer with a strong focus on JavaScript, TypeScript & Language Tooling. My passion lies in
     enhancing developer experience and productivity through tooling and automation.
   </p>
 
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="flex flex-col gap-4">
-      <!-- {projects.map((project) => <ProjectCard {project} />)} -->
-
-      <a href="/projects" class="flex items-center gap-2">
-        All projects
-        <Icon name="mdi:arrow-right-thin" class="size-6" />
-      </a>
-    </div>
-  </section>
-
-  {
-    posts.length > 0 && (
-      <section id="posts">
-        <h2>Posts</h2>
-
-        <div class="flex flex-col gap-4">
-          {posts.map((post) => (
-            <PostCard {post} />
-          ))}
-
-          <span>
-            <a href="/posts">All posts →</a>
-          </span>
-        </div>
-      </section>
-    )
-  }
+  <
 </PageLayout>
-
-<style>
-  @keyframes wiggle {
-    0% {
-      transform: rotate(2deg);
-    }
-
-    40% {
-      transform: rotate(8deg);
-    }
-
-    60% {
-      transform: rotate(1deg);
-    }
-
-    80% {
-      transform: rotate(6deg);
-    }
-
-    100% {
-      transform: rotate(3deg);
-    }
-  }
-</style>

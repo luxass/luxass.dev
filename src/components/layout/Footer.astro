@@ -1,26 +1,18 @@
 ---
-import { Icon } from "astro-icon/components";
+const links = [
+  { title: "email", href: "mailto:lucasnrgaard@gmail.com" },
+  { title: "x.com", href: "https://x.com/ssaxul" },
+  { title: "github", href: "https://github.com/luxass" },
+  { title: "linkedin", href: "https://www.linkedin.com/in/luxass" },
+];
 ---
 
-<footer class="mt-8 border-t border-t-neutral-700 pt-8 text-center flex items-center justify-between gap-2 px-4">
-  <p>Lucas Nørgård</p>
-  <ul>
-    <li class="flex items-center gap-2">
-      <a href="/rss.xml" aria-label="rss feed">
-        <Icon name="mdi:rss" class="size-5" />
+<footer class="animate-fade-in-up flex flex-wrap gap-4 text-sm py-8">
+  {
+    links.map((link) => (
+      <a href={link.href} class="text-gray-400 hover:text-accent transition-colors duration-200">
+        {link.title}
       </a>
-      <a href="/sitemap-index.xml" aria-label="sitemap">
-        <Icon name="mdi:sitemap" class="size-5" />
-      </a>
-      <a href="mailto:mail@luxass.dev" aria-label="email">
-        <Icon name="tabler:mail" class="size-5" />
-      </a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/luxass" aria-label="github">
-        <Icon name="mdi:github" class="size-5" />
-      </a>
-      <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/luxass" aria-label="linkedin">
-        <Icon name="mdi:linkedin" class="size-5" />
-      </a>
-    </li>
-  </ul>
+    ))
+  }
 </footer>
