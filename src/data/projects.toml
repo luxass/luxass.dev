@@ -8,4 +8,4 @@ href = "https://vsix-utils.luxass.dev"
 title = "vitest-testdirs"
 description = ""
 achievements = [ "implemented the test directory discovery" ]
-href = "https://vitest.luxass.dev"
+href = "https://github.com/luxass/vitest-testdirs"
