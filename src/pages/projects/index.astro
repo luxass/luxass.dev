@@ -1,17 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
-import PostPreviewCard from "../../components/content/PostPreviewCard.astro";
 
-const projects = await getCollection("projects")
+const projects = await getCollection("projects");
 
 export const prerender = true;
 ---
 
 <PageLayout title="posts | luxass.dev" description="writing about web development, programming, and more">
-  {projects.map((project) => (
-    <>
-      {JSON.stringify(project, null, 2)}
-    </>
-  ))}
+  {projects.map((project) => <>{JSON.stringify(project, null, 2)}</>)}
 </PageLayout>
