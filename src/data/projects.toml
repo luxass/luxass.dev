@@ -1,11 +1,9 @@
 [vsix-pack]
 title = "vsix-pack"
 description = "build and publish vscode extensions with ease"
-achievements = [ "implemented the extension packaging" ]
 href = "https://vsix-utils.luxass.dev"
 
 [vitest-testdirs]
 title = "vitest-testdirs"
-description = ""
-achievements = [ "implemented the test directory discovery" ]
+description = "A utility for Vitest to create isolated test directories"
 href = "https://github.com/luxass/vitest-testdirs"

@@ -1,13 +1,12 @@
 ---
 const links = [
   { title: "email", href: "mailto:lucasnrgaard@gmail.com" },
-  { title: "x.com", href: "https://x.com/ssaxul" },
   { title: "github", href: "https://github.com/luxass" },
   { title: "linkedin", href: "https://www.linkedin.com/in/luxass" },
 ];
 ---
 
-<footer class="flex flex-wrap gap-4 text-sm py-8 justify-right">
+<footer class="flex flex-wrap gap-4 text-sm pt-8 justify-right">
   {
     links.map((link) => (
       <a href={link.href} class="text-gray-400 hover:text-accent transition-colors duration-200">

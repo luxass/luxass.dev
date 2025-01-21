@@ -28,44 +28,43 @@ export const prerender = true;
   ]}
 >
   <div class="space-y-4 mb-16">
-    <h1 class="text-3xl font-bold mb-4 text-white">Lucas Nørgård</h1>
+    <h1 class="text-2xl font-bold mb-4 text-white">Lucas Nørgård</h1>
 
     <div class="flex flex-col gap-2 text-gray-400">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 text-sm">
         <Icon name="ph:map-pin" class="w-4 h-4" />
         aarhus, denmark
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 text-sm">
         <Icon name="ph:building" class="w-4 h-4" />
-        software engineer @ region midtjylland
+        region midtjylland
       </div>
     </div>
 
-    <p class="leading-relaxed">
-      I'm a software engineer with a strong focus on JavaScript, TypeScript & Language Tooling. My passion lies in
-      enhancing developer experience and productivity through tooling and automation.
+    <p class="leading-relaxed text-sm">
+      i'm a software engineer that loves building things. i'm passionate about enhancing developer experience and
+      productivity through tooling and automation. i'm currently working as a software engineer at region midtjylland.
     </p>
   </div>
 
   <section class="mb-16">
-    <h2 class="text-xl font-bold mb-6 flex items-center text-white">projects</h2>
-
+    <h2 class="text-lg font-bold mb-4 flex items-center text-white">projects</h2>
     <div class="space-y-8">
       {
         projects.map(({ data }) => (
           <div class="group">
             <a href={data.href} target="_blank">
-              <h3 class="text-lg font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
+              <h3 class="font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
                 {data.title}
               </h3>
-              <p class="text-gray-300">{data.description}</p>
+              <p class="text-gray-300 text-sm">{data.description}</p>
             </a>
           </div>
         ))
       }
     </div>
 
-    <a href="/projects" class="inline-flex items-center gap-1 mt-6 text-accent hover:underline group">
+    <a href="/projects" class="text-sm inline-flex items-center gap-1 mt-6 text-accent hover:underline group">
       view all projects{" "}
       <Icon
         name="ph:arrow-up-right"
@@ -77,22 +76,22 @@ export const prerender = true;
   {
     posts.length > 0 && (
       <section class="mb-16">
-        <h2 class="text-xl font-bold mb-6 flex items-center text-white">latest posts</h2>
+        <h2 class="text-lg font-bold mb-4 flex items-center text-white">latest posts</h2>
 
         <div class="space-y-8">
           {posts.map(({ data, id }) => (
             <div class="group">
               <a href={"/posts/" + id} target="_blank">
-                <h3 class="text-lg font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
+                <h3 class="font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
                   {data.title}
                 </h3>
-                <p class="text-gray-300">{data.description}</p>
+                <p class="text-gray-300 text-sm">{data.description}</p>
               </a>
             </div>
           ))}
         </div>
 
-        <a href="/blog" class="inline-flex items-center gap-1 mt-6 text-accent hover:underline group">
+        <a href="/posts" class="text-sm inline-flex items-center gap-1 mt-6 text-accent hover:underline group">
           view all posts{" "}
           <Icon
             name="ph:arrow-up-right"

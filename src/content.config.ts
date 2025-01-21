@@ -37,7 +37,6 @@ const projects = defineCollection({
     slug: z.string(),
     title: z.string(),
     description: z.string(),
-    achievements: z.array(z.string()),
     href: z.string(),
   }),
 });

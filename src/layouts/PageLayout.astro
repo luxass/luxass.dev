@@ -1,6 +1,5 @@
 ---
 import "../styles/globals.css";
-import { ClientRouter, fade } from "astro:transitions";
 import Footer from "../components/layout/Footer.astro";
 import Header from "../components/layout/Header.astro";
 
@@ -16,7 +15,6 @@ const {
   description = "personal website and blog of lucas nørgård",
   keywords = [],
   image = new URL(`https://image.luxass.dev/api/image/text?width=300&height=300`),
-  class: clazz,
 } = Astro.props;
 let { title } = Astro.props;
 
@@ -28,8 +26,6 @@ if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") 
 <!doctype html>
 <html lang="en">
   <head>
-    <ClientRouter transition:animate={fade({ duration: "0.2s" })} />
-
     <!-- global metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -67,9 +63,9 @@ if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") 
     <link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   </head>
   <body class="antialiased min-h-screen font-mono">
-    <div class="max-w-4xl mx-auto px-4 py-8">
-      <Header transition:animate="none" />
-      <main>
+    <div class="max-w-4xl mx-auto px-4 py-8 h-dvh flex flex-col">
+      <Header />
+      <main class="flex-1">
         <slot />
       </main>
       <Footer />
