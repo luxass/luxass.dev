@@ -64,6 +64,7 @@ export default defineConfig({
         lucide: ["clipboard", "clipboard-check", "search"],
         tabler: ["mail"],
         mdi: ["github", "arrow-top-right-thin", "rss", "sitemap", "linkedin", "arrow-right-thin"],
+        ph: ["arrow-up-right", "map-pin", "building"],
       },
     }),
     mdx(),
