@@ -15,10 +15,11 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      background: "var(--background)",
-      foreground: "var(--foreground)",
-      // accent: "#ff6b35",
-      accent: "#4169E1",
+      "background": "var(--background)",
+      "foreground": "var(--foreground)",
+      "accent": "#4169E1",
+      "card-bg": "var(--card-bg)",
+      "card-border": "var(--card-border)",
     },
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
