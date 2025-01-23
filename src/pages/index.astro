@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
-import PageLayout from "../layouts/PageLayout.astro";
+import PageLayout from "../layouts/page-layout.astro";
 import { sortPosts } from "../lib/utils";
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
@@ -48,7 +48,7 @@ export const prerender = true;
   </div>
 
   <section class="mb-16">
-    <h2 class="text-lg font-bold mb-4 flex items-center text-white">projects</h2>
+    <h2 class="text-xl font-bold mb-4 flex items-center text-white">projects</h2>
     <div class="space-y-8">
       {
         projects.map(({ data }) => (
@@ -76,7 +76,7 @@ export const prerender = true;
   {
     posts.length > 0 && (
       <section class="mb-16">
-        <h2 class="text-lg font-bold mb-4 flex items-center text-white">latest posts</h2>
+        <h2 class="text-xl font-bold mb-4 flex items-center text-white">latest posts</h2>
 
         <div class="space-y-8">
           {posts.map(({ data, id }) => (

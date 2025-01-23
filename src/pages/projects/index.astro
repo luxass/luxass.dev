@@ -1,12 +1,25 @@
 ---
 import { getCollection } from "astro:content";
-import PageLayout from "../../layouts/PageLayout.astro";
+import PageLayout from "../../layouts/page-layout.astro";
+import ProjectCard from "../../components/project-card.astro";
 
 const projects = await getCollection("projects");
 
 export const prerender = true;
 ---
 
-<PageLayout title="posts | luxass.dev" description="writing about web development, programming, and more">
-  {projects.map((project) => <>{JSON.stringify(project, null, 2)}</>)}
+<PageLayout title="projects | luxass.dev" description="projects i've worked on">
+  <h1 class="text-xl font-bold mb-4 text-white">Projects</h1>
+
+  <p class="text-gray-400 mb-12 leading-relaxed text-sm">
+    here is some of my projects i have worked on. you can find more on my <a
+      href="https://github.com/luxass"
+      target="_blank"
+      class="text-accent">github</a
+    >.
+  </p>
+
+  <div class="space-y-12">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
 </PageLayout>
