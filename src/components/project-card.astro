@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { href, description, title } = project.data;
+---
+
+<div class="group border border-[hsla(203,6%,24%,1)] p-6 transition-colors hover:border-accent/50 bg-secondary">
+  <a href={href} target="_blank">
+    <div class="flex justify-between items-start mb-4">
+      <h2 class="text-lg font-bold text-white group-hover:text-accent transition-colors">
+        {title}
+      </h2>
+      <Icon name="ph:arrow-up-right" class="w-5 h-5 text-sm text-gray-400 group-hover:text-accent transition-colors" />
+    </div>
+  </a>
+
+  <!-- <p class="text-sm text-gray-400 mb-4">
+    {role}
+    {period && `(${period})`}
+  </p> -->
+
+  <p class="text-gray-300 mb-6">{description}</p>
+  <!--
+  <div class="space-y-6">
+    <div>
+      <h3 class="text-white font-semibold mb-2">achievements</h3>
+      <ul class="list-disc list-inside space-y-1 text-gray-400">
+        {achievements.map((achievement, index) => <li key={index}>{achievement}</li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-white font-semibold mb-2">technologies</h3>
+      <div class="flex flex-wrap gap-2">
+        {
+          technologies.map((tech) => (
+            <span key={tech} class="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 rounded">
+              {tech.toLowerCase()}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div> -->
+</div>
