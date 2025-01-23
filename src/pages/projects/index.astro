@@ -1,32 +1,25 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectPreviewCard from "../../components/content/ProjectPreviewCard.astro";
-import PageLayout from "../../layouts/PageLayout.astro";
+import PageLayout from "../../layouts/page-layout.astro";
+import ProjectCard from "../../components/project-card.astro";
 
-const allProjects = await getCollection("projects");
+const projects = await getCollection("projects");
 
 export const prerender = true;
 ---
 
-<PageLayout title="projects | luxass.dev" description="projects">
-  <article class="prose">
-    <h1>Projects</h1>
-    <p>This is some of my projects.</p>
-    {
-      allProjects.length > 0 ? (
-        <div class="grid auto-cols-max grid-cols-1 mt-4 gap-4 sm:grid-cols-2 sm:gap-3" id="search-results">
-          {allProjects.map(({ data: project }) => (
-            <ProjectPreviewCard {project} />
-          ))}
-        </div>
-      ) : (
-        <p>
-          I haven't made any of my projects available here yet - you can always checkout my{" "}
-          <a href="https://github.com/luxass" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-        </p>
-      )
-    }
-  </article>
+<PageLayout title="projects | luxass.dev" description="projects i've worked on">
+  <h1 class="text-xl font-bold mb-4 text-white">Projects</h1>
+
+  <p class="text-gray-400 mb-12 leading-relaxed text-sm">
+    here is some of my projects i have worked on. you can find more on my <a
+      href="https://github.com/luxass"
+      target="_blank"
+      class="text-accent">github</a
+    >.
+  </p>
+
+  <div class="space-y-12">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
 </PageLayout>

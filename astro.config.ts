@@ -3,7 +3,7 @@ import process from "node:process";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import { FontaineTransform } from "fontaine";
@@ -64,14 +64,12 @@ export default defineConfig({
         lucide: ["clipboard", "clipboard-check", "search"],
         tabler: ["mail"],
         mdi: ["github", "arrow-top-right-thin", "rss", "sitemap", "linkedin", "arrow-right-thin"],
+        ph: ["arrow-up-right", "map-pin", "building", "arrow-up-right"],
       },
     }),
     mdx(),
   ],
   experimental: {
-    contentCollectionCache: true,
-    contentLayer: true,
-    directRenderScript: true,
     contentIntellisense: true,
   },
   prefetch: {
@@ -99,7 +97,6 @@ export default defineConfig({
       remarkAsides,
     ],
   },
-  output: "hybrid",
   adapter: vercel({
     webAnalytics: {
       enabled: true,

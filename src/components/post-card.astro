@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+export function formatDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+export interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+
+const {
+  id,
+  data: { title, date },
+} = post;
+---
+
+<div
+  class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 group border border-card-border bg-card-bg hover:border-accent/50 p-2"
+>
+  <a href={`/posts/${id}`} class="text-gray-200 hover:text-accent transition-colors duration-200">
+    {title.toLowerCase()}
+  </a>
+  <div class="flex items-center text-sm text-gray-400 shrink-0">
+    <span>
+      {
+        new Date(date)
+          .toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+          .toLowerCase()
+      }
+    </span>
+  </div>
+</div>

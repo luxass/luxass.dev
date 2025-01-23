@@ -1,15 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
-import PageLayout from "../../layouts/PageLayout.astro";
+import { getCollection, render } from "astro:content";
+import PageLayout from "../../layouts/page-layout.astro";
 
-import Code from "../../components/content/mdx/Code.astro";
-import Pre from "../../components/content/mdx/Pre.astro";
+import Code from "../../components/mdx-components/code.astro";
+import Pre from "../../components/mdx-components/pre.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
-    params: { handle: post.data.handle || post.slug },
+    params: { handle: post.data.handle || post.id },
     props: { post },
   }));
 }
@@ -18,14 +18,13 @@ interface Props {
   post: CollectionEntry<"posts">;
 }
 
-const {
-  post: {
-    data: { title, description, date },
-    render,
-  },
-} = Astro.props;
+const { post } = Astro.props;
 
-const { Content } = await render();
+const {
+  data: { title, description, date },
+} = post;
+
+const { Content } = await render(post);
 
 export const prerender = true;
 ---
@@ -35,11 +34,10 @@ export const prerender = true;
   description={description}
   image={`https://image.luxass.dev/api/image/post?title=${title}&description=${description}&date=${date}`}
 >
-  <a href="/posts">Go Back to posts</a>
+  <h1 class="mt-8">
+    {title}
+  </h1>
   <article class="tracking-wide prose markdown">
-    <h1 class="mt-8">
-      {title}
-    </h1>
     <Content
       components={{
         code: Code,

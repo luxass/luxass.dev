@@ -1,0 +1,9 @@
+[vsix-pack]
+title = "vsix-pack"
+description = "build and publish vscode extensions with ease"
+href = "https://github.com/luxass/vsix-pack"
+
+[vitest-testdirs]
+title = "vitest-testdirs"
+description = "A utility for Vitest to create isolated test directories"
+href = "https://github.com/luxass/vitest-testdirs"

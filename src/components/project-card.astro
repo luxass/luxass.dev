@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { href, description, title } = project.data;
+---
+
+<div class="group border border-card-border p-4 transition-colors hover:border-accent/50 bg-card-bg">
+  <a href={href} target="_blank">
+    <div class="flex justify-between items-start mb-4">
+      <h2 class="text-lg font-bold text-white group-hover:text-accent transition-colors">
+        {title}
+      </h2>
+      <Icon name="ph:arrow-up-right" class="w-5 h-5 text-sm text-gray-400 group-hover:text-accent transition-colors" />
+    </div>
+  </a>
+  <p class="text-gray-300">{description}</p>
+</div>

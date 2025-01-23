@@ -14,12 +14,12 @@ export async function GET({ site }: APIContext) {
     title: "luxass's blog",
     description: "writing about web development, programming, and more",
     site: site?.toString() || "https://luxass.dev",
-    items: posts.map(({ body, slug, data: { title, description, date: pubDate } }) => ({
+    items: posts.map(({ body, id, data: { title, description, date: pubDate } }) => ({
       title,
       description,
       pubDate,
-      link: `/posts/${slug}`,
-      content: sanitizeHtml(parser.render(body)),
+      link: `/posts/${id}`,
+      content: sanitizeHtml(parser.render(body || "")),
     })),
     stylesheet: "/rss/styles.xsl",
   });
