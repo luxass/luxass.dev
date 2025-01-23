@@ -4,8 +4,8 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import vercel from "@astrojs/vercel";
-import { defineConfig } from "astro/config";
 import icon from "astro-icon";
+import { defineConfig } from "astro/config";
 import { FontaineTransform } from "fontaine";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -16,7 +16,6 @@ import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
-// eslint-disable-next-line no-console
 console.log("site", site);
 
 // https://astro.build/config
