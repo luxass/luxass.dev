@@ -1,7 +1,7 @@
 [vsix-pack]
 title = "vsix-pack"
 description = "build and publish vscode extensions with ease"
-href = "https://vsix-utils.luxass.dev"
+href = "https://github.com/luxass/vsix-pack"
 
 [vitest-testdirs]
 title = "vitest-testdirs"

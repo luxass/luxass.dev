@@ -34,11 +34,10 @@ export const prerender = true;
   description={description}
   image={`https://image.luxass.dev/api/image/post?title=${title}&description=${description}&date=${date}`}
 >
-  <a href="/posts">Go Back to posts</a>
+  <h1 class="mt-8">
+    {title}
+  </h1>
   <article class="tracking-wide prose markdown">
-    <h1 class="mt-8">
-      {title}
-    </h1>
     <Content
       components={{
         code: Code,
