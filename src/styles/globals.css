@@ -10,7 +10,7 @@ body {
   background: var(--background);
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   .astro-code,
   .astro-code span:not(button span) {
     color: var(--shiki-dark) !important;
@@ -150,4 +150,4 @@ body {
   & a:not([class*="not-markdown"] a) {
     @apply text-blue-600 dark:text-blue-400 underline underline-offset-2;
   }
-} */
+}
