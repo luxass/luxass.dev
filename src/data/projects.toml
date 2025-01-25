@@ -7,3 +7,23 @@ href = "https://github.com/luxass/vsix-pack"
 title = "vitest-testdirs"
 description = "A utility for Vitest to create isolated test directories"
 href = "https://github.com/luxass/vitest-testdirs"
+
+[unplugin-yaml]
+title = "unplugin-yaml"
+description = "Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by [unplugin](https://github.com/unplugin/unplugin)."
+href = "https://github.com/luxass/unplugin-yaml"
+
+[lesetid]
+title = "lesetid"
+description = "📖 A dead simple read time estimation"
+href = "https://github.com/luxass/lesetid"
+
+[github-schema]
+title = "github-schema"
+description = "Typed GitHub GraphQL schema library for developers"
+href = "https://github.com/luxass/github-schema"
+
+[actions-kit]
+title = "actions-kit"
+description = "A GitHub Actions toolkit for TypeScript"
+href = "https://github.com/luxass/actions-kit"
