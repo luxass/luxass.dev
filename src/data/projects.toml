@@ -10,7 +10,7 @@ href = "https://github.com/luxass/vitest-testdirs"
 
 [unplugin-yaml]
 title = "unplugin-yaml"
-description = "Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by [unplugin](https://github.com/unplugin/unplugin)."
+description = "Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by unplugin."
 href = "https://github.com/luxass/unplugin-yaml"
 
 [lesetid]

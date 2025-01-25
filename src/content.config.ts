@@ -20,7 +20,7 @@ const projects = defineCollection({
       const parsed = parse(text);
 
       const entries = Object.entries(parsed).map(([slug, project]) => {
-        if (typeof project !== "object" || project === null) {
+        if (typeof project !== "object" || project === null || Array.isArray(project) || project instanceof Date) {
           throw new TypeError("expected project to be an object");
         }
 
