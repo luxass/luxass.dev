@@ -1,14 +1,14 @@
 import {
   defineConfig,
   presetIcons,
-  presetUno,
+  presetWind3,
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
 
 export default defineConfig({
   presets: [
-    presetUno({
+    presetWind3({
       dark: "media",
     }),
     presetIcons(),
