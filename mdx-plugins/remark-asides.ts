@@ -1,8 +1,9 @@
 /// <reference types="mdast-util-directive" />
 
+import type { Properties } from "hastscript";
 import type { Paragraph, Root } from "mdast";
 import type { Plugin } from "unified";
-import { h as _h, s as _s, type Properties } from "hastscript";
+import { h as _h, s as _s } from "hastscript";
 import { remove } from "unist-util-remove";
 import { visit } from "unist-util-visit";
 
