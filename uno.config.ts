@@ -23,12 +23,4 @@ export default defineConfig({
     },
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  rules: [
-    [
-      "animate-wiggle",
-      {
-        animation: "wiggle 1s ease-in-out infinite",
-      },
-    ],
-  ],
 });

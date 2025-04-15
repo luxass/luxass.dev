@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
+import { Font } from "astro:assets";
 
 export interface Props {
   title: string;
@@ -60,7 +61,7 @@ if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") 
     <!-- links -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <link rel="preload" href="/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <Font cssVariable="--font-dm-sans" preload />
   </head>
   <body class="antialiased min-h-screen font-mono">
     <div class="max-w-4xl mx-auto px-4 py-8 h-dvh flex flex-col">

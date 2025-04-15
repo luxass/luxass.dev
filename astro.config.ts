@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import vercel from "@astrojs/vercel";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import { FontaineTransform } from "fontaine";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -49,9 +49,6 @@ export default defineConfig({
           priority: item.priority,
         };
       },
-    // filter(page) {
-    //   return !page.startsWith("/posts")
-    // },
     }),
     solid(),
     unocss({
@@ -70,6 +67,11 @@ export default defineConfig({
   ],
   experimental: {
     contentIntellisense: true,
+    fonts: [{
+      provider: fontProviders.google(),
+      name: "DM Sans",
+      cssVariable: "--font-dm-sans",
+    }],
   },
   prefetch: {
     prefetchAll: true,
