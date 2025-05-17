@@ -107,6 +107,7 @@ export default defineConfig({
     },
     edgeMiddleware: true,
   }),
+  output: "server",
   vite: {
     plugins: [FontaineTransform.vite({
       fallbacks: ["Arial"],
