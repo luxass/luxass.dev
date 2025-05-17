@@ -105,6 +105,7 @@ export default defineConfig({
     isr: {
       expiration: 60 * 60 * 8,
     },
+    edgeMiddleware: true,
   }),
   vite: {
     plugins: [FontaineTransform.vite({

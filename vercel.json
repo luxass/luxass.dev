@@ -12,18 +12,6 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "spectral-ruleset.luxass.dev"
-        }
-      ],
-      "destination": "https://unpkg.com/@luxass/spectral-ruleset"
-    }
-  ],
   "redirects": [
     {
       "source": "/",
