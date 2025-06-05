@@ -54,8 +54,8 @@ importers:
         specifier: ^3.24.2
         version: 3.25.34
       zod-error-utils:
-        specifier: ^0.3.0
-        version: 0.3.0(zod@3.25.34)
+        specifier: ^1.0.0
+        version: 1.0.0(zod@3.25.34)
     devDependencies:
       '@astrojs/vercel':
         specifier: ^8.1.3
@@ -4219,8 +4219,9 @@ packages:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
 
-  zod-error-utils@0.3.0:
-    resolution: {integrity: sha512-wEwEpQJogS53WZIbcdvzvIUqfbgMjq+yaOv36hdd9hpwy57WyeUh5qJ95hO6RQA05+H03EbNZfwUdb08J60dgQ==}
+  zod-error-utils@1.0.0:
+    resolution: {integrity: sha512-0a0kKMsY1/FJVvK2BsVFujnXOvPiQOvsb3IqgZIlGDcPECol/br/p3xg5diaBFzk4ywgLdr1zD78t+iOQyETYA==}
+    engines: {node: '>=20'}
     peerDependencies:
       zod: ^3.23.4
 
@@ -9216,7 +9217,7 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod-error-utils@0.3.0(zod@3.25.34):
+  zod-error-utils@1.0.0(zod@3.25.34):
     dependencies:
       zod: 3.25.34
 
