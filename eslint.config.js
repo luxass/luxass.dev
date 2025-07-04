@@ -2,7 +2,8 @@
 import luxass from "@luxass/eslint-config";
 
 export default luxass({
-  unocss: true,
+  // It seems that the unocss plugin has some issues?
+  unocss: false,
   astro: true,
   formatters: true,
 }, {

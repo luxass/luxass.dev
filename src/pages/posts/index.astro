@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import PageLayout from "../../layouts/page-layout.astro";
 import PostCard from "../../components/post-card.astro";
+import PageLayout from "../../layouts/page-layout.astro";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft).then((posts) =>
   posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
