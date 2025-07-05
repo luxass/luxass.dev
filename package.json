@@ -9,7 +9,7 @@
     "build": "astro check && pnpm lint && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint .",
+    "lint": "ls -la && eslint .",
     "typecheck": "astro-check"
   },
   "dependencies": {
