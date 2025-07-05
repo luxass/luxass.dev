@@ -9,5 +9,7 @@ export default luxass({
 }, {
   ignores: [
     "**/vercel.json",
+    // vercel seems to put pnpm-store in the root of the project
+    ".pnpm-store/**",
   ],
 });
