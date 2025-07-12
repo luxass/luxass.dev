@@ -72,7 +72,6 @@ export default defineConfig({
           "arrow-right-thin",
         ],
         ph: [
-          "arrow-up-right",
           "map-pin",
           "building",
           "arrow-up-right",
