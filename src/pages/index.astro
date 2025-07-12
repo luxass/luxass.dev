@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
-import PageLayout from "../layouts/page-layout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import { sortPosts } from "../lib/utils";
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);

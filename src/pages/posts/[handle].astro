@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
-import Code from "../../components/mdx-components/code.astro";
+import Code from "../../components/mdx-components/Code.astro";
 
-import Pre from "../../components/mdx-components/pre.astro";
-import PageLayout from "../../layouts/page-layout.astro";
+import Pre from "../../components/mdx-components/Pre.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
