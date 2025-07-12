@@ -27,6 +27,13 @@ body {
   background: var(--color-background);
 }
 
+@media print {
+  body {
+    color: var(--color-foreground);
+    background: white;
+  }
+}
+
 @layer components {
   .typography {
     & > :not(:last-child) {
