@@ -66,11 +66,7 @@ const projects = (await getCollection("projects")).slice(0, 4);
         experience.
       </CVEntry>
 
-      <CVEntry company="Viden Djurs" period="August 2020 - November 2023" type="education">
-        As a Web Developer at Viden Djurs from August 2020 to November 2023, I focused on creating and maintaining
-        user-friendly web applications. My role involved collaborating with cross-functional teams to define, design,
-        and ship new features, as well as optimizing existing ones for performance and scalability.
-      </CVEntry>
+      <CVEntry company="Viden Djurs" period="August 2020 - November 2023" type="education" />
     </div>
   </section>
 
@@ -83,11 +79,7 @@ const projects = (await getCollection("projects")).slice(0, 4);
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print:grid-cols-2 print:gap-2">
       {
         projects.map((project) => (
-          <CVProject
-            title={project.data.title}
-            description={project.data.description}
-            href={project.data.href}
-          />
+          <CVProject title={project.data.title} description={project.data.description} href={project.data.href} />
         ))
       }
     </div>
