@@ -53,10 +53,29 @@ export default defineConfig({
     icon({
       include: {
         logos: ["npm-icon"],
-        lucide: ["clipboard", "clipboard-check", "search"],
+        lucide: [
+          "clipboard",
+          "clipboard-check",
+          "search",
+        ],
         tabler: ["mail"],
-        mdi: ["github", "arrow-top-right-thin", "rss", "sitemap", "linkedin", "arrow-right-thin"],
-        ph: ["arrow-up-right", "map-pin", "building", "arrow-up-right"],
+        mdi: [
+          "github",
+          "arrow-top-right-thin",
+          "rss",
+          "sitemap",
+          "linkedin",
+          "arrow-right-thin",
+        ],
+        ph: [
+          "arrow-up-right",
+          "map-pin",
+          "building",
+          "arrow-up-right",
+          "linkedin-logo",
+          "github-logo",
+          "envelope",
+        ],
       },
     }),
     mdx(),
