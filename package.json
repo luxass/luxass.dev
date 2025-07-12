@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "typecheck": "astro-check"
+    "typecheck": "astro-check",
+    "generate:pdf": "tsx ./scripts/generate-pdf.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -51,10 +52,12 @@
     "hastscript": "^9.0.1",
     "mdast-util-directive": "^3.1.0",
     "prettier-plugin-astro": "^0.14.1",
+    "puppeteer": "^24.12.1",
     "remark": "^15.0.1",
     "remark-directive": "^4.0.0",
     "smol-toml": "^1.4.1",
     "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "unified": "^11.0.5",
     "unist-util-remove": "^4.0.0",
@@ -62,7 +65,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "esbuild",
+      "puppeteer"
     ]
   }
 }
