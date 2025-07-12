@@ -21,11 +21,11 @@
 @theme {
   --color-*: initial;
 
-  --color-background: #ffffff;
-  --color-foreground: #1f2937;
-  --color-card-bg: #f8fafc;
-  --color-card-border: #e2e8f0;
-  --color-accent: #4169e1;
+  --color-background: oklch(0.98 0.003 106);
+  --color-foreground: oklch(0.25 0.015 258);
+  --color-card-bg: oklch(0.96 0.005 247);
+  --color-card-border: oklch(0.88 0.008 247);
+  --color-accent: oklch(0.55 0.175 264);
 }
 
 @theme inline {
