@@ -6,7 +6,7 @@ const links = [
 ];
 ---
 
-<footer class="flex flex-wrap gap-4 text-sm pt-8 justify-end">
+<footer class="flex flex-wrap gap-4 text-sm pt-8 justify-end print:hidden">
   {
     links.map((link) => (
       <a href={link.href} class="text-foreground hover:text-accent transition-colors duration-200">
