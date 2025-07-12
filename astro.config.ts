@@ -57,6 +57,10 @@ export default defineConfig({
           "clipboard",
           "clipboard-check",
           "search",
+          "briefcase",
+          "graduation-cap",
+          "rocket",
+          "heart-handshake",
         ],
         tabler: ["mail"],
         mdi: [

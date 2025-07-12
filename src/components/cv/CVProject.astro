@@ -1,0 +1,32 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { title, description, href } = Astro.props;
+---
+
+<div
+  class="rounded-lg text-card-foreground shadow-xs bg-primary/5 hover:bg-primary/10 transition-colors print:bg-transparent print:hover:bg-transparent print:shadow-none border print:border-gray-200"
+>
+  <div class="flex flex-col space-y-1.5 p-4 print:p-2">
+    <div class="text-lg font-semibold leading-none tracking-tight print:text-sm">
+      <a href={href} class="hover:underline">{title}</a>
+    </div>
+    <div class="text-sm text-foreground-muted print:text-xs">
+      {description}
+    </div>
+  </div>
+  <div class="p-4 pt-0 print:p-2">
+    <div class="flex items-center space-x-4">
+      <a
+        href={href}
+        class="text-sm text-foreground hover:underline print:text-xs"
+      >
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,32 @@
 ---
+import { Icon } from "astro-icon/components";
+
 export interface Props {
-  title: string;
   company: string;
   period: string;
+  type?: "work" | "education" | "project" | "volunteer";
 }
 
-const { title, company, period } = Astro.props;
+const { company, period, type = "work" } = Astro.props;
+
+const iconMap = {
+  work: "lucide:briefcase",
+  education: "lucide:graduation-cap",
+  project: "lucide:rocket",
+  volunteer: "lucide:heart-handshake",
+};
+
+const icon = iconMap[type];
 ---
 
-<div>
-  <h3 class="text-lg font-medium text-foreground print:text-base">{title}</h3>
-  <p class="text-foreground mb-2 print:text-sm print:mb-1">{company} | {period}</p>
+<div class="mb-6 print:mb-2">
+  <p class="text-foreground mb-2 print:text-sm print:mb-1 flex justify-between">
+    <span class="flex items-center gap-2">
+      <Icon name={icon} class="size-5" />
+      {company}
+    </span>
+    <span>{period}</span>
+  </p>
   <p class="text-foreground text-sm print:text-xs">
     <slot />
   </p>
