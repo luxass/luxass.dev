@@ -14,7 +14,7 @@ const { href, icon, label, className = "" } = Astro.props;
 
 <a href={href} class:list={["flex items-center hover:text-foreground", className]}>
   {icon != null && <Icon name={icon} class="size-4 mr-1" />}
-  <span class="text-sm print:text-xs">
+  <span class="text-sm">
     <span class="print:hidden">{label}</span>
     <span class="hidden print:inline">{stripProtocol(href)}</span>
   </span>
