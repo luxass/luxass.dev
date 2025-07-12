@@ -4,6 +4,7 @@ import CVLink from "../components/cv/CVLink.astro";
 import CVEntry from "../components/cv/CVEntry.astro";
 import CVProject from "../components/cv/CVProject.astro";
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 export const prerender = true;
 
@@ -33,6 +34,10 @@ const projects = (await getCollection("projects")).slice(0, 6);
       <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
       <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
       <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
+      <div class="flex items-center hover:text-foreground">
+        <Icon name="ph:map-pin" class="size-5 mr-1" />
+        <span class="text-sm">Aarhus, Denmark</span>
+      </div>
     </div>
 
     <p class="mt-6 text-foreground-muted print:text-sm print:mt-4">
