@@ -1,4 +1,6 @@
 ---
+import CVLink from "./CVLink.astro";
+
 export interface Props {
   title: string;
   description: string;
@@ -9,19 +11,19 @@ const { title, description, href } = Astro.props;
 ---
 
 <div
-  class="rounded-lg text-card-foreground shadow-xs bg-primary/5 hover:bg-primary/10 transition-colors print:bg-transparent print:hover:bg-transparent print:shadow-none border print:border-gray-200"
+  class="rounded-lg border border-card-border hover:bg-card-bg transition-colors print:bg-auto print:shadow-none flex flex-col"
 >
-  <div class="flex flex-col space-y-1.5 p-4 print:p-2">
+  <div class="flex flex-col space-y-1.5 p-4 pb-2 print:p-2 flex-grow">
     <div class="text-lg font-semibold leading-none tracking-tight print:text-sm">
-      <a href={href} class="hover:underline">{title}</a>
+      <span>{title}</span>
     </div>
     <div class="text-sm text-foreground-muted print:text-xs">
       {description}
     </div>
   </div>
-  <div class="p-4 pt-0 print:p-2">
+  <div class="p-4 pt-2 print:p-2 mt-auto">
     <div class="flex items-center space-x-4">
-      <a href={href} class="text-sm text-foreground hover:underline print:text-xs"> View on GitHub </a>
+      <CVLink href={href} label="View on GitHub" className="text-sm text-foreground hover:underline print:text-xs" />
     </div>
   </div>
 </div>
