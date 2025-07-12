@@ -20,14 +20,14 @@ const icon = iconMap[type];
 ---
 
 <div class="mb-6 print:mb-2">
-  <p class="text-foreground mb-2 print:text-sm print:mb-1 flex justify-between">
+  <p class="text-base text-foreground mb-2 print:text-sm print:mb-1 flex justify-between">
     <span class="flex items-center gap-2">
       <Icon name={icon} class="size-5" />
       {company}
     </span>
     <span>{period}</span>
   </p>
-  <p class="text-foreground text-sm print:text-xs">
+  <p class="text-foreground-muted text-sm print:text-xs">
     <slot />
   </p>
 </div>
