@@ -4,14 +4,13 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
-import { FontaineTransform } from "fontaine";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
-import unocss from "unocss/astro";
 import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
@@ -51,9 +50,6 @@ export default defineConfig({
       },
     }),
     solid(),
-    unocss({
-      injectReset: true,
-    }),
     icon({
       include: {
         logos: ["npm-icon"],
@@ -107,10 +103,8 @@ export default defineConfig({
     },
   }),
   vite: {
-    plugins: [FontaineTransform.vite({
-      fallbacks: ["Arial"],
-      // id is the font src value in the CSS
-      resolvePath: (id) => new URL(`./public${id}`, import.meta.url),
-    })],
+    plugins: [
+      tailwindcss(),
+    ],
   },
 });

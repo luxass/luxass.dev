@@ -1,14 +1,40 @@
-:root {
-  --background: #111;
-  --foreground: #d1d5db;
-  --card-bg: hsla(200, 7%, 9%, 1);
-  --card-border: hsla(203, 6%, 24%, 1);
+@import "tailwindcss";
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@theme {
+  --color-*: initial;
+
+  --color-background: #ffffff;
+  --color-foreground: #1f2937;
+  --color-card-bg: #f8fafc;
+  --color-card-border: #e2e8f0;
+  --color-accent: #4169e1;
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-dm-sans);
+  color: var(--color-foreground);
+  background: var(--color-background);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -105,50 +131,62 @@ body {
   margin-bottom: 0;
 }
 
-.prose {
-  @apply [&>:not(:last-child)]:mb-6;
+@layer components {
+  .typography {
+    & > :not(:last-child) {
+      margin-bottom: var(--spacing-6);
+    }
 
-  & p:not([class*="callout"] p) {
-    @apply my-6 line-height-7.2;
-  }
+    & p:not([class*="callout"] p) {
+      margin-block: var(--spacing-6);
+      line-height: var(--leading-loose);
+    }
 
-  & h1,
-  & h2,
-  & h3 {
-    @apply text-neutral-900 dark:text-neutral-300 font-semibold my-8;
-  }
+    & h1,
+    & h2,
+    & h3 {
+      color: var(--color-foreground);
+      font-weight: var(--font-weight-semibold);
+      margin: var(--spacing-8) 0;
+    }
 
-  & h1 {
-    @apply text-2xl;
-  }
+    & h1 {
+      font-size: var(--font-size-3xl);
+    }
 
-  & h2 {
-    @apply text-xl;
-  }
+    & h2 {
+      font-size: var(--font-size-2xl);
+    }
 
-  & h3 {
-    @apply text-lg;
-  }
+    & h3 {
+      font-size: var(--font-size-xl);
+    }
 
-  & strong {
-    @apply font-medium text-neutral-900 dark:text-neutral-300;
-  }
+    & strong {
+      font-weight: var(--font-weight-medium);
+      color: var(--color-foreground);
+    }
 
-  & ul {
-    @apply list-disc list-outside pl-4;
-  }
+    & ul {
+      list-style-type: disc;
+      list-style-position: outside;
+      padding-left: var(--spacing-4);
+    }
 
-  & ul > li {
-    @apply mb-2;
-  }
+    & ul > li {
+      margin-bottom: var(--spacing-2);
+    }
 
-  & img {
-    @apply mx-auto rounded my-6;
-  }
-}
+    & img {
+      display: block;
+      margin-block: var(--spacing-6);
+      border-radius: var(--border-radius-sm);
+    }
 
-.markdown {
-  & a:not([class*="not-markdown"] a) {
-    @apply text-blue-600 dark:text-blue-400 underline underline-offset-2;
+    & a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   }
 }
