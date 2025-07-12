@@ -1,0 +1,87 @@
+---
+import CVLayout from "../layouts/CVLayout.astro";
+import CVLink from "../components/cv/CVLink.astro";
+import CVEntry from "../components/cv/CVEntry.astro";
+import CVProject from "../components/cv/CVProject.astro";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+const projects = (await getCollection("projects")).slice(0, 4);
+---
+
+<CVLayout
+  title="CV - Lucas Nørgård"
+  description="CV and resume of Lucas Nørgård - Software Engineer"
+  keywords={[
+    "lucas nørgård",
+    "luxass",
+    "nørgård",
+    "lucas",
+    "fullstack",
+    "backend",
+    "frontend",
+    "web developer",
+    "cv",
+    "resume",
+    "software engineer",
+  ]}
+>
+  <header class="mb-16 print:mb-8">
+    <h1 class="text-4xl font-light text-foreground mb-2 print:text-3xl">Lucas Nørgård</h1>
+    <div class="flex flex-wrap gap-x-4 gap-y-2 text-foreground print:text-sm">
+      <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
+      <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
+      <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
+    </div>
+
+    <p class="mt-6 text-foreground-muted print:text-sm print:mt-4">
+      Software engineer and DevOps specialist with extensive experience in web application development, software
+      architecture, and infrastructure management. Currently maintaining robust Kubernetes clusters and critical
+      microservices at Region Midtjylland while building secure integrations for healthcare technology.
+    </p>
+
+    <p class="mt-4 text-foreground-muted print:text-sm print:mt-2">
+      Specialized in Rust, Go, Java and TypeScript with a passion for developer experience, CI optimization, and
+      creating tooling that empowers development teams. Committed to open source contributions and designing scalable
+      systems that deliver measurable impact in collaborative environments.
+    </p>
+  </header>
+
+  <section class="mb-12 print:mb-6">
+    <h2 class="text-2xl font-light text-foreground mb-4 pb-2 print:text-xl print:mb-2">Experience & Education</h2>
+    <div class="space-y-6 print:space-y-3">
+      <CVEntry company="DevOps Engineer @ Region Midtjylland" period="September 2024 - Present" type="work">
+        As a DevOps Engineer at Region Midtjylland from September 2024 to Present, I play a crucial role in ensuring the
+        timely completion of solutions by assisting various teams. My responsibilities include collaborating with my
+        team to maintain a robust Kubernetes cluster, which is essential for the deployment and scaling of applications.
+        Additionally, we manage several critical microservices that are vital to the organization's operations, ensuring
+        they run smoothly and efficiently.
+      </CVEntry>
+
+      <CVEntry company="Software Developer @ Region Midtjylland" period="May 2023 - September 2024" type="work">
+        As a Software Developer at Region Midtjylland from May 2023 to September 2024, I developed clinician-facing
+        solutions to enhance daily workflows, implemented features to protect clinicians during their work, improved
+        efficiency and safety in clinical environments, and focused on user-friendly interfaces for a better clinician
+        experience.
+      </CVEntry>
+
+      <CVEntry company="Viden Djurs" period="August 2020 - November 2023" type="education" />
+    </div>
+  </section>
+
+  <section class="mb-12 print:mb-6">
+    <h2 class="text-2xl font-light text-foreground mb-4 pb-2 print:text-xl print:mb-2">Open Source Projects</h2>
+    <p class="text-foreground-muted text-sm mb-6 print:text-xs print:mb-3">
+      Here are some notable open source projects I have contributed to and maintain. These range from developer tools to
+      utility libraries.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print:grid-cols-2 print:gap-2">
+      {
+        projects.map((project) => (
+          <CVProject title={project.data.title} description={project.data.description} href={project.data.href} />
+        ))
+      }
+    </div>
+  </section>
+</CVLayout>

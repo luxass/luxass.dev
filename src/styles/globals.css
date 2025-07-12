@@ -5,6 +5,7 @@
 
   --color-background: oklch(0.98 0.003 106);
   --color-foreground: oklch(0.25 0.015 258);
+  --color-foreground-muted: oklch(0.45 0.015 258);
   --color-card-bg: oklch(0.96 0.005 247);
   --color-card-border: oklch(0.88 0.008 247);
   --color-accent: oklch(0.55 0.175 264);

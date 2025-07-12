@@ -1,0 +1,69 @@
+---
+import { Font } from "astro:assets";
+import "../styles/globals.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  keywords?: string[];
+  class?: string;
+}
+
+const {
+  description = "personal website and blog of lucas nørgård",
+  keywords = [],
+  image = new URL(`https://image.luxass.dev/api/image/text?width=300&height=300`),
+} = Astro.props;
+let { title } = Astro.props;
+
+if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
+  title = title.replace("luxass.dev", "luxass.com");
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- global metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    {import.meta.env.SITE_HOST === "luxass.com" && <link rel="canonical" href="https://luxass.dev" />}
+
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+
+    <!-- primary meta tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="keywords" content={keywords.join(", ")} />
+    <meta name="description" content={description} />
+
+    <!-- open graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="luxass.dev" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- links -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <Font cssVariable="--font-dm-sans" preload />
+  </head>
+  <body class="antialiased min-h-screen font-mono">
+    <main class="max-w-4xl mx-auto px-4 py-8 print:py-0 print:px-0 h-dvh flex flex-col">
+      <slot />
+    </main>
+  </body>
+</html>
