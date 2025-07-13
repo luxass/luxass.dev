@@ -8,7 +8,10 @@ import { Icon } from "astro-icon/components";
 
 export const prerender = true;
 
-const projects = (await getCollection("projects")).slice(0, 6);
+const MAX = 6;
+
+const contributions = (await getCollection("contributions")).slice(0, MAX);
+const projects = (await getCollection("projects")).slice(0, MAX - contributions.length);
 ---
 
 <CVLayout
@@ -28,7 +31,7 @@ const projects = (await getCollection("projects")).slice(0, 6);
     "software engineer",
   ]}
 >
-  <header class="mb-16 print:mb-8">
+  <header class="mb-12 print:mb-12">
     <h1 class="text-4xl font-light text-foreground mb-2 print:text-3xl">Lucas Nørgård</h1>
     <div class="flex flex-wrap gap-x-4 gap-y-2 text-foreground print:text-sm">
       <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
@@ -47,8 +50,10 @@ const projects = (await getCollection("projects")).slice(0, 6);
     </p>
 
     <p class="mt-4 text-foreground-muted print:text-sm print:mt-2">
-      I work primarily with Go, Rust, TypeScript, Kotlin, and Java. My day-to-day involves Kubernetes, CI/CD pipelines,
-      and API development. I enjoy improving developer workflows and contributing to open source projects.
+      My day-to-day involves <b>Kubernetes</b>, CI/CD pipelines, and API development. I collaborate with
+      cross-functional teams to define and implement innovative solutions and involve using <b>Go</b>, <b>Rust</b>, <b
+        >TypeScript</b
+      >, <b>Kotlin</b>, and <b>Java</b>.
     </p>
   </header>
 
@@ -65,7 +70,7 @@ const projects = (await getCollection("projects")).slice(0, 6);
         healthcare compliance and developed RESTful APIs for clinical workflows.
       </CVEntry>
 
-      <CVEntry company="Web Developer Program @ Viden Djurs" period="August 2020 - November 2022" type="education">
+      <CVEntry company="Web Developer Education @ Viden Djurs" period="August 2020 - November 2022" type="education">
         Full-stack web development education covering programming fundamentals, API design, and modern web technologies.
       </CVEntry>
     </div>
@@ -74,12 +79,17 @@ const projects = (await getCollection("projects")).slice(0, 6);
   <section class="mb-12 print:mb-6">
     <h2 class="text-2xl font-light text-foreground mb-4 pb-2 print:text-xl print:mb-2">Open Source Projects</h2>
     <p class="text-foreground-muted text-sm mb-6 print:text-xs print:mb-3">
-      Contributor to 6+ open source projects, mostly developer tools and TypeScript libraries.
+      I enjoy improving developer workflows and contributing to open source projects with 6+ open source projects,
+      mostly developer tools and TypeScript libraries.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print:grid-cols-2 print:gap-2">
       {
-        projects.map((project) => (
-          <CVProject title={project.data.title} description={project.data.description} href={project.data.href} />
+        [...contributions, ...projects].map(({ data: projectOrContribution }) => (
+          <CVProject
+            title={projectOrContribution.title}
+            description={projectOrContribution.description}
+            href={projectOrContribution.href}
+          />
         ))
       }
     </div>

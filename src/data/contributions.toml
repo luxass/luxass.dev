@@ -1,0 +1,9 @@
+[hono-zod-openapi]
+title = "@hono/zod-openapi"
+description = "Helped to eliminate some issues with basePath and pathPrefix in the OpenAPI generation."
+href = "https://github.com/honojs/middleware"
+
+[vitest-eslint]
+title = "@vitest/eslint-plugin"
+description = "Implemented autofix for some rules, and fixed some detection issues."
+href = "https://github.com/vitest-dev/eslint-plugin-vitest"
