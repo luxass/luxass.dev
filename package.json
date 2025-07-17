@@ -28,7 +28,7 @@
     "rehype-slug": "^6.0.0",
     "sanitize-html": "^2.17.0",
     "solid-js": "^1.9.7",
-    "zod": "^3.25.74"
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "@astrojs/vercel": "^8.2.1",
