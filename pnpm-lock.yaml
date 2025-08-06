@@ -65,7 +65,7 @@ importers:
         version: 1.2.5
       '@iconify-json/lucide':
         specifier: ^1.2.57
-        version: 1.2.58
+        version: 1.2.59
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -591,8 +591,8 @@ packages:
   '@iconify-json/logos@1.2.5':
     resolution: {integrity: sha512-WR8+9kFwx1tIR+hWpKYC+rpVkAuzHyaVxZRfhGGIjqCfgbodK7rS4+OZhktdKtZKKcdmhpLZKvlmRm4IA4dKRg==}
 
-  '@iconify-json/lucide@1.2.58':
-    resolution: {integrity: sha512-4ONe3ONaauEaf7wEQIvlWz2xHaMXUXuQeJVRBMu4PmsBrMEfdnc2vRZRyAudmcQo8yWmEsLu6WM7/5qWUdDJHQ==}
+  '@iconify-json/lucide@1.2.59':
+    resolution: {integrity: sha512-qHVs++9sGUxSNf8nJ0U/0UxHyVaut9TV4V7dc3i4K9jqxL/eg/sDpgKsX3+GrsWP3IwE8cARRgQHoLEb3Eru2Q==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -4685,7 +4685,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/lucide@1.2.58':
+  '@iconify-json/lucide@1.2.59':
     dependencies:
       '@iconify/types': 2.0.0
 
