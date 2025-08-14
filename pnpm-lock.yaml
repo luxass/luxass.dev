@@ -22,7 +22,7 @@ importers:
         version: 3.4.2
       '@astrojs/solid-js':
         specifier: ^5.1.0
-        version: 5.1.0(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(solid-js@1.9.7)(tsx@4.20.3)(yaml@2.8.1)
+        version: 5.1.0(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(solid-js@1.9.8)(tsx@4.20.3)(yaml@2.8.1)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(vue@3.5.17(typescript@5.9.2))
@@ -49,7 +49,7 @@ importers:
         version: 2.17.0
       solid-js:
         specifier: ^1.9.7
-        version: 1.9.7
+        version: 1.9.8
       zod:
         specifier: ^3.25.74
         version: 3.25.76
@@ -65,7 +65,7 @@ importers:
         version: 1.2.5
       '@iconify-json/lucide':
         specifier: ^1.2.57
-        version: 1.2.60
+        version: 1.2.61
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -591,8 +591,8 @@ packages:
   '@iconify-json/logos@1.2.5':
     resolution: {integrity: sha512-WR8+9kFwx1tIR+hWpKYC+rpVkAuzHyaVxZRfhGGIjqCfgbodK7rS4+OZhktdKtZKKcdmhpLZKvlmRm4IA4dKRg==}
 
-  '@iconify-json/lucide@1.2.60':
-    resolution: {integrity: sha512-iVhpjcJkrR65jaJCJAFr02FkL73Qth039MgDJOcuKYOl32183qgAeHmo44DI2SzkYURGpc0GMwnhRPpQPOaChg==}
+  '@iconify-json/lucide@1.2.61':
+    resolution: {integrity: sha512-0sLmi3vyEsJ6XL/uhl0a+uphdYIW1viYkUmiuT4SK3e2R3o3GIWY9k8N+SZL++GVBbMKy9oatx8KrzyoPZ6WqQ==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -3542,8 +3542,8 @@ packages:
     resolution: {integrity: sha512-HLpt+uLy/pxB+bum/9DzAgiKS8CX1EvbWxI4zlmgGCExImLdiad2iCwXT5Z4c9c3Eq8rP2318mPW2c+QbtjK8A==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
 
-  solid-js@1.9.7:
-    resolution: {integrity: sha512-/saTKi8iWEM233n5OSi1YHCCuh66ZIQ7aK2hsToPe4tqGm7qAejU1SwNuTPivbWAYq7SjuHVVYxxuZQNRbICiw==}
+  solid-js@1.9.8:
+    resolution: {integrity: sha512-zF9Whfqk+s8wWuyDKnE7ekl+dJburjdZq54O6X1k4XChA57uZ5FOauYAa0s4I44XkBOM3CZmPrZC0DGjH9fKjQ==}
 
   solid-refresh@0.6.3:
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
@@ -4331,11 +4331,11 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/solid-js@5.1.0(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(solid-js@1.9.7)(tsx@4.20.3)(yaml@2.8.1)':
+  '@astrojs/solid-js@5.1.0(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(solid-js@1.9.8)(tsx@4.20.3)(yaml@2.8.1)':
     dependencies:
-      solid-js: 1.9.7
+      solid-js: 1.9.8
       vite: 6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)
-      vite-plugin-solid: 2.11.7(solid-js@1.9.7)(vite@6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1))
+      vite-plugin-solid: 2.11.7(solid-js@1.9.8)(vite@6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - '@types/node'
@@ -4728,7 +4728,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/lucide@1.2.60':
+  '@iconify-json/lucide@1.2.61':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8499,18 +8499,18 @@ snapshots:
       ip-address: 10.0.1
       smart-buffer: 4.2.0
 
-  solid-js@1.9.7:
+  solid-js@1.9.8:
     dependencies:
       csstype: 3.1.3
       seroval: 1.3.2
       seroval-plugins: 1.3.2(seroval@1.3.2)
 
-  solid-refresh@0.6.3(solid-js@1.9.7):
+  solid-refresh@0.6.3(solid-js@1.9.8):
     dependencies:
       '@babel/generator': 7.28.0
       '@babel/helper-module-imports': 7.27.1
       '@babel/types': 7.28.2
-      solid-js: 1.9.7
+      solid-js: 1.9.8
     transitivePeerDependencies:
       - supports-color
 
@@ -8858,14 +8858,14 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-solid@2.11.7(solid-js@1.9.7)(vite@6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)):
+  vite-plugin-solid@2.11.7(solid-js@1.9.8)(vite@6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)):
     dependencies:
       '@babel/core': 7.28.0
       '@types/babel__core': 7.20.5
       babel-preset-solid: 1.9.6(@babel/core@7.28.0)
       merge-anything: 5.1.7
-      solid-js: 1.9.7
-      solid-refresh: 0.6.3(solid-js@1.9.7)
+      solid-js: 1.9.8
+      solid-refresh: 0.6.3(solid-js@1.9.8)
       vite: 6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)
       vitefu: 1.1.1(vite@6.3.5(@types/node@22.17.0)(jiti@2.4.2)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1))
     transitivePeerDependencies:
