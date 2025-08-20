@@ -5,6 +5,8 @@ import puppeteer from "puppeteer";
 const root = resolve(import.meta.dirname, "..");
 
 let browser: Browser | null = null;
+// eslint-disable-next-line node/prefer-global/process
+const PDF_URL = process.env.PDF_URL ?? "https://luxass.dev/cv";
 
 async function run() {
   browser = await puppeteer.launch({
@@ -13,7 +15,7 @@ async function run() {
 
   const page = await browser.newPage();
 
-  await page.goto("https://luxass.dev/cv", {
+  await page.goto(PDF_URL, {
     waitUntil: "networkidle2",
   });
 
