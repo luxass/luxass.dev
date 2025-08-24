@@ -37,9 +37,9 @@ const projects = allProjects.filter(({ data }) => data.type === "personal").slic
     "software engineer",
   ]}
 >
-  <header class="mb-6 print:mb-4">
-    <h1 class="text-3xl font-light text-foreground mb-2 print:text-2xl">Lucas Nørgård</h1>
-    <div class="flex flex-wrap gap-x-4 gap-y-1 text-foreground print:text-sm mb-4">
+  <header class="mb-6 print:mb-2">
+    <h1 class="text-3xl font-light text-foreground mb-2 print:text-2xl print:mb-1">Lucas Nørgård</h1>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 text-foreground print:text-sm mb-4 print:mb-2">
       <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
       <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
       <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
@@ -127,4 +127,6 @@ const projects = allProjects.filter(({ data }) => data.type === "personal").slic
       }
     </div>
   </section>
+
+  <div class="pb-8 print:hidden"></div>
 </CVLayout>

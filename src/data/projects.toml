@@ -1,35 +1,61 @@
 [unplugin-yaml]
 title = "unplugin-yaml"
-description = "Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by unplugin."
+description = "Universal YAML import plugin for modern bundlers. Seamlessly import YAML files as JavaScript objects with full TypeScript support across Vite, Webpack, Rollup, and esbuild."
 href = "https://github.com/luxass/unplugin-yaml"
 type = "personal"
+downloads = "3.5K/month"
 
 [vitest-testdirs]
 title = "vitest-testdirs"
-description = "A utility for Vitest to create isolated test directories"
+description = "Clean, isolated test directories for Vitest. Automatically creates and manages temporary directories for each test, ensuring no test pollution and reliable file system testing."
 href = "https://github.com/luxass/vitest-testdirs"
 type = "personal"
+downloads = "2.6K/month"
 
 [github-schema]
 title = "github-schema"
-description = "Typed GitHub GraphQL schema library for developers"
+description = "Type-safe GitHub GraphQL API client. Auto-generated TypeScript definitions from GitHub's schema, enabling confident API interactions with full IntelliSense support."
 href = "https://github.com/luxass/github-schema"
 type = "personal"
+downloads = "700/month"
+
+[esbuild-yaml]
+title = "esbuild-yaml"
+description = "YAML support for esbuild. Transform YAML files into JavaScript objects during the build process."
+href = "https://github.com/luxass/esbuild-yaml"
+type = "personal"
+downloads = "9K/month"
+
+[jsonc-parse]
+title = "jsonc-parse"
+description = "JSONC parser for JavaScript. Supports comments and trailing commas, making it easier to work with configuration files."
+href = "https://github.com/luxass/jsonc-parse"
+type = "personal"
+downloads = "80K/month"
+
+[strip-json-comments]
+title = "strip-json-comments"
+description = "Strip comments from JSONC (JSON with Comments) files. Useful for preprocessing configuration files."
+href = "https://github.com/luxass/strip-json-comments"
+type = "personal"
+downloads = "85K/month"
 
 [ucdjs]
 title = "ucdjs"
-description = "A JavaScript library for Unicode character data"
+description = "Comprehensive Unicode character database for JavaScript. Access detailed character properties, categories, and metadata with a lightweight, tree-shakable API."
 href = "https://github.com/ucdjs/ucd"
 type = "personal"
 
 [hono-zod-openapi]
 title = "@hono/zod-openapi"
-description = "Helped to eliminate some issues with basePath and pathPrefix in the OpenAPI generation."
+description = "Fixed critical OpenAPI generation bugs affecting basePath and pathPrefix handling, improving API documentation accuracy for thousands of developers."
 href = "https://github.com/honojs/middleware"
 type = "contribution"
+downloads = "180K/month"
 
 [vitest-eslint]
 title = "@vitest/eslint-plugin"
-description = "Implemented autofix for some rules, and fixed some detection issues."
+description = "Enhanced ESLint plugin with automatic fixes for common Vitest patterns and improved rule detection, streamlining test code quality for the ecosystem."
 href = "https://github.com/vitest-dev/eslint-plugin-vitest"
 type = "contribution"
+downloads = "1.2M/month"

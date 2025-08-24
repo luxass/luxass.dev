@@ -39,8 +39,8 @@ const projects = defineCollection({
     description: z.string(),
     href: z.string(),
     type: z.enum(["personal", "contribution"]),
+    downloads: z.string().optional(),
   }),
 });
-
 
 export const collections = { posts, projects };
