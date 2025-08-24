@@ -10,8 +10,10 @@ export const prerender = true;
 
 const MAX = 4;
 
-const contributions = (await getCollection("contributions")).slice(0, MAX);
-const projects = (await getCollection("projects")).slice(0, MAX - contributions.length);
+const allProjects = await getCollection("projects");
+
+const contributions = allProjects.filter(({ data }) => data.type === "contribution").slice(0, MAX);
+const projects = allProjects.filter(({ data }) => data.type === "personal").slice(0, MAX - contributions.length);
 ---
 
 <CVLayout

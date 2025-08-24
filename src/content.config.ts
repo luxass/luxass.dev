@@ -38,34 +38,9 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     href: z.string(),
+    type: z.enum(["personal", "contribution"]),
   }),
 });
 
-const contributions = defineCollection({
-  loader: file("src/data/contributions.toml", {
-    parser(text) {
-      const parsed = parse(text);
 
-      const entries = Object.entries(parsed).map(([slug, contribution]) => {
-        if (typeof contribution !== "object" || contribution === null || Array.isArray(contribution) || contribution instanceof Date) {
-          throw new TypeError("expected contribution to be an object");
-        }
-
-        return {
-          slug,
-          ...contribution,
-        };
-      });
-
-      return entries;
-    },
-  }),
-  schema: z.object({
-    slug: z.string(),
-    title: z.string(),
-    description: z.string(),
-    href: z.string(),
-  }),
-});
-
-export const collections = { posts, projects, contributions };
+export const collections = { posts, projects };
