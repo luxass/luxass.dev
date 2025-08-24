@@ -19,13 +19,15 @@ const iconMap = {
 const icon = iconMap[type];
 ---
 
-<div class="mb-6 print:mb-2">
-  <p class="text-base text-foreground mb-2 print:text-sm print:mb-1 flex justify-between">
+<div class="mb-6 print:mb-4">
+  <p
+    class="text-base text-foreground mb-2 print:text-sm print:mb-1 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0"
+  >
     <span class="flex items-center gap-2">
       <Icon name={icon} class="size-5" />
       {company}
     </span>
-    <span>{period}</span>
+    <span class="text-sm text-foreground-muted sm:text-base sm:text-foreground">{period}</span>
   </p>
   <p class="text-foreground-muted text-sm print:text-xs">
     <slot />
