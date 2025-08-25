@@ -2,11 +2,13 @@
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
-import { sortPosts } from "../lib/utils";
+import { downloadsSort, sortPosts } from "../lib/utils";
 import ProjectCard from "../components/cards/ProjectCard.astro";
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
-const projects = (await getCollection("projects")).slice(0, 3);
+const projects = (await getCollection("projects", ({ data }) => data.type === "personal"))
+  .sort(downloadsSort)
+  .slice(0, 3);
 
 export const prerender = true;
 ---
@@ -60,11 +62,7 @@ export const prerender = true;
   <section class="mb-16">
     <h2 class="text-xl font-bold mb-4 flex items-center text-foreground">projects</h2>
     <div class="space-y-6">
-      {
-        projects.map((project) => (
-          <ProjectCard project={project} noBorder={true} />
-        ))
-      }
+      {projects.map((project) => <ProjectCard project={project} noBorder={true} />)}
     </div>
 
     <a href="/projects" class="text-sm inline-flex items-center gap-1 mt-6 text-accent hover:underline group">
