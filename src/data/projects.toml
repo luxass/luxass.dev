@@ -3,14 +3,14 @@ title = "unplugin-yaml"
 description = "Universal YAML import plugin with TypeScript support for Vite, Webpack, Rollup, and esbuild."
 href = "https://github.com/luxass/unplugin-yaml"
 type = "personal"
-downloads = 3500
+downloads = 3600
 
 [vitest-testdirs]
 title = "vitest-testdirs"
 description = "Isolated test directories for Vitest. Prevents test pollution with automatic cleanup."
 href = "https://github.com/luxass/vitest-testdirs"
 type = "personal"
-downloads = 2600
+downloads = 2800
 
 [github-schema]
 title = "github-schema"
@@ -51,11 +51,11 @@ title = "@hono/zod-openapi"
 description = "Fixed critical OpenAPI basePath and pathPrefix bugs in popular middleware."
 href = "https://github.com/honojs/middleware"
 type = "contribution"
-downloads = 180000
+downloads = 727000
 
 [vitest-eslint]
 title = "@vitest/eslint-plugin"
 description = "Enhanced ESLint plugin with automatic fixes and improved rule detection."
 href = "https://github.com/vitest-dev/eslint-plugin-vitest"
 type = "contribution"
-downloads = 1200000
+downloads = 4700000
