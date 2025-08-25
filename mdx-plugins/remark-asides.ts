@@ -144,7 +144,7 @@ export const remarkAsides: Plugin<void[], Root> = () => {
 
       if (!isAsideVariant(variant)) return;
 
-      // remark-directive converts a container’s “label” to a paragraph in
+      // remark-directive converts a container's "label" to a paragraph in
       // its children, but we want to pass it as the title prop to <Aside>, so
       // we iterate over the children, find a directive label, store it for the
       // title prop, and remove the paragraph from children.
