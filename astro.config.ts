@@ -61,6 +61,8 @@ export default defineConfig({
           "graduation-cap",
           "rocket",
           "heart-handshake",
+          "user",
+          "git-pull-request",
         ],
         tabler: ["mail"],
         mdi: [
@@ -78,6 +80,7 @@ export default defineConfig({
           "linkedin-logo",
           "github-logo",
           "envelope",
+          "file-text",
         ],
       },
     }),
