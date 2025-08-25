@@ -32,10 +32,10 @@ export default defineConfig({
             pathname = pathname.slice(0, -1);
           }
           const relativePath = pathname.startsWith("/") ? pathname.slice(1) : pathname;
-          
+
           let contentPath = path.join("./src/content", `${relativePath}.mdx`);
           let content: string;
-          
+
           try {
             content = await readFile(contentPath, "utf-8");
           } catch {
