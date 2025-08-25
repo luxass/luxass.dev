@@ -4,7 +4,17 @@ import ProjectCard from "../../components/cards/ProjectCard.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 import { downloadsSort } from "../../lib/utils";
 
-const projects = (await getCollection("projects")).sort(downloadsSort);
+const allProjects = await getCollection("projects");
+
+const personalProjects = allProjects
+  .filter(({ data }) => data.type === "personal")
+  .sort(downloadsSort);
+
+const contributions = allProjects
+  .filter(({ data }) => data.type === "contribution")
+  .sort(downloadsSort);
+
+const projects = [...personalProjects, ...contributions];
 
 export const prerender = true;
 ---
