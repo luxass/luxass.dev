@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import path from "node:path";
 import process from "node:process";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -25,10 +26,22 @@ export default defineConfig({
       lastmod: new Date(),
       changefreq: "daily",
       async serialize(item) {
-        const pathname = new URL(item.url).pathname;
+        let pathname = decodeURIComponent(new URL(item.url).pathname);
         if (pathname !== "/posts/" && pathname.startsWith("/posts/")) {
-          const contentPath = `./src/content${pathname.slice(0, -1)}.mdx`;
-          const content = await readFile(contentPath, "utf-8");
+          if (pathname.endsWith("/")) {
+            pathname = pathname.slice(0, -1);
+          }
+          const relativePath = pathname.startsWith("/") ? pathname.slice(1) : pathname;
+          
+          let contentPath = path.join("./src/content", `${relativePath}.mdx`);
+          let content: string;
+          
+          try {
+            content = await readFile(contentPath, "utf-8");
+          } catch {
+            contentPath = path.join("./src/content", `${relativePath}.md`);
+            content = await readFile(contentPath, "utf-8");
+          }
           // parse front matter in content file.
           const frontMatterEndIndex = content.indexOf("---", 3);
           if (frontMatterEndIndex === -1) {
