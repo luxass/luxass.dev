@@ -6,13 +6,9 @@ import { downloadsSort } from "../../lib/utils";
 
 const allProjects = await getCollection("projects");
 
-const personalProjects = allProjects
-  .filter(({ data }) => data.type === "personal")
-  .sort(downloadsSort);
+const personalProjects = allProjects.filter(({ data }) => data.type === "personal").sort(downloadsSort);
 
-const contributions = allProjects
-  .filter(({ data }) => data.type === "contribution")
-  .sort(downloadsSort);
+const contributions = allProjects.filter(({ data }) => data.type === "contribution").sort(downloadsSort);
 
 const projects = [...personalProjects, ...contributions];
 
