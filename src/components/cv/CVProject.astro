@@ -5,9 +5,24 @@ export interface Props {
   title: string;
   description: string;
   href: string;
+  downloads?: number;
 }
 
-const { title, description, href } = Astro.props;
+const { title, description, href, downloads } = Astro.props;
+
+const numberRegex = /\.0$/;
+
+function formatDownloads(num: number): string {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1).replace(numberRegex, "") + "M";
+  }
+
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1).replace(numberRegex, "") + "K";
+  }
+
+  return num.toString();
+}
 ---
 
 <a
@@ -15,8 +30,9 @@ const { title, description, href } = Astro.props;
   class="rounded-lg border border-card-border hover:bg-card-bg transition-colors print:bg-auto print:shadow-none print:border-none flex flex-col"
 >
   <div class="flex flex-col space-y-1.5 p-4 print:p-2 flex-grow">
-    <div class="text-base font-semibold leading-none tracking-tight print:text-sm">
+    <div class="text-base font-semibold leading-none tracking-tight print:text-sm flex justify-between items-start">
       <span>{title}</span>
+      {downloads && <span class="text-xs text-foreground-muted font-normal">{formatDownloads(downloads)}/month</span>}
     </div>
     <div class="hidden print:block text-xs text-foreground-muted">
       {stripProtocol(href)}

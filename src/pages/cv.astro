@@ -8,12 +8,26 @@ import { Icon } from "astro-icon/components";
 
 export const prerender = true;
 
-const MAX = 4;
+const MAX = 6;
+const PERSONAL_MAX = 4;
 
 const allProjects = await getCollection("projects");
 
-const contributions = allProjects.filter(({ data }) => data.type === "contribution").slice(0, MAX);
-const projects = allProjects.filter(({ data }) => data.type === "personal").slice(0, MAX - contributions.length);
+function sort(a: (typeof allProjects)[number], b: (typeof allProjects)[number]) {
+  const aDownloads = a.data.downloads || 0;
+  const bDownloads = b.data.downloads || 0;
+  return bDownloads - aDownloads;
+}
+
+const projects = allProjects
+  .filter(({ data }) => data.type === "personal")
+  .sort(sort)
+  .slice(0, PERSONAL_MAX);
+
+const contributions = allProjects
+  .filter(({ data }) => data.type === "contribution")
+  .sort(sort)
+  .slice(0, MAX - projects.length);
 ---
 
 <CVLayout
@@ -100,9 +114,8 @@ const projects = allProjects.filter(({ data }) => data.type === "personal").slic
 
       <CVEntry company="Web Developer Vocational Education @ Viden Djurs" period="Aug 2020 - Nov 2022" type="education">
         <p class="text-sm print:text-xs text-foreground-muted leading-relaxed">
-          Completed comprehensive full-stack web development program covering programming fundamentals, API design, and
-          modern web technologies. Gained foundational expertise in <strong>TypeScript</strong>, <strong>React</strong>,
-          and web application architecture.
+          Full-stack web development program covering <strong>TypeScript</strong>, <strong>React</strong>, and modern
+          web technologies.
         </p>
       </CVEntry>
     </div>
@@ -118,11 +131,12 @@ const projects = allProjects.filter(({ data }) => data.type === "personal").slic
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 print:grid-cols-2 print:gap-2">
       {
-        [...contributions, ...projects].map(({ data: projectOrContribution }) => (
+        [...projects, ...contributions].map(({ data: projectOrContribution }) => (
           <CVProject
             title={projectOrContribution.title}
             description={projectOrContribution.description}
             href={projectOrContribution.href}
+            downloads={projectOrContribution.downloads}
           />
         ))
       }
