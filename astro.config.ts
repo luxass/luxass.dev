@@ -25,13 +25,14 @@ export default defineConfig({
       lastmod: new Date(),
       changefreq: "daily",
       async serialize(item) {
-        if (item.url !== `${site}/posts/` && item.url.includes("/posts/")) {
-          const url = item.url.replace("https://luxass.dev", "");
-          const content = await readFile(`./src/content${url.slice(0, url.length - 1)}.mdx`, "utf-8");
+        const pathname = new URL(item.url).pathname;
+        if (pathname !== "/posts/" && pathname.startsWith("/posts/")) {
+          const contentPath = `./src/content${pathname.slice(0, -1)}.mdx`;
+          const content = await readFile(contentPath, "utf-8");
           // parse front matter in content file.
           const frontMatterEndIndex = content.indexOf("---", 3);
           if (frontMatterEndIndex === -1) {
-            throw new Error(`Front matter not found in ${url}`);
+            throw new Error(`Front matter not found in ${pathname}`);
           }
           const frontMatter = content.slice(3, frontMatterEndIndex).trim();
           const isDraft = frontMatter.includes("draft: true");
