@@ -5,6 +5,7 @@ import CVEntry from "../components/cv/CVEntry.astro";
 import CVProject from "../components/cv/CVProject.astro";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
+import { downloadsSort } from "../lib/utils";
 
 export const prerender = true;
 
@@ -13,20 +14,14 @@ const PERSONAL_MAX = 4;
 
 const allProjects = await getCollection("projects");
 
-function sort(a: (typeof allProjects)[number], b: (typeof allProjects)[number]) {
-  const aDownloads = a.data.downloads || 0;
-  const bDownloads = b.data.downloads || 0;
-  return bDownloads - aDownloads;
-}
-
 const projects = allProjects
   .filter(({ data }) => data.type === "personal")
-  .sort(sort)
+  .sort(downloadsSort)
   .slice(0, PERSONAL_MAX);
 
 const contributions = allProjects
   .filter(({ data }) => data.type === "contribution")
-  .sort(sort)
+  .sort(downloadsSort)
   .slice(0, MAX - projects.length);
 ---
 

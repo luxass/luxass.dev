@@ -1,5 +1,5 @@
 ---
-import { stripProtocol } from "../../lib/utils";
+import { formatDownloads, stripProtocol } from "../../lib/utils";
 import { Icon } from "astro-icon/components";
 
 export interface Props {
@@ -11,20 +11,6 @@ export interface Props {
 }
 
 const { title, description, href, downloads, type } = Astro.props;
-
-const numberRegex = /\.0$/;
-
-function formatDownloads(num: number): string {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(1).replace(numberRegex, "") + "M";
-  }
-
-  if (num >= 1000) {
-    return (num / 1000).toFixed(1).replace(numberRegex, "") + "K";
-  }
-
-  return num.toString();
-}
 ---
 
 <a
@@ -34,7 +20,10 @@ function formatDownloads(num: number): string {
   <div class="flex flex-col space-y-1.5 p-4 print:p-2 flex-grow">
     <div class="text-base font-semibold leading-none tracking-tight print:text-sm flex justify-between items-start">
       <span class="flex items-center gap-1.5">
-        <Icon name={type === "personal" ? "lucide:user" : "lucide:git-pull-request"} class="size-3.5 text-foreground-muted flex-shrink-0" />
+        <Icon
+          name={type === "personal" ? "lucide:user" : "lucide:git-pull-request"}
+          class="size-3.5 text-foreground-muted flex-shrink-0"
+        />
         {title}
       </span>
       {downloads && <span class="text-xs text-foreground-muted font-normal">{formatDownloads(downloads)}/month</span>}

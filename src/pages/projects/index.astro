@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectCard from "../../components/ProjectCard.astro";
+import ProjectCard from "../../components/cards/ProjectCard.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
+import { downloadsSort } from "../../lib/utils";
 
-const projects = await getCollection("projects");
+const projects = (await getCollection("projects")).sort(downloadsSort);
 
 export const prerender = true;
 ---

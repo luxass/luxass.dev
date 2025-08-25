@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { formatDownloads } from "../../lib/utils";
+
+export interface Props {
+  project: CollectionEntry<"projects">;
+  noBorder?: boolean;
+}
+
+const { project, noBorder = false } = Astro.props;
+
+const { href, description, title, downloads, type } = project.data;
+---
+
+<div class="group p-4 transition-colors hover:border-accent/50" class:list={[{ 'border border-card-border bg-card-bg': !noBorder }]}>
+  <a href={href} target="_blank">
+    <div class="flex justify-between items-start mb-4">
+      <div class="flex items-center gap-2">
+        <Icon
+          name={type === "personal" ? "lucide:user" : "lucide:git-pull-request"}
+          class="w-4 h-4 text-foreground-muted flex-shrink-0"
+        />
+        <h2 class="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
+          {title}
+        </h2>
+      </div>
+      <div class="flex items-center gap-3">
+        {downloads && <span class="text-sm text-foreground-muted">{formatDownloads(downloads)}/mo</span>}
+        <Icon
+          name="ph:arrow-up-right"
+          class="w-5 h-5 text-sm text-foreground group-hover:text-accent transition-colors"
+        />
+      </div>
+    </div>
+  </a>
+  <p class="text-sm text-foreground">{description}</p>
+</div>
