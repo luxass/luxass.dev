@@ -1,19 +1,61 @@
 [unplugin-yaml]
 title = "unplugin-yaml"
-description = "Allow import YAML file for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by unplugin."
+description = "Universal YAML import plugin with TypeScript support for Vite, Webpack, Rollup, and esbuild."
 href = "https://github.com/luxass/unplugin-yaml"
+type = "personal"
+downloads = 3600
 
 [vitest-testdirs]
 title = "vitest-testdirs"
-description = "A utility for Vitest to create isolated test directories"
+description = "Isolated test directories for Vitest. Prevents test pollution with automatic cleanup."
 href = "https://github.com/luxass/vitest-testdirs"
+type = "personal"
+downloads = 2800
 
 [github-schema]
 title = "github-schema"
-description = "Typed GitHub GraphQL schema library for developers"
+description = "Type-safe GitHub GraphQL client with auto-generated TypeScript definitions."
 href = "https://github.com/luxass/github-schema"
+type = "personal"
+downloads = 700
+
+[esbuild-yaml]
+title = "esbuild-yaml"
+description = "YAML import support for esbuild. Transform YAML files into JavaScript objects."
+href = "https://github.com/luxass/esbuild-yaml"
+type = "personal"
+downloads = 9000
+
+[jsonc-parse]
+title = "jsonc-parse"
+description = "JSONC parser supporting comments and trailing commas for configuration files."
+href = "https://github.com/luxass/jsonc-parse"
+type = "personal"
+downloads = 80000
+
+[strip-json-comments]
+title = "@luxass/strip-json-comments"
+description = "Strip comments from JSONC files for configuration preprocessing."
+href = "https://github.com/luxass/strip-json-comments"
+type = "personal"
+downloads = 85000
 
 [ucdjs]
 title = "ucdjs"
-description = "A JavaScript library for Unicode character data"
+description = "Unicode character database with lightweight, tree-shakable API."
 href = "https://github.com/ucdjs/ucd"
+type = "personal"
+
+[hono-zod-openapi]
+title = "@hono/zod-openapi"
+description = "Fixed critical OpenAPI basePath and pathPrefix bugs in popular middleware."
+href = "https://github.com/honojs/middleware"
+type = "contribution"
+downloads = 727000
+
+[vitest-eslint]
+title = "@vitest/eslint-plugin"
+description = "Enhanced ESLint plugin with automatic fixes and improved rule detection."
+href = "https://github.com/vitest-dev/eslint-plugin-vitest"
+type = "contribution"
+downloads = 4700000

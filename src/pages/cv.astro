@@ -5,13 +5,24 @@ import CVEntry from "../components/cv/CVEntry.astro";
 import CVProject from "../components/cv/CVProject.astro";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
+import { downloadsSort } from "../lib/utils";
 
 export const prerender = true;
 
 const MAX = 6;
+const PERSONAL_MAX = 4;
 
-const contributions = (await getCollection("contributions")).slice(0, MAX);
-const projects = (await getCollection("projects")).slice(0, MAX - contributions.length);
+const allProjects = await getCollection("projects");
+
+const projects = allProjects
+  .filter(({ data }) => data.type === "personal")
+  .sort(downloadsSort)
+  .slice(0, PERSONAL_MAX);
+
+const contributions = allProjects
+  .filter(({ data }) => data.type === "contribution")
+  .sort(downloadsSort)
+  .slice(0, MAX - projects.length);
 ---
 
 <CVLayout
@@ -20,78 +31,121 @@ const projects = (await getCollection("projects")).slice(0, MAX - contributions.
   keywords={[
     "lucas nørgård",
     "luxass",
-    "nørgård",
-    "lucas",
-    "fullstack",
-    "backend",
-    "frontend",
-    "web developer",
+    "devops engineer",
+    "kubernetes",
+    "golang",
+    "rust",
+    "typescript",
+    "microservices",
+    "healthcare compliance",
+    "open source",
+    "developer tools",
+    "CI/CD",
+    "infrastructure",
     "cv",
-    "resume",
     "software engineer",
   ]}
 >
-  <header class="mb-12 print:mb-12">
-    <h1 class="text-4xl font-light text-foreground mb-2 print:text-3xl">Lucas Nørgård</h1>
-    <div class="flex flex-wrap gap-x-4 gap-y-2 text-foreground print:text-sm">
+  <header class="mb-6 print:mb-4">
+    <div class="hidden print:flex print:flex-wrap print:gap-x-4 print:gap-y-1 print:text-xs print:mb-2">
       <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
       <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
       <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
-      <div class="flex items-center hover:text-foreground">
+      <div class="flex items-center">
         <Icon name="ph:map-pin" class="size-5 mr-1" />
+        <span class="text-xs">Aarhus, Denmark</span>
+      </div>
+    </div>
+    <h1 class="text-3xl font-light text-foreground mb-2 print:text-2xl print:mb-1">Lucas Nørgård</h1>
+    <div class="flex flex-wrap gap-x-4 gap-y-1 text-foreground print:hidden mb-4">
+      <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
+      <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
+      <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
+      <div class="flex items-center">
+        <Icon name="ph:map-pin" class="size-4 mr-1" />
         <span class="text-sm">Aarhus, Denmark</span>
       </div>
     </div>
 
-    <p class="mt-6 text-foreground-muted print:text-sm print:mt-4">
-      Software engineer working on web applications, infrastructure, and DevOps at Region Midtjylland. I maintain
-      Kubernetes clusters and build microservices for healthcare systems, focusing on security and compliance
-      requirements.
-    </p>
-
-    <p class="mt-4 text-foreground-muted print:text-sm print:mt-2">
-      My day-to-day involves <b>Kubernetes</b>, CI/CD pipelines, and API development. I collaborate with
-      cross-functional teams to define and implement innovative solutions and involve using <b>Go</b>, <b>Rust</b>, <b
-        >TypeScript</b
-      >, <b>Kotlin</b>, and <b>Java</b>.
+    <p class="text-foreground-muted text-sm print:text-xs leading-relaxed">
+      DevOps Engineer specializing in <strong>Kubernetes</strong> infrastructure, <strong>healthcare compliance</strong
+      >, and <strong>TypeScript</strong> developer tooling. Experienced in <strong>Go</strong>, <strong>Rust</strong>, <strong
+        >Java</strong
+      >, <strong>Spring Boot</strong>, and <strong>CI/CD</strong> automation. Designed CI/CD pipelines for healthcare applications
+      while managing production clusters and supporting "You Build It, You Run It" culture with focus on
+      <strong>developer experience</strong> and system <strong>resilience</strong>.
     </p>
   </header>
 
-  <section class="mb-12 print:mb-6">
-    <h2 class="text-2xl font-light text-foreground mb-4 pb-2 print:text-xl print:mb-2">Experience & Education</h2>
-    <div class="space-y-6 print:space-y-4">
-      <CVEntry company="DevOps Engineer @ Region Midtjylland" period="September 2024 - Present" type="work">
-        Maintain production Kubernetes clusters for healthcare microservices. Build automation tools in Go, Rust &
-        TypeScript. Handle on-call incident response and develop GDPR-compliant APIs for clinical systems.
+  <section class="mb-6 print:mb-4">
+    <h2 class="text-xl font-medium text-foreground mb-3 print:text-lg print:mb-2">Experience & Education</h2>
+    <div class="space-y-4 print:space-y-3">
+      <CVEntry company="DevOps Engineer @ Region Midtjylland" period="Sep 2024 - Present" type="work">
+        <ul
+          class="text-sm print:text-xs text-foreground-muted leading-relaxed list-disc list-inside space-y-1 print:space-y-0"
+        >
+          <li>Designed and implemented <strong>CI/CD pipelines</strong> for healthcare applications</li>
+          <li>Managed <strong>Kubernetes clusters</strong> and service infrastructure at scale</li>
+          <li>
+            Supported <strong>"You Build It, You Run It" culture</strong> with focus on <strong
+              >developer experience</strong
+            >
+          </li>
+          <li>Ensured system <strong>resilience</strong> across healthcare infrastructure</li>
+        </ul>
       </CVEntry>
 
-      <CVEntry company="Software Developer @ Region Midtjylland" period="May 2023 - September 2024" type="work">
-        Built web applications for clinicians using TypeScript and Java Spring Boot. Implemented security features for
-        healthcare compliance and developed RESTful APIs for clinical workflows.
+      <CVEntry company="Software Developer @ Region Midtjylland (DIAS)" period="May 2023 - Sep 2024" type="work">
+        <ul
+          class="text-sm print:text-xs text-foreground-muted leading-relaxed list-disc list-inside space-y-1 print:space-y-0"
+        >
+          <li>
+            Built healthcare applications using <strong>Go</strong>, <strong>TypeScript</strong>, <strong>Java</strong>, <strong
+              >Kotlin</strong
+            >, and <strong>Spring Boot</strong>
+          </li>
+          <li>
+            Developed <strong>message handling systems</strong> processing <strong>300K+ weekly transactions</strong>,
+            ensuring reliable data flow between X-ray and booking systems.
+          </li>
+          <li>
+            Created <strong>patient safety solutions</strong> and <strong>SOR code</strong> management applications
+          </li>
+          <li>Implemented <strong>consent portals</strong> for glucose monitoring integration</li>
+        </ul>
       </CVEntry>
 
-      <CVEntry company="Web Developer Education @ Viden Djurs" period="August 2020 - November 2022" type="education">
-        Full-stack web development education covering programming fundamentals, API design, and modern web technologies.
+      <CVEntry company="Web Developer Vocational Education @ Viden Djurs" period="Aug 2020 - Nov 2022" type="education">
+        <p class="text-sm print:text-xs text-foreground-muted leading-relaxed">
+          Full-stack web development program covering <strong>TypeScript</strong>, <strong>React</strong>, and modern
+          web technologies.
+        </p>
       </CVEntry>
     </div>
   </section>
 
-  <section class="mb-12 print:mb-6">
-    <h2 class="text-2xl font-light text-foreground mb-4 pb-2 print:text-xl print:mb-2">Open Source Projects</h2>
-    <p class="text-foreground-muted text-sm mb-6 print:text-xs print:mb-3">
-      I enjoy improving developer workflows and contributing to open source projects with 6+ open source projects,
-      mostly developer tools and TypeScript libraries.
+  <section class="mb-6 print:mb-4">
+    <h2 class="text-xl font-medium text-foreground mb-3 print:text-lg print:mb-2">Open Source Projects</h2>
+    <p class="text-foreground-muted text-sm mb-3 print:text-xs print:mb-2 leading-relaxed">
+      Authored <strong>TypeScript developer tools</strong> focused on <strong>build optimization</strong> and <strong
+        >developer experience</strong
+      >, with adoption by development teams worldwide. Contributor to open source projects that improve development
+      workflows and tooling ecosystems.
     </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print:grid-cols-2 print:gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 print:grid-cols-2 print:gap-2">
       {
-        [...contributions, ...projects].map(({ data: projectOrContribution }) => (
+        [...projects, ...contributions].map(({ data: projectOrContribution }) => (
           <CVProject
             title={projectOrContribution.title}
             description={projectOrContribution.description}
             href={projectOrContribution.href}
+            downloads={projectOrContribution.downloads}
+            type={projectOrContribution.type}
           />
         ))
       }
     </div>
   </section>
+
+  <div class="pb-8 print:hidden"></div>
 </CVLayout>

@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import path from "node:path";
 import process from "node:process";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -25,13 +26,26 @@ export default defineConfig({
       lastmod: new Date(),
       changefreq: "daily",
       async serialize(item) {
-        if (item.url !== `${site}/posts/` && item.url.includes("/posts/")) {
-          const url = item.url.replace("https://luxass.dev", "");
-          const content = await readFile(`./src/content${url.slice(0, url.length - 1)}.mdx`, "utf-8");
+        let pathname = decodeURIComponent(new URL(item.url).pathname);
+        if (pathname !== "/posts/" && pathname.startsWith("/posts/")) {
+          if (pathname.endsWith("/")) {
+            pathname = pathname.slice(0, -1);
+          }
+          const relativePath = pathname.startsWith("/") ? pathname.slice(1) : pathname;
+
+          let contentPath = path.join("./src/content", `${relativePath}.mdx`);
+          let content: string;
+
+          try {
+            content = await readFile(contentPath, "utf-8");
+          } catch {
+            contentPath = path.join("./src/content", `${relativePath}.md`);
+            content = await readFile(contentPath, "utf-8");
+          }
           // parse front matter in content file.
           const frontMatterEndIndex = content.indexOf("---", 3);
           if (frontMatterEndIndex === -1) {
-            throw new Error(`Front matter not found in ${url}`);
+            throw new Error(`Front matter not found in ${pathname}`);
           }
           const frontMatter = content.slice(3, frontMatterEndIndex).trim();
           const isDraft = frontMatter.includes("draft: true");
@@ -61,6 +75,8 @@ export default defineConfig({
           "graduation-cap",
           "rocket",
           "heart-handshake",
+          "user",
+          "git-pull-request",
         ],
         tabler: ["mail"],
         mdi: [
@@ -78,6 +94,7 @@ export default defineConfig({
           "linkedin-logo",
           "github-logo",
           "envelope",
+          "file-text",
         ],
       },
     }),

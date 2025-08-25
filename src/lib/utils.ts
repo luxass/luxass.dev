@@ -11,3 +11,23 @@ export function stripProtocol(url: string): string {
 
   return parsedUrl.hostname + parsedUrl.pathname + parsedUrl.search;
 }
+
+const numberRegex = /\.0$/;
+
+export function formatDownloads(num: number): string {
+  if (num >= 1000000) {
+    return `${(num / 1000000).toFixed(1).replace(numberRegex, "")}M`;
+  }
+
+  if (num >= 1000) {
+    return `${(num / 1000).toFixed(1).replace(numberRegex, "")}K`;
+  }
+
+  return num.toString();
+}
+
+export function downloadsSort(a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) {
+  const aDownloads = a.data.downloads || 0;
+  const bDownloads = b.data.downloads || 0;
+  return bDownloads - aDownloads;
+}

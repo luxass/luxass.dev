@@ -1,22 +1,32 @@
 ---
-import { stripProtocol } from "../../lib/utils";
+import { formatDownloads, stripProtocol } from "../../lib/utils";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   title: string;
   description: string;
   href: string;
+  downloads?: number;
+  type: "personal" | "contribution";
 }
 
-const { title, description, href } = Astro.props;
+const { title, description, href, downloads, type } = Astro.props;
 ---
 
 <a
   href={href}
-  class="rounded-lg border border-card-border hover:bg-card-bg transition-colors print:bg-auto print:shadow-none flex flex-col"
+  class="rounded-lg border border-card-border hover:bg-card-bg transition-colors print:bg-auto print:shadow-none print:border-none flex flex-col"
 >
   <div class="flex flex-col space-y-1.5 p-4 print:p-2 flex-grow">
-    <div class="text-base font-semibold leading-none tracking-tight print:text-sm">
-      <span>{title}</span>
+    <div class="text-base font-semibold leading-none tracking-tight print:text-sm flex justify-between items-start">
+      <span class="flex items-center gap-1.5">
+        <Icon
+          name={type === "personal" ? "lucide:user" : "lucide:git-pull-request"}
+          class="size-3.5 text-foreground-muted flex-shrink-0"
+        />
+        {title}
+      </span>
+      {downloads && <span class="text-xs text-foreground-muted font-normal">{formatDownloads(downloads)}/month</span>}
     </div>
     <div class="hidden print:block text-xs text-foreground-muted">
       {stripProtocol(href)}
