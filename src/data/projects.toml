@@ -34,7 +34,7 @@ type = "personal"
 downloads = 80000
 
 [strip-json-comments]
-title = "strip-json-comments"
+title = "@luxass/strip-json-comments"
 description = "Strip comments from JSONC files for configuration preprocessing."
 href = "https://github.com/luxass/strip-json-comments"
 type = "personal"
