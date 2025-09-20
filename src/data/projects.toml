@@ -3,14 +3,14 @@ title = "unplugin-yaml"
 description = "Universal YAML import plugin with TypeScript support for Vite, Webpack, Rollup, and esbuild."
 href = "https://github.com/luxass/unplugin-yaml"
 type = "personal"
-downloads = 3600
+downloads = 11000
 
 [vitest-testdirs]
 title = "vitest-testdirs"
 description = "Isolated test directories for Vitest. Prevents test pollution with automatic cleanup."
 href = "https://github.com/luxass/vitest-testdirs"
 type = "personal"
-downloads = 2800
+downloads = 2200
 
 [github-schema]
 title = "github-schema"
@@ -24,21 +24,21 @@ title = "esbuild-yaml"
 description = "YAML import support for esbuild. Transform YAML files into JavaScript objects."
 href = "https://github.com/luxass/esbuild-yaml"
 type = "personal"
-downloads = 9000
+downloads = 7100
 
 [jsonc-parse]
 title = "jsonc-parse"
 description = "JSONC parser supporting comments and trailing commas for configuration files."
 href = "https://github.com/luxass/jsonc-parse"
 type = "personal"
-downloads = 80000
+downloads = 8700
 
 [strip-json-comments]
 title = "@luxass/strip-json-comments"
 description = "Strip comments from JSONC files for configuration preprocessing."
 href = "https://github.com/luxass/strip-json-comments"
 type = "personal"
-downloads = 85000
+downloads = 20000
 
 [ucdjs]
 title = "ucdjs"
