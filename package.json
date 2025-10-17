@@ -2,7 +2,7 @@
   "name": "luxass.dev",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.18.1",
+  "packageManager": "pnpm@10.18.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
-    "@astrojs/mdx": "4.3.6",
+    "@astrojs/mdx": "4.3.7",
     "@astrojs/rss": "4.0.12",
     "@astrojs/sitemap": "3.6.0",
     "@astrojs/solid-js": "5.1.1",
@@ -31,7 +31,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@astrojs/vercel": "8.2.8",
+    "@astrojs/vercel": "8.2.9",
     "@iconify-icons/ph": "1.2.5",
     "@iconify-json/logos": "1.2.9",
     "@iconify-json/lucide": "1.2.69",
@@ -43,7 +43,7 @@
     "@types/hast": "3.0.4",
     "@types/markdown-it": "14.1.2",
     "@types/mdast": "4.0.4",
-    "@types/node": "22.18.8",
+    "@types/node": "22.18.9",
     "@types/sanitize-html": "2.16.0",
     "astro-eslint-parser": "1.2.2",
     "eslint": "9.34.0",
@@ -52,7 +52,7 @@
     "hastscript": "9.0.1",
     "mdast-util-directive": "3.1.0",
     "prettier-plugin-astro": "0.14.1",
-    "puppeteer": "24.23.0",
+    "puppeteer": "24.23.1",
     "remark": "15.0.1",
     "remark-directive": "4.0.0",
     "smol-toml": "1.4.2",
