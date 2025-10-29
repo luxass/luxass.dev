@@ -38,7 +38,7 @@
     "@iconify-json/mdi": "1.2.3",
     "@iconify-json/ph": "1.2.2",
     "@iconify-json/tabler": "1.2.23",
-    "@luxass/eslint-config": "5.3.2",
+    "@luxass/eslint-config": "6.0.1",
     "@tailwindcss/vite": "4.1.15",
     "@types/hast": "3.0.4",
     "@types/markdown-it": "14.1.2",
