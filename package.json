@@ -31,7 +31,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@astrojs/vercel": "8.2.11",
+    "@astrojs/vercel": "9.0.0",
     "@iconify-icons/ph": "1.2.5",
     "@iconify-json/logos": "1.2.9",
     "@iconify-json/lucide": "1.2.70",
