@@ -20,7 +20,7 @@
     "@astrojs/sitemap": "3.6.0",
     "@astrojs/solid-js": "5.1.2",
     "@vercel/analytics": "1.5.0",
-    "astro": "5.15.2",
+    "astro": "5.15.3",
     "astro-icon": "1.1.5",
     "markdown-it": "14.1.0",
     "rehype-autolink-headings": "7.1.0",
