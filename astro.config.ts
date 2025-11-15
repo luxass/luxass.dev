@@ -66,7 +66,6 @@ export default defineConfig({
     solid(),
     icon({
       include: {
-        logos: ["npm-icon"],
         lucide: [
           "clipboard",
           "clipboard-check",
@@ -77,15 +76,6 @@ export default defineConfig({
           "heart-handshake",
           "user",
           "git-pull-request",
-        ],
-        tabler: ["mail"],
-        mdi: [
-          "github",
-          "arrow-top-right-thin",
-          "rss",
-          "sitemap",
-          "linkedin",
-          "arrow-right-thin",
         ],
         ph: [
           "map-pin",
