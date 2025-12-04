@@ -14,13 +14,13 @@
     "generate:pdf": "tsx ./scripts/generate-pdf.ts"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.5",
+    "@astrojs/check": "0.9.6",
     "@astrojs/mdx": "4.3.12",
     "@astrojs/rss": "4.0.14",
     "@astrojs/sitemap": "3.6.0",
     "@astrojs/solid-js": "5.1.3",
     "@vercel/analytics": "1.5.0",
-    "astro": "5.16.0",
+    "astro": "5.16.1",
     "astro-icon": "1.1.5",
     "markdown-it": "14.1.0",
     "rehype-autolink-headings": "7.1.0",
@@ -31,7 +31,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@astrojs/vercel": "9.0.1",
+    "@astrojs/vercel": "9.0.2",
     "@iconify-json/lucide": "1.2.75",
     "@iconify-json/ph": "1.2.2",
     "@luxass/eslint-config": "6.0.3",
