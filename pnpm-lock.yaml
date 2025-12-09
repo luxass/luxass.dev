@@ -24,8 +24,8 @@ importers:
         specifier: 5.1.3
         version: 5.1.3(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(solid-js@1.9.10)(tsx@4.21.0)(yaml@2.8.1)
       '@vercel/analytics':
-        specifier: 1.5.0
-        version: 1.5.0(vue@3.5.17(typescript@5.9.3))
+        specifier: 1.6.1
+        version: 1.6.1(vue@3.5.17(typescript@5.9.3))
       astro:
         specifier: 5.16.3
         version: 5.16.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
@@ -1377,8 +1377,8 @@ packages:
     resolution: {integrity: sha512-QKgVGV5nRRnK44/reUKFLAc5UGyl98vz3hrfk8JI8pVza58vmQWTdAB2rIpNJ5a5j+EkWfDOUlGQaOrIeYGLdg==}
     engines: {node: '>=14'}
 
-  '@vercel/analytics@1.5.0':
-    resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
+  '@vercel/analytics@1.6.1':
+    resolution: {integrity: sha512-oH9He/bEM+6oKlv3chWuOOcp8Y6fo6/PSro8hEkgCW3pu9/OiCXiUpRUogDh3Fs3LH2sosDrx8CxeOLBEE+afg==}
     peerDependencies:
       '@remix-run/react': ^2
       '@sveltejs/kit': ^1 || ^2
@@ -4540,7 +4540,7 @@ snapshots:
   '@astrojs/vercel@9.0.2(astro@5.16.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.50.1)(vue@3.5.17(typescript@5.9.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
-      '@vercel/analytics': 1.5.0(vue@3.5.17(typescript@5.9.3))
+      '@vercel/analytics': 1.6.1(vue@3.5.17(typescript@5.9.3))
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.4(rollup@4.50.1)
       '@vercel/routing-utils': 5.3.0
@@ -5680,7 +5680,7 @@ snapshots:
       magic-string: 0.30.21
     optional: true
 
-  '@vercel/analytics@1.5.0(vue@3.5.17(typescript@5.9.3))':
+  '@vercel/analytics@1.6.1(vue@3.5.17(typescript@5.9.3))':
     optionalDependencies:
       vue: 3.5.17(typescript@5.9.3)
 
