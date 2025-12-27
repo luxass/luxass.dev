@@ -58,12 +58,12 @@ export function getCanonicalUrl(pathname: string): string {
 
 /**
  * Get alternate URLs for hreflang tags
- * Uses x-default to point to the canonical domain (luxass.dev)
  */
 export function getAlternateUrls(pathname: string) {
   const { primary, alternate } = getDomains();
   return [
     { hreflang: "x-default", url: `${primary}${pathname}` },
-    { hreflang: "en", url: `${alternate}${pathname}` },
+    { hreflang: "en", url: `${primary}${pathname}` },
+    { hreflang: "en-us", url: `${alternate}${pathname}` },
   ];
 }
