@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@astrojs/vercel": "9.0.2",
-    "@iconify-json/lucide": "1.2.81",
+    "@iconify-json/lucide": "1.2.82",
     "@iconify-json/ph": "1.2.2",
     "@luxass/eslint-config": "6.0.3",
     "@tailwindcss/vite": "4.1.18",
