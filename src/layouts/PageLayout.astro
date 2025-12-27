@@ -2,26 +2,45 @@
 import { Font } from "astro:assets";
 import Footer from "../components/ui/Footer.astro";
 import Header from "../components/ui/Header.astro";
+import { getCanonicalUrl, getAlternateUrls, getDomains } from "../lib/utils";
 import "../styles/globals.css";
 
 export interface Props {
   title: string;
   description: string;
-  image?: string;
+  image?: string | URL;
   keywords?: string[];
   class?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  noindex?: boolean;
 }
 
 const {
   description = "personal website and blog of lucas nørgård",
   keywords = [],
-  image = new URL(`https://image.luxass.dev/api/image/text?width=300&height=300`),
+  image = new URL(`https://image.luxass.dev/api/image/text?width=1200&height=630`),
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  author = "Lucas Nørgård",
+  noindex = false,
 } = Astro.props;
 let { title } = Astro.props;
 
-if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") {
+const domains = getDomains();
+const canonicalUrl = getCanonicalUrl(Astro.url.pathname);
+const alternateUrls = getAlternateUrls(Astro.url.pathname);
+
+if (title.includes("luxass.dev") && domains.isAlternate) {
   title = title.replace("luxass.dev", "luxass.com");
 }
+
+// Ensure image is a URL string
+const imageUrl = typeof image === "string" ? image : image.toString();
+const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
 ---
 
 <!doctype html>
@@ -32,34 +51,51 @@ if (title.includes("luxass.dev") && import.meta.env.SITE_HOST === "luxass.com") 
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#000000" />
 
-    {import.meta.env.SITE_HOST === "luxass.com" && <link rel="canonical" href="https://luxass.dev" />}
+    <!-- robots -->
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
-    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+    <!-- canonical and alternate URLs -->
+    <link rel="canonical" href={canonicalUrl} />
+    {alternateUrls.map(({ hreflang, url }) => <link rel="alternate" hreflang={hreflang} href={url} />)}
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" href={`${domains.current}/rss.xml`} title="RSS" />
 
     <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
-    <meta name="keywords" content={keywords.join(", ")} />
     <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
 
     <!-- open graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="luxass.dev" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:locale" content="en_US" />
+    {type === "article" && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {type === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {type === "article" && <meta property="article:author" content={author} />}
 
-    <!-- twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <!-- twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={title} />
 
     <!-- links -->
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href={`${domains.current}/sitemap-index.xml`} />
 
     <Font cssVariable="--font-dm-sans" preload />
   </head>
