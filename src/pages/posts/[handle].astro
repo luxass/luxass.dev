@@ -26,13 +26,20 @@ const {
 
 const { Content } = await render(post);
 
+// Format dates for structured data
+const publishedTime = date.toISOString();
+const imageUrl = `https://image.luxass.dev/api/image/post?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&date=${date.toISOString()}`;
+
 export const prerender = true;
 ---
 
 <PageLayout
   title={`${title} - posts - luxass.dev`}
   description={description}
-  image={`https://image.luxass.dev/api/image/post?title=${title}&description=${description}&date=${date}`}
+  image={imageUrl}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={publishedTime}
 >
   <h1 class="mt-8">
     {title}
