@@ -13,7 +13,7 @@ importers:
         version: 0.9.6(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.9.3)
       '@astrojs/mdx':
         specifier: 4.3.13
-        version: 4.3.13(astro@5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))
+        version: 4.3.13(astro@5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))
       '@astrojs/rss':
         specifier: 4.0.14
         version: 4.0.14
@@ -27,8 +27,8 @@ importers:
         specifier: 1.6.1
         version: 1.6.1(vue@3.5.17(typescript@5.9.3))
       astro:
-        specifier: 5.16.5
-        version: 5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
+        specifier: 5.16.6
+        version: 5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
       astro-icon:
         specifier: 1.1.5
         version: 1.1.5
@@ -56,7 +56,7 @@ importers:
     devDependencies:
       '@astrojs/vercel':
         specifier: 9.0.2
-        version: 9.0.2(astro@5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.50.1)(vue@3.5.17(typescript@5.9.3))
+        version: 9.0.2(astro@5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.50.1)(vue@3.5.17(typescript@5.9.3))
       '@iconify-json/lucide':
         specifier: 1.2.81
         version: 1.2.81
@@ -106,8 +106,8 @@ importers:
         specifier: 0.14.1
         version: 0.14.1
       puppeteer:
-        specifier: 24.33.0
-        version: 24.33.0(typescript@5.9.3)
+        specifier: 24.34.0
+        version: 24.34.0(typescript@5.9.3)
       remark:
         specifier: 15.0.1
         version: 15.0.1
@@ -1584,8 +1584,8 @@ packages:
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
 
-  astro@5.16.5:
-    resolution: {integrity: sha512-QeuM4xzTR0QuXFDNlGVW0BW7rcquKFIkylaPeM4ufii0/RRiPTYtwxDYVZ3KfiMRuuc+nbLD0214kMKTvz/yvQ==}
+  astro@5.16.6:
+    resolution: {integrity: sha512-6mF/YrvwwRxLTu+aMEa5pwzKUNl5ZetWbTyZCs9Um0F12HUmxUiF5UHiZPy4rifzU3gtpM3xP2DfdmkNX9eZRg==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1774,8 +1774,8 @@ packages:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
     engines: {node: '>=18'}
 
-  chromium-bidi@11.0.0:
-    resolution: {integrity: sha512-cM3DI+OOb89T3wO8cpPSro80Q9eKYJ7hGVXoGS3GkDPxnYSqiv+6xwpIf6XERyJ9Tdsl09hmNmY94BkgZdVekw==}
+  chromium-bidi@12.0.1:
+    resolution: {integrity: sha512-fGg+6jr0xjQhzpy5N4ErZxQ4wF7KLEvhGZXD6EgvZKDhu7iOhZXnZhcDxPJDcwTcrD48NPzOCo84RP2lv3Z+Cg==}
     peerDependencies:
       devtools-protocol: '*'
 
@@ -3468,12 +3468,12 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  puppeteer-core@24.33.0:
-    resolution: {integrity: sha512-tPTxVg+Qdj/8av4cy6szv3GlhxeOoNhiiMZ955fjxQyvPQE/6DjCa6ZyF/x0WJrlgBZtaLSP8TQgJb7FdLDXXA==}
+  puppeteer-core@24.34.0:
+    resolution: {integrity: sha512-24evawO+mUGW4mvS2a2ivwLdX3gk8zRLZr9HP+7+VT2vBQnm0oh9jJEZmUE3ePJhRkYlZ93i7OMpdcoi2qNCLg==}
     engines: {node: '>=18'}
 
-  puppeteer@24.33.0:
-    resolution: {integrity: sha512-nl3wsAztq5F8zybn4Tk41OCnYIzFIzGC6AN0WcF2KCUnWenajvRRPgBmS6LvNUV2HEeIzT2zRZHH0TgVxLDKew==}
+  puppeteer@24.34.0:
+    resolution: {integrity: sha512-Sdpl/zsYOsagZ4ICoZJPGZw8d9gZmK5DcxVal11dXi/1/t2eIXHjCf5NfmhDg5XnG9Nye+yo/LqMzIxie2rHTw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4246,8 +4246,8 @@ packages:
   web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
 
-  webdriver-bidi-protocol@0.3.9:
-    resolution: {integrity: sha512-uIYvlRQ0PwtZR1EzHlTMol1G0lAlmOe6wPykF9a77AK3bkpvZHzIVxRE2ThOx5vjy2zISe0zhwf5rzuUfbo1PQ==}
+  webdriver-bidi-protocol@0.3.10:
+    resolution: {integrity: sha512-5LAE43jAVLOhB/QqX4bwSiv0Hg1HBfMmOuwBSXHdvg4GMGu9Y0lIq7p4R/yySu6w74WmaR4GM4H9t2IwLW7hgw==}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -4471,12 +4471,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.13(astro@5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astrojs/mdx@4.3.13(astro@5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4537,14 +4537,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@9.0.2(astro@5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.50.1)(vue@3.5.17(typescript@5.9.3))':
+  '@astrojs/vercel@9.0.2(astro@5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1))(rollup@4.50.1)(vue@3.5.17(typescript@5.9.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@vercel/analytics': 1.6.1(vue@3.5.17(typescript@5.9.3))
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.4(rollup@4.50.1)
       '@vercel/routing-utils': 5.3.0
-      astro: 5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1)
       esbuild: 0.25.9
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -5930,7 +5930,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro@5.16.5(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.16.6(@types/node@24.10.4)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.50.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -6223,7 +6223,7 @@ snapshots:
 
   chownr@3.0.0: {}
 
-  chromium-bidi@11.0.0(devtools-protocol@0.0.1534754):
+  chromium-bidi@12.0.1(devtools-protocol@0.0.1534754):
     dependencies:
       devtools-protocol: 0.0.1534754
       mitt: 3.0.1
@@ -8365,14 +8365,14 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  puppeteer-core@24.33.0:
+  puppeteer-core@24.34.0:
     dependencies:
       '@puppeteer/browsers': 2.11.0
-      chromium-bidi: 11.0.0(devtools-protocol@0.0.1534754)
+      chromium-bidi: 12.0.1(devtools-protocol@0.0.1534754)
       debug: 4.4.3
       devtools-protocol: 0.0.1534754
       typed-query-selector: 2.12.0
-      webdriver-bidi-protocol: 0.3.9
+      webdriver-bidi-protocol: 0.3.10
       ws: 8.18.3
     transitivePeerDependencies:
       - bare-buffer
@@ -8381,13 +8381,13 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  puppeteer@24.33.0(typescript@5.9.3):
+  puppeteer@24.34.0(typescript@5.9.3):
     dependencies:
       '@puppeteer/browsers': 2.11.0
-      chromium-bidi: 11.0.0(devtools-protocol@0.0.1534754)
+      chromium-bidi: 12.0.1(devtools-protocol@0.0.1534754)
       cosmiconfig: 9.0.0(typescript@5.9.3)
       devtools-protocol: 0.0.1534754
-      puppeteer-core: 24.33.0
+      puppeteer-core: 24.34.0
       typed-query-selector: 2.12.0
     transitivePeerDependencies:
       - bare-buffer
@@ -9303,7 +9303,7 @@ snapshots:
 
   web-namespaces@2.0.1: {}
 
-  webdriver-bidi-protocol@0.3.9: {}
+  webdriver-bidi-protocol@0.3.10: {}
 
   webidl-conversions@3.0.1: {}
 
