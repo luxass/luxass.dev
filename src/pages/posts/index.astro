@@ -20,7 +20,13 @@ export const prerender = true;
       posts.length > 0 ? (
         posts.map((post) => <PostCard post={post} />)
       ) : (
-        <p class="text-foreground">I have not written any posts yet. Please check back later.</p>
+        <p class="text-foreground">
+          No posts yet. In the meantime, you can find my work on GitHub at
+          <a class="underline" href="https://github.com/luxass">
+            github.com/luxass
+          </a>
+          .
+        </p>
       )
     }
   </div>
