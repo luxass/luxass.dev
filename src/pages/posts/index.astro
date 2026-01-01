@@ -16,6 +16,12 @@ export const prerender = true;
   <p class="text-foreground mb-12 leading-relaxed text-sm">here is some of my posts i have written.</p>
 
   <div class="space-y-12">
-    {posts.length > 0 ? posts.map((post) => <PostCard post={post} />) : <p class="text-foreground">No posts found</p>}
+    {
+      posts.length > 0 ? (
+        posts.map((post) => <PostCard post={post} />)
+      ) : (
+        <p class="text-foreground">I have not written any posts yet. Please check back later.</p>
+      )
+    }
   </div>
 </PageLayout>
