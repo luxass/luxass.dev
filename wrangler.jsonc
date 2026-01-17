@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "luxass",
+  "name": "luxass-com",
   "main": "dist/_worker.js/index.js",
   "compatibility_date": "2026-01-17",
   "compatibility_flags": [
