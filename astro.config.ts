@@ -1,10 +1,10 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
-import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
@@ -16,7 +16,7 @@ import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
-console.log("site", site);
+console.log("Site Host", site);
 
 // https://astro.build/config
 export default defineConfig({
@@ -123,13 +123,8 @@ export default defineConfig({
       remarkAsides,
     ],
   },
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-    isr: {
-      expiration: 60 * 60 * 8,
-    },
+  adapter: cloudflare({
+    imageService: "compile",
   }),
   vite: {
     plugins: [

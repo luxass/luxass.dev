@@ -1,0 +1,5 @@
+/view-source   https://github.com/luxass/luxass.dev   302
+/github        https://github.com/luxass              302
+/gh            https://github.com/luxass              302
+/github/*      https://github.com/luxass/:splat       302
+/gh/*          https://github.com/luxass/:splat       302

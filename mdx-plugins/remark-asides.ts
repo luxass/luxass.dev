@@ -176,8 +176,6 @@ export const remarkAsides: Plugin<void[], Root> = () => {
           const nextChild = childrenParent.children[idx + 1];
 
           if (nextChild.type === "inlineCode") {
-            // eslint-disable-next-line no-console
-            console.log("injecting a space before the next child");
             child.value = `${child.value} `;
             return;
           }
@@ -194,8 +192,6 @@ export const remarkAsides: Plugin<void[], Root> = () => {
             return;
           }
 
-          // eslint-disable-next-line no-console
-          console.log("injecting a space before the next child");
           child.value = `${child.value} `;
         }
       });
