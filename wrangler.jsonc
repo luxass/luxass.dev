@@ -22,6 +22,10 @@
         {
           "custom_domain": true,
           "pattern": "luxass.dev"
+        },
+        {
+          "custom_domain": true,
+          "pattern": "cv.luxass.dev"
         }
       ]
     },
@@ -31,6 +35,10 @@
         {
           "custom_domain": true,
           "pattern": "luxass.com"
+        },
+        {
+          "custom_domain": true,
+          "pattern": "cv.luxass.com"
         }
       ]
     }
