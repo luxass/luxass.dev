@@ -98,10 +98,7 @@ export default defineConfig({
       cssVariable: "--font-dm-sans",
     }],
   },
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: "load",
-  },
+  prefetch: false,
   markdown: {
     shikiConfig: {
       themes: {
