@@ -14,6 +14,25 @@
   },
   "observability": {
     "enabled": true
+  },
+  "env": {
+    "luxass-dev": {
+      "name": "luxass-dev",
+      "routes": [
+        {
+          "custom_domain": true,
+          "pattern": "luxass.dev"
+        }
+      ]
+    },
+    "luxass-com": {
+      "name": "luxass-com",
+      "routes": [
+        {
+          "custom_domain": true,
+          "pattern": "luxass.com"
+        }
+      ]
+    }
   }
-
 }

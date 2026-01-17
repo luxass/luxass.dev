@@ -15,7 +15,7 @@ import remarkDirective from "remark-directive";
 import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
-
+const siteEnv = process.env.SITE_HOST === "luxass.com" ? "luxass-com" : "luxass-dev";
 console.log("Site Host", site);
 
 // https://astro.build/config
@@ -122,6 +122,10 @@ export default defineConfig({
   },
   adapter: cloudflare({
     imageService: "compile",
+    platformProxy: {
+      enabled: true,
+      environment: siteEnv,
+    },
   }),
   vite: {
     plugins: [
