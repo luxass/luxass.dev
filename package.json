@@ -31,7 +31,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.6",
     "@astrojs/cloudflare": "12.6.12",
-    "@iconify-json/lucide": "1.2.83",
+    "@iconify-json/lucide": "1.2.84",
     "@iconify-json/ph": "1.2.2",
     "@luxass/eslint-config": "6.0.3",
     "@tailwindcss/vite": "4.1.18",
