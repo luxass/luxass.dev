@@ -31,7 +31,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.6",
     "@astrojs/cloudflare": "12.6.12",
-    "@iconify-json/lucide": "1.2.88",
+    "@iconify-json/lucide": "1.2.89",
     "@iconify-json/ph": "1.2.2",
     "@luxass/eslint-config": "7.0.0",
     "@tailwindcss/vite": "4.1.18",
@@ -47,7 +47,7 @@
     "hastscript": "9.0.1",
     "mdast-util-directive": "3.1.0",
     "prettier-plugin-astro": "0.14.1",
-    "puppeteer": "24.37.1",
+    "puppeteer": "24.37.2",
     "remark": "15.0.1",
     "remark-directive": "4.0.0",
     "smol-toml": "1.6.0",
