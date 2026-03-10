@@ -92,12 +92,12 @@ export default defineConfig({
   ],
   experimental: {
     contentIntellisense: true,
-    fonts: [{
-      provider: fontProviders.google(),
-      name: "DM Sans",
-      cssVariable: "--font-dm-sans",
-    }],
   },
+  fonts: [{
+    provider: fontProviders.google(),
+    name: "DM Sans",
+    cssVariable: "--font-dm-sans",
+  }],
   prefetch: false,
   markdown: {
     shikiConfig: {
