@@ -14,7 +14,7 @@
     "generate:pdf": "tsx ./scripts/generate-pdf.ts"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.14",
+    "@astrojs/mdx": "5.0.1",
     "@astrojs/rss": "4.0.17",
     "@astrojs/sitemap": "3.7.1",
     "@astrojs/solid-js": "6.0.0",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.7",
-    "@astrojs/cloudflare": "12.6.13",
+    "@astrojs/cloudflare": "13.1.2",
     "@iconify-json/lucide": "1.2.96",
     "@iconify-json/ph": "1.2.2",
     "@luxass/eslint-config": "7.2.1",
