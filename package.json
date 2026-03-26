@@ -50,7 +50,7 @@
     "puppeteer": "24.38.0",
     "remark": "15.0.1",
     "remark-directive": "4.0.0",
-    "smol-toml": "1.6.0",
+    "smol-toml": "1.6.1",
     "tailwindcss": "4.2.1",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
