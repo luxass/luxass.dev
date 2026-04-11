@@ -15,12 +15,18 @@ import remarkDirective from "remark-directive";
 import { rehypeCopy, remarkAsides } from "./mdx-plugins";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
+// eslint-disable-next-line unused-imports/no-unused-vars
 const siteEnv = process.env.SITE_HOST === "luxass.com" ? "luxass-com" : "luxass-dev";
 console.log("Site Host", site);
 
 // https://astro.build/config
 export default defineConfig({
   site,
+  session: {
+    driver: {
+      entrypoint: "unstorage/drivers/null",
+    },
+  },
   integrations: [
     sitemap({
       lastmod: new Date(),
