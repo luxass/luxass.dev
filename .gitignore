@@ -3,6 +3,7 @@ dist/
 .output/
 .vercel
 .netlify
+.wrangler
 
 # generated types
 .astro/
@@ -23,4 +24,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-src/pages/cv/*.astro
