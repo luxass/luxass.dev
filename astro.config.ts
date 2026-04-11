@@ -122,10 +122,6 @@ export default defineConfig({
   },
   adapter: cloudflare({
     imageService: "compile",
-    platformProxy: {
-      enabled: true,
-      environment: siteEnv,
-    },
   }),
   vite: {
     plugins: [

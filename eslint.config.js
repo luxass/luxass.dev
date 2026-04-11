@@ -4,6 +4,7 @@ import luxass from "@luxass/eslint-config";
 export default luxass({
   astro: true,
   formatters: true,
+  pnpm: true,
 }, {
   ignores: [
     "**/vercel.json",
