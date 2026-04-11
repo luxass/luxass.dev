@@ -131,12 +131,14 @@ export const remarkAsides: Plugin<void[], Root> = () => {
           return;
         }
 
+        // eslint-disable-next-line e18e/prefer-static-regex
         const type = firstChild.value.match(/^\[!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/);
         if (!type) {
           return;
         }
 
         variant = type[1].toLowerCase();
+        // eslint-disable-next-line e18e/prefer-static-regex
         firstChild.value = firstChild.value.replace(/^\[!(NOTE|TIP|WARNING|DANGER|IMPORTANT)\]/, "").trim();
       } else {
         variant = node.name.toLowerCase();
