@@ -19,7 +19,7 @@ catalogs:
     "@astrojs/rss": 4.0.18
     "@astrojs/sitemap": 3.7.2
     "@astrojs/solid-js": 6.0.1
-    astro: 6.1.5
+    astro: 6.1.6
     astro-icon: 1.1.5
 
   dev:
@@ -73,3 +73,6 @@ catalogs:
 
 onlyBuiltDependencies:
   - puppeteer
+minimumReleaseAgeExclude:
+  # Renovate security update: astro@6.1.6
+  - astro@6.1.6
