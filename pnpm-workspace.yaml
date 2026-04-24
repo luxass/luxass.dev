@@ -14,7 +14,7 @@ overrides:
 catalogs:
   astro:
     "@astrojs/check": 0.9.8
-    "@astrojs/cloudflare": 13.1.8
+    "@astrojs/cloudflare": 13.1.10
     "@astrojs/mdx": 5.0.3
     "@astrojs/rss": 4.0.18
     "@astrojs/sitemap": 3.7.2
@@ -76,3 +76,5 @@ onlyBuiltDependencies:
 minimumReleaseAgeExclude:
   # Renovate security update: astro@6.1.6
   - astro@6.1.6
+  # Renovate security update: @astrojs/cloudflare@13.1.10
+  - "@astrojs/cloudflare@13.1.10"
