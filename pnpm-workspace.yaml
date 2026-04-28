@@ -9,7 +9,7 @@ blockExoticSubdeps: true
 overrides:
   chokidar: 5.0.0
   semver: 7.7.4
-  undici: 6.24.1
+  undici: 6.25.0
 
 catalogs:
   astro:
@@ -19,12 +19,12 @@ catalogs:
     "@astrojs/rss": 4.0.18
     "@astrojs/sitemap": 3.7.2
     "@astrojs/solid-js": 6.0.1
-    astro: 6.1.6
+    astro: 6.1.8
     astro-icon: 1.1.5
 
   dev:
-    typescript: 6.0.2
-    wrangler: 4.81.1
+    typescript: 6.0.3
+    wrangler: 4.84.1
 
   icons:
     "@iconify-json/lucide": 1.2.102
@@ -52,8 +52,8 @@ catalogs:
     unist-util-visit: 5.1.0
 
   styling:
-    "@tailwindcss/vite": 4.2.2
-    tailwindcss: 4.2.2
+    "@tailwindcss/vite": 4.2.4
+    tailwindcss: 4.2.4
 
   types:
     "@types/hast": 3.0.4
@@ -66,7 +66,7 @@ catalogs:
     solid-js: 1.9.12
 
   utilities:
-    puppeteer: 24.40.0
+    puppeteer: 24.42.0
     smol-toml: 1.6.1
     unified: 11.0.5
     zod: 4.3.6
