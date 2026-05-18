@@ -47,7 +47,7 @@ catalogs:
     rehype-slug: 6.0.0
     remark: 15.0.1
     remark-directive: 4.0.0
-    sanitize-html: 2.17.3
+    sanitize-html: 2.17.4
     unist-util-remove: 4.0.0
     unist-util-visit: 5.1.0
 
@@ -78,5 +78,5 @@ minimumReleaseAgeExclude:
   - astro@6.1.6
   # Renovate security update: @astrojs/cloudflare@13.1.10
   - "@astrojs/cloudflare@13.1.10"
-  # Renovate security update: sanitize-html@2.17.3
-  - sanitize-html@2.17.3
+  # Renovate security update: sanitize-html@2.17.3 || 2.17.4
+  - sanitize-html@2.17.3 || 2.17.4
