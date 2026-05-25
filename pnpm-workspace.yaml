@@ -8,14 +8,14 @@ blockExoticSubdeps: true
 
 overrides:
   chokidar: 5.0.0
-  semver: 7.7.4
-  undici: 6.24.1
+  semver: 7.8.0
+  undici: 6.25.0
 
 catalogs:
   astro:
-    "@astrojs/check": 0.9.8
-    "@astrojs/cloudflare": 13.1.10
-    "@astrojs/mdx": 5.0.3
+    "@astrojs/check": 0.9.9
+    "@astrojs/cloudflare": 13.5.2
+    "@astrojs/mdx": 5.0.6
     "@astrojs/rss": 4.0.18
     "@astrojs/sitemap": 3.7.2
     "@astrojs/solid-js": 6.0.1
@@ -23,11 +23,11 @@ catalogs:
     astro-icon: 1.1.5
 
   dev:
-    typescript: 6.0.2
-    wrangler: 4.81.1
+    typescript: 6.0.3
+    wrangler: 4.92.0
 
   icons:
-    "@iconify-json/lucide": 1.2.102
+    "@iconify-json/lucide": 1.2.108
     "@iconify-json/ph": 1.2.2
 
   linting:
@@ -52,24 +52,24 @@ catalogs:
     unist-util-visit: 5.1.0
 
   styling:
-    "@tailwindcss/vite": 4.2.2
-    tailwindcss: 4.2.2
+    "@tailwindcss/vite": 4.3.0
+    tailwindcss: 4.3.0
 
   types:
     "@types/hast": 3.0.4
     "@types/markdown-it": 14.1.2
     "@types/mdast": 4.0.4
-    "@types/node": 24.12.2
+    "@types/node": 24.12.4
     "@types/sanitize-html": 2.16.1
 
   ui:
-    solid-js: 1.9.12
+    solid-js: 1.9.13
 
   utilities:
-    puppeteer: 24.40.0
+    puppeteer: 24.43.1
     smol-toml: 1.6.1
     unified: 11.0.5
-    zod: 4.3.6
+    zod: 4.4.3
 
 onlyBuiltDependencies:
   - puppeteer
