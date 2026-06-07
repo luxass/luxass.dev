@@ -3,19 +3,12 @@
 @theme {
   --color-*: initial;
 
-  --color-background: oklch(0.98 0.003 106);
-  --color-foreground: oklch(0.25 0.015 258);
-  --color-foreground-muted: oklch(0.45 0.015 258);
-  --color-card-bg: oklch(0.96 0.005 247);
-  --color-card-border: oklch(0.88 0.008 247);
-  --color-accent: oklch(0.55 0.175 264);
-
-  /* callout colors */
-  --color-callout-note: #0969da;
-  --color-callout-tip: #1a7f37;
-  --color-callout-warning: #9a6700;
-  --color-callout-caution: #d1242f;
-  --color-callout-important: #8250df;
+  --color-background: #fbfbf8;
+  --color-foreground: #171717;
+  --color-foreground-muted: #64615c;
+  --color-card-bg: #ffffff;
+  --color-card-border: #dedbd2;
+  --color-accent: #0f766e;
 }
 
 @theme inline {
@@ -27,6 +20,89 @@ body {
   background: var(--color-background);
 }
 
+::selection {
+  color: white;
+  background: var(--color-accent);
+}
+
+@property --download-count {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.download-count {
+  --download-count: var(--download-count-end);
+  animation: download-count-up 780ms steps(18, end) both;
+  counter-reset: download-count var(--download-count);
+}
+
+.download-count::after {
+  content: counter(download-count) " npm downloads/mo";
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arrow-twitch {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0.18rem, -0.18rem);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes marker-turn {
+  0%,
+  70%,
+  100% {
+    transform: translateY(-0.05em) rotate(0deg);
+  }
+
+  78% {
+    transform: translateY(-0.05em) rotate(90deg);
+  }
+
+  86% {
+    transform: translateY(-0.05em) rotate(180deg);
+  }
+
+  94% {
+    transform: translateY(-0.05em) rotate(270deg);
+  }
+}
+
+@keyframes download-count-up {
+  from {
+    --download-count: 0;
+  }
+}
+
 @media print {
   body {
     color: var(--color-foreground);
@@ -36,13 +112,12 @@ body {
 
 @layer components {
   .typography {
-    & > :not(:last-child) {
-      margin-bottom: --spacing(6);
-    }
+    color: var(--color-foreground);
+    font-size: 12.5px;
+    line-height: 1.65;
 
-    p:not([class*="callout"] p) {
-      margin-block: --spacing(6);
-      line-height: var(--leading-loose);
+    p {
+      margin-block: --spacing(4);
     }
 
     h1,
@@ -50,19 +125,20 @@ body {
     h3 {
       color: var(--color-foreground);
       font-weight: var(--font-weight-semibold);
-      margin-block: --spacing(8);
+      line-height: 1.25;
+      margin-block: --spacing(6) --spacing(3);
     }
 
     h1 {
-      font-size: var(--text-3xl);
+      font-size: var(--text-lg);
     }
 
     h2 {
-      font-size: var(--text-2xl);
+      font-size: var(--text-base);
     }
 
     h3 {
-      font-size: var(--text-xl);
+      font-size: var(--text-sm);
     }
 
     strong {
@@ -74,10 +150,35 @@ body {
       list-style-type: disc;
       list-style-position: outside;
       padding-left: --spacing(4);
+      margin-block: --spacing(4);
     }
 
     ul > li {
       margin-bottom: --spacing(2);
+    }
+
+    blockquote {
+      margin-block: --spacing(4);
+      border-left: 2px solid var(--color-accent);
+      padding-left: --spacing(4);
+      color: var(--color-foreground-muted);
+    }
+
+    pre {
+      margin-block: --spacing(4);
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+
+    :not(pre) > code {
+      border-radius: var(--radius-sm);
+      background: color-mix(in oklab, var(--color-card-border) 45%, transparent);
+      padding: 0.1rem 0.25rem;
+      font-size: 0.92em;
+      color: var(--color-foreground);
     }
 
     img {
@@ -90,77 +191,6 @@ body {
       color: var(--color-accent);
       text-decoration: underline;
       text-underline-offset: 2px;
-    }
-  }
-
-  .callout {
-    padding: --spacing(4) --spacing(6);
-    margin-bottom: --spacing(6);
-    color: inherit;
-    border-left: 0.25em solid #888;
-
-    & .callout-title {
-      display: flex;
-      font-weight: var(--font-weight-semibold);
-      align-items: center;
-      line-height: 1;
-      margin-bottom: 1.25em;
-
-      & .icon {
-        margin-right: 0.5rem;
-        display: inline-block;
-        overflow: visible !important;
-        vertical-align: text-bottom;
-        fill: currentColor;
-      }
-    }
-
-    &.callout-note {
-      border-left-color: var(--color-callout-note);
-
-      & .callout-title {
-        color: var(--color-callout-note);
-      }
-    }
-
-    &.callout-tip {
-      border-left-color: var(--color-callout-tip);
-
-      & .callout-title {
-        color: var(--color-callout-tip);
-      }
-    }
-
-    &.callout-warning {
-      border-left-color: var(--color-callout-warning);
-
-      & .callout-title {
-        color: var(--color-callout-warning);
-      }
-    }
-
-    &.callout-danger {
-      border-left-color: var(--color-callout-caution);
-
-      & .callout-title {
-        color: var(--color-callout-caution);
-      }
-    }
-
-    &.callout-important {
-      border-left-color: var(--color-callout-important);
-
-      & .callout-title {
-        color: var(--color-callout-important);
-      }
-    }
-
-    & > :first-child {
-      margin-top: 0;
-    }
-
-    & > :last-child {
-      margin-bottom: 0;
     }
   }
 }

@@ -1,20 +1,18 @@
 ---
-import { Icon } from "astro-icon/components";
 import { stripProtocol } from "../../lib/utils";
 
 export interface Props {
   href: string;
-  icon?: string;
   label: string;
   className?: string;
 }
 
-const { href, icon, label, className = "" } = Astro.props;
+const { href, label, className = "" } = Astro.props;
 ---
 
-<a href={href} class:list={["flex items-center hover:text-foreground", className]}>
-  {icon != null && <Icon name={icon} class="size-5 mr-1" />}
-  <span class="text-sm">
+<a href={href} class:list={["flex items-center text-foreground-muted transition-colors hover:text-accent", className]}>
+  <slot name="icon" />
+  <span class="text-[13px]">
     <span class="print:hidden">{label}</span>
     <span class="hidden print:inline">{stripProtocol(href)}</span>
   </span>

@@ -1,14 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-export function formatDate(date: Date): string {
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
-
 export interface Props {
   post: CollectionEntry<"posts">;
 }
@@ -22,13 +14,13 @@ const {
 ---
 
 <div
-  class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 group border border-card-border bg-card-bg hover:border-accent/50 p-2"
+  class="group rounded-md border border-card-border bg-card-bg p-4 transition-colors hover:border-accent/40"
 >
-  <a href={`/posts/${id}`} class="text-foreground hover:text-accent transition-colors duration-200">
-    {title.toLowerCase()}
-  </a>
-  <div class="flex items-center text-sm text-foreground shrink-0">
-    <span>
+  <a href={`/posts/${id}`} class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <span class="text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
+      {title.toLowerCase()}
+    </span>
+    <span class="text-xs text-foreground-muted shrink-0">
       {
         new Date(date)
           .toLocaleDateString("en-US", {
@@ -39,5 +31,5 @@ const {
           .toLowerCase()
       }
     </span>
-  </div>
+  </a>
 </div>

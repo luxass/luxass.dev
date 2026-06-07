@@ -1,6 +1,5 @@
 ---
 import { Font } from "astro:assets";
-import Footer from "../components/ui/Footer.astro";
 import Header from "../components/ui/Header.astro";
 import { getCanonicalUrl, getAlternateUrls, getDomains } from "../lib/utils";
 import "../styles/globals.css";
@@ -61,9 +60,6 @@ const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
     <link rel="canonical" href={canonicalUrl} />
     {alternateUrls.map(({ hreflang, url }) => <link rel="alternate" hreflang={hreflang} href={url} />)}
 
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" href={`${domains.current}/rss.xml`} title="RSS" />
-
     <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -99,13 +95,16 @@ const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
 
     <Font cssVariable="--font-dm-sans" preload />
   </head>
-  <body class="antialiased min-h-screen font-mono">
-    <div class="max-w-4xl mx-auto px-4 py-8 h-dvh flex flex-col">
+  <body
+    class="min-h-screen bg-background font-mono antialiased [--color-accent:#136f63] [--color-background:#f3f7f6] [--color-card-bg:#fff] [--color-card-border:#d2dddd] [--color-foreground-muted:#61706f] [--color-foreground:#13201f]"
+  >
+    <div
+      class="mx-auto flex min-h-screen w-full max-w-[690px] flex-col px-4 py-5 text-[13px] motion-reduce:animate-none sm:px-6 animate-[page-enter_420ms_steps(7,end)_both]"
+    >
       <Header />
       <main class="flex-1">
         <slot />
       </main>
-      <Footer />
     </div>
   </body>
 </html>

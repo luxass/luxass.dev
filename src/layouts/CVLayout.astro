@@ -1,5 +1,6 @@
 ---
 import { Font } from "astro:assets";
+import Header from "../components/ui/Header.astro";
 import { getCanonicalUrl, getAlternateUrls, getDomains } from "../lib/utils";
 import "../styles/globals.css";
 
@@ -50,9 +51,6 @@ const author = "Lucas Nørgård";
     <link rel="canonical" href={canonicalUrl} />
     {alternateUrls.map(({ hreflang, url }) => <link rel="alternate" hreflang={hreflang} href={url} />)}
 
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" href={`${domains.current}/rss.xml`} title="RSS" />
-
     <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -85,9 +83,16 @@ const author = "Lucas Nørgård";
 
     <Font cssVariable="--font-dm-sans" preload />
   </head>
-  <body class="antialiased min-h-screen font-mono">
-    <main class="max-w-4xl mx-auto px-4 py-8 print:py-0 print:px-0 h-dvh flex flex-col">
-      <slot />
-    </main>
+  <body
+    class="min-h-screen bg-background font-mono antialiased [--color-accent:#136f63] [--color-background:#f3f7f6] [--color-card-bg:#fff] [--color-card-border:#d2dddd] [--color-foreground-muted:#61706f] [--color-foreground:#13201f] print:bg-white"
+  >
+    <div
+      class="mx-auto flex min-h-screen w-full max-w-[860px] flex-col px-4 py-5 text-[13px] motion-reduce:animate-none sm:px-6 print:block print:min-h-0 print:max-w-none print:p-0 animate-[page-enter_420ms_steps(7,end)_both]"
+    >
+      <Header />
+      <main class="flex-1 print:block">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
