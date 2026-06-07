@@ -10,10 +10,12 @@ const posts = await getCollection("posts", ({ data }) => !data.draft).then((entr
 export const prerender = true;
 ---
 
-<BaseLayout title="posts | luxass.dev" description="writing about web development, programming, and more">
+<BaseLayout title="posts | luxass.dev" description="notes on infrastructure, tooling, and things worth remembering">
   <h1 class="text-xl font-bold mb-4 text-foreground">Posts</h1>
 
-  <p class="text-foreground mb-12 leading-relaxed text-sm">here is some of my posts i have written.</p>
+  <p class="text-foreground mb-12 leading-relaxed text-sm">
+    notes on infrastructure, tooling, and things i want to remember.
+  </p>
 
   <div class="space-y-12">
     {

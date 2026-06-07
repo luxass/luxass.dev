@@ -31,7 +31,7 @@ export const projects = [
   {
     slug: "vitest-testdirs",
     title: "vitest-testdirs",
-    description: "Isolated test directories for Vitest. Prevents test pollution with automatic cleanup.",
+    description: "Isolated test directories for Vitest, with automatic cleanup between runs.",
     href: "https://github.com/luxass/vitest-testdirs",
     type: "personal",
     npmPackage: "vitest-testdirs",
@@ -39,7 +39,7 @@ export const projects = [
   {
     slug: "github-schema",
     title: "github-schema",
-    description: "Type-safe GitHub GraphQL client with auto-generated TypeScript definitions.",
+    description: "Type-safe GitHub GraphQL helpers built from the public schema.",
     href: "https://github.com/luxass/github-schema",
     type: "personal",
     npmPackage: "github-schema",
@@ -47,7 +47,7 @@ export const projects = [
   {
     slug: "esbuild-yaml",
     title: "esbuild-yaml",
-    description: "YAML import support for esbuild. Transform YAML files into JavaScript objects.",
+    description: "YAML import support for esbuild.",
     href: "https://github.com/luxass/esbuild-yaml",
     type: "personal",
     npmPackage: "esbuild-yaml",
@@ -55,7 +55,7 @@ export const projects = [
   {
     slug: "jsonc-parse",
     title: "jsonc-parse",
-    description: "JSONC parser supporting comments and trailing commas for configuration files.",
+    description: "JSONC parsing with comments and trailing commas.",
     href: "https://github.com/luxass/jsonc-parse",
     type: "personal",
     npmPackage: "jsonc-parse",
@@ -63,7 +63,7 @@ export const projects = [
   {
     slug: "strip-json-comments",
     title: "@luxass/strip-json-comments",
-    description: "Strip comments from JSONC files for configuration preprocessing.",
+    description: "Strip comments from JSON-like configuration files.",
     href: "https://github.com/luxass/strip-json-comments",
     type: "personal",
     npmPackage: "@luxass/strip-json-comments",
@@ -71,7 +71,7 @@ export const projects = [
   {
     slug: "ucdjs",
     title: "ucdjs",
-    description: "Unicode character database with lightweight, tree-shakable API.",
+    description: "Unicode character database helpers with a small API.",
     href: "https://github.com/ucdjs/ucd",
     type: "personal",
     npmPackage: "ucdjs",
@@ -79,7 +79,7 @@ export const projects = [
   {
     slug: "hono-zod-openapi",
     title: "@hono/zod-openapi",
-    description: "Fixed critical OpenAPI basePath and pathPrefix bugs in popular middleware.",
+    description: "Contributed fixes around OpenAPI path handling.",
     href: "https://github.com/honojs/middleware",
     type: "contribution",
     npmPackage: "@hono/zod-openapi",
@@ -87,7 +87,7 @@ export const projects = [
   {
     slug: "vitest-eslint",
     title: "@vitest/eslint-plugin",
-    description: "Enhanced ESLint plugin with automatic fixes and improved rule detection.",
+    description: "Contributed rule fixes and improvements for Vitest linting.",
     href: "https://github.com/vitest-dev/eslint-plugin-vitest",
     type: "contribution",
     npmPackage: "@vitest/eslint-plugin",
