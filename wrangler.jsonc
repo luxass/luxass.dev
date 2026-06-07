@@ -2,17 +2,14 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "luxass",
   "compatibility_date": "2026-01-17",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public"
-  ],
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "html_handling": "drop-trailing-slash"
+    "html_handling": "drop-trailing-slash",
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
   "env": {
     "luxass-dev": {
@@ -20,26 +17,26 @@
       "routes": [
         {
           "custom_domain": true,
-          "pattern": "luxass.dev"
+          "pattern": "luxass.dev",
         },
         {
           "custom_domain": true,
-          "pattern": "cv.luxass.dev"
-        }
-      ]
+          "pattern": "cv.luxass.dev",
+        },
+      ],
     },
     "luxass-com": {
       "name": "luxass-com",
       "routes": [
         {
           "custom_domain": true,
-          "pattern": "luxass.com"
+          "pattern": "luxass.com",
         },
         {
           "custom_domain": true,
-          "pattern": "cv.luxass.com"
-        }
-      ]
-    }
-  }
+          "pattern": "cv.luxass.com",
+        },
+      ],
+    },
+  },
 }
