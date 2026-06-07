@@ -101,7 +101,7 @@ function normalizeVariant(value: string): AsideVariant | undefined {
 }
 
 function getDirectiveTitle(node: Readonly<DirectiveNode>, ctx: VisitorContext): string | undefined {
-  const label = node.children.find((child) => hasDirectiveLabel(child.data));
+  const label = node.children.find(hasDirectiveLabelNode);
   if (label == null) {
     return;
   }
@@ -110,7 +110,11 @@ function getDirectiveTitle(node: Readonly<DirectiveNode>, ctx: VisitorContext): 
   return title.length > 0 ? title : undefined;
 }
 
-function hasDirectiveLabel(data: unknown): boolean {
+function hasDirectiveLabelNode(node: unknown): node is MdastNode {
+  return typeof node === "object" && node !== null && "data" in node && hasDirectiveLabel(node.data);
+}
+
+function hasDirectiveLabel(data: unknown): data is { directiveLabel: true } {
   return typeof data === "object" && data !== null && "directiveLabel" in data && data.directiveLabel === true;
 }
 
