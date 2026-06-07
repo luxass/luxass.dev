@@ -1,7 +1,6 @@
-import { file, glob } from "astro/loaders";
+import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { defineCollection } from "astro:content";
-import { parse } from "smol-toml";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/posts" }),
@@ -14,33 +13,4 @@ const posts = defineCollection({
   }),
 });
 
-const projects = defineCollection({
-  loader: file("src/data/projects.toml", {
-    parser(text) {
-      const parsed = parse(text);
-
-      const entries = Object.entries(parsed).map(([slug, project]) => {
-        if (typeof project !== "object" || project === null || Array.isArray(project) || project instanceof Date) {
-          throw new TypeError("expected project to be an object");
-        }
-
-        return {
-          slug,
-          ...project,
-        };
-      });
-
-      return entries;
-    },
-  }),
-  schema: z.object({
-    slug: z.string(),
-    title: z.string(),
-    description: z.string(),
-    href: z.string(),
-    type: z.enum(["personal", "contribution"]),
-    downloads: z.number().optional(),
-  }),
-});
-
-export const collections = { posts, projects };
+export const collections = { posts };
