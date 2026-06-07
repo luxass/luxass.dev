@@ -10,18 +10,15 @@ type MdastPosition = {
 };
 
 type MdastNode = {
-  type: string;
   position?: MdastPosition;
-  children?: MdastNode[];
-  data?: {
-    directiveLabel?: boolean;
-  };
-  value?: string;
+  children?: readonly unknown[];
+  data?: unknown;
+  value?: unknown;
 };
 
 type DirectiveNode = MdastNode & {
   name: string;
-  children: MdastNode[];
+  children: readonly MdastNode[];
 };
 
 type VisitorContext = {
@@ -104,13 +101,17 @@ function normalizeVariant(value: string): AsideVariant | undefined {
 }
 
 function getDirectiveTitle(node: Readonly<DirectiveNode>, ctx: VisitorContext): string | undefined {
-  const label = node.children.find((child) => child.data?.directiveLabel === true);
+  const label = node.children.find((child) => hasDirectiveLabel(child.data));
   if (label == null) {
     return;
   }
 
   const title = ctx.textContent(label).trim();
   return title.length > 0 ? title : undefined;
+}
+
+function hasDirectiveLabel(data: unknown): boolean {
+  return typeof data === "object" && data !== null && "directiveLabel" in data && data.directiveLabel === true;
 }
 
 function getSourceSlice(source: string, node: Readonly<MdastNode>): string {
