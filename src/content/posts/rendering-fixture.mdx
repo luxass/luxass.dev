@@ -1,0 +1,23 @@
+---
+title: Rendering fixture
+description: Draft post for checking markdown rendering.
+date: June 7, 2026
+draft: true
+---
+
+This draft exists to check markdown rendering locally.
+
+:::note[Directive callout]
+This should render as a Sätteri directive callout with **markdown** inside.
+:::
+
+> [!TIP]
+> This should render as a GitHub-style callout.
+
+Inline `code` should stay compact.
+
+```ts
+export function fixture(value: string) {
+  return value.trim().toLowerCase();
+}
+```
