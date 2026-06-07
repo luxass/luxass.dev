@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import ArrowUpRight from "~icons/ph/arrow-up-right";
-import PageLayout from "../layouts/PageLayout.astro";
+import ProjectListItem from "../components/projects/ProjectListItem.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import { sortPosts } from "../lib/utils";
 import { getProjectsWithDownloads } from "./projects.json.ts";
 
@@ -11,7 +11,7 @@ const projects = (await getProjectsWithDownloads()).filter((project) => project.
 export const prerender = false;
 ---
 
-<PageLayout
+<BaseLayout
   title="home - luxass.dev"
   description="personal website and blog of lucas nørgård"
   keywords={[
@@ -40,7 +40,7 @@ export const prerender = false;
   <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
     <div class="mb-4 flex items-baseline justify-between gap-4">
       <h2
-        class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
+        class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:translate-y-[-0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
       >
         open source
       </h2>
@@ -49,30 +49,7 @@ export const prerender = false;
       </a>
     </div>
     <div class="space-y-4">
-      {
-        projects.map((project) => (
-          <a href={project.href} target="_blank" rel="noopener noreferrer" class="group block">
-            <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-            <h3 class="text-[13px] font-semibold text-foreground group-hover:text-accent">
-                {project.title}
-                <ArrowUpRight
-                  class="ml-1 inline size-3.5 align-baseline text-foreground-muted motion-reduce:group-hover:animate-none group-hover:animate-[arrow-twitch_240ms_steps(2,end)]"
-                />
-              </h3>
-              <span
-                class:list={[
-                  "shrink-0 text-[12px] text-foreground-muted before:text-accent before:content-['↯_'] motion-reduce:animate-none",
-                  project.downloads != null && "download-count",
-                ]}
-                style={project.downloads == null ? undefined : `--download-count-end: ${project.downloads}`}
-              >
-                {project.downloads == null && "npm stats unavailable"}
-              </span>
-            </div>
-            <p class="mt-1 text-[13px] leading-5 text-foreground-muted">{project.description}</p>
-          </a>
-        ))
-      }
+      {projects.map((project) => <ProjectListItem project={project} />)}
     </div>
   </section>
 
@@ -81,7 +58,7 @@ export const prerender = false;
       <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
         <div class="mb-4 flex items-baseline justify-between gap-4">
           <h2
-            class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
+            class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:translate-y-[-0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
           >
             writing
           </h2>
@@ -110,7 +87,7 @@ export const prerender = false;
 
   <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
     <h2
-      class="mb-4 inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
+      class="mb-4 inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:translate-y-[-0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
     >
       contact
     </h2>
@@ -130,4 +107,4 @@ export const prerender = false;
       <a href="/cv" class="text-foreground underline-offset-4 hover:text-accent hover:underline">cv</a>
     </div>
   </section>
-</PageLayout>
+</BaseLayout>

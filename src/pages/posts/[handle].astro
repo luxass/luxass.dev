@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
-import PageLayout from "../../layouts/PageLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -30,7 +30,7 @@ const imageUrl = `https://image.luxass.dev/api/image/post?title=${encodeURICompo
 export const prerender = true;
 ---
 
-<PageLayout
+<BaseLayout
   title={`${title} - posts - luxass.dev`}
   description={description}
   image={imageUrl}
@@ -92,4 +92,4 @@ export const prerender = true;
       pre.append(button);
     }
   </script>
-</PageLayout>
+</BaseLayout>

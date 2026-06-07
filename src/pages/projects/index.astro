@@ -1,6 +1,6 @@
 ---
-import ArrowUpRight from "~icons/ph/arrow-up-right";
-import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectListItem from "../../components/projects/ProjectListItem.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getProjectsWithDownloads } from "../projects.json.ts";
 
 export const prerender = false;
@@ -8,7 +8,7 @@ export const prerender = false;
 const projects = await getProjectsWithDownloads();
 ---
 
-<PageLayout
+<BaseLayout
   title="projects - luxass.dev"
   description="open source projects by lucas nørgård"
   keywords={[
@@ -39,33 +39,7 @@ const projects = await getProjectsWithDownloads();
       </a>
     </div>
     <div class="space-y-4">
-      {
-        projects.map((project) => (
-          <a href={project.href} target="_blank" rel="noopener noreferrer" class="group block">
-            <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-              <div>
-                <h3 class="text-[13px] font-semibold text-foreground group-hover:text-accent">
-                  {project.title}
-                  <ArrowUpRight
-                    class="ml-1 inline size-3.5 align-baseline text-foreground-muted motion-reduce:group-hover:animate-none group-hover:animate-[arrow-twitch_240ms_steps(2,end)]"
-                  />
-                </h3>
-                <p class="text-xs text-foreground-muted">{project.type}</p>
-              </div>
-              <span
-                class:list={[
-                  "shrink-0 text-[12px] text-foreground-muted before:text-accent before:content-['↯_'] motion-reduce:animate-none",
-                  project.downloads != null && "download-count",
-                ]}
-                style={project.downloads == null ? undefined : `--download-count-end: ${project.downloads}`}
-              >
-                {project.downloads == null && "npm stats unavailable"}
-              </span>
-            </div>
-            <p class="mt-1 text-[13px] leading-5 text-foreground-muted">{project.description}</p>
-          </a>
-        ))
-      }
+      {projects.map((project) => <ProjectListItem project={project} showType />)}
     </div>
   </section>
-</PageLayout>
+</BaseLayout>

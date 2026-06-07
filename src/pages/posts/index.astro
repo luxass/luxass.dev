@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import PostCard from "../../components/cards/PostCard.astro";
-import PageLayout from "../../layouts/PageLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft).then((entries) =>
   entries.toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime()),
@@ -10,7 +10,7 @@ const posts = await getCollection("posts", ({ data }) => !data.draft).then((entr
 export const prerender = true;
 ---
 
-<PageLayout title="posts | luxass.dev" description="writing about web development, programming, and more">
+<BaseLayout title="posts | luxass.dev" description="writing about web development, programming, and more">
   <h1 class="text-xl font-bold mb-4 text-foreground">Posts</h1>
 
   <p class="text-foreground mb-12 leading-relaxed text-sm">here is some of my posts i have written.</p>
@@ -30,4 +30,4 @@ export const prerender = true;
       )
     }
   </div>
-</PageLayout>
+</BaseLayout>

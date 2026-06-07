@@ -1,0 +1,37 @@
+---
+import ArrowUpRight from "~icons/ph/arrow-up-right";
+import type { Project } from "../../pages/projects.json.ts";
+
+export interface Props {
+  project: Project & {
+    downloads?: number;
+  };
+  showType?: boolean;
+}
+
+const { project, showType = false } = Astro.props;
+---
+
+<a href={project.href} target="_blank" rel="noopener noreferrer" class="group block">
+  <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+    <div>
+      <h3 class="text-[13px] font-semibold text-foreground group-hover:text-accent">
+        {project.title}
+        <ArrowUpRight
+          class="ml-1 inline size-3.5 align-baseline text-foreground-muted motion-reduce:group-hover:animate-none group-hover:animate-[arrow-twitch_240ms_steps(2,end)]"
+        />
+      </h3>
+      {showType && <p class="text-xs text-foreground-muted">{project.type}</p>}
+    </div>
+    <span
+      class:list={[
+        "shrink-0 text-[12px] text-foreground-muted before:text-accent before:content-['↯_'] motion-reduce:animate-none",
+        project.downloads != null && "download-count",
+      ]}
+      style={project.downloads == null ? undefined : `--download-count-end: ${project.downloads}`}
+    >
+      {project.downloads == null && "npm stats unavailable"}
+    </span>
+  </div>
+  <p class="mt-1 text-[13px] leading-5 text-foreground-muted">{project.description}</p>
+</a>

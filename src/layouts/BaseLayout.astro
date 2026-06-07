@@ -9,12 +9,12 @@ export interface Props {
   description: string;
   image?: string | URL;
   keywords?: string[];
-  class?: string;
   type?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
   noindex?: boolean;
+  shell?: "default" | "cv";
 }
 
 const {
@@ -26,6 +26,7 @@ const {
   modifiedTime,
   author = "Lucas Nørgård",
   noindex = false,
+  shell = "default",
 } = Astro.props;
 let { title } = Astro.props;
 
@@ -37,7 +38,6 @@ if (title.includes("luxass.dev") && domains.isAlternate) {
   title = title.replace("luxass.dev", "luxass.com");
 }
 
-// Ensure image is a URL string
 const imageUrl = typeof image === "string" ? image : image.toString();
 const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
 ---
@@ -45,29 +45,24 @@ const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- global metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" />
 
-    <!-- robots -->
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
-    <!-- canonical and alternate URLs -->
     <link rel="canonical" href={canonicalUrl} />
     {alternateUrls.map(({ hreflang, url }) => <link rel="alternate" hreflang={hreflang} href={url} />)}
 
-    <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
 
-    <!-- open graph -->
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:url" content={canonicalUrl} />
@@ -82,7 +77,6 @@ const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
     {type === "article" && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     {type === "article" && <meta property="article:author" content={author} />}
 
-    <!-- twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
@@ -90,19 +84,25 @@ const siteName = domains.isAlternate ? "luxass.com" : "luxass.dev";
     <meta name="twitter:image" content={imageUrl} />
     <meta name="twitter:image:alt" content={title} />
 
-    <!-- links -->
     <link rel="sitemap" href={`${domains.current}/sitemap-index.xml`} />
 
     <Font cssVariable="--font-dm-sans" preload />
   </head>
   <body
-    class="min-h-screen bg-background font-mono antialiased [--color-accent:#136f63] [--color-background:#f3f7f6] [--color-card-bg:#fff] [--color-card-border:#d2dddd] [--color-foreground-muted:#61706f] [--color-foreground:#13201f]"
+    class:list={[
+      "min-h-screen bg-background font-mono antialiased [--color-accent:#136f63] [--color-background:#f3f7f6] [--color-card-bg:#fff] [--color-card-border:#d2dddd] [--color-foreground-muted:#61706f] [--color-foreground:#13201f]",
+      shell === "cv" && "print:bg-white",
+    ]}
   >
     <div
-      class="mx-auto flex min-h-screen w-full max-w-[690px] flex-col px-4 py-5 text-[13px] motion-reduce:animate-none sm:px-6 animate-[page-enter_420ms_steps(7,end)_both]"
+      class:list={[
+        "mx-auto flex min-h-screen w-full flex-col px-4 py-5 text-[13px] motion-reduce:animate-none sm:px-6 animate-[page-enter_420ms_steps(7,end)_both]",
+        shell === "default" && "max-w-172.5",
+        shell === "cv" && "max-w-215 print:block print:min-h-0 print:max-w-none print:p-0",
+      ]}
     >
       <Header />
-      <main class="flex-1">
+      <main class:list={["flex-1", shell === "cv" && "print:block"]}>
         <slot />
       </main>
     </div>

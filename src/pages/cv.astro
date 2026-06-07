@@ -1,8 +1,8 @@
 ---
-import CVLayout from "../layouts/CVLayout.astro";
-import CVLink from "../components/cv/CVLink.astro";
 import CVEntry from "../components/cv/CVEntry.astro";
+import CVLink from "../components/cv/CVLink.astro";
 import CVProject from "../components/cv/CVProject.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Envelope from "~icons/ph/envelope";
 import GithubLogo from "~icons/ph/github-logo";
 import LinkedinLogo from "~icons/ph/linkedin-logo";
@@ -23,7 +23,7 @@ const contributions = allProjects
   .slice(0, MAX - projects.length);
 ---
 
-<CVLayout
+<BaseLayout
   title="CV - Lucas Nørgård"
   description="CV - Lucas Nørgård - Software Engineer"
   keywords={[
@@ -43,6 +43,7 @@ const contributions = allProjects
     "cv",
     "software engineer",
   ]}
+  shell="cv"
 >
   <header class="mb-8 border-b border-card-border pb-6 print:mb-4 print:border-b-0 print:pb-0">
     <div class="hidden print:flex print:flex-wrap print:gap-x-4 print:gap-y-1 print:text-xs print:mb-2">
@@ -55,7 +56,7 @@ const contributions = allProjects
       <CVLink href="https://github.com/luxass" label="@luxass">
         <GithubLogo slot="icon" class="size-5 mr-1" />
       </CVLink>
-      <div class="flex items-center">
+      <div class="flex items-center text-foreground-muted">
         <MapPin class="size-5 mr-1" />
         <span class="text-xs">Aarhus, Denmark</span>
       </div>
@@ -63,7 +64,7 @@ const contributions = allProjects
     <h1 class="mb-2 text-xl font-semibold tracking-tight text-foreground sm:text-2xl print:text-2xl print:mb-1">
       Lucas Nørgård
     </h1>
-    <div class="flex flex-wrap gap-x-4 gap-y-1 text-foreground print:hidden mb-4">
+    <div class="mb-4 flex flex-wrap gap-x-4 gap-y-1 text-foreground print:hidden">
       <CVLink href="mailto:lucasnrgaard@gmail.com" label="lucasnrgaard@gmail.com">
         <Envelope slot="icon" class="size-5 mr-1" />
       </CVLink>
@@ -73,7 +74,7 @@ const contributions = allProjects
       <CVLink href="https://github.com/luxass" label="@luxass">
         <GithubLogo slot="icon" class="size-5 mr-1" />
       </CVLink>
-      <div class="flex items-center">
+      <div class="flex items-center text-foreground-muted">
         <MapPin class="size-4 mr-1" />
         <span class="text-sm">Aarhus, Denmark</span>
       </div>
@@ -174,4 +175,4 @@ const contributions = allProjects
   </section>
 
   <div class="pb-8 print:hidden"></div>
-</CVLayout>
+</BaseLayout>
