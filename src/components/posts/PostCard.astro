@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+
+const {
+  id,
+  data: { title, date },
+} = post;
+---
+
+<div
+  class="group rounded-md border border-card-border bg-card-bg p-4 transition-colors hover:border-accent/40"
+>
+  <a href={`/posts/${id}`} class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <span class="text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
+      {title.toLowerCase()}
+    </span>
+    <span class="text-xs text-foreground-muted shrink-0">
+      {
+        new Date(date)
+          .toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+          .toLowerCase()
+      }
+    </span>
+  </a>
+</div>

@@ -2,17 +2,13 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import cloudflare from "@astrojs/cloudflare";
+import { satteri } from "@astrojs/markdown-satteri";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import solid from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
-import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeExternalLinks from "rehype-external-links";
-import rehypeSlug from "rehype-slug";
-import remarkDirective from "remark-directive";
-import { rehypeCopy, remarkAsides } from "./mdx-plugins";
+import icons from "unplugin-icons/vite";
+import { satteriAsides } from "./src/markdown/asides";
 
 const site = process.env.SITE_HOST === "luxass.com" ? "https://luxass.com" : "https://luxass.dev";
 
@@ -66,62 +62,32 @@ export default defineConfig({
         };
       },
     }),
-    solid(),
-    icon({
-      include: {
-        lucide: [
-          "clipboard",
-          "clipboard-check",
-          "search",
-          "briefcase",
-          "graduation-cap",
-          "rocket",
-          "heart-handshake",
-          "user",
-          "git-pull-request",
-        ],
-        ph: [
-          "map-pin",
-          "building",
-          "arrow-up-right",
-          "linkedin-logo",
-          "github-logo",
-          "envelope",
-          "file-text",
-        ],
-      },
-    }),
     mdx(),
   ],
   experimental: {
     contentIntellisense: true,
   },
-  fonts: [{
-    provider: fontProviders.google(),
-    name: "DM Sans",
-    cssVariable: "--font-dm-sans",
-  }],
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "DM Sans",
+      cssVariable: "--font-dm-sans",
+    },
+  ],
   prefetch: false,
   markdown: {
+    processor: satteri({
+      mdastPlugins: [satteriAsides],
+      features: {
+        directive: true,
+      },
+    }),
     shikiConfig: {
       themes: {
         dark: "vitesse-dark",
         light: "vitesse-light",
       },
     },
-    rehypePlugins: [
-      rehypeSlug,
-      rehypeAutolinkHeadings,
-      [rehypeExternalLinks, {
-        target: "_blank",
-        rel: ["noopener", "noreferrer"],
-      }],
-      rehypeCopy,
-    ],
-    remarkPlugins: [
-      remarkDirective,
-      remarkAsides,
-    ],
   },
   adapter: cloudflare({
     imageService: "compile",
@@ -130,6 +96,9 @@ export default defineConfig({
   vite: {
     plugins: [
       tailwindcss(),
+      icons({
+        compiler: "astro",
+      }),
     ],
   },
 });

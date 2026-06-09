@@ -1,6 +1,7 @@
 ---
 import { formatDownloads, stripProtocol } from "../../lib/utils";
-import { Icon } from "astro-icon/components";
+import GitPullRequest from "~icons/lucide/git-pull-request";
+import User from "~icons/lucide/user";
 
 export interface Props {
   title: string;
@@ -15,23 +16,21 @@ const { title, description, href, downloads, type } = Astro.props;
 
 <a
   href={href}
-  class="rounded-lg border border-card-border hover:bg-card-bg transition-colors print:bg-auto print:shadow-none print:border-none flex flex-col"
+  class="flex flex-col rounded-md border border-card-border bg-card-bg/45 transition-colors hover:border-accent/50 print:bg-auto print:shadow-none print:border-none"
 >
-  <div class="flex flex-col space-y-1.5 p-4 print:p-2 flex-grow">
-    <div class="text-base font-semibold leading-none tracking-tight print:text-sm flex justify-between items-start">
+  <div class="flex flex-grow flex-col space-y-1.5 p-3 print:p-2">
+    <div class="flex items-start justify-between text-[13px] font-semibold leading-none tracking-tight print:text-sm">
       <span class="flex items-center gap-1.5">
-        <Icon
-          name={type === "personal" ? "lucide:user" : "lucide:git-pull-request"}
-          class="size-3.5 text-foreground-muted flex-shrink-0"
-        />
+        {type === "personal" && <User class="size-3.5 text-foreground-muted flex-shrink-0" />}
+        {type === "contribution" && <GitPullRequest class="size-3.5 text-foreground-muted flex-shrink-0" />}
         {title}
       </span>
       {downloads && <span class="text-xs text-foreground-muted font-normal">{formatDownloads(downloads)}/month</span>}
     </div>
-    <div class="hidden print:block text-xs text-foreground-muted">
+    <div class="hidden text-xs text-foreground-muted print:block">
       {stripProtocol(href)}
     </div>
-    <div class="text-sm text-foreground-muted print:text-xs">
+    <div class="text-[13px] text-foreground-muted print:text-xs">
       {description}
     </div>
   </div>

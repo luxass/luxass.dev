@@ -1,43 +1,38 @@
 ---
-import CVLayout from "../layouts/CVLayout.astro";
-import CVLink from "../components/cv/CVLink.astro";
 import CVEntry from "../components/cv/CVEntry.astro";
+import CVLink from "../components/cv/CVLink.astro";
 import CVProject from "../components/cv/CVProject.astro";
-import { getCollection } from "astro:content";
-import { Icon } from "astro-icon/components";
-import { downloadsSort } from "../lib/utils";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Envelope from "~icons/ph/envelope";
+import GithubLogo from "~icons/ph/github-logo";
+import LinkedinLogo from "~icons/ph/linkedin-logo";
+import MapPin from "~icons/ph/map-pin";
+import { projects as allProjects } from "./projects.json.ts";
 
 export const prerender = true;
 
 const MAX = 6;
 const PERSONAL_MAX = 4;
 
-const allProjects = await getCollection("projects");
-
 const projects = allProjects
-  .filter(({ data }) => data.type === "personal")
-  .sort(downloadsSort)
+  .filter((project) => project.type === "personal")
   .slice(0, PERSONAL_MAX);
 
 const contributions = allProjects
-  .filter(({ data }) => data.type === "contribution")
-  .sort(downloadsSort)
+  .filter((project) => project.type === "contribution")
   .slice(0, MAX - projects.length);
 ---
 
-<CVLayout
+<BaseLayout
   title="CV - Lucas Nørgård"
-  description="CV - Lucas Nørgård - Software Engineer"
+  description="CV - Lucas Nørgård - Platform Engineer"
   keywords={[
     "lucas nørgård",
     "luxass",
-    "devops engineer",
-    "kubernetes",
+    "platform engineer",
     "golang",
     "rust",
     "typescript",
-    "microservices",
-    "healthcare compliance",
     "open source",
     "developer tools",
     "CI/CD",
@@ -45,52 +40,63 @@ const contributions = allProjects
     "cv",
     "software engineer",
   ]}
+  shell="cv"
 >
-  <header class="mb-6 print:mb-4">
+  <header class="mb-8 border-b border-card-border pb-6 print:mb-4 print:border-b-0 print:pb-0">
     <div class="hidden print:flex print:flex-wrap print:gap-x-4 print:gap-y-1 print:text-xs print:mb-2">
-      <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
-      <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
-      <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
-      <div class="flex items-center">
-        <Icon name="ph:map-pin" class="size-5 mr-1" />
+      <CVLink href="mailto:lucasnrgaard@gmail.com" label="lucasnrgaard@gmail.com">
+        <Envelope slot="icon" class="size-5 mr-1" />
+      </CVLink>
+      <CVLink href="https://linkedin.com/in/lucasnrgaard" label="@lucasnrgaard">
+        <LinkedinLogo slot="icon" class="size-5 mr-1" />
+      </CVLink>
+      <CVLink href="https://github.com/luxass" label="@luxass">
+        <GithubLogo slot="icon" class="size-5 mr-1" />
+      </CVLink>
+      <div class="flex items-center text-foreground-muted">
+        <MapPin class="size-5 mr-1" />
         <span class="text-xs">Aarhus, Denmark</span>
       </div>
     </div>
-    <h1 class="text-3xl font-light text-foreground mb-2 print:text-2xl print:mb-1">Lucas Nørgård</h1>
-    <div class="flex flex-wrap gap-x-4 gap-y-1 text-foreground print:hidden mb-4">
-      <CVLink href="mailto:lucasnrgaard@gmail.com" icon="ph:envelope" label="lucasnrgaard@gmail.com" />
-      <CVLink href="https://linkedin.com/in/lucasnrgaard" icon="ph:linkedin-logo" label="@lucasnrgaard" />
-      <CVLink href="https://github.com/luxass" icon="ph:github-logo" label="@luxass" />
-      <div class="flex items-center">
-        <Icon name="ph:map-pin" class="size-4 mr-1" />
+    <h1 class="mb-2 text-xl font-semibold tracking-tight text-foreground sm:text-2xl print:text-2xl print:mb-1">
+      Lucas Nørgård
+    </h1>
+    <div class="mb-4 flex flex-wrap gap-x-4 gap-y-1 text-foreground print:hidden">
+      <CVLink href="mailto:lucasnrgaard@gmail.com" label="lucasnrgaard@gmail.com">
+        <Envelope slot="icon" class="size-5 mr-1" />
+      </CVLink>
+      <CVLink href="https://linkedin.com/in/lucasnrgaard" label="@lucasnrgaard">
+        <LinkedinLogo slot="icon" class="size-5 mr-1" />
+      </CVLink>
+      <CVLink href="https://github.com/luxass" label="@luxass">
+        <GithubLogo slot="icon" class="size-5 mr-1" />
+      </CVLink>
+      <div class="flex items-center text-foreground-muted">
+        <MapPin class="size-4 mr-1" />
         <span class="text-sm">Aarhus, Denmark</span>
       </div>
     </div>
 
-    <p class="text-foreground-muted text-sm print:text-xs leading-relaxed">
-      DevOps Engineer specializing in <strong>Kubernetes</strong> infrastructure, <strong>healthcare compliance</strong
-      >, and <strong>TypeScript</strong> developer tooling. Experienced in <strong>Go</strong>, <strong
-        >TypeScript</strong
-      >, <strong>Java</strong>, <strong>Spring Boot</strong>, and <strong>CI/CD</strong> automation. Designed CI/CD pipelines
-      for healthcare applications while managing production clusters and supporting "You Build It, You Run It" culture with
-      focus on
-      <strong>developer experience</strong> and system <strong>resilience</strong>.
+    <p class="max-w-3xl text-[13px] leading-6 text-foreground-muted print:text-xs">
+      Platform engineer focused on <strong>internal tooling</strong>, <strong>CI/CD</strong>, infrastructure, and <strong
+        >developer experience</strong
+      >. Experienced in <strong>Go</strong>, <strong>TypeScript</strong>, <strong>Java</strong>, and <strong
+        >Spring Boot</strong
+      >, with a bias toward maintainable systems, clear ownership, and feedback loops that stay fast.
     </p>
   </header>
 
-  <section class="mb-6 print:mb-4">
-    <h2 class="text-xl font-medium text-foreground mb-3 print:text-lg print:mb-2">Experience & Education</h2>
+  <section class="mb-8 print:mb-4">
+    <h2 class="mb-4 text-base font-semibold text-foreground print:text-lg print:mb-2">Experience & Education</h2>
     <div class="space-y-4 print:space-y-3">
       <CVEntry company="DevOps Engineer @ KvalitetsIT" period="Nov 2025 - Present" type="work">
         <ul
           class="text-sm print:text-xs text-foreground-muted leading-relaxed list-disc list-inside space-y-1 print:space-y-0"
         >
+          <li>Working on platform infrastructure for private and public sector clients</li>
           <li>
-            Managing and operating <strong>Kubernetes clusters</strong> for both private and public sector clients
-          </li>
-          <li>
-            Developing internal components and tools for the Kubernetes platform, including a <strong>SBOM tool</strong>
-            for supply chain security
+            Developing internal components and tools for platform workflows, including a <strong>SBOM tool</strong> for
+            supply chain security
           </li>
           <li>Supporting platform engineering and DevOps best practices</li>
         </ul>
@@ -101,7 +107,7 @@ const contributions = allProjects
           class="text-sm print:text-xs text-foreground-muted leading-relaxed list-disc list-inside space-y-1 print:space-y-0"
         >
           <li>Designed and implemented <strong>CI/CD pipelines</strong> for healthcare applications</li>
-          <li>Managed <strong>Kubernetes clusters</strong> and service infrastructure at scale</li>
+          <li>Worked with service infrastructure and deployment workflows at scale</li>
           <li>
             Supported <strong>"You Build It, You Run It" culture</strong> with focus on <strong
               >developer experience</strong
@@ -139,22 +145,20 @@ const contributions = allProjects
     </div>
   </section>
 
-  <section class="mb-6 print:mb-4">
-    <h2 class="text-xl font-medium text-foreground mb-3 print:text-lg print:mb-2">Open Source Projects</h2>
-    <p class="text-foreground-muted text-sm mb-3 print:text-xs print:mb-2 leading-relaxed">
-      Authored <strong>TypeScript developer tools</strong> focused on <strong>build optimization</strong> and <strong
-        >developer experience</strong
-      >, with adoption by development teams worldwide. Contributor to open source projects that improve development
-      workflows and tooling ecosystems.
+  <section class="mb-8 print:mb-4">
+    <h2 class="mb-4 text-base font-semibold text-foreground print:text-lg print:mb-2">Open Source Projects</h2>
+    <p class="mb-4 max-w-3xl text-[13px] leading-6 text-foreground-muted print:text-xs print:mb-2">
+      Authored and contributed to small open source tools around <strong>developer workflows</strong>, <strong
+        >build tooling</strong
+      >, and automation. Most of them started as practical fixes for repeated work.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 print:grid-cols-2 print:gap-2">
       {
-        [...projects, ...contributions].map(({ data: projectOrContribution }) => (
+        [...projects, ...contributions].map((projectOrContribution) => (
           <CVProject
             title={projectOrContribution.title}
             description={projectOrContribution.description}
             href={projectOrContribution.href}
-            downloads={projectOrContribution.downloads}
             type={projectOrContribution.type}
           />
         ))
@@ -163,4 +167,4 @@ const contributions = allProjects
   </section>
 
   <div class="pb-8 print:hidden"></div>
-</CVLayout>
+</BaseLayout>

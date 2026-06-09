@@ -1,9 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 
-export function sortPosts(
-  posts: CollectionEntry<"posts">[],
-): CollectionEntry<"posts">[] {
-  return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+export function sortPosts(posts: CollectionEntry<"posts">[]): CollectionEntry<"posts">[] {
+  return posts.toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
 export function stripProtocol(url: string): string {
@@ -24,12 +22,6 @@ export function formatDownloads(num: number): string {
   }
 
   return num.toString();
-}
-
-export function downloadsSort(a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) {
-  const aDownloads = a.data.downloads || 0;
-  const bDownloads = b.data.downloads || 0;
-  return bDownloads - aDownloads;
 }
 
 /**

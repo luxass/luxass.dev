@@ -1,32 +1,45 @@
 ---
-import { getCollection } from "astro:content";
-import ProjectCard from "../../components/cards/ProjectCard.astro";
-import PageLayout from "../../layouts/PageLayout.astro";
-import { downloadsSort } from "../../lib/utils";
+import ProjectListItem from "../../components/projects/ProjectListItem.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getProjectsWithDownloads } from "../projects.json.ts";
 
-const allProjects = await getCollection("projects");
+export const prerender = false;
 
-const personalProjects = allProjects.filter(({ data }) => data.type === "personal").sort(downloadsSort);
-
-const contributions = allProjects.filter(({ data }) => data.type === "contribution").sort(downloadsSort);
-
-const projects = [...personalProjects, ...contributions];
-
-export const prerender = true;
+const projects = await getProjectsWithDownloads();
 ---
 
-<PageLayout title="projects | luxass.dev" description="projects i've worked on">
-  <h1 class="text-xl font-bold mb-4 text-foreground">Projects</h1>
+<BaseLayout
+  title="projects - luxass.dev"
+  description="packages, experiments, and contributions by lucas nørgård"
+  keywords={[
+    "lucas nørgård",
+    "luxass",
+    "projects",
+    "open source",
+    "typescript",
+    "developer tools",
+  ]}
+>
+  <section class="max-w-lg motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both]">
+    <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">projects</h1>
+    <p class="mt-3 max-w-lg text-[13px] leading-6 text-foreground-muted">
+      packages, experiments, and contributions. mostly small tools that came from real workflows.
+    </p>
+  </section>
 
-  <p class="text-foreground mb-12 leading-relaxed text-sm">
-    here is some of my projects i have worked on. you can find more on my <a
-      href="https://github.com/luxass"
-      target="_blank"
-      class="text-accent">github</a
-    >.
-  </p>
-
-  <div class="space-y-12">
-    {projects.map((project) => <ProjectCard project={project} />)}
-  </div>
-</PageLayout>
+  <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
+    <div class="mb-4 flex items-baseline justify-between gap-4">
+      <h2
+        class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
+      >
+        open source
+      </h2>
+      <a href="/projects.json" class="text-[13px] text-accent underline-offset-4 hover:underline">
+        json ↗
+      </a>
+    </div>
+    <div class="space-y-4">
+      {projects.map((project) => <ProjectListItem project={project} showType />)}
+    </div>
+  </section>
+</BaseLayout>
