@@ -7,20 +7,13 @@ import Envelope from "~icons/ph/envelope";
 import GithubLogo from "~icons/ph/github-logo";
 import LinkedinLogo from "~icons/ph/linkedin-logo";
 import MapPin from "~icons/ph/map-pin";
-import { projects as allProjects } from "./projects.json.ts";
+import { getProjectsWithStats } from "./projects.json.ts";
 
 export const prerender = true;
 
-const MAX = 6;
-const PERSONAL_MAX = 4;
+const PROJECTS_MAX = 4;
 
-const projects = allProjects
-  .filter((project) => project.type === "personal")
-  .slice(0, PERSONAL_MAX);
-
-const contributions = allProjects
-  .filter((project) => project.type === "contribution")
-  .slice(0, MAX - projects.length);
+const projects = (await getProjectsWithStats()).filter((project) => project.type === "personal").slice(0, PROJECTS_MAX);
 ---
 
 <BaseLayout
@@ -146,21 +139,15 @@ const contributions = allProjects
   </section>
 
   <section class="mb-8 print:mb-4">
-    <h2 class="mb-4 text-base font-semibold text-foreground print:text-lg print:mb-2">Open Source Projects</h2>
+    <h2 class="mb-4 text-base font-semibold text-foreground print:text-lg print:mb-2">Selected Projects</h2>
     <p class="mb-4 max-w-3xl text-[13px] leading-6 text-foreground-muted print:text-xs print:mb-2">
-      Authored and contributed to small open source tools around <strong>developer workflows</strong>, <strong
-        >build tooling</strong
-      >, and automation. Most of them started as practical fixes for repeated work.
+      Selected personal projects around <strong>developer workflows</strong>, <strong>build tooling</strong>, and
+      automation. Most of them started as practical fixes for repeated work.
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 print:grid-cols-2 print:gap-2">
       {
-        [...projects, ...contributions].map((projectOrContribution) => (
-          <CVProject
-            title={projectOrContribution.title}
-            description={projectOrContribution.description}
-            href={projectOrContribution.href}
-            type={projectOrContribution.type}
-          />
+        projects.map((project) => (
+          <CVProject title={project.title} description={project.description} href={project.href} type={project.type} />
         ))
       }
     </div>

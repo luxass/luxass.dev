@@ -1,37 +1,106 @@
 ---
+import { formatDownloads } from "../../lib/utils";
 import ArrowUpRight from "~icons/ph/arrow-up-right";
-import type { Project } from "../../pages/projects.json.ts";
+import type { ProjectWithStats } from "../../pages/projects.json.ts";
 
 export interface Props {
-  project: Project & {
-    downloads?: number;
-  };
+  project: ProjectWithStats;
   showType?: boolean;
+  muted?: boolean;
 }
 
-const { project, showType = false } = Astro.props;
+const { project, showType = false, muted = false } = Astro.props;
+const stat = project.type === "personal" ? project.stats : undefined;
+const statSource = stat?.kind === "npm-downloads" ? "npm" : stat?.kind === "github-stars" ? "github" : undefined;
+const statSuffix = stat?.kind === "npm-downloads" ? "/mo" : stat?.kind === "github-stars" ? " stars" : undefined;
+const statValue = stat == null ? undefined : formatDownloads(stat.value);
+const statWidth = statValue == null ? undefined : Math.max(statValue.length, 4);
 ---
 
-<a href={project.href} target="_blank" rel="noopener noreferrer" class="group block">
+<a
+  href={project.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "group block transition-colors",
+    muted ? "border-l border-card-border py-2 pl-3 hover:border-accent/60" : "py-3",
+  ]}
+>
   <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-    <div>
-      <h3 class="text-[13px] font-semibold text-foreground group-hover:text-accent">
-        {project.title}
-        <ArrowUpRight
-          class="ml-1 inline size-3.5 align-baseline text-foreground-muted motion-reduce:group-hover:animate-none group-hover:animate-[arrow-twitch_240ms_steps(2,end)]"
-        />
-      </h3>
+    <div class="min-w-0">
+      <div class="flex items-baseline gap-2">
+        {project.featured === true && <span class="text-[11px] text-accent" aria-label="featured project">◇</span>}
+        <h3
+          class:list={[
+            "font-semibold text-foreground group-hover:text-accent",
+            muted ? "text-[12px]" : "text-[13px]",
+          ]}
+        >
+          {project.title}
+          <ArrowUpRight
+            class="ml-1 inline size-3.5 align-baseline text-foreground-muted motion-reduce:group-hover:animate-none group-hover:animate-[arrow-twitch_240ms_steps(2,end)]"
+          />
+        </h3>
+      </div>
       {showType && <p class="text-xs text-foreground-muted">{project.type}</p>}
     </div>
-    <span
-      class:list={[
-        "shrink-0 text-[12px] text-foreground-muted before:text-accent before:content-['↯_'] motion-reduce:animate-none",
-        project.downloads != null && "download-count",
-      ]}
-      style={project.downloads == null ? undefined : `--download-count-end: ${project.downloads}`}
-    >
-      {project.downloads == null && "npm stats unavailable"}
-    </span>
+    {
+      stat != null && statSource != null && statSuffix != null && statValue != null && statWidth != null && (
+        <span class="shrink-0 text-[12px] text-foreground-muted">
+          {statSource} · {" "}
+          <span
+            class="rolling-stat inline-block text-right tabular-nums"
+            data-stat-value={stat.value}
+            style={`width: ${statWidth}ch`}
+          >
+            {statValue}
+          </span>
+          {statSuffix}
+        </span>
+      )
+    }
   </div>
-  <p class="mt-1 text-[13px] leading-5 text-foreground-muted">{project.description}</p>
+  <p class:list={["mt-1 leading-5 text-foreground-muted", muted ? "text-[12px]" : "text-[13px]"]}>
+    {project.description}
+  </p>
 </a>
+
+<script>
+  const formatter = new Intl.NumberFormat("en", {
+    maximumFractionDigits: 1,
+    notation: "compact",
+  });
+
+  function formatStat(value: number): string {
+    return formatter.format(value);
+  }
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    for (const element of document.querySelectorAll<HTMLElement>(".rolling-stat:not([data-rolling])")) {
+      element.dataset.rolling = "true";
+
+      const end = Number(element.dataset.statValue);
+
+      if (!Number.isFinite(end)) {
+        continue;
+      }
+
+      const duration = 780;
+      const start = performance.now();
+
+      function tick(now: number) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+
+        element.textContent = formatStat(Math.round(end * eased));
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      element.textContent = "0";
+      requestAnimationFrame(tick);
+    }
+  }
+</script>

@@ -3,10 +3,10 @@ import { getCollection } from "astro:content";
 import ProjectListItem from "../components/projects/ProjectListItem.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { sortPosts } from "../lib/utils";
-import { getProjectsWithDownloads } from "./projects.json.ts";
+import { getProjectsWithStats } from "./projects.json.ts";
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
-const projects = (await getProjectsWithDownloads()).filter((project) => project.type === "personal").slice(0, 3);
+const projects = (await getProjectsWithStats()).filter((project) => project.type === "personal").slice(0, 3);
 
 export const prerender = false;
 ---
@@ -42,7 +42,7 @@ export const prerender = false;
       <h2
         class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:translate-y-[-0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
       >
-        open source
+        selected projects
       </h2>
       <a href="/projects" class="text-[13px] text-accent underline-offset-4 hover:underline">
         all projects ↗

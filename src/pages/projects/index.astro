@@ -1,16 +1,18 @@
 ---
 import ProjectListItem from "../../components/projects/ProjectListItem.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getProjectsWithDownloads } from "../projects.json.ts";
+import { getProjectsWithStats } from "../projects.json.ts";
 
 export const prerender = false;
 
-const projects = await getProjectsWithDownloads();
+const projects = await getProjectsWithStats();
+const personalProjects = projects.filter((project) => project.type === "personal");
+const contributions = projects.filter((project) => project.type === "contribution");
 ---
 
 <BaseLayout
   title="projects - luxass.dev"
-  description="packages, experiments, and contributions by lucas nørgård"
+  description="developer tools, experiments, and small open source contributions by lucas nørgård"
   keywords={[
     "lucas nørgård",
     "luxass",
@@ -23,7 +25,8 @@ const projects = await getProjectsWithDownloads();
   <section class="max-w-lg motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both]">
     <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">projects</h1>
     <p class="mt-3 max-w-lg text-[13px] leading-6 text-foreground-muted">
-      packages, experiments, and contributions. mostly small tools that came from real workflows.
+      i build <span class="line-through decoration-accent decoration-2">useful</span> developer tools, experiments, and
+      workflow things. mostly small tools made because i needed them.
     </p>
   </section>
 
@@ -32,14 +35,30 @@ const projects = await getProjectsWithDownloads();
       <h2
         class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
       >
-        open source
+        things i built
       </h2>
       <a href="/projects.json" class="text-[13px] text-accent underline-offset-4 hover:underline">
         json ↗
       </a>
     </div>
-    <div class="space-y-4">
-      {projects.map((project) => <ProjectListItem project={project} showType />)}
+    <div class="divide-y divide-card-border">
+      {personalProjects.map((project) => <ProjectListItem project={project} />)}
     </div>
   </section>
+
+  {
+    contributions.length > 0 && (
+      <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_120ms]">
+        <h2 class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]">
+          contributions
+        </h2>
+        <p class="mt-3 max-w-lg text-[13px] leading-6 text-foreground-muted">
+          occasional fixes and improvements to open source projects i use.
+        </p>
+        <div class="mt-4 space-y-2">
+          {contributions.map((project) => <ProjectListItem project={project} muted />)}
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>
