@@ -3,7 +3,7 @@ import ProjectListItem from "../../components/projects/ProjectListItem.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getProjectsWithStats } from "../projects.json.ts";
 
-export const prerender = false;
+export const prerender = true;
 
 const projects = await getProjectsWithStats();
 const personalProjects = projects.filter((project) => project.type === "personal");

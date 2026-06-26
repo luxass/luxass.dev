@@ -8,7 +8,7 @@ import { getProjectsWithStats } from "./projects.json.ts";
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
 const projects = (await getProjectsWithStats()).filter((project) => project.type === "personal").slice(0, 3);
 
-export const prerender = false;
+export const prerender = true;
 ---
 
 <BaseLayout
