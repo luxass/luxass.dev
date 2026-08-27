@@ -135,15 +135,7 @@ function stripBlockquoteMarkers(source: string): string {
     .join("\n");
 }
 
-function renderAside({
-  variant,
-  title,
-  body,
-}: {
-  variant: AsideVariant;
-  title: string;
-  body: string;
-}): string {
+function renderAside({ variant, title, body }: { variant: AsideVariant; title: string; body: string }): string {
   return `<aside class="callout callout-${variant}" aria-label="${escapeHtml(title)}">
 <p class="callout-title" aria-hidden="true">${variantIcons[variant]}<span>${escapeHtml(title)}</span></p>
 
@@ -153,11 +145,7 @@ ${body}
 }
 
 function escapeHtml(value: string): string {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
 function renderIcon(name: string): string {

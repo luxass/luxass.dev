@@ -1,7 +1,7 @@
 shellEmulator: true
 ignoreScripts: true
 catalogMode: prefer
-minimumReleaseAge: 5760
+minimumReleaseAge: 7200
 trustPolicy: no-downgrade
 strictDepBuilds: true
 blockExoticSubdeps: true
@@ -12,37 +12,29 @@ overrides:
 
 catalogs:
   astro:
-    "@astrojs/check": 0.9.9
-    "@astrojs/cloudflare": 14.0.0
-    "@astrojs/markdown-satteri": 0.3.2
-    "@astrojs/mdx": 7.0.0
+    "@astrojs/check": 0.9.10
+    "@astrojs/cloudflare": 14.2.3
+    "@astrojs/markdown-satteri": 0.3.7
+    "@astrojs/mdx": 7.0.7
     "@astrojs/sitemap": 3.7.3
-    astro: 7.0.2
+    astro: 7.2.4
 
   dev:
     typescript: 6.0.3
-    wrangler: 4.103.0
+    wrangler: 4.125.0
 
   icons:
-    "@iconify-json/lucide": 1.2.111
+    "@iconify-json/lucide": 1.2.125
     "@iconify-json/ph": 1.2.2
     unplugin-icons: 23.0.1
 
   linting:
-    oxfmt: 0.53.0
-    oxlint: 1.68.0
+    oxfmt: 0.64.0
+    oxlint: 1.79.0
 
   styling:
-    "@tailwindcss/vite": 4.3.0
-    tailwindcss: 4.3.0
+    "@tailwindcss/vite": 4.3.3
+    tailwindcss: 4.3.3
 
   types:
-    "@types/node": 24.12.2
-
-minimumReleaseAgeExclude:
-  - "@astrojs/markdown-satteri@0.3.2"
-  - astro@7.0.2
-  - satteri@0.8.0
-  - tinyclip@0.1.14
-  - '@astrojs/cloudflare@14.0.0'
-  - '@astrojs/mdx@7.0.0'
+    "@types/node": 24.13.3
