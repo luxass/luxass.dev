@@ -9,27 +9,18 @@ const { post } = Astro.props;
 
 const {
   id,
-  data: { title, date },
+  data: { title, description, date },
 } = post;
 ---
 
-<div
-  class="group rounded-md border border-card-border bg-card-bg p-4 transition-colors hover:border-accent/40"
->
-  <a href={`/posts/${id}`} class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-    <span class="text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
-      {title.toLowerCase()}
-    </span>
-    <span class="text-xs text-foreground-muted shrink-0">
-      {
-        new Date(date)
-          .toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })
-          .toLowerCase()
-      }
-    </span>
+<article class="group rounded-md border border-card-border bg-card-bg p-4 transition-colors hover:border-accent/40">
+  <a href={`/posts/${id}`} class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div class="min-w-0">
+      <h2 class="text-sm font-semibold text-foreground transition-colors group-hover:text-accent">{title}</h2>
+      <p class="mt-1 text-xs leading-5 text-foreground-muted">{description}</p>
+    </div>
+    <time datetime={date.toISOString()} class="shrink-0 text-xs text-foreground-muted">
+      {date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+    </time>
   </a>
-</div>
+</article>

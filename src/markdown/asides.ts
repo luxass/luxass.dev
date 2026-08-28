@@ -58,6 +58,9 @@ const variantIcons: Record<AsideVariant, string> = {
 
 export const satteriAsides = {
   name: "asides",
+  options: {
+    position: true,
+  },
 
   containerDirective(node: Readonly<DirectiveNode>, ctx: VisitorContext) {
     const variant = normalizeVariant(node.name);

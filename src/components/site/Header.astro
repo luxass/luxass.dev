@@ -1,5 +1,8 @@
 ---
+import { getDomains } from "../../lib/domains";
+
 const pathname = Astro.url.pathname;
+const siteDomain = new URL(getDomains().current).hostname;
 
 function isActive(href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -8,29 +11,11 @@ function isActive(href: string): boolean {
 
 <header class="mb-8 print:hidden">
   <nav class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 text-[13px]">
-    <a href="/" class="font-medium text-foreground transition-colors hover:text-accent">luxass.dev</a>
+    <a href="/" class="font-medium text-foreground transition-colors hover:text-accent">{siteDomain}</a>
     <div class="flex flex-wrap gap-x-3 gap-y-2 text-foreground-muted">
-      <a
-        href="/projects"
-        aria-current={isActive("/projects") ? "page" : undefined}
-        class:list={["transition-colors hover:text-accent", isActive("/projects") && "text-accent"]}
-      >
-        projects
-      </a>
-      <a
-        href="/posts"
-        aria-current={isActive("/posts") ? "page" : undefined}
-        class:list={["transition-colors hover:text-accent", isActive("/posts") && "text-accent"]}
-      >
-        posts
-      </a>
-      <a
-        href="/cv"
-        aria-current={isActive("/cv") ? "page" : undefined}
-        class:list={["transition-colors hover:text-accent", isActive("/cv") && "text-accent"]}
-      >
-        cv
-      </a>
+      <a href="/projects" aria-current={isActive("/projects") ? "page" : undefined} class:list={["transition-colors hover:text-accent", isActive("/projects") && "text-accent"]}> projects </a>
+      <a href="/posts" aria-current={isActive("/posts") ? "page" : undefined} class:list={["transition-colors hover:text-accent", isActive("/posts") && "text-accent"]}> posts </a>
+      <a href="/cv" aria-current={isActive("/cv") ? "page" : undefined} class:list={["transition-colors hover:text-accent", isActive("/cv") && "text-accent"]}> cv </a>
     </div>
   </nav>
 </header>

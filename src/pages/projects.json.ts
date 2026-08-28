@@ -37,7 +37,7 @@ export const projects = [
   {
     slug: "unplugin-yaml",
     title: "unplugin-yaml",
-    description: "Universal YAML import plugin with TypeScript support for Vite, Webpack, Rollup, and esbuild.",
+    description: "Import YAML files in Vite, Webpack, Rollup, or esbuild, with TypeScript support.",
     href: "https://github.com/luxass/unplugin-yaml",
     type: "personal",
     npmPackage: "unplugin-yaml",
@@ -46,7 +46,7 @@ export const projects = [
   {
     slug: "vitest-testdirs",
     title: "vitest-testdirs",
-    description: "Isolated test directories for Vitest, with automatic cleanup between runs.",
+    description: "Give Vitest tests isolated directories and clean them up between runs.",
     href: "https://github.com/luxass/vitest-testdirs",
     type: "personal",
     npmPackage: "vitest-testdirs",
@@ -55,7 +55,7 @@ export const projects = [
   {
     slug: "github-schema",
     title: "github-schema",
-    description: "Type-safe GitHub GraphQL helpers built from the public schema.",
+    description: "Type-safe helpers for querying GitHub's GraphQL API from its public schema.",
     href: "https://github.com/luxass/github-schema",
     type: "personal",
     npmPackage: "github-schema",
@@ -64,7 +64,7 @@ export const projects = [
   {
     slug: "esbuild-yaml",
     title: "esbuild-yaml",
-    description: "YAML import support for esbuild.",
+    description: "Load YAML files directly in esbuild builds.",
     href: "https://github.com/luxass/esbuild-yaml",
     type: "personal",
     npmPackage: "esbuild-yaml",
@@ -73,7 +73,7 @@ export const projects = [
   {
     slug: "jsonc-parse",
     title: "jsonc-parse",
-    description: "JSONC parsing with comments and trailing commas.",
+    description: "Parse JSON with comments and trailing commas.",
     href: "https://github.com/luxass/jsonc-parse",
     type: "personal",
     npmPackage: "jsonc-parse",
@@ -82,7 +82,7 @@ export const projects = [
   {
     slug: "strip-json-comments",
     title: "@luxass/strip-json-comments",
-    description: "Strip comments from JSON-like configuration files.",
+    description: "Remove comments from JSON-like configuration before parsing.",
     href: "https://github.com/luxass/strip-json-comments",
     type: "personal",
     npmPackage: "@luxass/strip-json-comments",

@@ -2,39 +2,68 @@
 import { getCollection } from "astro:content";
 import ProjectListItem from "../components/projects/ProjectListItem.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteDomains } from "../lib/domains";
 import { sortPosts } from "../lib/utils";
 import { getProjectsWithStats } from "./projects.json.ts";
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
-const projects = (await getProjectsWithStats()).filter((project) => project.type === "personal").slice(0, 3);
+const selectedProjectSlugs = ["unplugin-yaml", "vitest-testdirs", "github-schema"];
+const projectsBySlug = new Map((await getProjectsWithStats()).map((project) => [project.slug, project]));
+const projects = selectedProjectSlugs.flatMap((slug) => {
+  const project = projectsBySlug.get(slug);
+  return project == null ? [] : [project];
+});
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${siteDomains.primary}/#profile`,
+  name: "Lucas Nørgård",
+  url: `${siteDomains.primary}/`,
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${siteDomains.primary}/#person`,
+    name: "Lucas Nørgård",
+    alternateName: "luxass",
+    jobTitle: "Platform engineer",
+    description: "Platform engineer working on internal tooling, CI/CD systems, and open-source developer tools.",
+    sameAs: ["https://github.com/luxass", "https://www.linkedin.com/in/lucasnrgaard"],
+  },
+} as const;
 
 export const prerender = true;
 ---
 
 <BaseLayout
-  title="home - luxass.dev"
-  description="personal website and blog of lucas nørgård"
+  title="Lucas Nørgård | Platform engineer"
+  description="Lucas Nørgård is a platform engineer in Aarhus, Denmark building internal tooling, CI/CD systems, and open-source developer tools."
   keywords={[
-    "lucas nørgård",
+    "Lucas Nørgård",
     "luxass",
-    "nørgård",
-    "lucas",
-    "fullstack",
-    "backend",
-    "frontend",
-    "web developer",
-    "website",
-    "Web",
-    "blog",
+    "platform engineer",
+    "Aarhus Denmark",
+    "internal tooling",
+    "CI/CD",
+    "open source",
+    "developer tools",
   ]}
 >
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(profilePageSchema)} />
+
   <section class="max-w-lg motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both]">
-    <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">lucas nørgård</h1>
-    <p class="mt-2 text-[13px] text-foreground-muted">platform engineer · aarhus, denmark</p>
+    <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Lucas Nørgård</h1>
+    <p class="mt-2 text-[13px] text-foreground-muted">platform engineer · Aarhus, Denmark</p>
     <p class="mt-4 max-w-lg text-[13px] leading-6 text-foreground">
-      i work on platform infrastructure and internal tooling. mostly the boring parts that make teams move faster
-      without thinking about them too much.
+      i build internal tooling, CI/CD systems, and open-source developer tools. i care about making the path from code
+      to production easier to understand and maintain.
     </p>
+    <nav aria-label="Find out more" class="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
+      <a href="/cv" class="text-accent underline-offset-4 hover:underline">view cv ↗</a>
+      <a href="https://github.com/luxass" class="text-accent underline-offset-4 hover:underline">github ↗</a>
+      <a href="https://www.linkedin.com/in/lucasnrgaard" class="text-accent underline-offset-4 hover:underline">
+        linkedin ↗
+      </a>
+      <a href="mailto:lucasnrgaard@gmail.com" class="text-accent underline-offset-4 hover:underline">email</a>
+    </nav>
   </section>
 
   <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
@@ -85,26 +114,4 @@ export const prerender = true;
     )
   }
 
-  <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
-    <h2
-      class="mb-4 inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:translate-y-[-0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
-    >
-      contact
-    </h2>
-    <div class="flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
-      <a href="mailto:lucasnrgaard@gmail.com" class="text-foreground underline-offset-4 hover:text-accent hover:underline">
-        email
-      </a>
-      <a href="https://github.com/luxass" class="text-foreground underline-offset-4 hover:text-accent hover:underline">
-        github
-      </a>
-      <a
-        href="https://www.linkedin.com/in/lucasnrgaard"
-        class="text-foreground underline-offset-4 hover:text-accent hover:underline"
-      >
-        linkedin
-      </a>
-      <a href="/cv" class="text-foreground underline-offset-4 hover:text-accent hover:underline">cv</a>
-    </div>
-  </section>
 </BaseLayout>

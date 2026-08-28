@@ -1,4 +1,4 @@
-import { getDomains } from "../lib/utils";
+import { getDomains } from "../lib/domains";
 
 export async function GET() {
   const domains = getDomains();

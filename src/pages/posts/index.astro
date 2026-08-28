@@ -10,11 +10,22 @@ const posts = await getCollection("posts", ({ data }) => !data.draft).then((entr
 export const prerender = true;
 ---
 
-<BaseLayout title="posts | luxass.dev" description="notes on infrastructure, tooling, and things worth remembering">
-  <h1 class="text-xl font-bold mb-4 text-foreground">Posts</h1>
+<BaseLayout
+  title="Writing by Lucas Nørgård | Platform engineering and tooling"
+  description="Notes by Lucas Nørgård on platform engineering, CI/CD, infrastructure, and developer tooling."
+  keywords={[
+    "Lucas Nørgård",
+    "platform engineering",
+    "CI/CD",
+    "infrastructure",
+    "developer tooling",
+  ]}
+  noindex={posts.length === 0}
+>
+  <h1 class="mb-4 text-xl font-bold text-foreground">Writing</h1>
 
-  <p class="text-foreground mb-12 leading-relaxed text-sm">
-    notes on infrastructure, tooling, and things i want to remember.
+  <p class="mb-12 text-sm leading-relaxed text-foreground">
+    notes on platform engineering, CI/CD, infrastructure, and developer tooling.
   </p>
 
   <div class="space-y-12">
@@ -23,7 +34,7 @@ export const prerender = true;
         posts.map((post) => <PostCard post={post} />)
       ) : (
         <p class="text-foreground">
-          No posts yet. In the meantime, you can find my work on GitHub at
+          nothing published yet. you can find my work on GitHub at
           <a class="underline" href="https://github.com/luxass">
             github.com/luxass
           </a>

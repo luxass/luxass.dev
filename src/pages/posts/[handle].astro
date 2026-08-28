@@ -4,7 +4,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
   return posts.map((post) => ({
     params: { handle: post.data.handle || post.id },
     props: { post },
@@ -31,7 +31,7 @@ export const prerender = true;
 ---
 
 <BaseLayout
-  title={`${title} - posts - luxass.dev`}
+  title={`${title} | Lucas Nørgård`}
   description={description}
   image={imageUrl}
   type="article"
@@ -42,31 +42,53 @@ export const prerender = true;
     <h1 class="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
       {title}
     </h1>
-    <p class="mt-2 text-[12px] text-foreground-muted">
-      {
-        date
-          .toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })
-          .toLowerCase()
-      }
-    </p>
+    <time datetime={publishedTime} class="mt-2 block text-[12px] text-foreground-muted">
+      {date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+    </time>
   </header>
-  <article
-    class="typography [&_.callout-icon]:size-4 [&_.callout-icon]:shrink-0 [&_.callout-title]:mb-2 [&_.callout-title]:flex [&_.callout-title]:items-center [&_.callout-title]:gap-2 [&_.callout-title]:text-[13px] [&_.callout-title]:font-semibold [&_.callout]:my-5 [&_.callout]:border-l-[4px] [&_.callout]:py-1 [&_.callout]:pl-4 [&_.callout]:text-foreground [&_.callout>p:last-child]:mb-0 [&_.callout>p]:my-3 [&_.callout-caution]:border-l-[#d1242f] [&_.callout-caution_.callout-title]:text-[#d1242f] [&_.callout-important]:border-l-[#8250df] [&_.callout-important_.callout-title]:text-[#8250df] [&_.callout-note]:border-l-[#0969da] [&_.callout-note_.callout-title]:text-[#0969da] [&_.callout-tip]:border-l-[#1a7f37] [&_.callout-tip_.callout-title]:text-[#1a7f37] [&_.callout-warning]:border-l-[#9a6700] [&_.callout-warning_.callout-title]:text-[#9a6700] [&_pre.astro-code]:relative [&_pre.astro-code]:overflow-x-auto [&_pre.astro-code]:rounded-md [&_pre.astro-code]:border [&_pre.astro-code]:border-card-border [&_pre.astro-code]:p-3 [&_pre.astro-code]:text-[12px] [&_pre.astro-code]:leading-[1.6] [&_pre.astro-code]:[tab-size:2] [&_pre.astro-code:hover_.copy-code]:opacity-100 [&_pre.astro-code:focus-within_.copy-code]:opacity-100"
-  >
+  <article class="typography post-article">
     <Content />
   </article>
   <script>
+    const copyIcon =
+      '<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216 32H88a8 8 0 0 0-8 8v40H40a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h128a8 8 0 0 0 8-8v-40h40a8 8 0 0 0 8-8V40a8 8 0 0 0-8-8m-56 176H48V96h112Zm48-48h-32V88a8 8 0 0 0-8-8H96V48h112Z" /></svg>';
+    const copiedIcon =
+      '<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="m229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69L218.34 66.34a8 8 0 0 1 11.32 11.32" /></svg>';
+
+    async function copyText(text: string) {
+      if (navigator.clipboard != null && typeof navigator.clipboard.writeText === "function") {
+        try {
+          await navigator.clipboard.writeText(text);
+          return;
+        } catch {
+          // Fall back to the selection-based API when clipboard permissions reject the write.
+        }
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.append(textarea);
+      textarea.focus();
+      textarea.select();
+
+      const copied = document.execCommand("copy");
+      textarea.remove();
+
+      if (!copied) {
+        throw new Error("Unable to copy code to the clipboard");
+      }
+    }
+
     for (const pre of document.querySelectorAll("pre.astro-code")) {
       if (!(pre instanceof HTMLElement) || pre.dataset.copyReady === "true") {
         continue;
       }
 
       const code = pre.querySelector("code")?.textContent;
-      if (code == null || code.length === 0 || navigator.clipboard == null) {
+      if (code == null || code.length === 0) {
         continue;
       }
 
@@ -75,18 +97,28 @@ export const prerender = true;
       const button = document.createElement("button");
       button.type = "button";
       button.className =
-        "copy-code absolute right-2 top-2 cursor-pointer rounded-sm border border-card-border bg-card-bg px-[0.45rem] py-[0.15rem] text-[11px] leading-[1.4] text-foreground-muted opacity-0 transition-[opacity,color,border-color] duration-150 hover:border-accent hover:text-accent data-[copied=true]:border-accent data-[copied=true]:text-accent";
-      button.textContent = "copy";
+        "copy-code absolute right-2 top-2 inline-flex size-7 cursor-pointer items-center justify-center rounded-sm border border-card-border bg-card-bg text-foreground-muted opacity-70 transition-[opacity,color,border-color] duration-150 hover:border-accent hover:text-accent focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent data-[copied=true]:border-accent data-[copied=true]:text-accent";
+      button.innerHTML = copyIcon;
       button.setAttribute("aria-label", "Copy code to clipboard");
+      button.title = "Copy code to clipboard";
 
       button.addEventListener("click", async () => {
-        await navigator.clipboard.writeText(code);
-        button.dataset.copied = "true";
-        button.textContent = "copied";
-        window.setTimeout(() => {
-          delete button.dataset.copied;
-          button.textContent = "copy";
-        }, 1400);
+        try {
+          await copyText(code);
+          button.dataset.copied = "true";
+          button.innerHTML = copiedIcon;
+          button.setAttribute("aria-label", "Code copied to clipboard");
+          button.title = "Code copied to clipboard";
+          window.setTimeout(() => {
+            delete button.dataset.copied;
+            button.innerHTML = copyIcon;
+            button.setAttribute("aria-label", "Copy code to clipboard");
+            button.title = "Copy code to clipboard";
+          }, 1400);
+        } catch {
+          button.setAttribute("aria-label", "Copy failed; try again");
+          button.title = "Copy failed; try again";
+        }
       });
 
       pre.append(button);
