@@ -2,6 +2,7 @@
 import ProjectListItem from "../../components/projects/ProjectListItem.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getProjectsWithStats } from "../projects.json.ts";
+import ArrowUpRight from "~icons/ph/arrow-up-right";
 
 export const prerender = true;
 
@@ -30,8 +31,9 @@ const contributions = projects.filter((project) => project.type === "contributio
       >
         things i built
       </h2>
-      <a href="/projects.json" class="text-[13px] text-accent underline-offset-4 hover:underline">
-        json ↗
+      <a href="/projects.json" class="group inline-flex items-center gap-1 text-[13px] text-accent underline-offset-4 hover:underline">
+        <span>json</span>
+        <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
       </a>
     </div>
     <div class="divide-y divide-card-border">

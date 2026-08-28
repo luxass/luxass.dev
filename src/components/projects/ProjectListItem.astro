@@ -37,9 +37,7 @@ const statWidth = statValue == null ? undefined : Math.max(statValue.length, 4);
           ]}
         >
           {project.title}
-          <ArrowUpRight
-            class="ml-1 inline size-3.5 align-baseline text-foreground-muted motion-reduce:group-hover:animate-none group-hover:animate-[arrow-twitch_240ms_steps(2,end)]"
-          />
+          <ArrowUpRight class="link-arrow ml-1 inline size-3.5 align-baseline text-foreground-muted" />
         </h3>
       </div>
       {showType && <p class="text-xs text-foreground-muted">{project.type}</p>}

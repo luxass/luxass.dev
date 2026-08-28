@@ -47,20 +47,6 @@ body {
   }
 }
 
-@keyframes arrow-twitch {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(0.18rem, -0.18rem);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
 @keyframes marker-turn {
   0%,
   70%,
@@ -89,6 +75,28 @@ body {
 }
 
 @layer components {
+  .link-arrow {
+    @apply inline-block transition-transform duration-150;
+  }
+
+  .group:hover .link-arrow,
+  .group:focus-visible .link-arrow,
+  .group:focus-within .link-arrow {
+    @apply translate-x-0.5 -translate-y-0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-arrow {
+      @apply transition-none;
+    }
+
+    .group:hover .link-arrow,
+    .group:focus-visible .link-arrow,
+    .group:focus-within .link-arrow {
+      @apply translate-x-0 translate-y-0;
+    }
+  }
+
   .typography {
     color: var(--color-foreground);
     font-size: 12.5px;

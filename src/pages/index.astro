@@ -5,6 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteDomains } from "../lib/domains";
 import { sortPosts } from "../lib/utils";
 import { getProjectsWithStats } from "./projects.json.ts";
+import ArrowUpRight from "~icons/ph/arrow-up-right";
 
 const posts = sortPosts(await getCollection("posts", ({ data }) => !data.draft)).slice(0, 4);
 const selectedProjectSlugs = ["unplugin-yaml", "vitest-testdirs", "github-schema"];
@@ -50,19 +51,37 @@ export const prerender = true;
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(profilePageSchema)} />
 
   <section class="max-w-lg motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both]">
-    <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Lucas Nørgård</h1>
+    <h1
+      class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
+      data-scramble
+      aria-label="Lucas Nørgård"
+    >
+      Lucas Nørgård
+    </h1>
     <p class="mt-2 text-[13px] text-foreground-muted">platform engineer · Aarhus, Denmark</p>
     <p class="mt-4 max-w-lg text-[13px] leading-6 text-foreground">
       i build internal tooling, CI/CD systems, and open-source developer tools. i care about making the path from code
       to production easier to understand and maintain.
     </p>
     <nav aria-label="Find out more" class="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
-      <a href="/cv" class="text-accent underline-offset-4 hover:underline">view cv ↗</a>
-      <a href="https://github.com/luxass" class="text-accent underline-offset-4 hover:underline">github ↗</a>
-      <a href="https://www.linkedin.com/in/lucasnrgaard" class="text-accent underline-offset-4 hover:underline">
-        linkedin ↗
+      <a href="/cv" class="group inline-flex items-center gap-1 text-accent underline-offset-4 hover:underline">
+        <span>view cv</span>
+        <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
       </a>
-      <a href="mailto:lucasnrgaard@gmail.com" class="text-accent underline-offset-4 hover:underline">email</a>
+      <a href="https://github.com/luxass" class="group inline-flex items-center gap-1 text-accent underline-offset-4 hover:underline">
+        <span>github</span>
+        <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/lucasnrgaard"
+        class="group inline-flex items-center gap-1 text-accent underline-offset-4 hover:underline"
+      >
+        <span>linkedin</span>
+        <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
+      </a>
+      <a href="mailto:lucasnrgaard@gmail.com" class="group inline-flex items-center gap-1 text-accent underline-offset-4 hover:underline">
+        <span>email</span>
+      </a>
     </nav>
   </section>
 
@@ -73,8 +92,9 @@ export const prerender = true;
       >
         selected projects
       </h2>
-      <a href="/projects" class="text-[13px] text-accent underline-offset-4 hover:underline">
-        all projects ↗
+      <a href="/projects" class="group inline-flex items-center gap-1 text-[13px] text-accent underline-offset-4 hover:underline">
+        <span>all projects</span>
+        <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
       </a>
     </div>
     <div class="space-y-4">
@@ -91,8 +111,9 @@ export const prerender = true;
           >
             writing
           </h2>
-          <a href="/posts" class="text-[13px] text-accent underline-offset-4 hover:underline">
-            all posts ↗
+          <a href="/posts" class="group inline-flex items-center gap-1 text-[13px] text-accent underline-offset-4 hover:underline">
+            <span>all posts</span>
+            <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
           </a>
         </div>
 
@@ -113,5 +134,53 @@ export const prerender = true;
       </section>
     )
   }
+
+  <script>
+    const scrambleCharacters = "!<>-_\\/[]{}=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const activeScrambles = new WeakMap<HTMLElement, number>();
+
+    function scramble(element: HTMLElement, text: string, duration: number) {
+      const activeFrame = activeScrambles.get(element);
+      if (activeFrame != null) {
+        cancelAnimationFrame(activeFrame);
+      }
+
+      const characters = Array.from(text);
+      const startedAt = performance.now();
+      const settleWindow = Math.max(duration - 80, 1);
+      const lastCharacter = Math.max(characters.length - 1, 1);
+
+      const render = (now: number) => {
+        element.textContent = characters
+          .map((character, index) => {
+            const settleAt = startedAt + 80 + (index / lastCharacter) * settleWindow;
+            if (character === " " || now >= settleAt) {
+              return character;
+            }
+
+            return scrambleCharacters[Math.floor(Math.random() * scrambleCharacters.length)];
+          })
+          .join("");
+
+        if (now < startedAt + duration) {
+          activeScrambles.set(element, requestAnimationFrame(render));
+          return;
+        }
+
+        element.textContent = text;
+        activeScrambles.delete(element);
+      };
+
+      activeScrambles.set(element, requestAnimationFrame(render));
+    }
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const loadTarget = document.querySelector<HTMLElement>("[data-scramble]");
+      const loadText = loadTarget?.textContent?.replace(/\s+/g, " ").trim();
+      if (loadTarget != null && loadText != null && loadText.length > 0) {
+        scramble(loadTarget, loadText, 620);
+      }
+    }
+  </script>
 
 </BaseLayout>
