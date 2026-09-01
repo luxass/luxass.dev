@@ -44,5 +44,3 @@ pnpm dev
 ## License
 
 [MIT](./LICENSE)
-
-UI inspired by [terminal.shop](https://terminal.shop) (blue instead of orange).
