@@ -15,13 +15,95 @@
   --font-sans: var(--font-dm-sans);
 }
 
+:root {
+  color-scheme: light;
+  --selection-foreground: #ffffff;
+  --callout-caution: #d1242f;
+  --callout-important: #8250df;
+  --callout-note: #0969da;
+  --callout-tip: #1a7f37;
+  --callout-warning: #9a6700;
+}
+
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style, normal);
+  font-weight: var(--shiki-light-font-weight, normal);
+  text-decoration: var(--shiki-light-text-decoration, none);
+}
+
+.astro-code {
+  background-color: var(--shiki-light-bg);
+}
+
+@media screen {
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-background: #101b1a;
+    --color-foreground: #e4eeec;
+    --color-foreground-muted: #a0b3af;
+    --color-card-bg: #182623;
+    --color-card-border: #344943;
+    --color-accent: #71d5bd;
+    --selection-foreground: #101b1a;
+    --callout-caution: #ff8e95;
+    --callout-important: #c5a0ff;
+    --callout-note: #79b8ff;
+    --callout-tip: #7cd992;
+    --callout-warning: #e9c46a;
+  }
+
+  :root[data-theme="dark"] .astro-code,
+  :root[data-theme="dark"] .astro-code span {
+    color: var(--shiki-dark);
+    font-style: var(--shiki-dark-font-style, normal);
+    font-weight: var(--shiki-dark-font-weight, normal);
+    text-decoration: var(--shiki-dark-text-decoration, none);
+  }
+
+  :root[data-theme="dark"] .astro-code {
+    background-color: var(--shiki-dark-bg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+      --color-background: #101b1a;
+      --color-foreground: #e4eeec;
+      --color-foreground-muted: #a0b3af;
+      --color-card-bg: #182623;
+      --color-card-border: #344943;
+      --color-accent: #71d5bd;
+      --selection-foreground: #101b1a;
+      --callout-caution: #ff8e95;
+      --callout-important: #c5a0ff;
+      --callout-note: #79b8ff;
+      --callout-tip: #7cd992;
+      --callout-warning: #e9c46a;
+    }
+
+    :root:not([data-theme]) .astro-code,
+    :root:not([data-theme]) .astro-code span {
+      color: var(--shiki-dark);
+      font-style: var(--shiki-dark-font-style, normal);
+      font-weight: var(--shiki-dark-font-weight, normal);
+      text-decoration: var(--shiki-dark-text-decoration, none);
+    }
+
+    :root:not([data-theme]) .astro-code {
+      background-color: var(--shiki-dark-bg);
+    }
+  }
+}
+
 body {
   color: var(--color-foreground);
   background: var(--color-background);
 }
 
 ::selection {
-  color: white;
+  color: var(--selection-foreground);
   background: var(--color-accent);
 }
 
@@ -68,6 +150,10 @@ body {
 }
 
 @media print {
+  :root {
+    --color-background: #ffffff;
+  }
+
   body {
     color: var(--color-foreground);
     background: white;
@@ -202,43 +288,31 @@ body {
     }
 
     .callout-caution {
-      @apply border-l-[#d1242f];
-    }
-
-    .callout-caution .callout-title {
-      @apply text-[#d1242f];
+      --callout-color: var(--callout-caution);
     }
 
     .callout-important {
-      @apply border-l-[#8250df];
-    }
-
-    .callout-important .callout-title {
-      @apply text-[#8250df];
+      --callout-color: var(--callout-important);
     }
 
     .callout-note {
-      @apply border-l-[#0969da];
-    }
-
-    .callout-note .callout-title {
-      @apply text-[#0969da];
+      --callout-color: var(--callout-note);
     }
 
     .callout-tip {
-      @apply border-l-[#1a7f37];
-    }
-
-    .callout-tip .callout-title {
-      @apply text-[#1a7f37];
+      --callout-color: var(--callout-tip);
     }
 
     .callout-warning {
-      @apply border-l-[#9a6700];
+      --callout-color: var(--callout-warning);
     }
 
-    .callout-warning .callout-title {
-      @apply text-[#9a6700];
+    .callout {
+      border-left-color: var(--callout-color);
+    }
+
+    .callout-title {
+      color: var(--callout-color);
     }
 
     pre.astro-code {

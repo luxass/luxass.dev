@@ -13,8 +13,8 @@ My personal website, built with Astro and deployed to Cloudflare.
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) 24.14.0 (see `.node-version`)
-- [pnpm](https://pnpm.io) 11.22.0+
+- [Node.js](https://nodejs.org) 26.10.0 (see `.node-version`)
+- [pnpm](https://pnpm.io) 12.7.0+
 
 ## Getting Started
 
@@ -32,14 +32,14 @@ pnpm dev
 
 ## Scripts
 
-| Command              | Description                     |
-| -------------------- | ------------------------------- |
-| `pnpm dev`           | Start dev server                |
-| `pnpm build`         | Type-check, lint, and build     |
-| `pnpm preview`       | Preview the production build    |
-| `pnpm lint`          | Lint with oxlint                |
-| `pnpm format`        | Format with oxfmt               |
-| `pnpm typecheck`     | Type-check with astro-check     |
+| Command          | Description                  |
+| ---------------- | ---------------------------- |
+| `pnpm dev`       | Start dev server             |
+| `pnpm build`     | Type-check, lint, and build  |
+| `pnpm preview`   | Preview the production build |
+| `pnpm lint`      | Lint with oxlint             |
+| `pnpm format`    | Format with oxfmt            |
+| `pnpm typecheck` | Type-check with astro-check  |
 
 ## License
 

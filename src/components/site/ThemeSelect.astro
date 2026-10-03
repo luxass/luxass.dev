@@ -1,0 +1,63 @@
+<select
+  aria-label="Color theme"
+  data-theme-select
+  hidden
+  class="cursor-pointer rounded-sm border border-card-border bg-card-bg px-1 py-0.5 text-[12px] text-foreground-muted hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+>
+  <option value="system">system</option>
+  <option value="light">light</option>
+  <option value="dark">dark</option>
+</select>
+
+<script>
+  type ThemePreference = "system" | "light" | "dark";
+
+  function parsePreference(value: string | null | undefined): ThemePreference {
+    return value === "light" || value === "dark" ? value : "system";
+  }
+
+  const root = document.documentElement;
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const select = document.querySelector<HTMLSelectElement>("[data-theme-select]");
+  const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+
+  function updateTheme() {
+    const preference = parsePreference(root.dataset.themePreference);
+    const theme = preference === "system" ? (systemTheme.matches ? "dark" : "light") : preference;
+    root.dataset.theme = theme;
+    if (themeColor != null) {
+      themeColor.content = theme === "dark" ? "#101b1a" : "#f3f7f6";
+    }
+    if (select != null) {
+      select.value = preference;
+    }
+  }
+
+  if (select != null) {
+    updateTheme();
+    select.hidden = false;
+    select.addEventListener("change", () => {
+      const preference = parsePreference(select.value);
+      root.dataset.themePreference = preference;
+      updateTheme();
+
+      try {
+        if (preference === "system") {
+          localStorage.removeItem("theme");
+        } else {
+          localStorage.setItem("theme", preference);
+        }
+      } catch {
+        // Keep the selection for this page when storage is unavailable.
+      }
+    });
+  }
+
+  systemTheme.addEventListener("change", updateTheme);
+  window.addEventListener("storage", (event) => {
+    if (event.key === "theme" || event.key === null) {
+      root.dataset.themePreference = parsePreference(event.newValue);
+      updateTheme();
+    }
+  });
+</script>
