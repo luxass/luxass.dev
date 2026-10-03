@@ -8,43 +8,43 @@ blockExoticSubdeps: true
 
 overrides:
   chokidar: 5.0.0
-  tinyclip: 0.1.14
+  tinyclip: 1.0.3
 
 minimumReleaseAgeExclude:
   - wrangler@4.127.1
-  - '@cloudflare/workerd-darwin-64@1.20260828.1'
-  - '@cloudflare/workerd-darwin-arm64@1.20260828.1'
-  - '@cloudflare/workerd-linux-64@1.20260828.1'
-  - '@cloudflare/workerd-linux-arm64@1.20260828.1'
-  - '@cloudflare/workerd-windows-64@1.20260828.1'
+  - "@cloudflare/workerd-darwin-64@1.20260828.1"
+  - "@cloudflare/workerd-darwin-arm64@1.20260828.1"
+  - "@cloudflare/workerd-linux-64@1.20260828.1"
+  - "@cloudflare/workerd-linux-arm64@1.20260828.1"
+  - "@cloudflare/workerd-windows-64@1.20260828.1"
   - miniflare@5.20260828.0-alpha
   - workerd@1.20260828.1
 
 catalogs:
   astro:
     "@astrojs/check": 0.9.10
-    "@astrojs/cloudflare": 14.2.3
-    "@astrojs/markdown-satteri": 0.3.7
-    "@astrojs/mdx": 7.0.7
-    "@astrojs/sitemap": 3.7.3
-    astro: 7.2.4
+    "@astrojs/cloudflare": 14.3.3
+    "@astrojs/markdown-satteri": 0.4.2
+    "@astrojs/mdx": 8.0.2
+    "@astrojs/sitemap": 3.7.4
+    astro: 7.3.5
 
   dev:
     typescript: 6.0.3
-    wrangler: 4.127.1
+    wrangler: 4.142.0
 
   icons:
-    "@iconify-json/lucide": 1.2.125
+    "@iconify-json/lucide": 1.2.137
     "@iconify-json/ph": 1.2.2
-    unplugin-icons: 23.0.1
+    unplugin-icons: 24.0.0
 
   linting:
-    oxfmt: 0.64.0
-    oxlint: 1.79.0
+    oxfmt: 0.70.0
+    oxlint: 1.85.0
 
   styling:
     "@tailwindcss/vite": 4.3.3
     tailwindcss: 4.3.3
 
   types:
-    "@types/node": 24.13.3
+    "@types/node": 26.6.3
