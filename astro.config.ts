@@ -44,6 +44,7 @@ export default defineConfig({
       },
     }),
     shikiConfig: {
+      defaultColor: false,
       themes: {
         dark: "vitesse-dark",
         light: "vitesse-light",

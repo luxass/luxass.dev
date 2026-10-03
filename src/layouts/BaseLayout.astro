@@ -49,6 +49,25 @@ const imageUrl = typeof image === "string" ? image : image.toString();
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#f3f7f6" />
+    <script is:inline>
+      let preference = "system";
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") {
+          preference = saved;
+        }
+      } catch {
+        // Follow the system theme when storage is unavailable.
+      }
+
+      const theme = preference === "system"
+        ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+        : preference;
+      document.documentElement.dataset.themePreference = preference;
+      document.documentElement.dataset.theme = theme;
+      document.querySelector('meta[name="theme-color"]').content =
+        theme === "dark" ? "#101b1a" : "#f3f7f6";
+    </script>
 
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
@@ -88,12 +107,7 @@ const imageUrl = typeof image === "string" ? image : image.toString();
     <slot name="head" />
     <Font cssVariable="--font-dm-sans" preload />
   </head>
-  <body
-    class:list={[
-      "min-h-screen bg-background font-mono antialiased",
-      shell === "cv" && "print:bg-white",
-    ]}
-  >
+  <body class="min-h-screen bg-background font-mono antialiased">
     <div
       class:list={[
         "mx-auto flex min-h-screen w-full flex-col px-4 py-5 text-[13px] motion-reduce:animate-none sm:px-6 animate-[page-enter_420ms_steps(7,end)_both]",
