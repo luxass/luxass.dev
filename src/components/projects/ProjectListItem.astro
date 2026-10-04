@@ -12,7 +12,10 @@ export interface Props {
 const { project, showType = false, muted = false } = Astro.props;
 const stat = project.type === "personal" ? project.stats : undefined;
 const statSource = stat?.kind === "npm-downloads" ? "npm" : stat?.kind === "github-stars" ? "github" : undefined;
-const statSuffix = stat?.kind === "npm-downloads" ? "/mo" : stat?.kind === "github-stars" ? " stars" : undefined;
+const statSuffix = stat?.kind === "npm-downloads" ? "/30d" : stat?.kind === "github-stars" ? " stars" : undefined;
+const statTitle = stat?.kind === "npm-downloads" && stat.period != null
+  ? `${stat.value.toLocaleString("en")} npm downloads from ${stat.period.start} to ${stat.period.end}`
+  : stat?.kind === "github-stars" ? `${stat.value.toLocaleString("en")} GitHub stars` : undefined;
 const statValue = stat == null ? undefined : formatDownloads(stat.value);
 const statWidth = statValue == null ? undefined : Math.max(statValue.length, 4);
 ---
@@ -44,7 +47,7 @@ const statWidth = statValue == null ? undefined : Math.max(statValue.length, 4);
     </div>
     {
       stat != null && statSource != null && statSuffix != null && statValue != null && statWidth != null && (
-        <span class="shrink-0 text-[12px] text-foreground-muted">
+        <span class="shrink-0 text-[12px] text-foreground-muted" title={statTitle} aria-label={statTitle}>
           {statSource} · {" "}
           <span
             class="rolling-stat inline-block text-right tabular-nums"

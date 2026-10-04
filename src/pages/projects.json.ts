@@ -290,7 +290,7 @@ export async function GET() {
   return new Response(JSON.stringify({ projects: enrichedProjects, personalProjects, contributions }, null, 2), {
     headers: {
       "content-type": "application/json; charset=utf-8",
-      "cache-control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      "cache-control": "public, s-maxage=3600, stale-while-revalidate=3600",
     },
   });
 }

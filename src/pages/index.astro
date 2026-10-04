@@ -31,7 +31,8 @@ const profilePageSchema = {
   },
 } as const;
 
-export const prerender = true;
+export const prerender = false;
+Astro.response.headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=3600");
 ---
 
 <BaseLayout
