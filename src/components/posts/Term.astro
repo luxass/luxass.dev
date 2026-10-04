@@ -1,0 +1,138 @@
+---
+interface Props {
+  term: string;
+  meaning: string;
+  definition: string;
+}
+
+const { term, meaning, definition } = Astro.props;
+const id = `term-${crypto.randomUUID()}`;
+---
+
+<span class="defined-term">
+  <button
+    type="button"
+    class="defined-term-trigger"
+    aria-controls={id}
+    aria-describedby={id}
+    aria-expanded="false"
+  >{term}</button>
+  <span id={id} class="defined-term-popup" role="tooltip" popover="auto">
+    <strong class="defined-term-meaning">{meaning}</strong>
+    <span><slot name="definition">{definition}</slot></span>
+  </span>
+</span>
+
+<style>
+  .defined-term-trigger {
+    color: var(--color-accent);
+    font: inherit;
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+    cursor: help;
+  }
+
+  .defined-term-trigger:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .defined-term-popup {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    width: 19rem;
+    max-width: calc(100vw - 1.5rem);
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-card-border);
+    border-radius: 0.5rem;
+    background: var(--color-card-bg);
+    color: var(--color-foreground-muted);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    font-size: 12.5px;
+    line-height: 1.6;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .defined-term-meaning {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+
+  @media print {
+    .defined-term-trigger {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .defined-term-popup {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  for (const term of document.querySelectorAll<HTMLElement>(".defined-term")) {
+    const trigger = term.querySelector("button");
+    const popup = term.querySelector<HTMLElement>(".defined-term-popup");
+
+    if (trigger == null || popup == null || typeof popup.showPopover !== "function") {
+      continue;
+    }
+
+    let closeTimer: ReturnType<typeof setTimeout> | undefined;
+
+    function position() {
+      if (trigger == null || popup == null) return;
+      const anchor = trigger.getBoundingClientRect();
+      const bounds = popup.getBoundingClientRect();
+      const margin = 12;
+      const left = Math.max(margin, Math.min(anchor.left, window.innerWidth - bounds.width - margin));
+      const below = anchor.bottom + 8;
+      const top = below + bounds.height <= window.innerHeight - margin
+        ? below
+        : Math.max(margin, anchor.top - bounds.height - 8);
+      popup.style.left = `${left}px`;
+      popup.style.top = `${top}px`;
+    }
+
+    function open() {
+      clearTimeout(closeTimer);
+      popup?.showPopover();
+      position();
+    }
+
+    function closeSoon() {
+      closeTimer = setTimeout(() => {
+        if (!term.matches(":hover, :focus-within") && !popup?.matches(":hover")) {
+          popup?.hidePopover();
+        }
+      }, 150);
+    }
+
+    trigger.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "touch") open();
+    });
+    trigger.addEventListener("focus", open);
+    trigger.addEventListener("click", open);
+    term.addEventListener("pointerleave", closeSoon);
+    term.addEventListener("focusout", closeSoon);
+    popup.addEventListener("pointerenter", () => clearTimeout(closeTimer));
+    popup.addEventListener("pointerleave", closeSoon);
+    popup.addEventListener("toggle", () => {
+      const isOpen = popup.matches(":popover-open");
+      trigger.setAttribute("aria-expanded", String(isOpen));
+      if (isOpen) {
+        window.addEventListener("resize", position);
+        window.addEventListener("scroll", position, true);
+      } else {
+        window.removeEventListener("resize", position);
+        window.removeEventListener("scroll", position, true);
+      }
+    });
+  }
+</script>

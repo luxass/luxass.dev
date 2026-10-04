@@ -1,0 +1,151 @@
+---
+import { Code } from "astro:components";
+
+interface Props {
+  label: string;
+  options: { label: string; command: string }[];
+}
+
+const { label, options } = Astro.props;
+const id = `shell-tabs-${crypto.randomUUID()}`;
+---
+
+<div class="shell-tabs" data-shell-tabs>
+  <div class="shell-tab-list" role="tablist" aria-label={label} hidden>
+    {options.map((option, index) => (
+      <button
+        type="button"
+        id={`${id}-tab-${index}`}
+        role="tab"
+        aria-selected={index === 0 ? "true" : "false"}
+        aria-controls={`${id}-panel-${index}`}
+        tabindex={index === 0 ? 0 : -1}
+      >{option.label}</button>
+    ))}
+  </div>
+  {options.map((option, index) => (
+    <div
+      id={`${id}-panel-${index}`}
+      class="shell-tab-panel"
+      role="tabpanel"
+      aria-labelledby={`${id}-tab-${index}`}
+      tabindex="0"
+    >
+      <span class="shell-tab-fallback">{option.label}</span>
+      <Code
+        code={option.command}
+        lang="sh"
+        themes={{ light: "vitesse-light", dark: "vitesse-dark" }}
+        defaultColor={false}
+      />
+    </div>
+  ))}
+</div>
+
+<style>
+  .shell-tabs {
+    margin-block: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--color-card-border);
+    border-radius: 0.375rem;
+  }
+
+  .shell-tab-list:not([hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.35rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-card-border);
+    background: var(--color-card-bg);
+  }
+
+  [role="tab"] {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 2px solid transparent;
+    color: var(--color-foreground-muted);
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  [role="tab"][aria-selected="true"] {
+    border-bottom-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  [role="tab"]:focus-visible,
+  .shell-tab-panel:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+
+  .shell-tab-panel :global(pre.astro-code) {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding-right: 3rem;
+  }
+
+  .shell-tab-fallback {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: var(--color-foreground-muted);
+  }
+
+  .shell-tab-fallback[hidden] {
+    display: none;
+  }
+
+  @media print {
+    .shell-tab-list {
+      display: none !important;
+    }
+
+    .shell-tab-panel[hidden],
+    .shell-tab-fallback[hidden] {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  for (const block of document.querySelectorAll<HTMLElement>("[data-shell-tabs]")) {
+    const tablist = block.querySelector<HTMLElement>('[role="tablist"]');
+    const tabs = Array.from(block.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const panels = Array.from(block.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+
+    if (tablist == null || tabs.length === 0) continue;
+
+    function select(index: number) {
+      tabs.forEach((tab, current) => {
+        tab.setAttribute("aria-selected", String(current === index));
+        tab.tabIndex = current === index ? 0 : -1;
+      });
+      panels.forEach((panel, current) => {
+        panel.hidden = current !== index;
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => select(index));
+      tab.addEventListener("keydown", (event) => {
+        let next: number;
+        switch (event.key) {
+          case "ArrowRight": next = (index + 1) % tabs.length; break;
+          case "ArrowLeft": next = (index - 1 + tabs.length) % tabs.length; break;
+          case "Home": next = 0; break;
+          case "End": next = tabs.length - 1; break;
+          default: return;
+        }
+        event.preventDefault();
+        select(next);
+        tabs[next]?.focus();
+      });
+    });
+
+    for (const fallback of block.querySelectorAll<HTMLElement>(".shell-tab-fallback")) {
+      fallback.hidden = true;
+    }
+    select(0);
+    tablist.hidden = false;
+  }
+</script>
