@@ -1,0 +1,91 @@
+---
+title: Helm chart lookups with artifacthub-mcp
+description: artifacthub-mcp lets coding assistants search Artifact Hub and inspect chart values, schemas, templates, and changelogs.
+date: October 4, 2026
+draft: false
+---
+
+import Term from "../../components/posts/Term.astro";
+import ShellTabs from "../../components/posts/ShellTabs.astro";
+
+A <Term term="Helm" meaning="Helm" definition="A package manager for Kubernetes. A Helm chart bundles resource templates and default values so you can configure and install an application." /> values file can look perfectly reasonable and still configure nothing. The YAML is valid, the indentation is fine, but the chart expects a different key.
+
+That's an easy mistake for a coding assistant to make. Knowing how Helm works doesn't mean it knows the configuration of the particular chart version you're using.
+
+I've built [artifacthub-mcp](https://github.com/luxass/artifacthub-rs/tree/main/crates/artifacthub-mcp-server), an MCP server that lets your assistant look up package information on [Artifact Hub](https://artifacthub.io), including a chart's actual `values.yaml`, rather than relying on what the model remembers.
+
+## Looking up the chart before writing the YAML
+
+Artifact Hub is a catalog of cloud native packages. If you've searched for a Helm chart, you've probably ended up there. It has package metadata, versions, documentation, and chart information that an assistant can use while working on your configuration.
+
+<Term term="MCP" meaning="Model Context Protocol" definition="A protocol that lets AI applications connect to servers exposing tools, resources, and prompts. Here, the server provides tools for looking up Artifact Hub package data." /> gives the assistant a way to call tools exposed by a server. In this case, those tools search Artifact Hub and retrieve information about its packages.
+
+The part I'm most interested in is what happens after finding a chart. The server can fetch its default values, retrieve its values schema when available, and inspect individual chart templates. That gives the assistant something concrete to check before suggesting a configuration.
+
+For example, you could ask:
+
+> Find the prometheus-community/prometheus chart on Artifact Hub. Check its default values and any available values schema, then help me write a values file with persistent storage for the Prometheus server. Tell me which chart version you're using and explain each setting you change.
+
+This is an example prompt, not a recorded demo. The useful test is whether the assistant retrieves the chart information and bases its answer on that version, rather than jumping straight to writing YAML.
+
+## Following a setting into the template
+
+Sometimes the defaults don't tell you enough. You want to know what a value actually changes.
+
+The MCP server has tools to list a chart's templates and retrieve their source. An assistant can use those to follow a setting into the template that consumes it.
+
+A follow-up prompt might be:
+
+> Inspect the template that configures storage for the Prometheus server. Explain how the persistence settings affect the resources it creates, and point out any conditions in the template.
+
+The tools make this a sequence of lookups. The assistant first gets the package metadata. It uses the package ID and version to list templates, then requests a template by its exact name. It doesn't have to guess the filename.
+
+There is an important limit here. Reading a Helm template isn't the same as rendering the chart with your values. Conditions, dependencies, and cluster capabilities can affect the result. I'd still run `helm template` to inspect the rendered manifests, and validate the configuration before deploying it.
+
+## Versions and upgrades
+
+The server also exposes package versions and changelogs. Those are useful when the question is about an existing deployment rather than a new one.
+
+You can ask the assistant to list the available versions of a chart, or check the published changelog between your current version and a proposed upgrade. Keep the version explicit when asking it to inspect values or templates. Defaults for the latest release may not describe the release you're running.
+
+There's also a tool for retrieving Artifact Hub's package security reports. That's a way to inspect the report published there, not a guarantee that a chart or your deployment is safe. The assistant should distinguish between a report with no findings and a report that isn't available.
+
+## Trying it out
+
+Install the server with Homebrew or Cargo:
+
+<ShellTabs
+  label="Installation method"
+  options={[
+    { label: "Homebrew", command: "brew tap luxass/homebrew-tap\nbrew install artifacthub-mcp" },
+    { label: "Cargo", command: "cargo install --locked artifacthub-mcp" },
+  ]}
+/>
+
+Then register it with your MCP client:
+
+<ShellTabs
+  label="MCP client"
+  options={[
+    { label: "Claude Code", command: "claude mcp add artifacthub artifacthub-mcp" },
+    { label: "Codex", command: "codex mcp add artifacthub artifacthub-mcp" },
+  ]}
+/>
+
+The [artifacthub-mcp docs](https://artifacthub-mcp.luxass.dev) have configuration examples for other clients and the full tool list.
+
+You can also choose which tools the server exposes. For a session focused on finding packages and checking versions:
+
+```sh
+artifacthub-mcp --tools search_packages,get_package,get_package_versions
+```
+
+Alternatively, use `--exclude-tools` to leave out specific tools. The two flags are mutually exclusive.
+
+## A source to check against
+
+To use `artifacthub-mcp`, install the binary, connect it to your assistant, and ask it to look up the chart you're working with.
+
+The assistant can still misread documentation or suggest the wrong configuration. What this adds is access to the package data it needs to check its answer, and a way for you to see which chart version and settings that answer is based on.
+
+You can find the setup instructions and tool list in the [artifacthub-mcp docs](https://artifacthub-mcp.luxass.dev). If you try it, I'd be interested in examples where the assistant still guesses instead of using the available tools.
