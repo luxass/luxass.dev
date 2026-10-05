@@ -50,15 +50,17 @@ Install with Homebrew or Cargo:
 
 Or download a pre-built binary for Linux or macOS from [GitHub Releases](https://github.com/luxass/artifacthub-rs/releases) and put it on your `PATH`.
 
-Then register it with your client:
+Check that `artifacthub-mcp --version` works in your shell, then register it with your client:
 
 <ShellTabs
   label="MCP client"
   options={[
-    { label: "Claude Code", command: "claude mcp add artifacthub -- artifacthub-mcp" },
+    { label: "Claude Code", command: "claude mcp add --transport stdio artifacthub -- artifacthub-mcp" },
     { label: "Codex", command: "codex mcp add artifacthub -- artifacthub-mcp" },
   ]}
 />
+
+Claude Code defaults to local scope for the current project. Add `--scope user` before the server name to make it available across projects. Codex stores this registration in `~/.codex/config.toml` by default. If the client can't find the binary, replace `artifacthub-mcp` in the command with its absolute path.
 
 The [docs](https://artifacthub-mcp.luxass.dev) cover other clients, tool filtering, and the full tool list.
 
