@@ -4,6 +4,7 @@ dist/
 .vercel
 .netlify
 .wrangler
+.cloudflare/
 
 # generated types
 .astro/

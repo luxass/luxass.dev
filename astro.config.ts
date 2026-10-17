@@ -54,6 +54,9 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: "compile",
     prerenderEnvironment: "node",
+    // Keep binding types without adding Workers globals to browser scripts.
+    // @ts-expect-error: cloudflare adapter does not expose types in its option types yet.
+    types: { includeRuntime: false },
   }),
   vite: {
     plugins: [

@@ -6,7 +6,7 @@ export default defineConfig({
     browser: true,
     node: true,
   },
-  ignorePatterns: [".astro/**", ".wrangler/**", "dist/**", "node_modules/**"],
+  ignorePatterns: [".astro/**", ".cloudflare/**", ".wrangler/**", "dist/**", "node_modules/**"],
   categories: {
     correctness: "error",
     suspicious: "warn",

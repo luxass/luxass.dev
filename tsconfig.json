@@ -4,5 +4,6 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true
   },
+  "include": [".astro/types.d.ts", ".cloudflare/types/**/*.d.ts", "**/*"],
   "exclude": ["dist"]
 }
