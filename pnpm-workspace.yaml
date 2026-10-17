@@ -7,11 +7,22 @@ strictDepBuilds: true
 blockExoticSubdeps: true
 
 overrides:
+  "@astrojs/cloudflare@15.0.0-beta.1>@cloudflare/vite-plugin": 2.0.0-beta.v.1
   chokidar: 5.0.0
   tinyclip: 1.0.3
 
 minimumReleaseAgeExclude:
-  - wrangler@4.127.1
+  - "@astrojs/internal-helpers@0.13.0"
+  - "@astrojs/markdown-satteri@0.4.4"
+  - "@astrojs/prism@4.1.0"
+  - "@astrojs/telemetry@3.4.0"
+  - "@cloudflare/build-output-utils@0.9.3"
+  - "@cloudflare/config@0.27.0"
+  - "@cloudflare/runtime-types@0.1.12"
+  - "@cloudflare/vite-plugin@2.0.0-beta.v.1"
+  - astro@7.4.0
+  - cf@1.0.0-beta.18
+  - miniflare@5.20261012.1-beta
   - "@cloudflare/workerd-darwin-64@1.20260828.1"
   - "@cloudflare/workerd-darwin-arm64@1.20260828.1"
   - "@cloudflare/workerd-linux-64@1.20260828.1"
@@ -23,15 +34,15 @@ minimumReleaseAgeExclude:
 catalogs:
   astro:
     "@astrojs/check": 0.9.10
-    "@astrojs/cloudflare": 14.3.3
-    "@astrojs/markdown-satteri": 0.4.2
+    "@astrojs/cloudflare": 15.0.0-beta.1
+    "@astrojs/markdown-satteri": 0.4.4
     "@astrojs/mdx": 8.0.2
     "@astrojs/sitemap": 3.7.4
-    astro: 7.3.5
+    astro: 7.4.0
 
   dev:
+    cf: 1.0.0-beta.18
     typescript: 6.0.3
-    wrangler: 4.142.0
 
   icons:
     "@iconify-json/lucide": 1.2.137

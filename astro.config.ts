@@ -11,6 +11,14 @@ import { getCurrentDomain } from "./src/lib/domains";
 
 const site = getCurrentDomain(process.env.SITE_HOST);
 
+// The beta adapter forwards `types` to Vite but does not expose it in its option types yet.
+const cloudflareOptions = {
+  imageService: "compile",
+  prerenderEnvironment: "node",
+  // Keep binding types without adding Workers globals to browser scripts.
+  types: { includeRuntime: false },
+} as const;
+
 // https://astro.build/config
 export default defineConfig({
   site,
@@ -51,10 +59,7 @@ export default defineConfig({
       },
     },
   },
-  adapter: cloudflare({
-    imageService: "compile",
-    prerenderEnvironment: "node",
-  }),
+  adapter: cloudflare(cloudflareOptions),
   vite: {
     plugins: [
       tailwindcss(),
