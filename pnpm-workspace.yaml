@@ -36,7 +36,7 @@ catalogs:
     "@astrojs/check": 0.9.10
     "@astrojs/cloudflare": 15.0.0-beta.1
     "@astrojs/markdown-satteri": 0.4.4
-    "@astrojs/mdx": 8.0.2
+    "@astrojs/mdx": 8.1.0
     "@astrojs/sitemap": 3.7.4
     astro: 7.4.0
 
@@ -45,12 +45,12 @@ catalogs:
     typescript: 6.0.3
 
   icons:
-    "@iconify-json/lucide": 1.2.137
+    "@iconify-json/lucide": 1.2.145
     "@iconify-json/ph": 1.2.2
     unplugin-icons: 24.0.0
 
   linting:
-    oxfmt: 0.70.0
+    oxfmt: 0.73.0
     oxlint: 1.85.0
 
   styling:
@@ -58,4 +58,4 @@ catalogs:
     tailwindcss: 4.3.3
 
   types:
-    "@types/node": 26.6.3
+    "@types/node": 26.6.5
