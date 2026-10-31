@@ -19,20 +19,20 @@ const contributions = projects.filter((project) => project.type === "contributio
 >
   <section class="max-w-lg motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both]">
     <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Projects</h1>
-    <p class="mt-3 max-w-lg text-[13px] leading-6 text-foreground-muted">
+    <p class="mt-3 max-w-lg text-sm leading-6 text-foreground-muted">
       i build small tools for build systems, test suites, configuration files, and developer workflows. most started as
       a repeated problem i wanted to remove.
     </p>
   </section>
 
-  <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
-    <div class="mb-4 flex items-baseline justify-between gap-4">
+  <section class="mt-8 border-t border-card-border pt-5 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_80ms]">
+    <div class="mb-2 flex items-baseline justify-between gap-4">
       <h2
-        class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]"
+        class="section-title"
       >
         things i built
       </h2>
-      <a href="/projects.json" class="group inline-flex items-center gap-1 text-[13px] text-accent underline-offset-4 hover:underline">
+      <a href="/projects.json" class="group inline-flex items-center gap-1 text-sm text-accent underline-offset-4 hover:underline">
         <span>json</span>
         <ArrowUpRight aria-hidden="true" class="link-arrow inline size-3.5 align-baseline text-foreground-muted" />
       </a>
@@ -44,11 +44,11 @@ const contributions = projects.filter((project) => project.type === "contributio
 
   {
     contributions.length > 0 && (
-      <section class="mt-10 border-t border-card-border pt-6 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_120ms]">
-        <h2 class="inline-flex items-baseline gap-2 text-base font-semibold text-foreground before:inline-block before:-translate-y-[0.05em] before:text-[11px] before:text-accent before:content-['◇'] motion-reduce:before:animate-none before:animate-[marker-turn_5s_steps(4,end)_infinite]">
+      <section class="mt-8 border-t border-card-border pt-5 motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both_120ms]">
+        <h2 class="section-title">
           contributions
         </h2>
-        <p class="mt-3 max-w-lg text-[13px] leading-6 text-foreground-muted">
+        <p class="mt-3 max-w-lg text-sm leading-6 text-foreground-muted">
           occasional fixes and improvements to open source projects i use.
         </p>
         <div class="mt-4 space-y-2">

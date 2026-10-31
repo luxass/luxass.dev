@@ -22,13 +22,14 @@ export const prerender = true;
   ]}
   noindex={posts.length === 0}
 >
-  <h1 class="mb-4 text-xl font-bold text-foreground">Writing</h1>
+  <section class="max-w-lg motion-reduce:animate-none animate-[reveal-up_520ms_ease-out_both]">
+    <h1 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Writing</h1>
+    <p class="mt-3 text-sm leading-6 text-foreground-muted">
+      notes on platform engineering, CI/CD, infrastructure, and developer tooling.
+    </p>
+  </section>
 
-  <p class="mb-12 text-sm leading-relaxed text-foreground">
-    notes on platform engineering, CI/CD, infrastructure, and developer tooling.
-  </p>
-
-  <div class="space-y-12">
+  <div class="mt-8 divide-y divide-card-border border-t border-card-border">
     {
       posts.length > 0 ? (
         posts.map((post) => <PostCard post={post} />)
