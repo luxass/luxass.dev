@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { POST_DATE_FORMATTER } from "../../lib/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts", ({ data }) => !data.draft);
@@ -38,12 +39,12 @@ export const prerender = true;
   publishedTime={publishedTime}
   modifiedTime={publishedTime}
 >
-  <header class="mt-8 mb-6 border-b border-card-border pb-5">
-    <h1 class="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+  <header class="mb-8 border-b border-card-border pb-6">
+    <h1 class="text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl">
       {title}
     </h1>
-    <time datetime={publishedTime} class="mt-2 block text-[12px] text-foreground-muted">
-      {date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+    <time datetime={publishedTime} class="mt-3 block text-xs text-foreground-muted">
+      {POST_DATE_FORMATTER.format(date)}
     </time>
   </header>
   <article class="typography post-article">

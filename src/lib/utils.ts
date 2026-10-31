@@ -10,15 +10,29 @@ export function stripProtocol(url: string): string {
   return parsedUrl.hostname + parsedUrl.pathname + parsedUrl.search;
 }
 
-const numberRegex = /\.0$/;
+export const POST_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+export function parsePostDate(value: string): Date {
+  // Existing posts use month names. Date-only values must not inherit the
+  // build machine's timezone before they reach the content collection.
+  const calendarDate = /^[A-Za-z]+ \d{1,2}, \d{4}$/.test(value);
+  return new Date(calendarDate ? `${value} UTC` : value);
+}
+
+const NUMBER_REGEX = /\.0$/;
 
 export function formatDownloads(num: number): string {
   if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(1).replace(numberRegex, "")}M`;
+    return `${(num / 1000000).toFixed(1).replace(NUMBER_REGEX, "")}M`;
   }
 
   if (num >= 1000) {
-    return `${(num / 1000).toFixed(1).replace(numberRegex, "")}K`;
+    return `${(num / 1000).toFixed(1).replace(NUMBER_REGEX, "")}K`;
   }
 
   return num.toString();

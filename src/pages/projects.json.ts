@@ -1,7 +1,6 @@
-export const prerender = false;
+import { getProjectStats, sortByPresentation } from "../lib/project-stats.ts";
 
-const NPM_DOWNLOADS_URL = "https://api.npmjs.org/downloads/point/last-month";
-const GITHUB_REPOS_URL = "https://api.github.com/repos";
+export const prerender = false;
 
 export interface Project {
   slug: string;
@@ -17,6 +16,8 @@ export interface Project {
 export interface ProjectStat {
   kind: "npm-downloads" | "github-stars";
   value: number;
+  fetchedAt?: string;
+  stale?: boolean;
   period?: {
     start: string;
     end: string;
@@ -105,169 +106,6 @@ export const projects = [
     githubRepo: "vitest-dev/eslint-plugin-vitest",
   },
 ] satisfies Project[];
-
-interface NpmDownloadsResponse {
-  downloads: number;
-  start: string;
-  end: string;
-  package: string;
-}
-
-interface GitHubRepositoryResponse {
-  stargazers_count: number;
-}
-
-interface CacheEntry<T> {
-  expiresAt: number;
-  value: T;
-}
-
-const STATS_CACHE_TTL = 60 * 60 * 1000;
-const npmDownloadsCache = new Map<string, CacheEntry<NpmDownloadsResponse>>();
-const githubStarsCache = new Map<string, CacheEntry<number>>();
-
-const projectOrder = new Map(projects.map((project, index) => [project.slug, index]));
-
-async function getNpmDownloads(packageName: string): Promise<NpmDownloadsResponse | undefined> {
-  const cached = npmDownloadsCache.get(packageName);
-
-  if (cached != null && cached.expiresAt > Date.now()) {
-    return cached.value;
-  }
-
-  try {
-    const response = await fetch(`${NPM_DOWNLOADS_URL}/${encodeURIComponent(packageName)}`);
-
-    if (!response.ok) {
-      return undefined;
-    }
-
-    const data = (await response.json()) as Partial<NpmDownloadsResponse>;
-
-    if (typeof data.downloads !== "number" || typeof data.start !== "string" || typeof data.end !== "string") {
-      return undefined;
-    }
-
-    const npmDownloads = {
-      downloads: data.downloads,
-      start: data.start,
-      end: data.end,
-      package: typeof data.package === "string" ? data.package : packageName,
-    };
-
-    npmDownloadsCache.set(packageName, {
-      expiresAt: Date.now() + STATS_CACHE_TTL,
-      value: npmDownloads,
-    });
-
-    return npmDownloads;
-  } catch {
-    return undefined;
-  }
-}
-
-async function getGitHubStars(repo: string): Promise<number | undefined> {
-  const cached = githubStarsCache.get(repo);
-
-  if (cached != null && cached.expiresAt > Date.now()) {
-    return cached.value;
-  }
-
-  try {
-    const response = await fetch(`${GITHUB_REPOS_URL}/${repo}`, {
-      headers: {
-        accept: "application/vnd.github+json",
-      },
-    });
-
-    if (!response.ok) {
-      return undefined;
-    }
-
-    const data = (await response.json()) as Partial<GitHubRepositoryResponse>;
-
-    if (typeof data.stargazers_count !== "number") {
-      return undefined;
-    }
-
-    githubStarsCache.set(repo, {
-      expiresAt: Date.now() + STATS_CACHE_TTL,
-      value: data.stargazers_count,
-    });
-
-    return data.stargazers_count;
-  } catch {
-    return undefined;
-  }
-}
-
-async function getProjectStats(project: Project): Promise<Partial<ProjectWithStats>> {
-  if (project.type !== "personal") {
-    return {};
-  }
-
-  if (project.npmPackage != null) {
-    const npmDownloads = await getNpmDownloads(project.npmPackage);
-
-    if (npmDownloads != null) {
-      return {
-        downloads: npmDownloads.downloads,
-        downloadsPeriod: {
-          start: npmDownloads.start,
-          end: npmDownloads.end,
-        },
-        stats: {
-          kind: "npm-downloads",
-          value: npmDownloads.downloads,
-          period: {
-            start: npmDownloads.start,
-            end: npmDownloads.end,
-          },
-        },
-      };
-    }
-  }
-
-  if (project.githubRepo != null) {
-    const stars = await getGitHubStars(project.githubRepo);
-
-    if (stars == null) {
-      return {};
-    }
-
-    return {
-      stars,
-      stats: {
-        kind: "github-stars",
-        value: stars,
-      },
-    };
-  }
-
-  return {};
-}
-
-function getPopularity(project: ProjectWithStats): number {
-  return project.stats?.value ?? 0;
-}
-
-function sortByPresentation(projectsToSort: ProjectWithStats[]): ProjectWithStats[] {
-  return projectsToSort.toSorted((a, b) => {
-    const featured = Number(b.featured === true) - Number(a.featured === true);
-
-    if (featured !== 0) {
-      return featured;
-    }
-
-    const popularity = getPopularity(b) - getPopularity(a);
-
-    if (popularity !== 0) {
-      return popularity;
-    }
-
-    return (projectOrder.get(a.slug) ?? 0) - (projectOrder.get(b.slug) ?? 0);
-  });
-}
 
 export async function getProjectsWithStats(): Promise<ProjectWithStats[]> {
   const enrichedProjects = await Promise.all(
