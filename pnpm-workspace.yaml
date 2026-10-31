@@ -7,7 +7,7 @@ strictDepBuilds: true
 blockExoticSubdeps: true
 
 overrides:
-  "@astrojs/cloudflare@15.0.0-beta.1>@cloudflare/vite-plugin": 2.0.0-beta.v.1
+  "@astrojs/cloudflare@15.0.0-beta.1>@cloudflare/vite-plugin": 2.0.0-beta.v.4
   chokidar: 5.0.0
   tinyclip: 1.0.3
 
@@ -33,24 +33,24 @@ minimumReleaseAgeExclude:
 
 catalogs:
   astro:
-    "@astrojs/check": 0.9.10
-    "@astrojs/cloudflare": 15.0.0-beta.1
-    "@astrojs/markdown-satteri": 0.4.4
-    "@astrojs/mdx": 8.0.2
+    "@astrojs/check": 0.9.12
+    "@astrojs/cloudflare": 15.0.0-beta.3
+    "@astrojs/markdown-satteri": 0.4.5
+    "@astrojs/mdx": 8.1.1
     "@astrojs/sitemap": 3.7.4
-    astro: 7.4.0
+    astro: 7.4.2
 
   dev:
-    cf: 1.0.0-beta.18
+    cf: 1.0.0-beta.21
     typescript: 6.0.3
 
   icons:
-    "@iconify-json/lucide": 1.2.137
+    "@iconify-json/lucide": 1.2.147
     "@iconify-json/ph": 1.2.2
     unplugin-icons: 24.0.0
 
   linting:
-    oxfmt: 0.70.0
+    oxfmt: 0.74.0
     oxlint: 1.85.0
 
   styling:
@@ -58,4 +58,4 @@ catalogs:
     tailwindcss: 4.3.3
 
   types:
-    "@types/node": 26.6.3
+    "@types/node": 26.6.5
