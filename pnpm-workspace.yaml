@@ -8,7 +8,7 @@ blockExoticSubdeps: true
 
 overrides:
   "@astrojs/cloudflare@15.0.0-beta.1>@cloudflare/vite-plugin": 2.0.0-beta.v.1
-  chokidar: 5.0.0
+  chokidar: 6.0.0
   tinyclip: 1.0.3
 
 minimumReleaseAgeExclude:
