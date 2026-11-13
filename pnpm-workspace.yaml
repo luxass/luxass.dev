@@ -50,8 +50,8 @@ catalogs:
     unplugin-icons: 24.0.0
 
   linting:
-    oxfmt: 0.70.0
-    oxlint: 1.85.0
+    oxfmt: 0.77.0
+    oxlint: 1.92.0
 
   styling:
     "@tailwindcss/vite": 4.3.3
